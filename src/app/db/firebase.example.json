@@ -1,0 +1,9 @@
+{
+  "apiKey": "AAA",
+  "authDomain": "BBB",
+  "projectId": "CCC",
+  "storageBucket": "DDD",
+  "messagingSenderId": "EEE",
+  "appId": "FFF",
+  "measurementId": "GGG"
+}

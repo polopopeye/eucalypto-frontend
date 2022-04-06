@@ -1,0 +1,51 @@
+{
+  "name": "frontend-eucalypto",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "npx prettier --check",
+    "format": "npx prettier --write",
+    "prepare": "husky install",
+    "test:unit": "jest",
+    "test:unit:dev": "jest --watch",
+    "test:int": "cypress open",
+    "test:int:dev": "cypress run"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.26.1",
+    "dashify": "^2.0.0",
+    "firebase": "^9.6.10",
+    "firebase-admin": "^10.0.2",
+    "next": "12.1.4",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-firebase-hooks": "^5.0.3",
+    "react-redux": "^7.2.8",
+    "redux": "^4.1.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.1",
+    "@types/node": "17.0.23",
+    "@types/react": "17.0.43",
+    "@types/react-dom": "17.0.14",
+    "autoprefixer": "^10.4.4",
+    "cypress": "^9.5.3",
+    "eslint": "8.12.0",
+    "eslint-config-next": "12.1.4",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.3.7",
+    "postcss": "^8.4.12",
+    "prettier": "2.6.2",
+    "tailwindcss": "^3.0.23",
+    "typescript": "4.6.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
