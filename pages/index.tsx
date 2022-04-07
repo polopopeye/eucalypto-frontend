@@ -1,8 +1,17 @@
-import type { NextPage } from "next";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+// import type { NextPage } from 'next';
 import Head from "next/head";
-import Image from "next/image";
+import { useEffect } from "react";
+import { array } from "yargs";
+import iniApp from "../src/app/db";
 
-const Home: NextPage = () => {
+const data = process.env.API_KEY;
+
+const Home = (props: any) => {
+  useEffect(() => {
+    console.log("🚀 ~ file: index.tsx ~ line 7 ~ props", props.dbResponse);
+  }, []);
+
   return (
     <div>
       <Head>
@@ -15,5 +24,21 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  let dbResponse: Array<any> = Array();
+  const db = getFirestore(iniApp);
+  const querySnapshot = await getDocs(collection(db, "test"));
+  querySnapshot.forEach((doc) => {
+    dbResponse.push(doc.data());
+    console.log(doc.data());
+  });
+
+  return {
+    props: {
+      dbResponse,
+    },
+  };
+}
 
 export default Home;
