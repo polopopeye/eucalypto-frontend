@@ -15,3 +15,16 @@
   --color-tertiary: #00adb5;
   --color-quaternary: #eeeeee;
 }
+
+/* OLD */
+.myBubbleUI {
+  width: 100%;
+  height: 1000px;
+  border-radius: 50px;
+}
+
+.companyBubble {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}

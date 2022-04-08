@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   render() {
+    const currentTheme = "theme-default";
     return (
       <Html>
         <Head>
@@ -12,7 +13,7 @@ class MyDocument extends Document {
             href="https://unpkg.com/flickity@2/dist/flickity.min.css"
           ></link>
         </Head>
-        <body>
+        <body className={currentTheme}>
           <Main />
           <NextScript />
         </body>

@@ -2,6 +2,7 @@
 // fontFamily: {
 //   sans: ['Inter var', ...defaultTheme.fontFamily.sans],
 // },
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
@@ -16,8 +17,9 @@ module.exports = {
         secondary: "var(--color-secondary)",
         tertiary: "var(--color-tertiary)",
         quaternary: "var(--color-quaternary)",
+        rose: colors.rose,
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

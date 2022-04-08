@@ -1,10 +1,10 @@
 import React from "react";
 
 interface TextHeaderProps {
-  category: string;
-  title: string;
-  description: string;
-  className: string;
+  category?: string;
+  title?: string;
+  description?: string;
+  className?: string;
 }
 
 const TextHeader = (props: TextHeaderProps) => {

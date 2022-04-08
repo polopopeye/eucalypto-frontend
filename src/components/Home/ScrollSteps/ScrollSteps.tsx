@@ -78,7 +78,7 @@ const ScrollSteps = () => {
             <Animator
               animation={batch(MoveIn(0, 0), MoveOut(windowWidth / 1.9, 300))}
             >
-              <div className="    w-96 -z-10">
+              <div className="w-96 -z-10">
                 <div className="  rounded-lg p-8">
                   <Arrow direction="right" />
                 </div>
@@ -105,7 +105,7 @@ const ScrollSteps = () => {
 
             <Animator
               animation={batch(
-                MoveIn(0, windowHeight),
+                MoveIn(0, windowHeight / 1.25),
                 MoveOut(0, 0),
                 Sticky(67, 27)
               )}

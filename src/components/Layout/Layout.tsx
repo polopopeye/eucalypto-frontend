@@ -1,4 +1,5 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
@@ -9,9 +10,18 @@ type LayoutProps = {
 };
 
 const Layout: React.FC = ({ children }: LayoutProps) => {
-  const currentTheme = "theme-default ";
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.pathname === "/search" || router.pathname === "/search/") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [router]);
+
   return (
-    <div className={currentTheme + "w-full"}>
+    <div className={"w-full"}>
       <div className="container  mx-auto">
         <Navbar />
         {children}
