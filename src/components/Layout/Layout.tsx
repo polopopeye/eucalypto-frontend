@@ -1,4 +1,5 @@
 import React from "react";
+
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 
@@ -7,12 +8,17 @@ type LayoutProps = {
   title?: string;
 };
 
-const Layout: React.FC = ({ children }: LayoutProps) => (
-  <>
-    <Navbar />
-    <div className="container">{children}</div>
-    <Footer />
-  </>
-);
+const Layout: React.FC = ({ children }: LayoutProps) => {
+  const currentTheme = "theme-default ";
+  return (
+    <div className={currentTheme + "w-full"}>
+      <div className="container  mx-auto">
+        <Navbar />
+        {children}
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 export default Layout;

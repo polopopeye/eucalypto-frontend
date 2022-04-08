@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -5,9 +6,13 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="viewport" content="viewport-fit=cover" />
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+          ></link>
         </Head>
-        <body className="bg-bgLayout">
+        <body>
           <Main />
           <NextScript />
         </body>

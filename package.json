@@ -16,16 +16,21 @@
     "test:int:dev": "cypress run"
   },
   "dependencies": {
+    "@headlessui/react": "^1.5.0",
+    "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.26.1",
     "dashify": "^2.0.0",
     "firebase": "^9.6.10",
     "firebase-admin": "^10.0.2",
+    "flickity": "^2.3.0",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-firebase-hooks": "^5.0.3",
+    "react-flickity-component": "^3.6.2",
     "react-redux": "^7.2.8",
+    "react-scroll-motion": "^0.2.6",
     "redux": "^4.1.2"
   },
   "devDependencies": {
