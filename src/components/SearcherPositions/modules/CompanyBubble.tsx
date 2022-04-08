@@ -5,8 +5,25 @@ import ModalContainer from "./ModalContainer";
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/jobModalSlice";
 
-export default function CompanyBubble(props) {
-  // console.log(props);
+export default function CompanyBubble(props: {
+  backgroundColor: string;
+  bubbleSize: number;
+  textColor: any;
+  name:
+    | boolean
+    | React.ReactChild
+    | React.ReactFragment
+    | React.ReactPortal
+    | null
+    | undefined;
+  symbol:
+    | boolean
+    | React.ReactChild
+    | React.ReactFragment
+    | React.ReactPortal
+    | null
+    | undefined;
+}) {
   return (
     <div
       style={{

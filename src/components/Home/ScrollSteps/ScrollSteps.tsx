@@ -5,21 +5,15 @@ import {
   ScrollContainer,
   ScrollPage,
   batch,
-  Fade,
   FadeIn,
-  FadeOut,
-  Move,
   MoveIn,
   MoveOut,
   Sticky,
-  StickyIn,
   ZoomIn,
-  StickyOut,
   ZoomOut,
-  Zoom,
 } from "react-scroll-motion";
 import TextHeader from "../../Utils/TextHeader/TextHeader";
-import Step from "./modules/step";
+import Step from "./modules/Step";
 
 const Arrow = (props: { direction: string }) => {
   const [src] = useState(

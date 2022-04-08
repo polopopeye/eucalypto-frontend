@@ -8,6 +8,10 @@ import {
 import React from "react";
 
 const HeaderCard = () => {
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   return (
     <div>
       <div className="flex space-x-3">

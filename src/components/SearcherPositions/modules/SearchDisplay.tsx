@@ -3,14 +3,16 @@ import React, { useEffect, useState } from "react";
 import CompanyBubble from "./CompanyBubble";
 import companyData from "./data";
 
+// @ts-ignore
 import BubbleUI from "react-bubble-ui";
+
 import "react-bubble-ui/dist/index.css";
 import ModalContainer from "./ModalContainer";
 
 const SearchDisplay = () => {
   const getStockBubbles = () => {
     return companyData.slice(0, 20).map((company, i) => {
-      return <CompanyBubble {...company} key={i} />;
+      return <CompanyBubble bubbleSize={0} {...company} key={i} />;
     });
   };
   const stockBubbles = getStockBubbles();

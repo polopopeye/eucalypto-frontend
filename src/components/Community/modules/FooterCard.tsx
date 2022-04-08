@@ -1,7 +1,7 @@
 import { ChatAltIcon, EyeIcon, ThumbUpIcon } from "@heroicons/react/outline";
 import React from "react";
 
-const FooterCard = (props) => {
+const FooterCard = (props: { type: any }) => {
   const { type } = props;
   return (
     <div className="mt-6 flex justify-between space-x-8 text-center">

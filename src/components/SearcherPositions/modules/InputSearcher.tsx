@@ -1,82 +1,55 @@
-/*
-  This InputSearcher requires Tailwind CSS v3.0+ 
-  
-  This InputSearcher requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { Fragment, useState } from "react";
-import { Combobox, Dialog, Transition } from "@headlessui/react";
+import { useState } from "react";
+import { Combobox } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import {
-  CalendarIcon,
   CodeIcon,
-  DocumentIcon,
   ExclamationCircleIcon,
   LinkIcon,
   PencilAltIcon,
-  PhotographIcon,
-  TableIcon,
-  VideoCameraIcon,
   ViewBoardsIcon,
-  ViewListIcon,
 } from "@heroicons/react/outline";
-
-const items = [
-  {
-    id: 1,
-    name: "Text",
-    description: "Add freeform text with basic formatting options.",
-    url: "#",
-    color: "bg-primary",
-    icon: PencilAltIcon,
-  },
-
-  {
-    id: 2,
-    name: "Another object asdfadsfadsf",
-    description: "Add freeform text with basic formatting options.",
-    url: "#",
-    color: "bg-secondary",
-    icon: CodeIcon,
-  },
-  {
-    id: 3,
-    name: "Another test asdfadsfadsf",
-    description: "Add freeform text with basic formatting options.",
-    url: "#",
-    color: "bg-primary",
-    icon: LinkIcon,
-  },
-  {
-    id: 4,
-    name: "random job",
-    description: "Add freeform text with basic formatting options.",
-    url: "#",
-    color: "bg-secondary",
-    icon: ViewBoardsIcon,
-  },
-
-  // More items...
-];
-
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function InputSearcher() {
   const [query, setQuery] = useState("");
 
-  const [open, setOpen] = useState(true);
+  function classNames(...classes: (string | boolean)[]) {
+    return classes.filter(Boolean).join(" ");
+  }
+  const items = [
+    {
+      id: 1,
+      name: "Text",
+      description: "Add freeform text with basic formatting options.",
+      url: "#",
+      color: "bg-primary",
+      icon: PencilAltIcon,
+    },
+
+    {
+      id: 2,
+      name: "Another object asdfadsfadsf",
+      description: "Add freeform text with basic formatting options.",
+      url: "#",
+      color: "bg-secondary",
+      icon: CodeIcon,
+    },
+    {
+      id: 3,
+      name: "Another test asdfadsfadsf",
+      description: "Add freeform text with basic formatting options.",
+      url: "#",
+      color: "bg-primary",
+      icon: LinkIcon,
+    },
+    {
+      id: 4,
+      name: "random job",
+      description: "Add freeform text with basic formatting options.",
+      url: "#",
+      color: "bg-secondary",
+      icon: ViewBoardsIcon,
+    },
+  ];
 
   const filteredItems =
     query === ""
@@ -90,7 +63,7 @@ export default function InputSearcher() {
       value={query}
       as="div"
       className="mx-auto  w-full transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all"
-      onChange={(item) => (window.location = item.url)}
+      onChange={(item: any) => (window.location = item.url)}
     >
       <div className="relative">
         <SearchIcon

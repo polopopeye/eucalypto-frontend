@@ -1,24 +1,14 @@
-/* This JobViewHeader requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
 import {
   BriefcaseIcon,
   CalendarIcon,
   CheckIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
   CurrencyDollarIcon,
-  LinkIcon,
   LocationMarkerIcon,
-  PencilIcon,
 } from "@heroicons/react/solid";
-import { Menu, Transition } from "@headlessui/react";
+
 import Link from "next/link";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function JobViewHeader(props) {
+export default function JobViewHeader(props: { alreadyApplied: any }) {
   const { alreadyApplied } = props;
   return (
     <div className="lg:flex lg:items-center lg:justify-between px-8">
