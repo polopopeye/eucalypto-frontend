@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 src/app/db/firebase.json
+
+yarn.lock
+.env

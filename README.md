@@ -20,7 +20,11 @@ commmands:
     test:int:dev => dev enviroment, will trigger integration testing on change files
 
 Utilities:
-Firestore
+
+Firestore (Firebase) => Install cli to loginand allow deploy => npm install -g firebase-tools
+firebase login
+firebase deploy
+
 Tailwind
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

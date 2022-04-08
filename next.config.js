@@ -2,11 +2,14 @@
 
 module.exports = {
   env: {
-    BASE_API_URL: "https://frontEnd-Eucalypto.herokuapp.com",
+    BASE_API_URL: "https://stage-frontend-eucalyptogroup.herokuapp.com/",
   },
   reactStrictMode: true,
 
   images: {
-    domains: ["localhost", "https://aqueous-everglades-48092.herokuapp.com"],
+    domains: [
+      "localhost",
+      "https://stage-frontend-eucalyptogroup.herokuapp.com/",
+    ],
   },
 };
