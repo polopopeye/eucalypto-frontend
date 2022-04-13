@@ -5,11 +5,6 @@ export default function LoginRegister() {
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96 pt-32 pb-32">
             <div>
-              <img
-                className="h-32 w-auto  mx-auto"
-                src="/img/logo1.png"
-                alt="Workflow"
-              />
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
                 Sign in to your account
               </h2>
@@ -22,15 +17,14 @@ export default function LoginRegister() {
                     Sign in with
                   </p>
 
-                  <div className="mt-1 grid grid-cols-4 gap-4">
+                  <div className="mt-1 grid grid-cols-1 gap-4">
                     <div>
                       <a
                         href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                       >
-                        <span className="sr-only">Sign in with LinkedIn</span>
                         <svg
-                          className="w-5 h-5"
+                          className="w-5 h-5 mr-8"
                           aria-hidden="true"
                           fill="currentColor"
                           viewBox="0 0 455 455"
@@ -38,17 +32,17 @@ export default function LoginRegister() {
                           <path d="M246.4,204.35v-0.665c-0.136,0.223-0.324,0.446-0.442,0.665H246.4z" />
                           <path d="M0,0v455h455V0H0z M141.522,378.002H74.016V174.906h67.506V378.002z    M107.769,147.186h-0.446C84.678,147.186,70,131.585,70,112.085c0-19.928,15.107-35.087,38.211-35.087   c23.109,0,37.31,15.159,37.752,35.087C145.963,131.585,131.32,147.186,107.769,147.186z M385,378.002h-67.524V269.345   c0-27.291-9.756-45.92-34.195-45.92c-18.664,0-29.755,12.543-34.641,24.693c-1.776,4.34-2.24,10.373-2.24,16.459v113.426h-67.537   c0,0,0.905-184.043,0-203.096H246.4v28.779c8.973-13.807,24.986-33.547,60.856-33.547c44.437,0,77.744,29.02,77.744,91.398V378.002   z" />
                         </svg>
+                        <p className=" text-lg font-bold">LinkedIn</p>
                       </a>
                     </div>
 
                     <div>
                       <a
                         href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                       >
-                        <span className="sr-only">Sign in with Google</span>
                         <svg
-                          className="w-5 h-5"
+                          className="w-5 h-5 mr-8"
                           aria-hidden="true"
                           fill="currentColor"
                           viewBox="0 0 24 24"
@@ -58,17 +52,17 @@ export default function LoginRegister() {
                             id="Shape"
                           />
                         </svg>
+                        <p className=" text-lg font-bold">Google </p>
                       </a>
                     </div>
 
                     <div>
                       <a
                         href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                       >
-                        <span className="sr-only">Sign in with GitHub</span>
                         <svg
-                          className="w-5 h-5"
+                          className="w-5 h-5 mr-8"
                           aria-hidden="true"
                           fill="currentColor"
                           viewBox="0 0 20 20"
@@ -79,44 +73,56 @@ export default function LoginRegister() {
                             clipRule="evenodd"
                           />
                         </svg>
+                        <p className=" text-lg font-bold">Github </p>
                       </a>
                     </div>
 
                     <div>
                       <a
                         href="#"
-                        className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                        className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                       >
-                        <span className="sr-only">Sign in with Microsoft</span>
                         <svg
-                          className="w-5 h-5"
+                          className="w-5 h-5 mr-8"
                           aria-hidden="true"
                           fill="currentColor"
                           viewBox="0 0 24 24"
                         >
                           <path d="M10 12.5c0-.3-.2-.5-.5-.5h-6c-.3 0-.5.2-.5.5v5c0 .3.2.5.5.6l6 .7c.3 0 .5-.2.5-.4v-5.9zM11.5 12c-.3 0-.5.2-.5.5v5.9c0 .3.2.5.5.6l9 1c.3 0 .5-.2.5-.4v-7c0-.3-.2-.5-.5-.5l-9-.1zM10 4.7c0-.3-.2-.5-.5-.4l-6 .7c-.3 0-.5.2-.5.5v5c0 .3.2.5.5.5h6c.3 0 .5-.2.5-.5v-5.8zM11.5 4.1c-.3 0-.5.3-.5.6v5.9c0 .3.2.5.5.5h9c.3 0 .5-.2.5-.5v-7c0-.3-.2-.5-.5-.4l-9 .9z" />
                         </svg>
+                        <p className=" text-lg font-bold">Microsoft Account </p>
+                      </a>
+                    </div>
+
+                    <div>
+                      <a
+                        href="#"
+                        className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
+                      >
+                        <svg
+                          className="w-5 h-5 mr-8"
+                          aria-hidden="true"
+                          fill="currentColor"
+                          viewBox="0 0 330.001 330.001"
+                        >
+                          <path
+                            id="XMLID_350_"
+                            d="M173.871,177.097c-2.641,1.936-5.756,2.903-8.87,2.903c-3.116,0-6.23-0.967-8.871-2.903L30,84.602   L0.001,62.603L0,275.001c0.001,8.284,6.716,15,15,15L315.001,290c8.285,0,15-6.716,15-14.999V62.602l-30.001,22L173.871,177.097z"
+                          />
+                          <polygon
+                            id="XMLID_351_"
+                            points="165.001,146.4 310.087,40.001 19.911,40  "
+                          />
+                        </svg>
+
+                        <p className=" text-lg font-bold">Email </p>
                       </a>
                     </div>
                   </div>
                 </div>
-
-                <div className="mt-6 relative">
-                  <div
-                    className="absolute inset-0 flex items-center"
-                    aria-hidden="true"
-                  >
-                    <div className="w-full border-t border-gray-300" />
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">
-                      Or continue with
-                    </span>
-                  </div>
-                </div>
               </div>
 
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <form action="#" method="POST" className="space-y-6">
                   <div>
                     <label
@@ -191,7 +197,7 @@ export default function LoginRegister() {
                     </button>
                   </div>
                 </form>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

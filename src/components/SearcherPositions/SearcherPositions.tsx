@@ -5,15 +5,10 @@ import SearchDisplay from "./modules/SearchDisplay";
 
 const SearcherPositions = () => {
   return (
-    <div>
-      <div className="mt-2">
-        <TextHeader title="Find you Job  "></TextHeader>
-      </div>
-      <div className="mt-4">
-        <InputSearcher />
-      </div>
+    <>
+      <InputSearcher />
       <SearchDisplay />
-    </div>
+    </>
   );
 };
 

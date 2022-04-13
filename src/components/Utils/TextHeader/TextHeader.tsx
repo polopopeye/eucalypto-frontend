@@ -11,7 +11,7 @@ const TextHeader = (props: TextHeaderProps) => {
   const { title, category, description, className } = props;
 
   return (
-    <div className={className + " lg:text-center"}>
+    <div className={className + " lg:text-center p-4"}>
       <h2 className="text-base text-primary font-bold tracking-wide uppercase">
         {category}
       </h2>

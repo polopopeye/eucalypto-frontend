@@ -8,22 +8,21 @@ import Hero from "../src/components/Home/Hero/Hero";
 import Reviews from "../src/components/Home/Reviews/Reviews";
 import ScrollSteps from "../src/components/Home/ScrollSteps/ScrollSteps";
 
-const data = process.env.API_KEY;
-
 const Home = (props: any) => {
   const { dbResponse } = props;
 
   return (
     <div>
       <Hero
-        title="Your hidden "
-        titleFeatured="oportunities"
+        title="Your hidden"
+        titleFeatured=" oportunities"
         src=" https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
         description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam."
         btnText="Find out more"
         href="/search"
       />
       <Reviews />
+
       <ScrollSteps />
       <h1 className="text-3xl font-bold underline text-primary bg-secondary">
         {dbResponse.map((item: any, index: number) => {
