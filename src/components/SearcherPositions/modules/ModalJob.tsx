@@ -26,9 +26,6 @@ export default function ModalJob() {
           <div className="sm:col-span-2">
             <dt className="text-sm font-medium text-gray-500">About</dt>
             <dd className="mt-1 text-sm text-gray-900">
-              {/* <Stars /> */}
-              {/* Indicadores */}
-              {/* https://blog.logrocket.com/building-charts-in-react-with-nivo/ */}
               <img src="https://blog.logrocket.com/wp-content/uploads/2021/08/react-nivo-pie-chart-example.png" />
             </dd>
           </div>

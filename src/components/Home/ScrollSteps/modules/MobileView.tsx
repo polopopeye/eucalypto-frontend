@@ -12,6 +12,8 @@ import {
   ZoomIn,
   ZoomOut,
 } from "react-scroll-motion";
+import Hero from "../../Hero/Hero";
+import Reviews from "../../Reviews/Reviews";
 import { Arrow } from "./ArrowImage";
 import EmptyStep from "./EmptyStep";
 import Step from "./Step";
@@ -58,11 +60,21 @@ const MobileView = () => {
     <>
       <div className="block md:hidden">
         <ScrollContainer snap="none">
-          <EmptyStep page={0} />
-          <EmptyStep page={1} />
-          <EmptyStep page={2} />
+          <ScrollPage debugBorder page={0}>
+            <Hero
+              title="Your hidden"
+              titleFeatured=" oportunities"
+              src=" https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+              description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam."
+              btnText="Find out more"
+              href="/search"
+            />
+          </ScrollPage>
+          <ScrollPage debugBorder page={1}>
+            <Reviews />
+          </ScrollPage>
 
-          <ScrollPage page={3}>
+          <ScrollPage page={2}>
             <ArrowAnimation />
             <Animator animation={batch(FadeIn(0, 1), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
@@ -78,7 +90,7 @@ const MobileView = () => {
               </div>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={4}>
+          <ScrollPage page={3}>
             <Animator animation={batch(FadeOut(1, 0.7), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
                 <div className="rounded-lg p-8">
@@ -94,7 +106,7 @@ const MobileView = () => {
             </Animator>
           </ScrollPage>
           {/* STEP2 */}
-          <ScrollPage page={5}>
+          <ScrollPage page={4}>
             <ArrowAnimation />
             <Animator animation={batch(FadeIn(0, 1), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
@@ -110,7 +122,7 @@ const MobileView = () => {
               </div>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={6}>
+          <ScrollPage page={5}>
             <Animator animation={batch(FadeOut(1, 0.7), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
                 <div className="rounded-lg p-8">
@@ -126,7 +138,7 @@ const MobileView = () => {
             </Animator>
           </ScrollPage>
           {/* STEP 3 */}
-          <ScrollPage page={7}>
+          <ScrollPage page={6}>
             <ArrowAnimation />
             <Animator animation={batch(FadeIn(0, 1), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
@@ -142,7 +154,7 @@ const MobileView = () => {
               </div>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={8}>
+          <ScrollPage page={7}>
             <Animator animation={batch(FadeOut(1, 0.7), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
                 <div className="rounded-lg p-8">
@@ -158,7 +170,7 @@ const MobileView = () => {
             </Animator>
           </ScrollPage>
           {/* STEP 4 */}
-          <ScrollPage page={9}>
+          <ScrollPage page={8}>
             <ArrowAnimation />
             <Animator animation={batch(FadeIn(0, 1), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
@@ -174,7 +186,7 @@ const MobileView = () => {
               </div>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={10}>
+          <ScrollPage page={9}>
             <Animator animation={batch(FadeOut(1, 0.7), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
                 <div className="rounded-lg p-8">
@@ -190,7 +202,7 @@ const MobileView = () => {
             </Animator>
           </ScrollPage>
           {/* Success 1 */}
-          <ScrollPage page={11}>
+          <ScrollPage page={10}>
             <ArrowAnimation />
             <Animator animation={batch(FadeIn(0, 1), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
@@ -206,7 +218,7 @@ const MobileView = () => {
               </div>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={12}>
+          <ScrollPage page={11}>
             <Animator animation={batch(FadeOut(1, 0.7), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
                 <div className="rounded-lg p-8">
@@ -222,7 +234,7 @@ const MobileView = () => {
             </Animator>
           </ScrollPage>
           {/* Success 2 */}
-          <ScrollPage page={13}>
+          <ScrollPage page={12}>
             <ArrowAnimation />
             <Animator animation={batch(FadeIn(0, 1), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
@@ -238,7 +250,7 @@ const MobileView = () => {
               </div>
             </Animator>
           </ScrollPage>
-          <ScrollPage page={14}>
+          <ScrollPage page={13}>
             <Animator animation={batch(FadeOut(1, 0.7), Sticky(0, 25))}>
               <div className="absolute  bg-primary w-96 -z-10">
                 <div className="rounded-lg p-8">

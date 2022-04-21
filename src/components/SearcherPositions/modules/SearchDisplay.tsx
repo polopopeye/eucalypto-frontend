@@ -22,12 +22,18 @@ const SearchDisplay = () => {
   const [innerHeight, setInnerHeight] = useState(0);
   const [innerWidth, setInnerWidth] = useState(0);
   const [windowOrientation, setWindowOrientation] = useState(0);
+
+  const [widthContainer, setWidthContainer] = useState(0);
+
   useEffect(() => {
     setIsBrowser(typeof window !== undefined ? true : false);
     setInnerWidth(typeof window !== undefined ? window.innerWidth : 0);
     setInnerHeight(typeof window !== undefined ? window.innerHeight : 0);
     setWindowOrientation(
       typeof window !== undefined ? window.screen.orientation.angle : 0
+    );
+    setWidthContainer(
+      window.innerWidth > 1024 ? 1024 / 4.5 : window.innerWidth / 5.5
     );
   }, []);
 
@@ -39,15 +45,15 @@ const SearchDisplay = () => {
             height: innerHeight - 150 + "px",
           }}
           options={{
-            size: innerWidth / 6,
+            size: widthContainer,
             minSize: 100,
             gutter: 20,
             provideProps: true,
             numCols: 4,
             fringeWidth:
-              windowOrientation === 0 ? innerHeight / 6 : innerWidth / 6,
+              windowOrientation === 0 ? innerHeight / 6 : widthContainer,
             yRadius: innerHeight / 5,
-            xRadius: innerWidth / 3,
+            xRadius: widthContainer * 2,
             cornerRadius: 50,
             showGuides: false,
             compact: false,
