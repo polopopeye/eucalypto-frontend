@@ -33,14 +33,11 @@ const Step = (props: StepProps) => {
             )}
           >
             <img src={src} alt={title} />
-            {/* {src} asdfsasdfsasdfa */}
-            {/* <Image alt="test" src={src}></Image> */}
           </div>
         </div>
         <div className="mt-8">
           <p className="mt-2 text-base text-gray-500">
             Doloribus dolores nostrum quia qui natus officia quod et dolorem.
-            Sit repellendus qui ut at blanditiis et quo et molestiae.
           </p>
         </div>
         <span

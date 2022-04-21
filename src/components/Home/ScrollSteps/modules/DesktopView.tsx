@@ -56,7 +56,7 @@ const DesktopView = () => {
                     Sticky(30, 40)
                   )}
                 >
-                  <div className="w-96 -z-10">
+                  <div className="w-64 -z-10">
                     <div className="rounded-lg ">
                       <Arrow direction="right" />
                     </div>
@@ -65,8 +65,8 @@ const DesktopView = () => {
                 <Animator
                   animation={batch(MoveIn(windowWidth * -1, 0), Sticky(12, 27))}
                 >
-                  <div className="absolute  bg-primary w-96 -z-10">
-                    <div className="rounded-lg p-8">
+                  <div className="absolute  bg-primary w-64 -z-10">
+                    <div className="rounded-lg p-2">
                       <Step
                         title="Step 1"
                         href="#"
@@ -89,8 +89,8 @@ const DesktopView = () => {
                     Sticky(69, 27)
                   )}
                 >
-                  <div className="absolute   w-96 -z-20">
-                    <div className="  rounded-lg p-8">
+                  <div className="absolute   w-64 -z-20">
+                    <div className="  rounded-lg p-2">
                       <Arrow direction="left" />
                     </div>
                   </div>
@@ -103,8 +103,8 @@ const DesktopView = () => {
                     Sticky(69, 27)
                   )}
                 >
-                  <div className="absolute  bg-primary w-96 -z-10">
-                    <div className="  rounded-lg p-8">
+                  <div className="absolute  bg-primary w-64 -z-10">
+                    <div className="  rounded-lg p-2">
                       <Step
                         title="Step 2"
                         href="#"
@@ -125,8 +125,8 @@ const DesktopView = () => {
                     Sticky(12, 27)
                   )}
                 >
-                  <div className="absolute   w-96">
-                    <div className="  rounded-lg p-8">
+                  <div className="absolute   w-64">
+                    <div className="  rounded-lg p-2">
                       <Arrow direction="right" />
                     </div>
                   </div>
@@ -139,8 +139,8 @@ const DesktopView = () => {
                     Sticky(12, 27)
                   )}
                 >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
+                  <div className="absolute  bg-primary w-64">
+                    <div className="  rounded-lg p-2">
                       <Step
                         title="Step 3"
                         href="#"
@@ -157,8 +157,8 @@ const DesktopView = () => {
                 <Animator
                   animation={batch(FadeIn(), MoveOut(0, 0), Sticky(69, 27))}
                 >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
+                  <div className="absolute  bg-primary w-64">
+                    <div className="  rounded-lg p-2">
                       <Step
                         title="Step 4"
                         href="#"
@@ -182,8 +182,8 @@ const DesktopView = () => {
                     Sticky(69, 27)
                   )}
                 >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
+                  <div className="absolute  bg-primary w-64">
+                    <div className="  rounded-lg p-2">
                       <Step
                         title="Sucess"
                         href="#"
@@ -207,8 +207,8 @@ const DesktopView = () => {
                     Sticky(30.6, 25)
                   )}
                 >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
+                  <div className="absolute  bg-primary w-64">
+                    <div className="  rounded-lg p-2">
                       <Step
                         title="Ssucess 2"
                         href="#"

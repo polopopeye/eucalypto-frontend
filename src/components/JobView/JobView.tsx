@@ -102,6 +102,7 @@ const JobView = () => {
           <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
             <div className="space-y-6 lg:col-start-1 lg:col-span-2">
               <HeaderCompany></HeaderCompany>
+
               {/* Description list*/}
               <section aria-labelledby="applicant-information-title">
                 <div className="bg-white shadow sm:rounded-lg">
@@ -120,12 +121,19 @@ const JobView = () => {
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">
+                          <img src="https://blog.logrocket.com/wp-content/uploads/2021/08/react-nivo-pie-chart-example.png" />
+                        </dt>
+                      </div>
+
+                      <div className="sm:col-span-1">
+                        <dt className="text-sm font-medium text-gray-500">
                           Application for
                         </dt>
                         <dd className="mt-1 text-sm text-gray-900">
                           Backend Developer
                         </dd>
                       </div>
+
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">
                           Technologies
@@ -138,7 +146,9 @@ const JobView = () => {
                         <dt className="text-sm font-medium text-gray-500">
                           Salary
                         </dt>
-                        <dd className="mt-1 text-sm text-gray-900">$120,000</dd>
+                        <dd className="mt-1 text-sm text-gray-900">
+                          120,000 - 150,000 EUR
+                        </dd>
                       </div>
 
                       <div className="sm:col-span-2">
