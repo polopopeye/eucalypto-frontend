@@ -1,11 +1,7 @@
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-// import type { NextPage } from 'next';
-import Head from "next/head";
-import { useEffect } from "react";
-import { array } from "yargs";
+
 import iniApp from "../src/app/db";
-import Hero from "../src/components/Home/Hero/Hero";
-import Reviews from "../src/components/Home/Reviews/Reviews";
+
 import ScrollSteps from "../src/components/Home/ScrollSteps/ScrollSteps";
 
 const Home = (props: any) => {

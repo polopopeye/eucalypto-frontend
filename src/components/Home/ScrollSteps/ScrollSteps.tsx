@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import TextHeader from "../../Utils/TextHeader/TextHeader";
 import DesktopView from "./modules/DesktopView";
 
 import MobileView from "./modules/MobileView";

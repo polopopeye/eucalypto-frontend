@@ -74,7 +74,6 @@ const DesktopView = () => {
                     title="We guide you through the process"
                     category="Transactions"
                     description="Lorem ipsum dolor sit amet consect adipisicing  "
-                    // className="my-16"
                   />
                 </Animator>
                 {/* Arrow */}
@@ -99,13 +98,12 @@ const DesktopView = () => {
                     FadeIn(0, 1),
                     FadeOut(2, -1),
                     MoveIn(0, windowHeight / 1.25),
-
                     Sticky(75, 30)
                   )}
                 >
                   <div className="w-64 -z-10">
                     <div className="rounded-lg ">
-                      <Arrow direction="left" />
+                      <Arrow direction="down" />
                     </div>
                   </div>
                 </Animator>
@@ -134,7 +132,6 @@ const DesktopView = () => {
                     FadeIn(),
                     MoveIn(0, windowHeight / 1.25),
                     MoveOut(0, windowHeight * -1),
-
                     Sticky(24, 20)
                   )}
                 >
@@ -152,7 +149,6 @@ const DesktopView = () => {
                 <Animator
                   animation={batch(
                     FadeIn(),
-
                     MoveIn(0, windowHeight / 1.25),
                     MoveOut(0, windowHeight * -1),
                     Sticky(66, 20)
@@ -207,22 +203,22 @@ const DesktopView = () => {
               </ScrollPage>
 
               <ScrollPage debugBorder page={2}>
+                {/* Arrow */}
                 <Animator
                   animation={batch(
                     FadeIn(0, 1),
                     FadeOut(1, 0),
                     MoveIn(0, windowHeight / 3),
-                    // MoveOut((windowWidth / 1) * -0.5, windowHeight * -1),
                     Sticky(32, 27)
                   )}
                 >
                   <div className="w-64 -z-10">
                     <div className="rounded-lg ">
-                      <Arrow direction="left" />
+                      <Arrow direction="down" />
                     </div>
                   </div>
                 </Animator>
-                {/* Arrow */}
+                {/* Arrow 2*/}
                 <Animator
                   animation={batch(
                     FadeIn(0, 1),
@@ -292,7 +288,6 @@ const DesktopView = () => {
                     category="Achievements &amp; Awards"
                     description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
                   voluptatum cupiditate veritatis in accusamus quisquam."
-                    // className="my-16"
                   />
                 </Animator>
               </ScrollPage>
