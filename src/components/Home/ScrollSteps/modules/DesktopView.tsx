@@ -136,7 +136,7 @@ const DesktopView = () => {
                   )}
                 >
                   <Step
-                    title="Step 1"
+                    title="Personal advice"
                     href="#"
                     src={stepImg[0]}
                     iconForeground="text-teal-700"

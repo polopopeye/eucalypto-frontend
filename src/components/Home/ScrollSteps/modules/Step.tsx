@@ -38,7 +38,17 @@ const Step = (props: StepProps) => {
           </div>
           <div>
             <p className="  text-base text-gray-500">
-              Doloribus dolores nostrum quia qui
+              Join the community of the people who are building the next. <br />
+              {/* be part of everything that is happening in the world. */}
+              {/* Second step */}
+              benefit from the best tools and resources.
+              {/*  */}
+              find the hotest and most exciting challenges. we will be your tech
+              agent.
+              {/* 2 Sseccessfull  */}
+              we consult, you decide.
+              {/*  */}
+              we stay connected with you
             </p>
           </div>
           <span
