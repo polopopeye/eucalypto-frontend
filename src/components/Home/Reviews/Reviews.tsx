@@ -18,7 +18,6 @@ const Reviews = () => {
         title="We love our talents and partners"
         category="Reviews"
         description="Check out what our customers have to say about us."
-        className="my-4"
       />
 
       <Flickity

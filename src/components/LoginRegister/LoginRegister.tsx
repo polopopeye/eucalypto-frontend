@@ -1,3 +1,6 @@
+import GoogleAccount from "../../app/db/accounts/googleAccount";
+import googleAccount from "../../app/db/accounts/googleAccount";
+
 export default function LoginRegister() {
   return (
     <>
@@ -38,7 +41,11 @@ export default function LoginRegister() {
 
                     <div>
                       <a
-                        href="#"
+                        onClick={() => {
+                          // GoogleAccount();
+                          // createAccount();
+                        }}
+                        // href="/api/accounts/createAccount"
                         className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                       >
                         <svg

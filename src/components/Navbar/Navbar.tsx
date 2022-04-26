@@ -36,6 +36,7 @@ export default function Navbar() {
                   <NavButton href="/search" text="Search for a project" />
                   <NavButton href="/community" text="Community" />
                   <NavButton href="/signin" text="Sign In" />
+                  <NavButton href="/contact" text="Let's talk" />
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">

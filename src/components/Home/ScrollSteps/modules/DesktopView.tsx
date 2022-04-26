@@ -3,14 +3,20 @@ import {
   Animator,
   batch,
   FadeIn,
+  FadeOut,
   MoveIn,
   MoveOut,
   ScrollContainer,
   ScrollPage,
   Sticky,
+  StickyIn,
+  StickyOut,
   ZoomIn,
   ZoomOut,
 } from "react-scroll-motion";
+import TextHeader from "../../../Utils/TextHeader/TextHeader";
+import Hero from "../../Hero/Hero";
+import Reviews from "../../Reviews/Reviews";
 import { Arrow } from "./ArrowImage";
 import EmptyStep from "./EmptyStep";
 import Step from "./Step";
@@ -42,182 +48,247 @@ const DesktopView = () => {
     <>
       {windowOrientation === 0 && (
         <>
-          <div className="hidden md:block">
+          <div className=" hidden md:block">
             <ScrollContainer snap="none">
-              <EmptyStep page={0} />
-              <EmptyStep page={1} />
+              <ScrollPage debugBorder page={0}>
+                <Hero
+                  title="Your hidden"
+                  titleFeatured=" oportunities"
+                  src=" https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+                  description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam."
+                  btnText="Find out more"
+                  href="/search"
+                />
+                <Reviews />
+              </ScrollPage>
 
-              <ScrollPage page={2}>
+              <ScrollPage debugBorder page={1}>
                 <Animator
                   animation={batch(
-                    FadeIn(),
-                    MoveIn(windowWidth * -1, 0),
-                    MoveOut(windowWidth / 2, 150),
-                    Sticky(30, 40)
+                    FadeIn(-1, 1),
+                    FadeOut(1, -1),
+                    Sticky(50, 50)
                   )}
                 >
-                  <div className="w-96 -z-10">
+                  <TextHeader
+                    title="We guide you through the process"
+                    category="Transactions"
+                    description="Lorem ipsum dolor sit amet consect adipisicing  "
+                  />
+                </Animator>
+                {/* Arrow */}
+                <Animator
+                  animation={batch(
+                    FadeIn(0, 1),
+                    FadeOut(1, 0),
+                    MoveIn((windowWidth / 4) * -1, windowHeight / 1.25),
+                    MoveOut((windowWidth / 1) * 1, windowHeight * -1),
+                    Sticky(50, 30)
+                  )}
+                >
+                  <div className="w-64 -z-10">
                     <div className="rounded-lg ">
                       <Arrow direction="right" />
                     </div>
                   </div>
                 </Animator>
+                {/* Arrow2 */}
                 <Animator
-                  animation={batch(MoveIn(windowWidth * -1, 0), Sticky(12, 27))}
+                  animation={batch(
+                    FadeIn(0, 1),
+                    FadeOut(2, -1),
+                    MoveIn(0, windowHeight / 1.25),
+                    Sticky(75, 30)
+                  )}
                 >
-                  <div className="absolute  bg-primary w-96 -z-10">
-                    <div className="rounded-lg p-8">
-                      <Step
-                        title="Step 1"
-                        href="#"
-                        src={stepImg[0]}
-                        iconForeground="text-teal-700"
-                        iconBackground="bg-teal-50"
-                      />
+                  <div className="w-64 -z-10">
+                    <div className="rounded-lg ">
+                      <Arrow direction="down" />
                     </div>
                   </div>
                 </Animator>
-              </ScrollPage>
-              <ScrollPage page={3}>
+
+                {/* Arrow3 */}
                 <Animator
                   animation={batch(
-                    FadeIn(),
-                    MoveIn(0, windowHeight),
-
-                    MoveOut((windowWidth / 2) * -1, 150),
-
-                    Sticky(69, 27)
+                    FadeIn(0, 1),
+                    FadeOut(1, 0),
+                    MoveIn(0, windowHeight / 1.25),
+                    MoveOut((windowWidth / 1) * -0.5, windowHeight * -1),
+                    Sticky(75, 75)
                   )}
                 >
-                  <div className="absolute   w-96 -z-20">
-                    <div className="  rounded-lg p-8">
+                  <div className="w-64 -z-10">
+                    <div className="rounded-lg ">
                       <Arrow direction="left" />
                     </div>
                   </div>
                 </Animator>
 
+                {/* Step 1 */}
+
                 <Animator
                   animation={batch(
+                    FadeIn(),
                     MoveIn(0, windowHeight / 1.25),
-                    MoveOut(0, 0),
-                    Sticky(69, 27)
+                    MoveOut(0, windowHeight * -1),
+                    Sticky(24, 20)
                   )}
                 >
-                  <div className="absolute  bg-primary w-96 -z-10">
-                    <div className="  rounded-lg p-8">
-                      <Step
-                        title="Step 2"
-                        href="#"
-                        src={stepImg[1]}
-                        iconForeground="text-teal-700"
-                        iconBackground="bg-teal-50"
-                      />
+                  <Step
+                    title="Personal advice"
+                    href="#"
+                    src={stepImg[0]}
+                    iconForeground="text-teal-700"
+                    iconBackground="bg-teal-50"
+                  />
+                </Animator>
+
+                {/* Step 2 */}
+
+                <Animator
+                  animation={batch(
+                    FadeIn(),
+                    MoveIn(0, windowHeight / 1.25),
+                    MoveOut(0, windowHeight * -1),
+                    Sticky(66, 20)
+                  )}
+                >
+                  <Step
+                    title="Step 2"
+                    href="#"
+                    src={stepImg[1]}
+                    iconForeground="text-teal-700"
+                    iconBackground="bg-teal-50"
+                  />
+                </Animator>
+                {/* SSTEP 3 */}
+
+                <Animator
+                  animation={batch(
+                    FadeIn(),
+                    MoveIn(0, windowHeight / 1.25),
+                    MoveOut(0, windowHeight * -1),
+
+                    Sticky(66, 67)
+                  )}
+                >
+                  <Step
+                    title="Step 3"
+                    href="#"
+                    src={stepImg[2]}
+                    iconForeground="text-teal-700"
+                    iconBackground="bg-teal-50"
+                  />
+                </Animator>
+                {/* SSTEP 4 */}
+
+                <Animator
+                  animation={batch(
+                    FadeIn(),
+                    MoveIn(0, windowHeight / 1.25),
+                    MoveOut(0, windowHeight * -1),
+
+                    Sticky(24, 67)
+                  )}
+                >
+                  <Step
+                    title="Step 4"
+                    href="#"
+                    src={stepImg[3]}
+                    iconForeground="text-teal-700"
+                    iconBackground="bg-teal-50"
+                  />
+                </Animator>
+              </ScrollPage>
+
+              <ScrollPage debugBorder page={2}>
+                {/* Arrow */}
+                <Animator
+                  animation={batch(
+                    FadeIn(0, 1),
+                    FadeOut(1, 0),
+                    MoveIn(0, windowHeight / 3),
+                    Sticky(32, 27)
+                  )}
+                >
+                  <div className="w-64 -z-10">
+                    <div className="rounded-lg ">
+                      <Arrow direction="down" />
                     </div>
                   </div>
                 </Animator>
-              </ScrollPage>
-              <ScrollPage page={4}>
+                {/* Arrow 2*/}
                 <Animator
                   animation={batch(
-                    MoveIn(0, windowHeight / 2),
-
-                    MoveOut(windowWidth / 2, 150),
-                    Sticky(12, 27)
+                    FadeIn(0, 1),
+                    FadeOut(1, 0),
+                    MoveIn((windowWidth / 4) * -1, windowHeight / 1.25),
+                    MoveOut((windowWidth / 1) * 1, windowHeight * -1),
+                    Sticky(50, 40)
                   )}
                 >
-                  <div className="absolute   w-96">
-                    <div className="  rounded-lg p-8">
+                  <div className="w-64 -z-10">
+                    <div className="rounded-lg ">
                       <Arrow direction="right" />
                     </div>
                   </div>
                 </Animator>
-                <Animator
-                  animation={batch(
-                    MoveIn(0, windowHeight / 2),
 
-                    MoveOut(0, 0),
-                    Sticky(12, 27)
-                  )}
-                >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
-                      <Step
-                        title="Step 3"
-                        href="#"
-                        src={stepImg[2]}
-                        iconForeground="text-teal-700"
-                        iconBackground="bg-teal-50"
-                      />
-                    </div>
-                  </div>
-                </Animator>
-              </ScrollPage>
+                {/* Step 5 */}
 
-              <ScrollPage page={5}>
-                <Animator
-                  animation={batch(FadeIn(), MoveOut(0, 0), Sticky(69, 27))}
-                >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
-                      <Step
-                        title="Step 4"
-                        href="#"
-                        src={stepImg[3]}
-                        iconForeground="text-teal-700"
-                        iconBackground="bg-teal-50"
-                      />
-                    </div>
-                  </div>
-                </Animator>
-              </ScrollPage>
-
-              <ScrollPage page={6}>
                 <Animator
                   animation={batch(
                     FadeIn(),
-
-                    MoveOut((windowWidth / 3) * -1, 0),
-
-                    ZoomOut(1, 2),
-                    Sticky(69, 27)
-                  )}
-                >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
-                      <Step
-                        title="Sucess"
-                        href="#"
-                        src={stepImg[4]}
-                        iconForeground="text-teal-700"
-                        iconBackground="bg-teal-50"
-                      />
-                    </div>
-                  </div>
-                </Animator>
-              </ScrollPage>
-
-              <ScrollPage page={7}>
-                <Animator
-                  animation={batch(
-                    FadeIn(),
-                    MoveIn(0, windowHeight),
+                    MoveIn(0, windowHeight / 1.25),
                     MoveOut(0, windowHeight * -1),
-                    ZoomIn(1, 2),
-                    ZoomOut(2, 2),
-                    Sticky(30.6, 25)
+
+                    Sticky(24, 30)
                   )}
                 >
-                  <div className="absolute  bg-primary w-96">
-                    <div className="  rounded-lg p-8">
-                      <Step
-                        title="Ssucess 2"
-                        href="#"
-                        src={stepImg[5]}
-                        iconForeground="text-teal-700"
-                        iconBackground="bg-teal-50"
-                      />
-                    </div>
-                  </div>
+                  <Step
+                    title="Succes 1"
+                    href="#"
+                    src={stepImg[4]}
+                    iconForeground="text-teal-700"
+                    iconBackground="bg-teal-50"
+                  />
+                </Animator>
+
+                {/* Step 6 */}
+
+                <Animator
+                  animation={batch(
+                    FadeIn(),
+
+                    MoveIn(0, windowHeight / 1.25),
+                    MoveOut(0, windowHeight * -1),
+                    Sticky(66, 30)
+                  )}
+                >
+                  <Step
+                    title="Success 2"
+                    href="#"
+                    src={stepImg[5]}
+                    iconForeground="text-teal-700"
+                    iconBackground="bg-teal-50"
+                  />
+                </Animator>
+
+                <Animator
+                  animation={batch(
+                    FadeIn(-1, 1),
+                    FadeOut(1, -0),
+                    MoveIn(0, windowHeight / 4),
+                    Sticky(50, 50)
+                  )}
+                >
+                  <TextHeader
+                    title=" Success stories"
+                    category="Achievements &amp; Awards"
+                    description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
+                  voluptatum cupiditate veritatis in accusamus quisquam."
+                  />
                 </Animator>
               </ScrollPage>
             </ScrollContainer>
