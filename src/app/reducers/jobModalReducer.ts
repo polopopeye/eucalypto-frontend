@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import jobModalSlice from "../../slices/jobModalSlice";
+import jobModalSlice from "../slices/jobModalSlice";
 
 const jobModalReducer = combineReducers({
   modal: jobModalSlice.reducer,

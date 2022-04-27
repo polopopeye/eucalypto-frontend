@@ -1,6 +1,7 @@
 import { Disclosure, Menu } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
+import logOut from "../../app/firebase/auth/logOut";
 
 import NavButton from "./modules/NavButton";
 
@@ -91,6 +92,9 @@ export default function Navbar() {
                     <Menu.Item>
                       {({ active }) => (
                         <a
+                          onClick={() => {
+                            logOut();
+                          }}
                           className={classNames(
                             active ? "bg-gray-100" : "",
                             "block px-4 py-2 text-sm text-gray-700"

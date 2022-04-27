@@ -7,8 +7,10 @@ import { Provider } from "react-redux";
 import { store } from "../src/app/store";
 
 import Layout from "../src/components/Layout/Layout";
+import firebase from "../src/app/firebase";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  firebase();
   return (
     <Provider store={store}>
       <Layout>

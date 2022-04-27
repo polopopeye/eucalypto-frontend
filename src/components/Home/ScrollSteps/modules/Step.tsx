@@ -38,7 +38,8 @@ const Step = (props: StepProps) => {
           </div>
           <div>
             <p className="  text-base text-gray-500">
-              Join the community of the people who are building the next. <br />
+              Join the community of the people who are building the next.
+              <br />
               {/* be part of everything that is happening in the world. */}
               {/* Second step */}
               benefit from the best tools and resources.

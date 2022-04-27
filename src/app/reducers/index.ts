@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import counterReducer from "./counter/counterReducer";
-import jobModalReducer from "./counter/jobModalReducer";
+import userSlice from "../slices/user/userSlice";
+import jobModalReducer from "./jobModalReducer";
 
 const allReducers = combineReducers({
-  counter: counterReducer,
   jobModal: jobModalReducer,
+  user: userSlice.reducer,
 });
 
 export default allReducers;
