@@ -204,7 +204,7 @@ export default function LoginRegister() {
                           </svg>
 
                           <p className=" text-lg font-bold">
-                            Create an account{" "}
+                            Create an account
                           </p>
                         </a>
                         <a

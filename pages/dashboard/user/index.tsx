@@ -31,7 +31,7 @@ const Index = () => {
         {isLogedIn ? (
           <UserProfile />
         ) : (
-          <div className="pt-32 text-center">Please Login</div>
+          <div className="pt-32 text-center">Loading please wait...</div>
         )}
       </div>
     </>
