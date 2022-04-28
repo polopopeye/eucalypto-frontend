@@ -8,12 +8,16 @@ import UserProfile from "../../../src/components/Dashboard/UserProfile/UserProfi
 
 const Index = () => {
   const [isLogedIn, setIsLogedIn] = useState(
-    store.getState().user?.email ? true : false
+    store.getState().user.email ? true : false
   );
   const router = useRouter();
 
   store.subscribe(() => {
-    if (store.getState().user?.email) {
+    if (store.getState().user.email) {
+      console.log(
+        "🚀 ~ file: index.tsx ~ line 17 ~ store.subscribe ~ store.getState().user.email",
+        store.getState().user.email
+      );
       setIsLogedIn(true);
     } else {
       setIsLogedIn(false);

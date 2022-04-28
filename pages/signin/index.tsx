@@ -10,8 +10,9 @@ const Index = () => {
 
   getAuth().onAuthStateChanged((user) => {
     if (user) {
-      setIsLogedIn(true);
+      console.log("🚀 ~ file: index.tsx ~ line 13 ~ getAuth ~ user", user);
       retrieveUserInfo(user.email);
+      setIsLogedIn(true);
       router.push("/dashboard/user");
     } else {
       setIsLogedIn(false);

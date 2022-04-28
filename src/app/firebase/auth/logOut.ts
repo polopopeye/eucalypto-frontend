@@ -9,7 +9,7 @@ const logOut = () => {
 
   signOut(auth)
     .then((response) => {
-      store.dispatch(userSlice.actions.setData({}));
+      store.dispatch(userSlice.actions.setData({ email: undefined }));
       toast.success("Bye, see you soon!");
     })
     .catch((error) => {

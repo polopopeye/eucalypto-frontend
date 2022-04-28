@@ -4,10 +4,14 @@ import { store } from "../store";
 import { api } from "./apiEndPoints";
 import { toast } from "react-toastify";
 
-const retrieveUserInfo = (email: string) => {
+const retrieveUserInfo = (email: string | null) => {
+  console.log(
+    "🚀 ~ file: retrieveUserInfo.ts ~ line 8 ~ retrieveUserInfo ~ email",
+    email
+  );
   const url = api.user + "/email/" + email;
 
-  if (store.getState().user?.email === email) {
+  if (store.getState().user.email === email) {
     return;
   }
 
