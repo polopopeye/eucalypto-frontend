@@ -16,8 +16,8 @@ const RegisterWithEmail = () => {
   store.subscribe(() =>
     setOpen(store.getState().modal.emailRegisterModal.isOpen)
   );
-  const email = useRef();
-  const password = useRef();
+  const email = useRef() as React.RefObject<HTMLInputElement>;
+  const password = useRef() as React.RefObject<HTMLInputElement>;
   return (
     <div>
       <Dialog
@@ -93,10 +93,12 @@ const RegisterWithEmail = () => {
                 type="button"
                 className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                 onClick={async () => {
-                  await registerEmail(
-                    email.current.value,
-                    password.current.value
-                  );
+                  if (email.current && password.current) {
+                    await registerEmail(
+                      email.current.value,
+                      password.current.value
+                    );
+                  }
                 }}
               >
                 Register

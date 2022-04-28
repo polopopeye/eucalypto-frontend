@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import ReactTags from "react-tag-autocomplete";
 
 const UserSettings = () => {
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState([{ id: 0, name: "tag1" }]);
 
   const [suggestions, setSuggestions] = useState([
     { id: 1, name: "Apples" },
@@ -13,7 +13,7 @@ const UserSettings = () => {
     { id: 6, name: "Apricots" },
   ]);
 
-  const reactTags = useRef();
+  const reactTags = useRef() as React.MutableRefObject<ReactTags>;
 
   const onDelete = useCallback(
     (tagIndex) => {

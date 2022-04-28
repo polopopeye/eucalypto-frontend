@@ -12,8 +12,8 @@ import registerGoogle from "../../app/firebase/auth/registerGoogle";
 const auth = getAuth(firebase());
 
 export default function LoginRegister() {
-  const email = useRef();
-  const password = useRef();
+  const email = useRef() as React.RefObject<HTMLInputElement>;
+  const password = useRef() as React.RefObject<HTMLInputElement>;
   return (
     <>
       <RegisterWithEmail></RegisterWithEmail>
@@ -164,10 +164,12 @@ export default function LoginRegister() {
                           // className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                           className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                           onClick={async () => {
-                            await loginEmail(
-                              email.current.value,
-                              password.current.value
-                            );
+                            if (email.current && password.current) {
+                              await loginEmail(
+                                email.current.value,
+                                password.current.value
+                              );
+                            }
                           }}
                         >
                           Login

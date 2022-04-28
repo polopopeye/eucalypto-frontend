@@ -18,9 +18,9 @@ function classNames(...classes: string[]) {
 export default function Navbar() {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [user, setUser] = useState({
-    coverImg: "",
-    displayName: "",
-    email: "",
+    coverImg: undefined,
+    displayName: undefined,
+    email: undefined,
   });
 
   store.subscribe(() => {
