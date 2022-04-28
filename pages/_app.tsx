@@ -9,6 +9,9 @@ import { store } from "../src/app/store";
 import Layout from "../src/components/Layout/Layout";
 import firebase from "../src/app/firebase";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function MyApp({ Component, pageProps }: AppProps) {
   firebase();
   return (
@@ -16,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <ToastContainer position="top-center" rtl={false} newestOnTop={false} />
     </Provider>
   );
 }

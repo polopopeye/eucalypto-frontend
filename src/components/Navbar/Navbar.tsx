@@ -1,7 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { Disclosure, Menu } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { BellIcon, MenuIcon, UserIcon, XIcon } from "@heroicons/react/outline";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import retrieveUserInfo from "../../app/backend/retrieveUserInfo";
 import logOut from "../../app/firebase/auth/logOut";
+import { store } from "../../app/store";
 
 import NavButton from "./modules/NavButton";
 
@@ -10,6 +16,26 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [user, setUser] = useState({
+    coverImg: "",
+    displayName: "",
+    email: "",
+  });
+
+  store.subscribe(() => {
+    if (store.getState().user?.email) {
+      setIsLogedIn(true);
+      setUser({
+        coverImg: store.getState().user.coverImg,
+        displayName: store.getState().user.displayName,
+        email: store.getState().user.email,
+      });
+    } else {
+      setIsLogedIn(false);
+    }
+  });
+
   return (
     <Disclosure
       as="nav"
@@ -21,89 +47,103 @@ export default function Navbar() {
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="block lg:hidden h-20 w-auto"
+                  <Image
+                    className="block h-20 w-auto"
                     src="/img/logo1.png"
                     alt="Workflow"
-                  />
-                  <img
-                    className="hidden lg:block h-20 w-auto"
-                    src="/img/logo1.png"
-                    alt="Workflow"
+                    width={128}
+                    height={75}
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <NavButton href="/" text="Home" />
                   <NavButton href="/search" text="Search for a project" />
                   <NavButton href="/community" text="Community" />
-                  <NavButton href="/signin" text="Sign In" />
+                  {!isLogedIn && <NavButton href="/signin" text="Sign In" />}
                   <NavButton href="/contact" text="Let's talk" />
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                <button
-                  type="button"
-                  className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>
                     <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      {isLogedIn ? (
+                        <img
+                          className="h-12 w-12 rounded-full"
+                          src={user.coverImg}
+                          alt=""
+                        />
+                      ) : (
+                        <UserIcon className="h-8 w-8 rounded-full" />
+                      )}
                     </Menu.Button>
                   </div>
 
                   <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <Link href="/dashboard/user/">
-                          <a
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Dashboard
-                          </a>
-                        </Link>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          className={classNames(
-                            active ? "bg-gray-100" : "",
-                            "block px-4 py-2 text-sm text-gray-700"
+                    {isLogedIn ? (
+                      <>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link href="/dashboard/user/">
+                              <a
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Your Dashboard
+                              </a>
+                            </Link>
                           )}
-                        >
-                          Settings
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          onClick={() => {
-                            logOut();
-                          }}
-                          className={classNames(
-                            active ? "bg-gray-100" : "",
-                            "block px-4 py-2 text-sm text-gray-700"
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link href="/dashboard/user/settings">
+                              <a
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Settings
+                              </a>
+                            </Link>
                           )}
-                        >
-                          Sign out
-                        </a>
-                      )}
-                    </Menu.Item>
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              onClick={() => {
+                                logOut();
+                              }}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Sign out
+                            </a>
+                          )}
+                        </Menu.Item>
+                      </>
+                    ) : (
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link href={"/signin"}>
+                            <a
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              SignIn / Login
+                            </a>
+                          </Link>
+                        )}
+                      </Menu.Item>
+                    )}
                   </Menu.Items>
                 </Menu>
               </div>
@@ -144,60 +184,69 @@ export default function Navbar() {
               >
                 Community
               </Disclosure.Button>
-              <Disclosure.Button
-                as="a"
-                href="/signin"
-                className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-              >
-                Sign In
-              </Disclosure.Button>
+
+              {!isLogedIn && (
+                <Disclosure.Button
+                  as="a"
+                  href="/signin"
+                  className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                >
+                  Sign In
+                </Disclosure.Button>
+              )}
             </div>
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="flex items-center px-4">
                 <div className="flex-shrink-0">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
+                  {isLogedIn ? (
+                    <img
+                      className="h-12 w-12 rounded-full"
+                      src={user.coverImg}
+                      alt=""
+                    />
+                  ) : (
+                    <UserIcon className="h-8 w-8 rounded-full" />
+                  )}
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">
-                    Tom Cook
+                    {user.displayName}
                   </div>
                   <div className="text-sm font-medium text-gray-500">
-                    tom@example.com
+                    {user.email}
                   </div>
                 </div>
-                <button
-                  type="button"
-                  className="ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
               </div>
-              <div className="mt-3 space-y-1">
-                <Disclosure.Button
-                  as="a"
-                  href="/dashboard/user/"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-                >
-                  Your Profile
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-                >
-                  Settings
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-                >
-                  Sign out
-                </Disclosure.Button>
-              </div>
+              {isLogedIn && (
+                <div className="mt-3 space-y-1">
+                  <Disclosure.Button
+                    as="a"
+                    href="/dashboard/user/"
+                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                  >
+                    Your Profile
+                  </Disclosure.Button>
+                  <Disclosure.Button
+                    as="a"
+                    href="/dashboard/user/settings"
+                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                  >
+                    Settings
+                  </Disclosure.Button>
+                  <Disclosure.Button
+                    type="button"
+                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                  >
+                    <a
+                      onClick={() => {
+                        logOut();
+                      }}
+                    >
+                      Sign out
+                    </a>
+                  </Disclosure.Button>
+                </div>
+              )}
             </div>
           </Disclosure.Panel>
         </>

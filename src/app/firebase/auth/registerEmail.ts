@@ -1,22 +1,28 @@
+import axios from "axios";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { errors } from "../constants";
+import { toast } from "react-toastify";
+import registerUserInBackend from "../../backend/registerUserInBackend";
 
 const registerEmail = (email: string, password: string) => {
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log(
-        "🚀 ~ file: registerEmail.ts ~ line 6 ~ .then ~ userCredential",
-        userCredential
-      );
-      // Signed in
-      const user = userCredential.user;
-      // ...
+      registerUserInBackend({
+        completeName: email,
+        displayName: email,
+        languages: ["english"],
+        role: "talent",
+        coverImg: "https://picsum.photos/seed/" + email + "/200/200",
+        email: email,
+        published: true,
+      });
     })
     .catch((error) => {
-      console.log("🚀 ~ file: registerEmail.ts ~ line 12 ~ error", error);
       const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
+      const errorMessage = errors[errorCode];
+      toast.error(errorMessage);
+      return errorMessage;
     });
 };
 

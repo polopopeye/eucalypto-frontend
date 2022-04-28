@@ -3,7 +3,7 @@ import Stars from "../../Home/Reviews/modules/Stars";
 import ReactTooltip from "react-tooltip";
 import ModalContainer from "./ModalContainer";
 import { store } from "../../../app/store";
-import jobModalSlice from "../../../app/slices/jobModalSlice";
+import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
 import Badges from "../../JobView/modules/Badges";
 
 export default function CompanyBubble(props: {

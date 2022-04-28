@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import userSlice from "../slices/user/userSlice";
-import jobModalReducer from "./jobModalReducer";
+import ModalsReducer from "./jobModalReducer";
 
 const allReducers = combineReducers({
-  jobModal: jobModalReducer,
+  modal: ModalsReducer,
   user: userSlice.reducer,
 });
 

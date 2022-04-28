@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import jobModalSlice from "../slices/jobModalSlice";
+import emailRegisterModalSlice from "../slices/modals/emailRegisterModalSlice";
+import jobModalSlice from "../slices/modals/jobModalSlice";
 
-const jobModalReducer = combineReducers({
-  modal: jobModalSlice.reducer,
+const ModalsReducer = combineReducers({
+  jobModal: jobModalSlice.reducer,
+  emailRegisterModal: emailRegisterModalSlice.reducer,
 });
 
-export default jobModalReducer;
+export default ModalsReducer;

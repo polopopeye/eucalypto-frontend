@@ -1,27 +1,21 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import { errors } from "../constants";
 
 const loginEmail = async (email: string, password: string) => {
   const auth = getAuth();
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      console.log(
-        "🚀 ~ file: loginEmail.ts ~ line 7 ~ .then ~ userCredential",
-        userCredential
-      );
+      toast.success("Successfully Logged In");
       const user = userCredential.user;
       return user;
     })
     .catch((error) => {
-      console.log(
-        "🚀 ~ file: loginEmail.ts ~ line 11 ~ loginEmail ~ error",
-        error
-      );
       const errorCode = error.code;
-      const errorMessage = error.message;
-      return "errorMessage";
+      const errorMessage = errors[errorCode];
+      toast.error(errorMessage);
+      return errorMessage;
     });
-
-  // la idea es actualizar a redux los datos obtenidos del usuario
 };
 
 export default loginEmail;

@@ -2,12 +2,22 @@ import loginEmail from "../../app/firebase/auth/loginEmail";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebase from "../../app/firebase";
 import registerEmail from "../../app/firebase/auth/registerEmail";
+import RegisterWithEmail from "./RegisterWithEmail";
+import { store } from "../../app/store";
+import emailRegisterModalSlice from "../../app/slices/modals/emailRegisterModalSlice";
+import { LockClosedIcon, MailIcon } from "@heroicons/react/outline";
+import { useRef } from "react";
+import registerGoogle from "../../app/firebase/auth/registerGoogle";
 
 const auth = getAuth(firebase());
 
 export default function LoginRegister() {
+  const email = useRef();
+  const password = useRef();
   return (
     <>
+      <RegisterWithEmail></RegisterWithEmail>
+
       <div className="min-h-full flex">
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96 pt-32 pb-32">
@@ -25,14 +35,9 @@ export default function LoginRegister() {
                   </p>
 
                   <div className="mt-1 grid grid-cols-1 gap-4">
-                    <div>
+                    {/* <div>
                       <a
-                        onClick={async () => {
-                          await registerEmail(
-                            "kenneth7e7a@gmail.com",
-                            "@ elmerca69.K"
-                          );
-                        }}
+                        
                         className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                       >
                         <svg
@@ -46,15 +51,12 @@ export default function LoginRegister() {
                         </svg>
                         <p className=" text-lg font-bold">LinkedIn</p>
                       </a>
-                    </div>
+                    </div> */}
 
                     <div>
                       <a
                         onClick={async () => {
-                          await loginEmail(
-                            "kenneth7e7a@gmail.com",
-                            "@ elmerca69.K"
-                          );
+                          await registerGoogle();
                         }}
                         className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
                       >
@@ -73,7 +75,7 @@ export default function LoginRegister() {
                       </a>
                     </div>
 
-                    <div>
+                    {/* <div>
                       <a
                         href="#"
                         className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
@@ -92,9 +94,9 @@ export default function LoginRegister() {
                         </svg>
                         <p className=" text-lg font-bold">Github </p>
                       </a>
-                    </div>
+                    </div> */}
 
-                    <div>
+                    {/* <div>
                       <a
                         href="#"
                         className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
@@ -109,31 +111,107 @@ export default function LoginRegister() {
                         </svg>
                         <p className=" text-lg font-bold">Microsoft Account </p>
                       </a>
-                    </div>
+                    </div> */}
 
-                    <div>
-                      <a
-                        href="#"
-                        className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
+                    <div className="p-8 justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  ">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700"
                       >
-                        <svg
-                          className="w-5 h-5 mr-8"
-                          aria-hidden="true"
-                          fill="currentColor"
-                          viewBox="0 0 330.001 330.001"
-                        >
-                          <path
-                            id="XMLID_350_"
-                            d="M173.871,177.097c-2.641,1.936-5.756,2.903-8.87,2.903c-3.116,0-6.23-0.967-8.871-2.903L30,84.602   L0.001,62.603L0,275.001c0.001,8.284,6.716,15,15,15L315.001,290c8.285,0,15-6.716,15-14.999V62.602l-30.001,22L173.871,177.097z"
+                        Email
+                      </label>
+                      <div className="mt-1 relative rounded-md shadow-sm">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <MailIcon
+                            className="h-5 w-5 text-gray-400"
+                            aria-hidden="true"
                           />
-                          <polygon
-                            id="XMLID_351_"
-                            points="165.001,146.4 310.087,40.001 19.911,40  "
-                          />
-                        </svg>
+                        </div>
+                        <input
+                          ref={email}
+                          type="email"
+                          name="email"
+                          id="email"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                          placeholder="you@example.com"
+                        />
+                      </div>
 
-                        <p className=" text-lg font-bold">Email </p>
-                      </a>
+                      <label
+                        htmlFor="password"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Password
+                      </label>
+                      <div className="mt-1 relative rounded-md shadow-sm">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <LockClosedIcon
+                            className="h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <input
+                          ref={password}
+                          type="password"
+                          name="password"
+                          id="password"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
+                      <div className="mt-5 sm:mt-6">
+                        <button
+                          type="button"
+                          // className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                          className="w-full inline-flex justify-center self-center items-center py-2 border border-primary rounded-md shadow-sm  text-sm font-medium  hover:bg-quaternary"
+                          onClick={async () => {
+                            await loginEmail(
+                              email.current.value,
+                              password.current.value
+                            );
+                          }}
+                        >
+                          Login
+                        </button>
+                      </div>
+                      <div className="mt-8">
+                        <a
+                          onClick={() => {
+                            store.dispatch(
+                              emailRegisterModalSlice.actions.setData({
+                                isOpen: true,
+                                data: {},
+                              })
+                            );
+                          }}
+                          className="w-full inline-flex justify-center self-center items-center py-2 cursor-pointer"
+                        >
+                          <svg
+                            className="w-5 h-5 mr-8"
+                            aria-hidden="true"
+                            fill="currentColor"
+                            viewBox="0 0 330.001 330.001"
+                          >
+                            <path
+                              id="XMLID_350_"
+                              d="M173.871,177.097c-2.641,1.936-5.756,2.903-8.87,2.903c-3.116,0-6.23-0.967-8.871-2.903L30,84.602   L0.001,62.603L0,275.001c0.001,8.284,6.716,15,15,15L315.001,290c8.285,0,15-6.716,15-14.999V62.602l-30.001,22L173.871,177.097z"
+                            />
+                            <polygon
+                              id="XMLID_351_"
+                              points="165.001,146.4 310.087,40.001 19.911,40  "
+                            />
+                          </svg>
+
+                          <p className=" text-lg font-bold">
+                            Create an account{" "}
+                          </p>
+                        </a>
+                        <a
+                          href="#"
+                          className="w-full mt-8 inline-flex justify-center self-center items-center py-2  text-sm font-medium"
+                        >
+                          Forgot your password?
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>

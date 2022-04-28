@@ -1,19 +1,23 @@
 import { getAuth } from "firebase/auth";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import retrieveUserInfo from "../../../src/app/backend/retrieveUserInfo";
 import userSlice from "../../../src/app/slices/user/userSlice";
 import { store } from "../../../src/app/store";
 import UserProfile from "../../../src/components/Dashboard/UserProfile/UserProfile";
 
 const Index = () => {
-  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [isLogedIn, setIsLogedIn] = useState(
+    store.getState().user?.email ? true : false
+  );
+  const router = useRouter();
 
-  getAuth().onAuthStateChanged((user) => {
-    if (user) {
-      const { uid, email, providerData } = user;
+  store.subscribe(() => {
+    if (store.getState().user?.email) {
       setIsLogedIn(true);
-      store.dispatch(userSlice.actions.setData({ uid, email, providerData }));
     } else {
       setIsLogedIn(false);
+      router.push("/signin");
     }
   });
 

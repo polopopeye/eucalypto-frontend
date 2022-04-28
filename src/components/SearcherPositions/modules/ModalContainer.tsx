@@ -4,22 +4,26 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import ModalJob from "./ModalJob";
 import { store } from "../../../app/store";
-import jobModalSlice from "../../../app/slices/jobModalSlice";
+import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
 import Link from "next/link";
 
 export default function ModalContainer() {
-  const [open, setOpen] = useState(store.getState().jobModal.modal.isOpen);
+  const [open, setOpen] = useState(store.getState().modal.jobModal.isOpen);
 
   const cancelButtonRef = useRef(null);
 
-  store.subscribe(() => setOpen(store.getState().jobModal.modal.isOpen));
+  store.subscribe(() => setOpen(store.getState().modal.jobModal.isOpen));
 
   return (
     <Dialog
       as="div"
       className="fixed z-10 inset-0 overflow-y-auto"
       initialFocus={cancelButtonRef}
-      onClose={setOpen}
+      onClose={() => {
+        store.dispatch(
+          jobModalSlice.actions.setData({ isOpen: false, data: {} })
+        );
+      }}
       open={open}
     >
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
