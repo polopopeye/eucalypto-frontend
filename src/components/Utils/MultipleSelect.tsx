@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Select, { Option } from "rc-select";
 
 const MultipleSelect = (props: {
@@ -7,14 +7,18 @@ const MultipleSelect = (props: {
   variant: any;
 }) => {
   const { children, setVariant, variant } = props;
+
+  const randomClassName =
+    Math.floor(Math.random() * 100000000) + 1 + "className";
+
   const handleOnblur = () => {
     if (document) {
       if (
-        document.getElementsByClassName("rc-virtual-list") &&
-        document.getElementsByClassName("rc-virtual-list").item(0)
+        document.getElementsByClassName(randomClassName) &&
+        document.getElementsByClassName(randomClassName).item(0)
       ) {
         const ele = document
-          .getElementsByClassName("rc-virtual-list")
+          .getElementsByClassName(randomClassName)
           .item(0)! as any;
         ele.style.display = "none";
       }
@@ -24,11 +28,11 @@ const MultipleSelect = (props: {
   const handleOnfocus = () => {
     if (document) {
       if (
-        document.getElementsByClassName("rc-virtual-list") &&
-        document.getElementsByClassName("rc-virtual-list").item(0)
+        document.getElementsByClassName(randomClassName) &&
+        document.getElementsByClassName(randomClassName).item(0)
       ) {
         const ele = document
-          .getElementsByClassName("rc-virtual-list")
+          .getElementsByClassName(randomClassName)
           .item(0)! as any;
         ele.style.display = "block";
       }
@@ -37,6 +41,9 @@ const MultipleSelect = (props: {
 
   return (
     <Select
+      animation="slide-up"
+      autoClearSearchValue={true}
+      filterOption={true}
       className=" h-10 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md "
       autoFocus={false}
       mode="multiple"
@@ -55,6 +62,7 @@ const MultipleSelect = (props: {
         setVariant(value);
       }}
       value={variant}
+      dropdownClassName={randomClassName}
     >
       {children &&
         children.map((child: any) => {

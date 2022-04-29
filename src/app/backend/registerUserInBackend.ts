@@ -1,18 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { UserInterface } from "../../commons/userInterface";
 import { api } from "./apiEndPoints";
 
-interface User {
-  completeName: string | null;
-  displayName: string | null;
-  languages: Array<string>;
-  role: string;
-  coverImg: string;
-  email: string | null;
-  published: boolean;
-}
-
-const registerUserInBackend = (user: User) => {
+const registerUserInBackend = (user: UserInterface) => {
   axios
     .post(api.user, user)
     .then((response) => {

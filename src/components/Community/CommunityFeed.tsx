@@ -25,6 +25,7 @@ import {
 import EventCard from "./modules/EventCard";
 import ArticleCard from "./modules/ArticleCard";
 import FeaturedList from "./modules/featuredList/FeaturedList";
+import { classNames } from "../Utils/classnames";
 
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: true },
@@ -74,10 +75,6 @@ const tabs = [
 ];
 
 const CommunityFeed = () => {
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
-
   return (
     <div>
       <div className="min-h-full">

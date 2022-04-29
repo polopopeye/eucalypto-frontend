@@ -1,36 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 import { Disclosure, Menu } from "@headlessui/react";
-import { BellIcon, MenuIcon, UserIcon, XIcon } from "@heroicons/react/outline";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { MenuIcon, UserIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import retrieveUserInfo from "../../app/backend/retrieveUserInfo";
+import { useState } from "react";
 import logOut from "../../app/firebase/auth/logOut";
 import { store } from "../../app/store";
+import { UserInterface } from "../../commons/userInterface";
+import { classNames } from "../Utils/classnames";
 
 import NavButton from "./modules/NavButton";
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function Navbar() {
   const [isLogedIn, setIsLogedIn] = useState(false);
-  const [user, setUser] = useState({
-    coverImg: undefined,
-    displayName: undefined,
-    email: undefined,
-  });
+  const [user, setUser] = useState({} as UserInterface);
 
   store.subscribe(() => {
-    if (store.getState().user?.email) {
+    if (store.getState().user.email) {
       setIsLogedIn(true);
-      setUser({
-        coverImg: store.getState().user.coverImg,
-        displayName: store.getState().user.displayName,
-        email: store.getState().user.email,
-      });
+      setUser(store.getState().user);
     } else {
       setIsLogedIn(false);
     }
@@ -71,7 +59,7 @@ export default function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       {isLogedIn ? (
                         <img
-                          className="h-12 w-12 rounded-full"
+                          className="h-auto w-12 rounded-full"
                           src={user.coverImg}
                           alt=""
                         />
@@ -200,7 +188,7 @@ export default function Navbar() {
                 <div className="flex-shrink-0">
                   {isLogedIn ? (
                     <img
-                      className="h-12 w-12 rounded-full"
+                      className="h-auto w-12 rounded-full"
                       src={user.coverImg}
                       alt=""
                     />

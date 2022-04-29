@@ -1,24 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { UserInterface } from "../../../commons/userInterface";
+
+const user: UserInterface = {
+  id: "",
+  email: undefined,
+  coverImg: undefined,
+  displayName: undefined,
+  completeName: undefined,
+  phone: undefined,
+  github: undefined,
+  web: undefined,
+  linkedIn: undefined,
+  location: undefined,
+  role: "talent",
+  languages: [],
+  categories: [],
+};
 
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    email: undefined,
-    coverImg: undefined,
-    displayName: undefined,
-    completeName: undefined,
-    phone: undefined,
-    github: undefined,
-    web: undefined,
-    linkedIn: undefined,
-    location: undefined,
-    role: "talent",
-    languages: [],
-    categories: [],
-  },
+  initialState: user,
   reducers: {
     setData: (state, action) => {
       return (state = action.payload);
+    },
+    emptyData: (state) => {
+      return (state = user);
     },
   },
 });

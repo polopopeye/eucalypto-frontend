@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { classNames } from "../../../Utils/classnames";
 
 interface StepProps {
   title: string;
@@ -10,10 +11,6 @@ interface StepProps {
 }
 
 const Step = (props: StepProps) => {
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
-
   const { title, iconBackground, iconForeground, href, src } = props;
   return (
     <div className="absolute  bg-primary rounded-md w-48 -z-10">

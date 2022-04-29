@@ -1,14 +1,22 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { store } from "../../../app/store";
-import Select, { Option } from "rc-select";
 import MultipleSelect from "../../Utils/MultipleSelect";
+import { imageFiletoDataURL } from "../../Utils/toDataUrl";
+import Link from "next/link";
+import { UserInterface } from "../../../commons/userInterface";
+import modifyUserInBackend from "../../../app/backend/modifyUserInBackend";
+import { toast } from "react-toastify";
+import newUpload from "../../../app/firebase/storage/newUpload";
 
 const UserSettings = () => {
-  const [user] = useState(store.getState().user);
-  const [langs, setLangs] = useState(store.getState().user.languages);
-  const [techs, setTechs] = useState(store.getState().user.categories);
+  let user: UserInterface = { ...store.getState().user };
+  const [langs, setLangs] = useState(user.languages);
+  const [techs, setTechs] = useState(user.categories);
+  const [avatar, setAvatar] = useState(user.coverImg);
+  const [isNewUpload, setIsNewUpload] = useState(false);
 
   return (
     <div>
@@ -35,13 +43,30 @@ const UserSettings = () => {
                 </label>
                 <div className="mt-1 grid w-full items-center">
                   <span className="h-56 w-56 rounded-full overflow-hidden bg-gray-100 m-auto">
-                    <img
-                      src={user.coverImg}
-                      className="h-auto w-56"
-                      alt="avatar"
-                    />
+                    <img src={avatar} className="h-auto w-56" alt="avatar" />
                   </span>
+                  <label htmlFor="avatar">Choose a profile picture:</label>
+
+                  <input
+                    className="hidden"
+                    type="file"
+                    accept=".img, .png, .jpg, .jpeg"
+                    id="avatar"
+                    name="avatar"
+                    onChange={async (e) => {
+                      imageFiletoDataURL(e.target, (url: any) => {
+                        setAvatar(url);
+                        setIsNewUpload(true);
+                      });
+                    }}
+                  />
+
                   <button
+                    onClick={() => {
+                      if (document && document.getElementById("avatar")) {
+                        document.getElementById("avatar")!.click();
+                      }
+                    }}
                     type="button"
                     className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
@@ -64,7 +89,10 @@ const UserSettings = () => {
                     id="username"
                     autoComplete="username"
                     className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
-                    value={user.displayName}
+                    defaultValue={user.displayName}
+                    onChange={(e) => {
+                      user.displayName = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -82,7 +110,10 @@ const UserSettings = () => {
                     id="username"
                     autoComplete="username"
                     className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
-                    value={user.completeName}
+                    defaultValue={user.completeName}
+                    onChange={(e) => {
+                      user.completeName = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -144,7 +175,10 @@ const UserSettings = () => {
                     type="email"
                     autoComplete="email"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    value={user.email}
+                    defaultValue={user.email}
+                    onChange={(e) => {
+                      user.email = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -163,7 +197,10 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="phone"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    value={user.phone}
+                    defaultValue={user.phone}
+                    onChange={(e) => {
+                      user.phone = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -182,7 +219,10 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="github"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    value={user.github}
+                    defaultValue={user.github}
+                    onChange={(e) => {
+                      user.github = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -201,7 +241,10 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="web"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    value={user.web}
+                    defaultValue={user.web}
+                    onChange={(e) => {
+                      user.web = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -220,7 +263,10 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="linkedIn"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    value={user.linkedIn}
+                    defaultValue={user.linkedIn}
+                    onChange={(e) => {
+                      user.linkedIn = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -239,7 +285,10 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="location"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    value={user.location}
+                    defaultValue={user.location}
+                    onChange={(e) => {
+                      user.location = e.target.value;
+                    }}
                   />
                 </div>
               </div>
@@ -257,7 +306,10 @@ const UserSettings = () => {
                     name="country"
                     autoComplete="country-name"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    value={user.role}
+                    defaultValue={user.role}
+                    onChange={(e) => {
+                      user.role = e.target.value;
+                    }}
                   >
                     <option value="talent">Talent</option>
                     <option value="admin">Admin</option>
@@ -270,15 +322,37 @@ const UserSettings = () => {
 
         <div className="pt-5">
           <div className="flex justify-end">
+            <Link href="/dashboard/user">
+              <button
+                type="button"
+                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Cancel
+              </button>
+            </Link>
             <button
               type="button"
-              className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={() => {
+                toast.warn("Loading...");
+                if (user.createdAt) delete user.createdAt;
+                if (user.updatedAt) delete user.updatedAt;
+                user.languages = langs;
+                user.categories = techs;
+                if (isNewUpload) {
+                  newUpload(
+                    avatar as string,
+                    "profile.jpg",
+                    user.id as string,
+                    (url: string) => {
+                      user.coverImg = url;
+                      modifyUserInBackend(user);
+                    }
+                  );
+                } else {
+                  modifyUserInBackend(user);
+                }
+              }}
             >
               Save
             </button>

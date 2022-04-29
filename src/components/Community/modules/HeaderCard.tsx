@@ -6,12 +6,9 @@ import {
   StarIcon,
 } from "@heroicons/react/outline";
 import React from "react";
+import { classNames } from "../../Utils/classnames";
 
 const HeaderCard = () => {
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
-
   return (
     <div>
       <div className="flex space-x-3">

@@ -17,6 +17,7 @@ import AlertAlreadyApplied from "./modules/AlertAlreadyApplied";
 import HeaderCompany from "./HeaderCompany";
 import Badges from "./modules/Badges";
 import Link from "next/link";
+import { classNames } from "../Utils/classnames";
 
 const JobView = () => {
   const attachments = [
@@ -70,10 +71,6 @@ const JobView = () => {
       datetime: "2020-10-04",
     },
   ];
-
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   const user = {
     name: "Whitney Francis",

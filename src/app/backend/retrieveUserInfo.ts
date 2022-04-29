@@ -3,17 +3,14 @@ import userSlice from "../slices/user/userSlice";
 import { store } from "../store";
 import { api } from "./apiEndPoints";
 import { toast } from "react-toastify";
+import { UserInterface } from "../../commons/userInterface";
 
-const retrieveUserInfo = (email: string | null, next: Function) => {
+const retrieveUserInfo = (email: UserInterface["email"], next?: Function) => {
   console.log(
     "🚀 ~ file: retrieveUserInfo.ts ~ line 8 ~ retrieveUserInfo ~ email",
     email
   );
   const url = api.user + "/email/" + email;
-
-  if (store.getState().user.email === email) {
-    return;
-  }
 
   if (email) {
     axios

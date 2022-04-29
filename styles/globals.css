@@ -97,3 +97,13 @@
 .rc-select-selection-search {
   width: 100% !important;
 }
+
+.rc-select-clear {
+  display: none;
+}
+.rc-select-arrow {
+  display: none;
+}
+.rc-select-dropdown {
+  z-index: 800 !important;
+}

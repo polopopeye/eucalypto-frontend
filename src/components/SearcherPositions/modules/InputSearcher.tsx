@@ -8,13 +8,11 @@ import {
   PencilAltIcon,
   ViewBoardsIcon,
 } from "@heroicons/react/outline";
+import { classNames } from "../../Utils/classnames";
 
 export default function InputSearcher() {
   const [query, setQuery] = useState("");
 
-  function classNames(...classes: (string | boolean)[]) {
-    return classes.filter(Boolean).join(" ");
-  }
   const items = [
     {
       id: 1,

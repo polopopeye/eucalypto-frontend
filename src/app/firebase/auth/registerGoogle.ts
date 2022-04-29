@@ -10,14 +10,15 @@ const registerGoogle = async () => {
     .then((result) => {
       const user = result.user;
       const { email, displayName, photoURL } = user;
+      const nameId = (displayName as string) || (email as string);
       registerUserInBackend({
-        completeName: displayName || email,
-        displayName: displayName || email,
+        completeName: nameId,
+        displayName: nameId,
         languages: ["english"],
         role: "talent",
         coverImg:
           photoURL || "https://picsum.photos/seed/" + email + "/200/200",
-        email: email,
+        email: email as string,
         published: true,
       });
     })
