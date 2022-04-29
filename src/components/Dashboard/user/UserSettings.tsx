@@ -1,33 +1,14 @@
-import React, { useCallback, useRef, useState } from "react";
-import ReactTags from "react-tag-autocomplete";
+/* eslint-disable react/no-children-prop */
+/* eslint-disable @next/next/no-img-element */
+import React, { useRef, useState } from "react";
+import { store } from "../../../app/store";
+import Select, { Option } from "rc-select";
+import MultipleSelect from "../../Utils/MultipleSelect";
 
 const UserSettings = () => {
-  const [tags, setTags] = useState([{ id: 0, name: "tag1" }]);
-
-  const [suggestions, setSuggestions] = useState([
-    { id: 1, name: "Apples" },
-    { id: 2, name: "Pears" },
-    { id: 3, name: "Bananas" },
-    { id: 4, name: "Mangos" },
-    { id: 5, name: "Lemons" },
-    { id: 6, name: "Apricots" },
-  ]);
-
-  const reactTags = useRef() as React.MutableRefObject<ReactTags>;
-
-  const onDelete = useCallback(
-    (tagIndex) => {
-      setTags(tags.filter((_, i) => i !== tagIndex));
-    },
-    [tags]
-  );
-
-  const onAddition = useCallback(
-    (newTag) => {
-      setTags([...tags, newTag]);
-    },
-    [tags]
-  );
+  const [user] = useState(store.getState().user);
+  const [langs, setLangs] = useState(store.getState().user.languages);
+  const [techs, setTechs] = useState(store.getState().user.categories);
 
   return (
     <div>
@@ -52,15 +33,13 @@ const UserSettings = () => {
                 >
                   Photo
                 </label>
-                <div className="mt-1 flex items-center">
-                  <span className="h-32 w-32 rounded-full overflow-hidden bg-gray-100">
-                    <svg
-                      className="h-full w-full text-gray-300"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
+                <div className="mt-1 grid w-full items-center">
+                  <span className="h-56 w-56 rounded-full overflow-hidden bg-gray-100 m-auto">
+                    <img
+                      src={user.coverImg}
+                      className="h-auto w-56"
+                      alt="avatar"
+                    />
                   </span>
                   <button
                     type="button"
@@ -69,16 +48,6 @@ const UserSettings = () => {
                     Change
                   </button>
                 </div>
-              </div>
-
-              <div>
-                <ReactTags
-                  ref={reactTags}
-                  tags={tags}
-                  suggestions={suggestions}
-                  onDelete={onDelete}
-                  onAddition={onAddition}
-                />
               </div>
 
               <div className="sm:col-span-2">
@@ -95,6 +64,7 @@ const UserSettings = () => {
                     id="username"
                     autoComplete="username"
                     className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                    value={user.displayName}
                   />
                 </div>
               </div>
@@ -112,6 +82,50 @@ const UserSettings = () => {
                     id="username"
                     autoComplete="username"
                     className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                    value={user.completeName}
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="username"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Languages
+                </label>
+                <div className="mt-1 w-full flex rounded-md shadow-sm">
+                  <MultipleSelect
+                    setVariant={setLangs}
+                    variant={langs}
+                    children={[
+                      { value: "english", label: "english" },
+                      { value: "español", label: "español" },
+                      { value: "catalan", label: "catalan" },
+                    ]}
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="username"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Techs/Aptitudes
+                </label>
+                <div className="mt-1 w-full flex rounded-md shadow-sm">
+                  <MultipleSelect
+                    setVariant={setTechs}
+                    variant={techs}
+                    children={[
+                      { value: "React", label: "React" },
+                      { value: "Management", label: "Management" },
+                      { value: "Kanban", label: "Kanban" },
+                      { value: "NodeJS", label: "NodeJS" },
+                      { value: "Gatsby", label: "Gatsby" },
+                      { value: "Firebase", label: "Firebase" },
+                    ]}
                   />
                 </div>
               </div>
@@ -130,6 +144,7 @@ const UserSettings = () => {
                     type="email"
                     autoComplete="email"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    value={user.email}
                   />
                 </div>
               </div>
@@ -148,6 +163,7 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="phone"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    value={user.phone}
                   />
                 </div>
               </div>
@@ -166,6 +182,7 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="github"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    value={user.github}
                   />
                 </div>
               </div>
@@ -184,6 +201,7 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="web"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    value={user.web}
                   />
                 </div>
               </div>
@@ -202,6 +220,7 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="linkedIn"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    value={user.linkedIn}
                   />
                 </div>
               </div>
@@ -220,6 +239,7 @@ const UserSettings = () => {
                     type="text"
                     autoComplete="location"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    value={user.location}
                   />
                 </div>
               </div>
@@ -237,9 +257,10 @@ const UserSettings = () => {
                     name="country"
                     autoComplete="country-name"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    value={user.role}
                   >
-                    <option>Talent</option>
-                    <option>Admin</option>
+                    <option value="talent">Talent</option>
+                    <option value="admin">Admin</option>
                   </select>
                 </div>
               </div>

@@ -1,27 +1,35 @@
-import { getAuth } from "firebase/auth";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import retrieveUserInfo from "../../../src/app/backend/retrieveUserInfo";
-import userSlice from "../../../src/app/slices/user/userSlice";
+
 import { store } from "../../../src/app/store";
-import UserProfile from "../../../src/components/Dashboard/UserProfile/UserProfile";
+import UserProfile from "../../../src/components/Dashboard/user/UserProfile";
+
+const thereIsUserLogedIn = () => {
+  const userEmail = store.getState().user.email;
+  if (userEmail) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 const Index = () => {
-  const [isLogedIn, setIsLogedIn] = useState(
-    store.getState().user.email ? true : false
-  );
-  const router = useRouter();
+  const [isLogedIn, setIsLogedIn] = useState(false);
 
-  store.subscribe(() => {
-    if (store.getState().user.email) {
-      console.log(
-        "🚀 ~ file: index.tsx ~ line 17 ~ store.subscribe ~ store.getState().user.email",
-        store.getState().user.email
-      );
+  useEffect(() => {
+    if (thereIsUserLogedIn()) {
       setIsLogedIn(true);
     } else {
       setIsLogedIn(false);
-      router.push("/signin");
+      window.location.href = "/signin";
+    }
+  }, []);
+
+  store.subscribe(() => {
+    if (thereIsUserLogedIn()) {
+      setIsLogedIn(true);
+    } else {
+      setIsLogedIn(false);
+      window.location.href = "/signin";
     }
   });
 

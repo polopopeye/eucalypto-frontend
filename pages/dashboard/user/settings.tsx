@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { store } from "../../../src/app/store";
-import UserSettings from "../../../src/components/Dashboard/UserSettings";
+import UserSettings from "../../../src/components/Dashboard/user/UserSettings";
 
 const Settings = () => {
   const [isLogedIn, setIsLogedIn] = useState(

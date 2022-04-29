@@ -4,7 +4,7 @@ import { store } from "../store";
 import { api } from "./apiEndPoints";
 import { toast } from "react-toastify";
 
-const retrieveUserInfo = (email: string | null) => {
+const retrieveUserInfo = (email: string | null, next: Function) => {
   console.log(
     "🚀 ~ file: retrieveUserInfo.ts ~ line 8 ~ retrieveUserInfo ~ email",
     email
@@ -20,6 +20,9 @@ const retrieveUserInfo = (email: string | null) => {
       .get(url)
       .then((response) => {
         store.dispatch(userSlice.actions.setData(response.data[0]));
+        if (typeof next === "function") {
+          next();
+        }
       })
       .catch((error) => {
         console.log(error);

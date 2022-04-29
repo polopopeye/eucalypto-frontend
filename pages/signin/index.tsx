@@ -6,18 +6,25 @@ import LoginRegister from "../../src/components/LoginRegister/LoginRegister";
 
 const Index = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
+  const [email, setEmail] = useState("");
   const router = useRouter();
 
   getAuth().onAuthStateChanged((user) => {
     if (user) {
-      console.log("🚀 ~ file: index.tsx ~ line 13 ~ getAuth ~ user", user);
-      retrieveUserInfo(user.email);
       setIsLogedIn(true);
-      router.push("/dashboard/user");
+      setEmail(user.email as string);
     } else {
       setIsLogedIn(false);
     }
   });
+
+  useEffect(() => {
+    if (isLogedIn) {
+      retrieveUserInfo(email, () => {
+        router.push("/dashboard/user");
+      });
+    }
+  }, [isLogedIn]);
 
   return (
     <div className=" align-middle self-center content-center items-center  h-full w-full">
