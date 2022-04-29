@@ -274,6 +274,8 @@ const CreateNewCompany = () => {
               onClick={async () => {
                 toast.warn("Loading...");
                 company.published = true;
+                company.owners = owners;
+
                 if (logo) {
                   await newUpload(
                     logo as string,
