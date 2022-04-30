@@ -242,7 +242,7 @@ const CreateNewJobOffer = () => {
                   <MultipleSelect
                     setVariant={setTechs}
                     variant={techs}
-                    children={techMultipleSelect}
+                    children={techMultipleSelect as object[]}
                   />
                 </div>
               </div>
