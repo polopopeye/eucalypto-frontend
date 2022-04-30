@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { store } from "../../../app/store";
 
-import { imageFiletoDataURL } from "../../Utils/toDataUrl";
+import { filetoDataURL } from "../../Utils/toDataUrl";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
@@ -14,13 +14,18 @@ import newUpload from "../../../app/firebase/storage/newUpload";
 import dashify from "dashify";
 import registerCompany from "../../../app/backend/registerCompany";
 import MultipleSelect from "../../Utils/MultipleSelect";
+import retrieveAllUsersInfo from "../../../app/backend/retrieveAllUsersInfo";
 
 const CreateNewCompany = () => {
   const router = useRouter();
 
   const [company, setCompany] = useState({} as CompanyInterface);
-  const [owners, setOwners] = useState([]);
+  const [owners, setOwners] = useState([store.getState().user?.id as string]);
   const [logo, setLogo] = useState("");
+  // const [isAdmin] = useState(
+  //   store.getState().user.role === 'admin' ? true : false
+  // );
+
   return (
     <div>
       <form className="space-y-8 divide-y divide-gray-200">
@@ -58,7 +63,7 @@ const CreateNewCompany = () => {
                     id="coverImg"
                     name="coverImg"
                     onChange={async (e) => {
-                      imageFiletoDataURL(e.target, (url: any) => {
+                      filetoDataURL(e.target, (url: any) => {
                         setLogo(url);
                       });
                     }}
@@ -224,35 +229,24 @@ const CreateNewCompany = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Owners of the company <br></br> ( users who has access to
-                  publish with this company)
-                </label>
-                <div className="mt-1 w-full flex rounded-md shadow-sm">
-                  <MultipleSelect
-                    setVariant={setOwners}
-                    variant={owners}
-                    children={[
-                      {
-                        value: "kenneth1",
-                        label: "kenneth => kenneth7e7a@gmail.com",
-                      },
-                      {
-                        value: "kenneth2",
-                        label: "kenneth2 => kenneth7e7a@gmail.es",
-                      },
-                      {
-                        value: "kenneth3",
-                        label: "kenneth3 => kenneth7e7a@gmail.org",
-                      },
-                    ]}
-                  />
+              {/* {isAdmin && (
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="username"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Owners of the company <br></br> ( users who has access to
+                    publish with this company)
+                  </label>
+                  <div className="mt-1 w-full flex rounded-md shadow-sm">
+                    <MultipleSelect
+                      setVariant={setOwners}
+                      variant={owners}
+                      children={[{ id: '1', name: 'user1' }]}
+                    />
+                  </div>
                 </div>
-              </div>
+              )} */}
             </div>
           </div>
         </div>
@@ -276,7 +270,7 @@ const CreateNewCompany = () => {
                 company.published = true;
                 company.owners = owners;
 
-                if (logo) {
+                if (logo && company.name) {
                   await newUpload(
                     logo as string,
                     dashify(company.name.trim().toLowerCase()) + ".jpg",

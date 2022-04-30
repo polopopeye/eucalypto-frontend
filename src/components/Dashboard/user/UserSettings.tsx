@@ -1,22 +1,40 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { store } from "../../../app/store";
 import MultipleSelect from "../../Utils/MultipleSelect";
-import { imageFiletoDataURL } from "../../Utils/toDataUrl";
+import { filetoDataURL } from "../../Utils/toDataUrl";
 import Link from "next/link";
 import { UserInterface } from "../../../commons/userInterface";
 import modifyUserInBackend from "../../../app/backend/modifyUserInBackend";
 import { toast } from "react-toastify";
 import newUpload from "../../../app/firebase/storage/newUpload";
+import openFileInNewWindow from "../../Utils/openFileInNewWindow";
+import retrieveCategories from "../../../app/backend/retrieveCategories";
 
 const UserSettings = () => {
   let user: UserInterface = { ...store.getState().user };
   const [langs, setLangs] = useState(user.languages);
   const [techs, setTechs] = useState(user.categories);
   const [avatar, setAvatar] = useState(user.coverImg);
-  const [isNewUpload, setIsNewUpload] = useState(false);
+  const [curriculum, setCurriculum] = useState(user.curriculum);
+  const [newCoverImgUpload, setNewCoverImgUpload] = useState(false);
+  const [newCurriculumUpload, setNewCurriculumUpload] = useState(false);
+
+  const [techMultipleSelect, setTechMultipleSelect] = useState(
+    store.getState().category.tech
+  );
+  useEffect(() => {
+    retrieveCategories({
+      propToFind: "type",
+      value: "tech",
+      saveIn: "tech",
+    });
+  }, []);
+  store.subscribe(() => {
+    setTechMultipleSelect(store.getState().category.tech);
+  });
 
   return (
     <div>
@@ -25,7 +43,7 @@ const UserSettings = () => {
           <div>
             <div>
               <h3 className="text-lg leading-6 font-medium text-gray-900">
-                Profile
+                Profile:
               </h3>
               <p className="mt-1 text-sm text-gray-500">
                 This information will be displayed publicly so be careful what
@@ -54,9 +72,9 @@ const UserSettings = () => {
                     id="avatar"
                     name="avatar"
                     onChange={async (e) => {
-                      imageFiletoDataURL(e.target, (url: any) => {
+                      filetoDataURL(e.target, (url: any) => {
                         setAvatar(url);
-                        setIsNewUpload(true);
+                        setNewCoverImgUpload(true);
                       });
                     }}
                   />
@@ -149,14 +167,7 @@ const UserSettings = () => {
                   <MultipleSelect
                     setVariant={setTechs}
                     variant={techs}
-                    children={[
-                      { value: "React", label: "React" },
-                      { value: "Management", label: "Management" },
-                      { value: "Kanban", label: "Kanban" },
-                      { value: "NodeJS", label: "NodeJS" },
-                      { value: "Gatsby", label: "Gatsby" },
-                      { value: "Firebase", label: "Firebase" },
-                    ]}
+                    children={techMultipleSelect as any}
                   />
                 </div>
               </div>
@@ -316,6 +327,53 @@ const UserSettings = () => {
                   </select>
                 </div>
               </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="country"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Upload / Modify your Curriculum Vitae
+                </label>
+                <div className="mt-1">
+                  <input
+                    className="hidden"
+                    type="file"
+                    accept=".pdf"
+                    id="curriculum"
+                    name="curriculum"
+                    onChange={async (e) => {
+                      filetoDataURL(e.target, (url: any) => {
+                        setCurriculum(url);
+                        setNewCurriculumUpload(true);
+                      });
+                    }}
+                  />
+
+                  <button
+                    onClick={(e) => {
+                      if (document && document.getElementById("curriculum")) {
+                        document.getElementById("curriculum")!.click();
+                      }
+                    }}
+                    type="button"
+                    className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Upload / Modify CV
+                  </button>
+
+                  {curriculum && (
+                    <a
+                      className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={() => {
+                        openFileInNewWindow(curriculum);
+                      }}
+                    >
+                      View your current Curriculum
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -339,18 +397,35 @@ const UserSettings = () => {
                 if (user.updatedAt) delete user.updatedAt;
                 user.languages = langs;
                 user.categories = techs;
-                if (isNewUpload) {
+
+                const verifyUploadCoverImg = async () => {
+                  if (newCoverImgUpload) {
+                    newUpload(
+                      avatar as string,
+                      "profile.jpg",
+                      user.id as string,
+                      (url: string) => {
+                        user.coverImg = url;
+                        modifyUserInBackend(user);
+                      }
+                    );
+                  } else {
+                    modifyUserInBackend(user);
+                  }
+                };
+
+                if (newCurriculumUpload) {
                   newUpload(
-                    avatar as string,
-                    "profile.jpg",
+                    curriculum as string,
+                    "curriculum.pdf",
                     user.id as string,
                     (url: string) => {
-                      user.coverImg = url;
-                      modifyUserInBackend(user);
+                      user.curriculum = url;
+                      verifyUploadCoverImg();
                     }
                   );
                 } else {
-                  modifyUserInBackend(user);
+                  verifyUploadCoverImg();
                 }
               }}
             >

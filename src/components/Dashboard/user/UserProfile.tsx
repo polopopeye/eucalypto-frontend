@@ -44,6 +44,15 @@ export default function UserProfile() {
         </button>
       </Link>
 
+      <Link href="/dashboard/categories/create">
+        <button
+          type="button"
+          className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Create New Category
+        </button>
+      </Link>
+
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">

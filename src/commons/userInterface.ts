@@ -12,6 +12,7 @@ export interface UserInterface {
   languages?: Array<string>;
   categories?: Array<string>;
   role?: string;
+  curriculum?: string;
   published?: boolean;
   createdAt?: object;
   updatedAt?: object;

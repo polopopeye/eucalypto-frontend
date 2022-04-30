@@ -1,12 +1,15 @@
 export interface CompanyInterface {
-  name: string;
-  description: string;
-  coverImg: string;
-  web: string;
-  linkedIn: string;
-  email: string;
-  phone: string;
-  country: string;
+  id?: string;
+  name: string | undefined;
+  description: string | undefined;
+  coverImg: string | undefined;
+  web: string | undefined;
+  linkedIn: string | undefined;
+  email: string | undefined;
+  phone: string | undefined;
+  country: string | undefined;
   owners: Array<string>;
   published: boolean;
+  updatedAt?: Date;
+  createdAt?: Date;
 }

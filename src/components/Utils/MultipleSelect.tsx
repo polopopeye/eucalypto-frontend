@@ -67,8 +67,8 @@ const MultipleSelect = (props: {
       {children &&
         children.map((child: any) => {
           return (
-            <Option key={child.value} value={child.value}>
-              {child.label}
+            <Option key={child.id} value={child.id}>
+              {child.name}
             </Option>
           );
         })}
