@@ -167,7 +167,7 @@ const UserSettings = () => {
                   <MultipleSelect
                     setVariant={setTechs}
                     variant={techs}
-                    children={techMultipleSelect as any}
+                    children={techMultipleSelect as object[]}
                   />
                 </div>
               </div>
