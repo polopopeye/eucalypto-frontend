@@ -12,7 +12,7 @@ interface retrieveCategories {
   saveIn: string;
 }
 
-const retrieveCategories = (props: retrieveCategories) => {
+const retrieveCategories = (props: retrieveCategories, next?: Function) => {
   const { propToFind, value, saveIn } = props;
   const url = api.categories + "/" + propToFind + "/" + value;
 
@@ -29,10 +29,7 @@ const retrieveCategories = (props: retrieveCategories) => {
             (element: any) => element.id === category.id
           )
         ) {
-          newCategoryToAppendToRedux.push({
-            id: category.id,
-            name: category.name,
-          });
+          newCategoryToAppendToRedux.push(category);
         }
       });
 
@@ -44,6 +41,10 @@ const retrieveCategories = (props: retrieveCategories) => {
       };
 
       store.dispatch(categorySlice.actions.setData(dataToAppend));
+
+      if (typeof next === "function") {
+        next(response);
+      }
     })
     .catch((error) => {
       console.log(error);

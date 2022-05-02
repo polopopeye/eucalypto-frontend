@@ -1,4 +1,6 @@
 export interface JobOfferInterface {
+  id?: string;
+
   name: string;
   company: string;
   job: string;

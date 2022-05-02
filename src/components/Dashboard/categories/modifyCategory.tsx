@@ -10,11 +10,15 @@ import { useRouter } from "next/router";
 
 import { CategoryInterface } from "../../../commons/categoryInterface";
 import registerCategory from "../../../app/backend/registerCategory";
+import modifyCategory from "../../../app/backend/modifyCategory";
+import deleteCategory from "../../../app/backend/deleteCategory";
 
-const CreateNewCategory = () => {
+const ModifyCategory = (props: any) => {
   const router = useRouter();
 
-  const [category, setCategory] = useState({} as CategoryInterface);
+  const [category, setCategory] = useState({
+    ...props.category,
+  } as CategoryInterface);
 
   return (
     <div>
@@ -23,10 +27,10 @@ const CreateNewCategory = () => {
           <div>
             <div>
               <h3 className="text-lg leading-6 font-medium text-gray-900">
-                Create new Category
+                Update Category
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                Create a new category for jobs, companies, skills, locations,
+                Update category for jobs, companies, skills, locations,
                 languages, etc.
               </p>
             </div>
@@ -46,6 +50,7 @@ const CreateNewCategory = () => {
                     type="text"
                     autoComplete="name"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    defaultValue={category.name}
                     onChange={(e) => {
                       setCategory({ ...category, name: e.target.value });
                     }}
@@ -66,7 +71,7 @@ const CreateNewCategory = () => {
                     name="type"
                     autoComplete="type-name"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    defaultValue=""
+                    defaultValue={category.type}
                     onChange={(e) => {
                       category.type = e.target.value;
                     }}
@@ -82,6 +87,18 @@ const CreateNewCategory = () => {
 
         <div className="pt-5">
           <div className="flex justify-end">
+            <button
+              type="button"
+              className="bg-red-600 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-200 hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={async () => {
+                deleteCategory(category, () => {
+                  router.push("/dashboard/user");
+                });
+              }}
+            >
+              Delete Category
+            </button>
+
             <Link href="/dashboard/user">
               <button
                 type="button"
@@ -96,14 +113,17 @@ const CreateNewCategory = () => {
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={async () => {
                 toast.warn("Loading...");
+                if (category.createdAt) delete category.createdAt;
+                if (category.updatedAt) delete category.updatedAt;
+
                 category.published = true;
 
-                registerCategory(category, () => {
+                modifyCategory(category, () => {
                   router.push("/dashboard/user");
                 });
               }}
             >
-              Create
+              Update Category
             </button>
           </div>
         </div>
@@ -112,4 +132,4 @@ const CreateNewCategory = () => {
   );
 };
 
-export default CreateNewCategory;
+export default ModifyCategory;

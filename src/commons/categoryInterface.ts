@@ -1,7 +1,11 @@
 export interface CategoryInterface {
-  name: string;
-  type: string;
-  published: boolean;
+  id?: string;
+  name?: string;
+  type?: string;
+  published?: boolean;
+
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface ReduxCategoriesInterface {
