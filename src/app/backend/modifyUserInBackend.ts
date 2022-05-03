@@ -1,8 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { UserInterface } from "../../commons/userInterface";
-import userSlice from "../slices/user/userSlice";
-import { store } from "../store";
+
 import { api } from "./apiEndPoints";
 import retrieveUserInfo from "./retrieveUserInfo";
 import qs from "qs";

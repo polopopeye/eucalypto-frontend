@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import retrieveJobOffers from "../../src/app/backend/retrievesJobOffer";
-import { store } from "../../src/app/store";
-import { JobOfferInterface } from "../../src/commons/jobOfferInterface";
+import React from "react";
+
 import JobView from "../../src/components/JobView/jobView";
 
 const Job = () => {

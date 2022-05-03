@@ -2,7 +2,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import { api } from "./apiEndPoints";
-import qs from "qs";
 
 import { CategoryInterface } from "../../commons/categoryInterface";
 import retrieveCategories from "./retrieveCategories";

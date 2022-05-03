@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { api } from "./apiEndPoints";
 import qs from "qs";
 
-import retrieveCategories from "./retrieveCategories";
 import { JobOfferInterface } from "../../commons/jobOfferInterface";
 import retrieveJobOffers from "./retrievesJobOffer";
 import { store } from "../store";

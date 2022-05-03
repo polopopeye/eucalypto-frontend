@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { CompanyInterface } from "../../commons/companyInterface";
 import { api } from "./apiEndPoints";
-import qs from "qs";
+
 import retrieveCompanyByOwner from "./retrieveCompaniesByOwner";
 import { store } from "../store";
 

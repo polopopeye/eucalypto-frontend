@@ -9,7 +9,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import { Switch } from "@headlessui/react";
 import { JobOfferInterface } from "../../../commons/jobOfferInterface";
-import registerJobOffer from "../../../app/backend/registerJobOffer";
+
 import { useRouter } from "next/router";
 import { classNames } from "../../Utils/classnames";
 import retrieveCategories from "../../../app/backend/retrieveCategories";

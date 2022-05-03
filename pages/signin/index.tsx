@@ -2,7 +2,7 @@ import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import retrieveUserInfo from "../../src/app/backend/retrieveUserInfo";
-import { store } from "../../src/app/store";
+
 import LoginRegister from "../../src/components/LoginRegister/LoginRegister";
 
 const Index = () => {

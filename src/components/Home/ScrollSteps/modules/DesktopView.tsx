@@ -9,10 +9,6 @@ import {
   ScrollContainer,
   ScrollPage,
   Sticky,
-  StickyIn,
-  StickyOut,
-  ZoomIn,
-  ZoomOut,
 } from "react-scroll-motion";
 import TextHeader from "../../../Utils/TextHeader/TextHeader";
 import Hero from "../../Hero/Hero";

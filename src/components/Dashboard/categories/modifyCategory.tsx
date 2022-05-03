@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
 import { CategoryInterface } from "../../../commons/categoryInterface";
-import registerCategory from "../../../app/backend/registerCategory";
+
 import modifyCategory from "../../../app/backend/modifyCategory";
 import deleteCategory from "../../../app/backend/deleteCategory";
 

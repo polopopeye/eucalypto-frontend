@@ -4,7 +4,6 @@ import { store } from "../store";
 import { api } from "./apiEndPoints";
 import { toast } from "react-toastify";
 
-import companySlice from "../slices/companies/companySlice";
 import personalJobOffersSlice from "../slices/jobs/personalJobOffersSlice";
 import filteredJobOffersSlice from "../slices/jobs/filterJobOffersSlice";
 import allJobOffersSlice from "../slices/jobs/allJobOffersSlice";

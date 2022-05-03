@@ -1,11 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { store } from "../../../src/app/store";
-import { CompanyInterface } from "../../../src/commons/companyInterface";
-import CreateNewCompany from "../../../src/components/Dashboard/companies/createNewCompany";
 import ModifyCompany from "../../../src/components/Dashboard/companies/modifyCompany";
-import CreateNewJobOffer from "../../../src/components/Dashboard/jobOffers/createNewJobOffer";
-import UserSettings from "../../../src/components/Dashboard/user/UserSettings";
 import getCompanyDataFromId from "../../../src/components/Utils/redux/getCompanyDataFromId";
 
 const ModifyCompanyPage = () => {

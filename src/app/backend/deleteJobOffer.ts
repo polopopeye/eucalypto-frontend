@@ -5,7 +5,7 @@ import { api } from "./apiEndPoints";
 import qs from "qs";
 
 import { CategoryInterface } from "../../commons/categoryInterface";
-import retrieveCategories from "./retrieveCategories";
+
 import retrieveJobOffers from "./retrievesJobOffer";
 import { store } from "../store";
 
