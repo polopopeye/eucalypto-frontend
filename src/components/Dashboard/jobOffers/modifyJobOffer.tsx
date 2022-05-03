@@ -13,7 +13,7 @@ import registerJobOffer from "../../../app/backend/registerJobOffer";
 import { useRouter } from "next/router";
 import { classNames } from "../../Utils/classnames";
 import retrieveCategories from "../../../app/backend/retrieveCategories";
-import retrieveCompanies from "../../../app/backend/retrieveCompanies";
+import retrieveCompanyByOwner from "../../../app/backend/retrieveCompaniesByOwner";
 import { CompanyInterface } from "../../../commons/companyInterface";
 import modifyJobOffer from "../../../app/backend/modifyJobOffer";
 import deleteJobOffer from "../../../app/backend/deleteJobOffer";
@@ -30,7 +30,9 @@ const ModifyJobOffer = (props: any) => {
   const [techMultipleSelect, setTechMultipleSelect] = useState(
     store.getState().category?.tech
   );
-  const [companies, setCompanies] = useState(store.getState().company);
+  const [companies, setCompanies] = useState(
+    store.getState().company.personalcompanies
+  );
 
   useEffect(() => {
     retrieveCategories({
@@ -38,16 +40,12 @@ const ModifyJobOffer = (props: any) => {
       value: "tech",
       saveIn: "tech",
     });
-    retrieveCompanies(store.getState().user.id as string);
-    console.log(
-      "🚀 ~ file: modifyJobOffer.tsx ~ line 41 ~ useEffect ~ jobOffer",
-      jobOffer
-    );
+    retrieveCompanyByOwner(store.getState().user.id as string);
   }, []);
 
   store.subscribe(() => {
     setTechMultipleSelect(store.getState().category?.tech);
-    setCompanies(store.getState().company);
+    setCompanies(store.getState().company.personalcompanies);
   });
 
   return (

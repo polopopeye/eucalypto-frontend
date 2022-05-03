@@ -7,14 +7,18 @@ import {
 } from "@heroicons/react/solid";
 
 import Link from "next/link";
+import { JobOfferInterface } from "../../commons/jobOfferInterface";
 
-export default function JobViewHeader(props: { alreadyApplied: any }) {
-  const { alreadyApplied } = props;
+export default function JobViewHeader(props: {
+  alreadyApplied: any;
+  jobOffer: JobOfferInterface;
+}) {
+  const { alreadyApplied, jobOffer } = props;
   return (
     <div className="lg:flex lg:items-center lg:justify-between px-8">
       <div className="flex-1 min-w-0">
         <h2 className="mt-2 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-          Back End Developer
+          {jobOffer.name}
         </h2>
         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
           <div className="mt-2 flex items-center text-sm text-gray-500">
@@ -22,28 +26,28 @@ export default function JobViewHeader(props: { alreadyApplied: any }) {
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            Full-time
+            Full-time??? IN PROGRESSS
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <LocationMarkerIcon
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            Remote
+            {jobOffer.remote ? "Remote" : "Local"}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CurrencyDollarIcon
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            $120k &ndash; $140k
+            {jobOffer.salary}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CalendarIcon
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            Closing on January 9, 2020
+            Closing on {new Date(jobOffer.deadLine).toISOString().slice(0, 10)}
           </div>
         </div>
       </div>

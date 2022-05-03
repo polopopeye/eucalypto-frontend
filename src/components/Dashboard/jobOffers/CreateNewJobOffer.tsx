@@ -13,7 +13,7 @@ import registerJobOffer from "../../../app/backend/registerJobOffer";
 import { useRouter } from "next/router";
 import { classNames } from "../../Utils/classnames";
 import retrieveCategories from "../../../app/backend/retrieveCategories";
-import retrieveCompanies from "../../../app/backend/retrieveCompanies";
+import retrieveCompanyByOwner from "../../../app/backend/retrieveCompaniesByOwner";
 import { CompanyInterface } from "../../../commons/companyInterface";
 
 const CreateNewJobOffer = () => {
@@ -29,7 +29,9 @@ const CreateNewJobOffer = () => {
   const [techMultipleSelect, setTechMultipleSelect] = useState(
     store.getState().category?.tech
   );
-  const [companies, setCompanies] = useState(store.getState().company);
+  const [companies, setCompanies] = useState(
+    store.getState().company.personalcompanies
+  );
 
   useEffect(() => {
     retrieveCategories({
@@ -37,12 +39,12 @@ const CreateNewJobOffer = () => {
       value: "tech",
       saveIn: "tech",
     });
-    retrieveCompanies(store.getState().user.id as string);
+    retrieveCompanyByOwner(store.getState().user.id as string);
   }, []);
 
   store.subscribe(() => {
     setTechMultipleSelect(store.getState().category?.tech);
-    setCompanies(store.getState().company);
+    setCompanies(store.getState().company.personalcompanies);
   });
 
   return (

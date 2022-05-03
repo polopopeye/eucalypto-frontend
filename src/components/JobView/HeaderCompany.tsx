@@ -1,22 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 import { GlobeAltIcon, StarIcon } from "@heroicons/react/outline";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import retrieveAllCompanies from "../../app/backend/retrieveCompanies";
+import retrieveCompanyByOwner from "../../app/backend/retrieveCompaniesByOwner";
 import { store } from "../../app/store";
-import getCompanyDataReduxFromId from "../Utils/company/getCompanyDataReduxFromId";
+import getCompanyDataFromId from "../Utils/redux/getCompanyDataFromId";
 
-const HeaderCompany = () => {
-  // const [companyId, setCompanyId] = React.useState(
-  //
-  // );
-  // useEffect(() => {
-  //   store.getState().company;
-
-  // }, [])
+const HeaderCompany = (props: { companyId: string }) => {
+  const { companyId } = props;
   const [company, setCompany] = useState(
-    getCompanyDataReduxFromId(
-      store.getState().modals.jobModal.data.company as string
-    )
+    getCompanyDataFromId(companyId as string)
   );
+
+  useEffect(() => {
+    if (!company) {
+      retrieveAllCompanies();
+    }
+  }, []);
+
+  store.subscribe(() => {
+    setCompany(getCompanyDataFromId(companyId as string));
+  });
 
   return (
     <div>

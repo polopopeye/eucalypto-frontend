@@ -1,20 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import retrieveCompanies from "../../../app/backend/retrieveCompanies";
+import retrieveCompanyByOwner from "../../../app/backend/retrieveCompaniesByOwner";
 import { store } from "../../../app/store";
 
 const ListCompanies = () => {
   //   const companies: any = [];
 
-  const [companies, setCompanies] = useState(store.getState().company);
+  const [companies, setCompanies] = useState(
+    store.getState().company.personalcompanies
+  );
 
   store.subscribe(() => {
-    setCompanies(store.getState().company);
+    setCompanies(store.getState().company.personalcompanies);
   });
 
   useEffect(() => {
-    retrieveCompanies(store.getState().user.id as string);
+    retrieveCompanyByOwner(store.getState().user.id as string);
   }, []);
 
   return (
@@ -23,7 +25,7 @@ const ListCompanies = () => {
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Companies</h1>
           <p className="mt-2 text-sm text-gray-700">
-            List of all the companies
+            List of all your companies
           </p>
         </div>
       </div>

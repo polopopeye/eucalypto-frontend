@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { CompanyInterface } from "../../commons/companyInterface";
 import { api } from "./apiEndPoints";
 import qs from "qs";
-import retrieveCompanies from "./retrieveCompanies";
+import retrieveCompanyByOwner from "./retrieveCompaniesByOwner";
 import { store } from "../store";
 
 const deleteCompany = (companyData: CompanyInterface, next?: Function) => {
@@ -15,7 +15,7 @@ const deleteCompany = (companyData: CompanyInterface, next?: Function) => {
         response
       );
       toast.success("Company deleted Successfully");
-      retrieveCompanies(store.getState().user?.id as string, next);
+      retrieveCompanyByOwner(store.getState().user?.id as string, next);
     })
     .catch((err) => {
       toast.error(err.message);

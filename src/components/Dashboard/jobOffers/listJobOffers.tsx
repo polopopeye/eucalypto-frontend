@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import retrieveCompanies from "../../../app/backend/retrieveCompanies";
+
 import retrieveJobOffers from "../../../app/backend/retrievesJobOffer";
 import { store } from "../../../app/store";
 import { JobOfferInterface } from "../../../commons/jobOfferInterface";

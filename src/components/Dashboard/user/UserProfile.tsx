@@ -1,9 +1,6 @@
 /* eslint-disable @next/next/link-passhref */
 import Link from "next/link";
-import { useEffect } from "react";
-import retrieveCompanies from "../../../app/backend/retrieveCompanies";
-import { store } from "../../../app/store";
-import HeaderCompany from "../../JobView/HeaderCompany";
+
 import ListCategories from "../categories/listCategories";
 import ListCompanies from "../companies/listCompanies";
 import ListJobOffers from "../jobOffers/listJobOffers";
