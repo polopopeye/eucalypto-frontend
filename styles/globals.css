@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .theme-default {
-  --color-primary: #1fab89;
+  --color-primary: #061c2d;
   --color-secondary: #62d2a2;
   --color-tertiary: #9df3c4;
   --color-quaternary: #d7fbe8;

@@ -27,20 +27,18 @@ export default function Navbar() {
   return (
     <Disclosure
       as="nav"
-      className="bg-white pt-4 shadow fixed w-full z-40 left-0"
+      className="bg-primary pt-4 shadow fixed w-full z-40 left-0"
     >
       {({ open }) => (
         <>
-          <div className="  mx-auto px-8 sm:px-6 lg:px-8">
+          <div className="  mx-auto px-32">
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <Image
-                    className="block h-20 w-auto"
+                  <img
+                    className="block  ml-16 h-auto w-64"
                     src="/img/logo1.png"
                     alt="Workflow"
-                    width={150}
-                    height={33}
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
