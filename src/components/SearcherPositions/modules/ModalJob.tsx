@@ -2,7 +2,7 @@ import { useState } from "react";
 import { store } from "../../../app/store";
 import { JobOfferInterface } from "../../../commons/jobOfferInterface";
 import Stars from "../../Home/Reviews/modules/Stars";
-import HeaderCompany from "../../JobView/HeaderCompany";
+import HeaderCompany from "../../JobView/headerCompany";
 
 export default function ModalJob() {
   const [jobOffer, setJobOffer] = useState(

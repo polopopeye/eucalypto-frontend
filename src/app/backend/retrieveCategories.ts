@@ -1,9 +1,9 @@
 import axios from "axios";
-import userSlice from "../slices/user/userSlice";
+
 import { store } from "../store";
 import { api } from "./apiEndPoints";
 import { toast } from "react-toastify";
-import { UserInterface } from "../../commons/userInterface";
+
 import categorySlice from "../slices/categories/categorySlice";
 
 interface retrieveCategories {

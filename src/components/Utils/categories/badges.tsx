@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import retrieveCategories from "../../../app/backend/retrieveCategories";
 import { store } from "../../../app/store";
 import { CategoryInterface } from "../../../commons/categoryInterface";
 
@@ -7,18 +8,42 @@ const Badges = (props: { categoriesId?: Array<string> }) => {
 
   const [badgesCategories] = useState([] as Array<CategoryInterface>);
 
-  useEffect(() => {
-    categoriesId?.forEach((categoryId) => {
-      const category = store
-        .getState()
-        .category.tech?.find((x: CategoryInterface) => x.id === categoryId);
+  store.subscribe(() => {
+    if (store.getState().category.tech) {
+      categoriesId?.forEach((categoryId) => {
+        const category = store
+          .getState()
+          .category.tech?.find((x: CategoryInterface) => x.id === categoryId);
 
-      if (category) {
-        if (!badgesCategories.some((x: any) => x.id === category.id)) {
-          badgesCategories.push(category);
+        if (category) {
+          if (!badgesCategories.some((x: any) => x.id === category.id)) {
+            badgesCategories.push(category);
+          }
         }
-      }
-    });
+      });
+    }
+  });
+
+  useEffect(() => {
+    if (store.getState().category.tech) {
+      categoriesId?.forEach((categoryId) => {
+        const category = store
+          .getState()
+          .category.tech?.find((x: CategoryInterface) => x.id === categoryId);
+
+        if (category) {
+          if (!badgesCategories.some((x: any) => x.id === category.id)) {
+            badgesCategories.push(category);
+          }
+        }
+      });
+    } else {
+      retrieveCategories({
+        propToFind: "type",
+        value: "tech",
+        saveIn: "tech",
+      });
+    }
   }, []);
 
   return (

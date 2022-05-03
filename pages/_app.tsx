@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 
 import { store } from "../src/app/store";
 
-import Layout from "../src/components/Layout/Layout";
+import Layout from "../src/components/Layout/layout";
 import firebase from "../src/app/firebase";
 
 import { ToastContainer } from "react-toastify";

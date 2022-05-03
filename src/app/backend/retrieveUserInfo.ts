@@ -6,10 +6,6 @@ import { toast } from "react-toastify";
 import { UserInterface } from "../../commons/userInterface";
 
 const retrieveUserInfo = (email: UserInterface["email"], next?: Function) => {
-  console.log(
-    "🚀 ~ file: retrieveUserInfo.ts ~ line 8 ~ retrieveUserInfo ~ email",
-    email
-  );
   const url = api.user + "/email/" + email;
 
   if (email) {

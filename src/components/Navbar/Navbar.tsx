@@ -9,7 +9,7 @@ import { store } from "../../app/store";
 import { UserInterface } from "../../commons/userInterface";
 import { classNames } from "../Utils/classnames";
 
-import NavButton from "./modules/NavButton";
+import NavButton from "./modules/navButton";
 
 export default function Navbar() {
   const [isLogedIn, setIsLogedIn] = useState(false);

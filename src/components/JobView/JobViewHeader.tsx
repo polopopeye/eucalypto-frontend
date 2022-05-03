@@ -14,6 +14,9 @@ export default function JobViewHeader(props: {
   jobOffer: JobOfferInterface;
 }) {
   const { alreadyApplied, jobOffer } = props;
+  const closeDate =
+    jobOffer.deadLine && new Date(jobOffer.deadLine).toISOString().slice(0, 10);
+
   return (
     <div className="lg:flex lg:items-center lg:justify-between px-8">
       <div className="flex-1 min-w-0">
@@ -47,7 +50,7 @@ export default function JobViewHeader(props: {
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            Closing on {new Date(jobOffer.deadLine).toISOString().slice(0, 10)}
+            Closing on {closeDate}
           </div>
         </div>
       </div>

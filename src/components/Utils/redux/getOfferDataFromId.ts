@@ -11,11 +11,7 @@ const getOfferDataFromId = (offerId: string) => {
   if (jobOffer) {
     return jobOffer as JobOfferInterface;
   } else {
-    console.log(
-      "🚀 ~ file: getOfferDataFromId.ts ~ line 16 ~ getOfferDataFromId ~ false",
-      false
-    );
-    return false;
+    return {};
   }
 };
 

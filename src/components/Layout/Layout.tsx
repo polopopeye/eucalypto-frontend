@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../Navbar/navbar";
 
 type LayoutProps = {
   children?: React.ReactNode;

@@ -2,7 +2,7 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
-import ModalJob from "./ModalJob";
+import ModalJob from "./modalJob";
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
 import Link from "next/link";

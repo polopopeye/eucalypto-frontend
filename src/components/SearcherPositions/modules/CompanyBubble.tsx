@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Stars from "../../Home/Reviews/modules/Stars";
 import ReactTooltip from "react-tooltip";
-import ModalContainer from "./ModalContainer";
+import ModalContainer from "./modalContainer";
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
 import Badges from "../../Utils/categories/badges";
