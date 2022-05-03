@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import AlertAlreadyApplied from "./modules/alertAlreadyApplied";
+import AlertMsgAlreadyApplied from "./modules/alertAlreadyApplied";
 
 import Badges from "../Utils/categories/badges";
 
@@ -51,7 +51,7 @@ const JobView = (props: { offerId: string }) => {
               jobOffer={jobOffer}
               alreadyApplied={alreadyApplied}
             />
-            {alreadyApplied && <AlertAlreadyApplied />}
+            {alreadyApplied && <AlertMsgAlreadyApplied />}
 
             <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
               <div className="space-y-6 lg:col-start-1 lg:col-span-2">

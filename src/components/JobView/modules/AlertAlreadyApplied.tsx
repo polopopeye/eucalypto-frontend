@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 
-const AlertAlreadyApplied = () => {
+const AlertMsgAlreadyApplied = () => {
   return (
     <div>
       <div className="rounded-md bg-green-50 p-4 mt-8">
@@ -39,4 +39,4 @@ const AlertAlreadyApplied = () => {
   );
 };
 
-export default AlertAlreadyApplied;
+export default AlertMsgAlreadyApplied;
