@@ -12,7 +12,7 @@ import UserStepsTimeline from "./modules/userStepsTimeline";
 import { JobOfferInterface } from "src/commons/jobOfferInterface";
 import { store } from "src/app/store";
 import JobViewHeader from "./JobViewHeader";
-import HeaderCompany from "./headerCompany";
+import HeaderCompany from "./HeaderCompany";
 
 const JobView = (props: { offerId: string }) => {
   const { offerId } = props;
