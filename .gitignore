@@ -35,5 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 src/app/db/firebase.json
 
-# yarn.lock
+ yarn.lock
 .env
