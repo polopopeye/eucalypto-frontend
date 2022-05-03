@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-import CompanyBubble from "./companyBubble";
+import CompanyBubble from "./CompanyBubble";
 
 // @ts-ignore
 import BubbleUI from "react-bubble-ui";
 // react-bubble-ui https://github.com/blakesanie/React-Bubble-UI
 
 import "react-bubble-ui/dist/index.css";
-import ModalContainer from "./modalContainer";
+import ModalContainer from "./ModalContainer";
 import { store } from "../../../app/store";
 import retrieveJobOffers from "../../../app/backend/retrievesJobOffer";
 import { JobOfferInterface } from "../../../commons/jobOfferInterface";

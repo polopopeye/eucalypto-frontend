@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
-import Stars from "../../Home/Reviews/modules/Stars";
-import ReactTooltip from "react-tooltip";
-import ModalContainer from "./modalContainer";
+import React from "react";
+
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
-import Badges from "../../Utils/categories/Badges";
+import Badges from "../../Utils/categories/badges";
 import { JobOfferInterface } from "../../../commons/jobOfferInterface";
-import retrieveCategories from "../../../app/backend/retrieveCategories";
 
 export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
   const { jobOffer } = prop;

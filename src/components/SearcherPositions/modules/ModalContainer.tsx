@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/link-passhref */
-/* This ModalContainer requires Tailwind CSS v2.0+ */
-import { Fragment, useRef, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/outline";
-import ModalJob from "./modalJob";
+
+import { useRef, useState } from "react";
+import { Dialog } from "@headlessui/react";
+
+import ModalJob from "./ModalJob";
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
 import Link from "next/link";

@@ -18,12 +18,6 @@
     "incremental": true,
     "typeRoots": ["typings", "node_modules/@types"]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
-  "exclude": ["node_modules", "typings", ".vscode", "dist"]
+  "exclude": ["node_modules", "typings", ".vscode", "dist"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
