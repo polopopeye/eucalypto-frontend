@@ -2,7 +2,7 @@ import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import Footer from "../Footer/footer";
+import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/navbar";
 
 type LayoutProps = {
