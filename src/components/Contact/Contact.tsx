@@ -1,7 +1,7 @@
 import { MailIcon, PhoneIcon } from "@heroicons/react/solid";
 
 import React from "react";
-import HeaderCompany from "../JobView/headerCompany";
+
 import TextHeader from "../Utils/TextHeader/TextHeader";
 import EarthMoving from "./earthResponsive/EarthMoving";
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import JobViewHeader from "./jobViewHeader";
 import AlertAlreadyApplied from "./modules/alertAlreadyApplied";
-import HeaderCompany from "./headerCompany";
+
 import Badges from "../Utils/categories/badges";
 
 import getOfferDataFromId from "../Utils/redux/getOfferDataFromId";
@@ -12,6 +11,8 @@ import retrieveCategories from "src/app/backend/retrieveCategories";
 import UserStepsTimeline from "./modules/userStepsTimeline";
 import { JobOfferInterface } from "src/commons/jobOfferInterface";
 import { store } from "src/app/store";
+import JobViewHeader from "./JobViewHeader";
+import HeaderCompany from "./headerCompany";
 
 const JobView = (props: { offerId: string }) => {
   const { offerId } = props;

@@ -2,8 +2,8 @@
 import Link from "next/link";
 
 import ListCategories from "../categories/listCategories";
-import ListCompanies from "../companies/ListCompanies";
-import ListJobOffers from "../jobOffers/ListJobOffers";
+import ListCompanies from "../companies/listCompanies";
+import ListJobOffers from "../jobOffers/listJobOffers";
 
 export default function UserProfile() {
   return (

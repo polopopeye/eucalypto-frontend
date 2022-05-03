@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import ModifyJobOffer from "src/components/Dashboard/jobOffers/modifyJobOffer";
 import { store } from "../../../src/app/store";
 
 import { JobOfferInterface } from "../../../src/commons/jobOfferInterface";
-
-import ModifyJobOffer from "../../../src/components/Dashboard/jobOffers/ModifyJobOffer";
 
 const ModifyJobOfferPage = () => {
   const router = useRouter();
