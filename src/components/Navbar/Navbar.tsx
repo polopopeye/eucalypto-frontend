@@ -39,8 +39,8 @@ export default function Navbar() {
                     className="block h-20 w-auto"
                     src="/img/logo1.png"
                     alt="Workflow"
-                    width={128}
-                    height={75}
+                    width={150}
+                    height={33}
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

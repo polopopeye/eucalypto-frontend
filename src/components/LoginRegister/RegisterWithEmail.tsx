@@ -11,10 +11,10 @@ import emailRegisterModalSlice from "../../app/slices/modals/emailRegisterModalS
 
 const RegisterWithEmail = () => {
   const [open, setOpen] = useState(
-    store.getState().modal.emailRegisterModal.isOpen
+    store.getState().modals.emailRegisterModal.isOpen
   );
   store.subscribe(() =>
-    setOpen(store.getState().modal.emailRegisterModal.isOpen)
+    setOpen(store.getState().modals.emailRegisterModal.isOpen)
   );
   const email = useRef() as React.RefObject<HTMLInputElement>;
   const password = useRef() as React.RefObject<HTMLInputElement>;

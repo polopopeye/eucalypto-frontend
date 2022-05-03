@@ -15,16 +15,17 @@ import { classNames } from "../../Utils/classnames";
 import retrieveCategories from "../../../app/backend/retrieveCategories";
 import retrieveCompanies from "../../../app/backend/retrieveCompanies";
 import { CompanyInterface } from "../../../commons/companyInterface";
+import modifyJobOffer from "../../../app/backend/modifyJobOffer";
+import deleteJobOffer from "../../../app/backend/deleteJobOffer";
 
-const CreateNewJobOffer = () => {
+const ModifyJobOffer = (props: any) => {
   const router = useRouter();
 
-  const [jobOffer, setJobOffer] = useState({} as JobOfferInterface);
-  const [techs, setTechs] = useState([]);
-  const [isRemote, setIsRemote] = useState(false);
-  const [deadLine, setDeadLine] = useState(
-    new Date().toISOString().substring(0, 16)
-  );
+  const [jobOffer, setJobOffer] = useState({
+    ...props.jobOffer,
+  } as JobOfferInterface);
+  const [techs, setTechs] = useState(props.jobOffer.categories);
+  const [isRemote, setIsRemote] = useState(props.jobOffer.isRemote);
 
   const [techMultipleSelect, setTechMultipleSelect] = useState(
     store.getState().category?.tech
@@ -38,6 +39,10 @@ const CreateNewJobOffer = () => {
       saveIn: "tech",
     });
     retrieveCompanies(store.getState().user.id as string);
+    console.log(
+      "🚀 ~ file: modifyJobOffer.tsx ~ line 41 ~ useEffect ~ jobOffer",
+      jobOffer
+    );
   }, []);
 
   store.subscribe(() => {
@@ -52,10 +57,10 @@ const CreateNewJobOffer = () => {
           <div>
             <div>
               <h3 className="text-lg leading-6 font-medium text-gray-900">
-                Create a new job Offer
+                Modify job Offer
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                Create a new job offer for your company or organization.
+                Modify job offer for your company or organization.
               </p>
             </div>
 
@@ -74,6 +79,7 @@ const CreateNewJobOffer = () => {
                     type="text"
                     autoComplete="name"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    defaultValue={jobOffer.name}
                     onChange={(e) => {
                       jobOffer.name = e.target.value;
                     }}
@@ -95,6 +101,7 @@ const CreateNewJobOffer = () => {
                       id="company"
                       name="company"
                       className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      defaultValue={jobOffer.company}
                       onChange={(e) => {
                         jobOffer.company = e.target.value;
                       }}
@@ -123,6 +130,7 @@ const CreateNewJobOffer = () => {
                     type="text"
                     autoComplete="jobOffer"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    defaultValue={jobOffer.job}
                     onChange={(e) => {
                       jobOffer.job = e.target.value;
                     }}
@@ -144,6 +152,7 @@ const CreateNewJobOffer = () => {
                     type="text"
                     autoComplete="location"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    defaultValue={jobOffer.location}
                     onChange={(e) => {
                       jobOffer.location = e.target.value;
                     }}
@@ -165,6 +174,7 @@ const CreateNewJobOffer = () => {
                     type="text"
                     autoComplete="salary"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    defaultValue={jobOffer.salary}
                     onChange={(e) => {
                       jobOffer.salary = e.target.value;
                     }}
@@ -226,6 +236,7 @@ const CreateNewJobOffer = () => {
                     name="description"
                     id="description"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    defaultValue={jobOffer.description}
                     onChange={(e) => {
                       jobOffer.description = e.target.value;
                     }}
@@ -261,14 +272,17 @@ const CreateNewJobOffer = () => {
                     type="datetime-local"
                     id="deadLine"
                     name="deadLine"
-                    defaultValue={new Date().toISOString().substring(0, 16)}
+                    defaultValue={new Date(jobOffer.deadLine)
+                      .toISOString()
+                      .substring(0, 16)}
                     min={new Date().toISOString().substring(0, 16)}
                     max="2030-06-14T00:00"
                     onChange={(e) => {
                       const date = new Date(e.target.value)
                         .toISOString()
                         .substring(0, 16);
-                      setDeadLine(date);
+
+                      jobOffer.deadLine = date;
                     }}
                   />
                 </div>
@@ -279,6 +293,18 @@ const CreateNewJobOffer = () => {
 
         <div className="pt-5">
           <div className="flex justify-end">
+            <button
+              type="button"
+              className="bg-red-600 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-200 hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={async () => {
+                deleteJobOffer(jobOffer, () => {
+                  router.push("/dashboard/user");
+                });
+              }}
+            >
+              Delete Job Offer
+            </button>
+
             <Link href="/dashboard/user">
               <button
                 type="button"
@@ -292,12 +318,14 @@ const CreateNewJobOffer = () => {
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
                 toast.warn("Loading...");
-                jobOffer.deadLine = deadLine;
-
                 jobOffer.remote = isRemote;
+
                 jobOffer.categories = techs;
                 jobOffer.published = false;
-                registerJobOffer(jobOffer, () => {
+                if (jobOffer.createdAt) delete jobOffer.createdAt;
+                if (jobOffer.updatedAt) delete jobOffer.updatedAt;
+
+                modifyJobOffer(jobOffer, () => {
                   router.push("/dashboard/user");
                 });
               }}
@@ -309,17 +337,19 @@ const CreateNewJobOffer = () => {
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
                 toast.warn("Loading...");
-                jobOffer.deadLine = deadLine;
-
                 jobOffer.remote = isRemote;
+
                 jobOffer.categories = techs;
                 jobOffer.published = true;
-                registerJobOffer(jobOffer, () => {
+                if (jobOffer.createdAt) delete jobOffer.createdAt;
+                if (jobOffer.updatedAt) delete jobOffer.updatedAt;
+
+                modifyJobOffer(jobOffer, () => {
                   router.push("/dashboard/user");
                 });
               }}
             >
-              Publish
+              Update Job Offer
             </button>
           </div>
         </div>
@@ -328,4 +358,4 @@ const CreateNewJobOffer = () => {
   );
 };
 
-export default CreateNewJobOffer;
+export default ModifyJobOffer;

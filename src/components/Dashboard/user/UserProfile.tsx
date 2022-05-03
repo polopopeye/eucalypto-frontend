@@ -6,6 +6,7 @@ import { store } from "../../../app/store";
 import HeaderCompany from "../../JobView/HeaderCompany";
 import ListCategories from "../categories/listCategories";
 import ListCompanies from "../companies/listCompanies";
+import ListJobOffers from "../jobOffers/listJobOffers";
 
 const people = [
   {
@@ -58,6 +59,7 @@ export default function UserProfile() {
         </button>
       </Link>
 
+      <ListJobOffers />
       <ListCompanies />
       <ListCategories />
 

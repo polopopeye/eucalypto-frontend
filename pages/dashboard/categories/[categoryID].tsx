@@ -6,7 +6,7 @@ import { CompanyInterface } from "../../../src/commons/companyInterface";
 import ModifyCategory from "../../../src/components/Dashboard/categories/modifyCategory";
 import CreateNewCompany from "../../../src/components/Dashboard/companies/createNewCompany";
 import ModifyCompany from "../../../src/components/Dashboard/companies/modifyCompany";
-import CreateNewJobOffer from "../../../src/components/Dashboard/jobOffers/CreateNewJobOffer";
+import CreateNewJobOffer from "../../../src/components/Dashboard/jobOffers/createNewJobOffer";
 import UserSettings from "../../../src/components/Dashboard/user/UserSettings";
 
 const ModifyCompanyPage = () => {

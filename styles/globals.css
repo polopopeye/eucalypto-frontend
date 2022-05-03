@@ -107,3 +107,7 @@
 .rc-select-dropdown {
   z-index: 800 !important;
 }
+
+.rc-select-item-option-state {
+  background-color: rgba(55, 55, 133, 0.499);
+}

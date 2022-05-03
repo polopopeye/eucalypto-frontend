@@ -15,7 +15,7 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import JobViewHeader from "./JobViewHeader";
 import AlertAlreadyApplied from "./modules/AlertAlreadyApplied";
 import HeaderCompany from "./HeaderCompany";
-import Badges from "./modules/Badges";
+import Badges from "../Utils/categories/badges";
 import Link from "next/link";
 import { classNames } from "../Utils/classnames";
 
@@ -71,13 +71,6 @@ const JobView = () => {
       datetime: "2020-10-04",
     },
   ];
-
-  const user = {
-    name: "Whitney Francis",
-    email: "whitney@example.com",
-    imageUrl:
-      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
-  };
 
   // Random boolean value generator
   const randomBoolean = () => Math.random() >= 0.5;

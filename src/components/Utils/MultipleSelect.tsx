@@ -8,9 +8,12 @@ const MultipleSelect = (props: {
 }) => {
   const { children, setVariant, variant } = props;
 
-  const randomClassName =
-    Math.floor(Math.random() * 100000000) + 1 + "className";
+  const randomClassName = Object.keys({ variant })[0] + "className";
 
+  console.log(
+    "🚀 ~ file: MultipleSelect.tsx ~ line 12 ~ randomClassName",
+    randomClassName
+  );
   const handleOnblur = () => {
     if (document) {
       if (
@@ -20,6 +23,7 @@ const MultipleSelect = (props: {
         const ele = document
           .getElementsByClassName(randomClassName)
           .item(0)! as any;
+
         ele.style.display = "none";
       }
     }

@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import CompanyBubble from "./CompanyBubble";
-import companyData from "./data";
+import CompanyBubble from "./companyBubble";
 
 // @ts-ignore
 import BubbleUI from "react-bubble-ui";
@@ -9,14 +8,31 @@ import BubbleUI from "react-bubble-ui";
 
 import "react-bubble-ui/dist/index.css";
 import ModalContainer from "./ModalContainer";
+import { store } from "../../../app/store";
+import retrieveJobOffers from "../../../app/backend/retrievesJobOffer";
+import { JobOfferInterface } from "../../../commons/jobOfferInterface";
+import retrieveCategories from "../../../app/backend/retrieveCategories";
 
 const SearchDisplay = () => {
-  const getStockBubbles = () => {
-    return companyData.slice(0, 20).map((company, i) => {
-      return <CompanyBubble bubbleSize={0} {...company} key={i} />;
+  const [jobOffers, setJobOffers] = useState(
+    store.getState().jobs.allJobOffers || []
+  );
+  store.subscribe(() => {
+    setJobOffers(store.getState().jobs.filteredJobOffers);
+  });
+  useEffect(() => {
+    retrieveJobOffers({
+      propOrId: "published",
+      value: true,
+      reduxSpace: "allJobOffers",
     });
-  };
-  const stockBubbles = getStockBubbles();
+
+    retrieveCategories({
+      propToFind: "type",
+      value: "tech",
+      saveIn: "tech",
+    });
+  }, []);
 
   const [isBrowser, setIsBrowser] = useState(false);
   const [innerHeight, setInnerHeight] = useState(0);
@@ -60,7 +76,10 @@ const SearchDisplay = () => {
             gravitation: 5,
           }}
         >
-          {stockBubbles}
+          {jobOffers &&
+            jobOffers.map((jobOffer: JobOfferInterface, i) => (
+              <CompanyBubble jobOffer={jobOffer} key={i} />
+            ))}
         </BubbleUI>
       )}
       <ModalContainer />

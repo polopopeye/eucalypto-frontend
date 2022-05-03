@@ -8,7 +8,10 @@ export interface JobOfferInterface {
   remote: boolean;
   description: string;
   salary: string;
-  categories: Array<string>;
-  endTime: Date | string;
+  categories?: Array<string>;
+  deadLine: string;
   published: boolean;
+
+  updatedAt?: Date;
+  createdAt?: Date;
 }

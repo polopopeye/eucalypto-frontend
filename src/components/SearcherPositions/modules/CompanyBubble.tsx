@@ -1,34 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Stars from "../../Home/Reviews/modules/Stars";
 import ReactTooltip from "react-tooltip";
 import ModalContainer from "./ModalContainer";
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
-import Badges from "../../JobView/modules/Badges";
+import Badges from "../../Utils/categories/badges";
+import { JobOfferInterface } from "../../../commons/jobOfferInterface";
+import retrieveCategories from "../../../app/backend/retrieveCategories";
 
-export default function CompanyBubble(props: {
-  backgroundColor: string;
-  bubbleSize: number;
-  textColor: any;
-  name:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal
-    | null
-    | undefined;
-  symbol:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal
-    | null
-    | undefined;
-}) {
+export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
+  const { jobOffer } = prop;
+  console.log(
+    "🚀 ~ file: CompanyBubble.tsx ~ line 12 ~ CompanyBubble ~ jobOffer",
+    jobOffer
+  );
+  const bubbleSize = 0;
+  const textColor = "red";
   return (
     <div
       style={{
-        backgroundColor: props.backgroundColor + "d0",
+        backgroundColor: "black",
         cursor: "pointer",
       }}
       className={"companyBubble"}
@@ -47,12 +38,11 @@ export default function CompanyBubble(props: {
           height: "100%",
           flexDirection: "column",
           transition: "opacity 0.1s ease",
-          opacity: props.bubbleSize > 50 ? 1 : 0,
         }}
       >
         <p
           style={{
-            color: props.textColor,
+            color: textColor,
             fontSize: 14,
             marginBottom: 6,
             fontWeight: 1000,
@@ -60,28 +50,27 @@ export default function CompanyBubble(props: {
             textAlign: "center",
           }}
         >
-          {props.name}
+          {jobOffer.name}
         </p>
         <p
           style={{
-            color: props.textColor,
+            color: textColor,
             fontSize: 14,
 
             textAlign: "center",
           }}
         >
-          100k €/year
+          {jobOffer.salary}
         </p>
 
         <p
           style={{
-            color: props.textColor,
-            fontSize: 12,
-
+            color: textColor,
+            fontSize: 11,
             textAlign: "center",
           }}
         >
-          <Badges />
+          <Badges categoriesId={jobOffer.categories as Array<string>} />
         </p>
       </div>
     </div>

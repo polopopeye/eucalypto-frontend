@@ -4,7 +4,7 @@ import { store } from "../../../src/app/store";
 import { CompanyInterface } from "../../../src/commons/companyInterface";
 import CreateNewCompany from "../../../src/components/Dashboard/companies/createNewCompany";
 import ModifyCompany from "../../../src/components/Dashboard/companies/modifyCompany";
-import CreateNewJobOffer from "../../../src/components/Dashboard/jobOffers/CreateNewJobOffer";
+import CreateNewJobOffer from "../../../src/components/Dashboard/jobOffers/createNewJobOffer";
 import UserSettings from "../../../src/components/Dashboard/user/UserSettings";
 
 const ModifyCompanyPage = () => {

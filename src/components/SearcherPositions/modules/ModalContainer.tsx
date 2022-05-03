@@ -8,11 +8,11 @@ import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
 import Link from "next/link";
 
 export default function ModalContainer() {
-  const [open, setOpen] = useState(store.getState().modal.jobModal.isOpen);
+  const [open, setOpen] = useState(store.getState().modals.jobModal.isOpen);
 
   const cancelButtonRef = useRef(null);
 
-  store.subscribe(() => setOpen(store.getState().modal.jobModal.isOpen));
+  store.subscribe(() => setOpen(store.getState().modals.jobModal.isOpen));
 
   return (
     <Dialog
