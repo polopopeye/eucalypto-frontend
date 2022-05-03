@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 /* This ModalContainer requires Tailwind CSS v2.0+ */
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
@@ -6,13 +7,20 @@ import ModalJob from "./modalJob";
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
 import Link from "next/link";
+import { JobOfferInterface } from "../../../commons/jobOfferInterface";
 
 export default function ModalContainer() {
+  const [jobOffer, setJobOffer] = useState(
+    store.getState().modals.jobModal.data as JobOfferInterface
+  );
   const [open, setOpen] = useState(store.getState().modals.jobModal.isOpen);
 
   const cancelButtonRef = useRef(null);
 
-  store.subscribe(() => setOpen(store.getState().modals.jobModal.isOpen));
+  store.subscribe(() => {
+    setJobOffer(store.getState().modals.jobModal.data as JobOfferInterface);
+    setOpen(store.getState().modals.jobModal.isOpen);
+  });
 
   return (
     <Dialog
@@ -44,19 +52,19 @@ export default function ModalContainer() {
             </div>
           </div>
           <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-            <button
-              type="button"
-              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-secondary text-base font-medium text-white hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:col-start-2 sm:text-sm"
-              onClick={() => {
-                store.dispatch(
-                  jobModalSlice.actions.setData({ isOpen: false, data: {} })
-                );
-              }}
-            >
-              <Link href="/job/Job-Backend-Developer-for-Kenneth">
+            <Link href={"/job/" + jobOffer.id}>
+              <button
+                type="button"
+                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-secondary text-base font-medium text-white hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:col-start-2 sm:text-sm"
+                onClick={() => {
+                  store.dispatch(
+                    jobModalSlice.actions.setData({ isOpen: false, data: {} })
+                  );
+                }}
+              >
                 More Information
-              </Link>
-            </button>
+              </button>
+            </Link>
             <button
               type="button"
               className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:col-start-1 sm:text-sm"

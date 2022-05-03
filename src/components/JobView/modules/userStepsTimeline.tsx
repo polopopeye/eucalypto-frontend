@@ -25,19 +25,18 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
     setCompany(getCompanyDataFromId(companyId as string));
   });
 
-  getAuth().onAuthStateChanged((user) => {
-    if (user) {
-      setIsLogedIn(true);
-      retrieveUserInfo(user.email as string);
-    } else {
-      setIsLogedIn(false);
-    }
-  });
-
   useEffect(() => {
     if (!company) {
       retrieveAllCompanies();
     }
+    getAuth().onAuthStateChanged((user) => {
+      if (user) {
+        setIsLogedIn(true);
+        retrieveUserInfo(user.email as string);
+      } else {
+        setIsLogedIn(false);
+      }
+    });
   }, []);
 
   const eventTypes = {
