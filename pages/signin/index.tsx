@@ -10,15 +10,16 @@ const Index = () => {
   const [email, setEmail] = useState("");
   const router = useRouter();
 
-  getAuth().onAuthStateChanged((user) => {
-    if (user) {
-      setIsLogedIn(true);
-    } else {
-      setIsLogedIn(false);
-    }
-  });
-
   useEffect(() => {
+    getAuth().onAuthStateChanged((user) => {
+      if (user) {
+        setIsLogedIn(true);
+        setEmail(user.email as string);
+      } else {
+        setIsLogedIn(false);
+      }
+    });
+
     if (isLogedIn) {
       retrieveUserInfo(email, () => {
         router.push("/dashboard/user");

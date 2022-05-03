@@ -1,5 +1,4 @@
 import { CheckIcon, ThumbUpIcon, UserIcon } from "@heroicons/react/outline";
-import { getAuth } from "firebase/auth";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -30,14 +29,13 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
     if (!company) {
       retrieveAllCompanies();
     }
-    getAuth().onAuthStateChanged((user) => {
-      if (user) {
-        setIsLogedIn(true);
-        retrieveUserInfo(user.email as string);
-      } else {
-        setIsLogedIn(false);
-      }
-    });
+
+    if (user.email) {
+      setIsLogedIn(true);
+      retrieveUserInfo(user.email as string);
+    } else {
+      setIsLogedIn(false);
+    }
   }, []);
 
   const eventTypes = {
