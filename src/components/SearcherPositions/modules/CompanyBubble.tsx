@@ -25,7 +25,7 @@ export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
       className={"companyBubble"}
       onClick={() => {
         store.dispatch(
-          jobModalSlice.actions.setData({ isOpen: true, data: {} })
+          jobModalSlice.actions.setData({ isOpen: true, data: jobOffer })
         );
       }}
     >

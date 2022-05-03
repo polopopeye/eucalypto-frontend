@@ -6,6 +6,7 @@ import CreateNewCompany from "../../../src/components/Dashboard/companies/create
 import ModifyCompany from "../../../src/components/Dashboard/companies/modifyCompany";
 import CreateNewJobOffer from "../../../src/components/Dashboard/jobOffers/createNewJobOffer";
 import UserSettings from "../../../src/components/Dashboard/user/UserSettings";
+import getCompanyDataReduxFromId from "../../../src/components/Utils/company/getCompanyDataReduxFromId";
 
 const ModifyCompanyPage = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const ModifyCompanyPage = () => {
   );
 
   const [company, setCompany] = useState(
-    store.getState().company.find((x: CompanyInterface) => x.id === companyID)
+    getCompanyDataReduxFromId(companyID as string)
   );
 
   store.subscribe(() => {
