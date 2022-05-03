@@ -4,7 +4,7 @@ import ReactTooltip from "react-tooltip";
 import ModalContainer from "./modalContainer";
 import { store } from "../../../app/store";
 import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
-import Badges from "../../Utils/categories/badges";
+import Badges from "../../Utils/categories/Badges";
 import { JobOfferInterface } from "../../../commons/jobOfferInterface";
 import retrieveCategories from "../../../app/backend/retrieveCategories";
 

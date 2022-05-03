@@ -10,7 +10,7 @@ import {
 import JobViewHeader from "./jobViewHeader";
 import AlertAlreadyApplied from "./modules/alertAlreadyApplied";
 import HeaderCompany from "./headerCompany";
-import Badges from "../Utils/categories/badges";
+import Badges from "../Utils/categories/Badges";
 import Link from "next/link";
 import { classNames } from "../Utils/classnames";
 import getOfferDataFromId from "../Utils/redux/getOfferDataFromId";

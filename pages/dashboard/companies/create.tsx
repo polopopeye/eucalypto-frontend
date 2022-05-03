@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { store } from "../../../src/app/store";
-import CreateNewCompany from "../../../src/components/Dashboard/companies/createNewCompany";
+import CreateNewCompany from "../../../src/components/Dashboard/companies/CreateNewCompany";
 
 const CreateNewJobOfferPage = () => {
   const [isLogedIn, setIsLogedIn] = useState(
