@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Select, { Option } from "rc-select";
 
 const MultipleSelect = (props: {

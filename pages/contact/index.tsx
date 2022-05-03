@@ -1,6 +1,5 @@
 import React from "react";
 import Contact from "../../src/components/Contact/Contact";
-import EarthMoving from "../../src/components/Contact/earthResponsive/EarthMoving";
 
 function contact() {
   return (

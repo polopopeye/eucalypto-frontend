@@ -13,8 +13,6 @@ import { CompanyInterface } from "../../../commons/companyInterface";
 import newUpload from "../../../app/firebase/storage/newUpload";
 import dashify from "dashify";
 import registerCompany from "../../../app/backend/registerCompany";
-import MultipleSelect from "../../Utils/MultipleSelect";
-import retrieveAllUsersInfo from "../../../app/backend/retrieveAllUsersInfo";
 
 const CreateNewCompany = () => {
   const router = useRouter();

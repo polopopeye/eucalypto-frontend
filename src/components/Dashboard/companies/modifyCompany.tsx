@@ -26,9 +26,6 @@ const ModifyCompany = (props: any) => {
   const [owners, setOwners] = useState([store.getState().user?.id as string]);
   const [logo, setLogo] = useState(company.coverImg);
   const [newUploadCoverImg, setNewUploadCoverImg] = useState(false);
-  // const [isAdmin] = useState(
-  //   store.getState().user.role === 'admin' ? true : false
-  // );
 
   return (
     <div>
