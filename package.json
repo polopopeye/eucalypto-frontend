@@ -70,7 +70,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "engines": {
-    "node": "17.x",
-    "npm": "8.x"
+    "node": "17.8.0",
+    "npm": "8.5.5"
   }
 }
