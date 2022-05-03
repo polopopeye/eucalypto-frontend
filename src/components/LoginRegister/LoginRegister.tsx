@@ -1,15 +1,11 @@
-import loginEmail from "../../app/firebase/auth/loginEmail";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import firebase from "../../app/firebase";
-import registerEmail from "../../app/firebase/auth/registerEmail";
-import RegisterWithEmail from "./RegisterWithEmail";
-import { store } from "../../app/store";
-import emailRegisterModalSlice from "../../app/slices/modals/emailRegisterModalSlice";
-import { LockClosedIcon, MailIcon } from "@heroicons/react/outline";
 import { useRef } from "react";
-import registerGoogle from "../../app/firebase/auth/registerGoogle";
+import { LockClosedIcon, MailIcon } from "@heroicons/react/outline";
 
-const auth = getAuth(firebase());
+import loginEmail from "src/app/firebase/auth/loginEmail";
+import RegisterWithEmail from "./RegisterWithEmail";
+import { store } from "src/app/store";
+import emailRegisterModalSlice from "src/app/slices/modals/emailRegisterModalSlice";
+import registerGoogle from "src/app/firebase/auth/registerGoogle";
 
 export default function LoginRegister() {
   const email = useRef() as React.RefObject<HTMLInputElement>;

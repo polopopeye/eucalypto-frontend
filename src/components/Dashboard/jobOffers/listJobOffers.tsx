@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
-import retrieveJobOffers from "../../../app/backend/retrievesJobOffer";
-import { store } from "../../../app/store";
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
+import retrieveJobOffers from "src/app/backend/retrievesJobOffer";
+import { store } from "src/app/store";
+import { JobOfferInterface } from "src/commons/jobOfferInterface";
 
 const ListJobOffers = () => {
   const [jobOffers, setJobOffers] = useState(

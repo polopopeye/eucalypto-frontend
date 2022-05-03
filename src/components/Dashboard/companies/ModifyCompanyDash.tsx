@@ -2,20 +2,18 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
-import { store } from "../../../app/store";
-
-import { filetoDataURL } from "../../Utils/toDataUrl";
+import dashify from "dashify";
 import Link from "next/link";
 import { toast } from "react-toastify";
-
 import { useRouter } from "next/router";
-import { CompanyInterface } from "../../../commons/companyInterface";
-import newUpload from "../../../app/firebase/storage/newUpload";
-import dashify from "dashify";
 
-import modifyCompany from "../../../app/backend/modifyCompany";
-import deleteCompany from "../../../app/backend/deleteCompany";
-import deleteFile from "../../../app/firebase/storage/deleteFile";
+import { CompanyInterface } from "src/commons/companyInterface";
+import { store } from "src/app/store";
+import { filetoDataURL } from "src/components/Utils/toDataUrl";
+import deleteCompany from "src/app/backend/deleteCompany";
+import deleteFile from "src/app/firebase/storage/deleteFile";
+import newUpload from "src/app/firebase/storage/newUpload";
+import modifyCompany from "src/app/backend/modifyCompany";
 
 const ModifyCompanyDash = (props: any) => {
   const router = useRouter();
@@ -237,25 +235,6 @@ const ModifyCompanyDash = (props: any) => {
                   />
                 </div>
               </div>
-
-              {/* {isAdmin && (
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="username"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Owners of the company <br></br> ( users who has access to
-                    publish with this company)
-                  </label>
-                  <div className="mt-1 w-full flex rounded-md shadow-sm">
-                    <MultipleSelect
-                      setVariant={setOwners}
-                      variant={owners}
-                      children={[{ id: '1', name: 'user1' }]}
-                    />
-                  </div>
-                </div>
-              )} */}
             </div>
           </div>
         </div>

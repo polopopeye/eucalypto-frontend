@@ -2,11 +2,12 @@ import { CheckIcon, ThumbUpIcon, UserIcon } from "@heroicons/react/outline";
 import { getAuth } from "firebase/auth";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import retrieveAllCompanies from "../../../app/backend/retrieveCompanies";
-import retrieveUserInfo from "../../../app/backend/retrieveUserInfo";
-import { store } from "../../../app/store";
-import { classNames } from "../../Utils/classnames";
-import getCompanyDataFromId from "../../Utils/redux/getCompanyDataFromId";
+
+import retrieveAllCompanies from "src/app/backend/retrieveCompanies";
+import retrieveUserInfo from "src/app/backend/retrieveUserInfo";
+import { store } from "src/app/store";
+import { classNames } from "src/components/Utils/classnames";
+import getCompanyDataFromId from "src/components/Utils/redux/getCompanyDataFromId";
 
 const UserStepsTimeline = (props: { job: string; companyId: string }) => {
   const { companyId } = props;

@@ -8,12 +8,13 @@ import {
   PencilAltIcon,
   ViewBoardsIcon,
 } from "@heroicons/react/outline";
-import { classNames } from "../../Utils/classnames";
-import retrieveJobOffers from "../../../app/backend/retrievesJobOffer";
-import { store } from "../../../app/store";
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
-import filteredJobOffersSlice from "../../../app/slices/jobs/filterJobOffersSlice";
+
+import retrieveJobOffers from "src/app/backend/retrievesJobOffer";
+import { store } from "src/app/store";
+import { JobOfferInterface } from "src/commons/jobOfferInterface";
+import filteredJobOffersSlice from "src/app/slices/jobs/filterJobOffersSlice";
 import { filterJobOffers, resetFilterJobOffers } from "./filterJobOffers";
+import { classNames } from "src/components/Utils/classnames";
 
 const InputSearcher = () => {
   const [query, setQuery] = useState("");

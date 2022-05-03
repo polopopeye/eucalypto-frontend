@@ -1,9 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { CategoryInterface } from "src/commons/categoryInterface";
 import { api } from "./apiEndPoints";
 
-import { CategoryInterface } from "../../commons/categoryInterface";
 import retrieveCategories from "./retrieveCategories";
 
 const deleteCategory = (categoryData: CategoryInterface, next?: Function) => {

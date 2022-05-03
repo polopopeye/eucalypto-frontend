@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ReduxCategoriesInterface } from "../../../commons/categoryInterface";
+import { ReduxCategoriesInterface } from "src/commons/categoryInterface";
 
 const categoryRedux: ReduxCategoriesInterface = {
   tech: [],

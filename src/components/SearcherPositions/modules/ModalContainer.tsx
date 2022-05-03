@@ -4,10 +4,10 @@ import { useRef, useState } from "react";
 import { Dialog } from "@headlessui/react";
 
 import ModalJob from "./ModalJob";
-import { store } from "../../../app/store";
-import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
+import { store } from "src/app/store";
+import jobModalSlice from "src/app/slices/modals/jobModalSlice";
 import Link from "next/link";
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
+import { JobOfferInterface } from "src/commons/jobOfferInterface";
 
 export default function ModalContainer() {
   const [jobOffer, setJobOffer] = useState(

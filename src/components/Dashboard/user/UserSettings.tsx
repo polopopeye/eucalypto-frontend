@@ -2,16 +2,17 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import { store } from "../../../app/store";
-import MultipleSelect from "../../Utils/MultipleSelect";
-import { filetoDataURL } from "../../Utils/toDataUrl";
 import Link from "next/link";
-import { UserInterface } from "../../../commons/userInterface";
-import modifyUserInBackend from "../../../app/backend/modifyUserInBackend";
 import { toast } from "react-toastify";
-import newUpload from "../../../app/firebase/storage/newUpload";
-import openFileInNewWindow from "../../Utils/openFileInNewWindow";
-import retrieveCategories from "../../../app/backend/retrieveCategories";
+
+import { UserInterface } from "src/commons/userInterface";
+import { store } from "src/app/store";
+import retrieveCategories from "src/app/backend/retrieveCategories";
+import { filetoDataURL } from "src/components/Utils/toDataUrl";
+import MultipleSelect from "src/components/Utils/MultipleSelect";
+import openFileInNewWindow from "src/components/Utils/openFileInNewWindow";
+import newUpload from "src/app/firebase/storage/newUpload";
+import modifyUserInBackend from "src/app/backend/modifyUserInBackend";
 
 const UserSettings = () => {
   let user: UserInterface = { ...store.getState().user };

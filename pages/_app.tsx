@@ -12,7 +12,7 @@ import firebase from "../src/app/firebase";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: any) {
   firebase();
   return (
     <Provider store={store}>

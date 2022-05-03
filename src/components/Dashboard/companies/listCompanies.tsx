@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import retrieveCompanyByOwner from "../../../app/backend/retrieveCompaniesByOwner";
-import { store } from "../../../app/store";
+import retrieveCompanyByOwner from "src/app/backend/retrieveCompaniesByOwner";
+import { store } from "src/app/store";
 
 const ListCompanies = () => {
-  //   const companies: any = [];
-
   const [companies, setCompanies] = useState(
     store.getState().company.personalcompanies
   );

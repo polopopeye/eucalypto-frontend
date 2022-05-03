@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  CheckIcon,
-  PaperClipIcon,
-  ThumbUpIcon,
-  UserIcon,
-} from "@heroicons/react/solid";
-
 import JobViewHeader from "./jobViewHeader";
 import AlertAlreadyApplied from "./modules/alertAlreadyApplied";
 import HeaderCompany from "./headerCompany";
 import Badges from "../Utils/categories/badges";
-import Link from "next/link";
-import { classNames } from "../Utils/classnames";
+
 import getOfferDataFromId from "../Utils/redux/getOfferDataFromId";
-import { JobOfferInterface } from "../../commons/jobOfferInterface";
-import { store } from "../../app/store";
-import retrieveJobOffers from "../../app/backend/retrievesJobOffer";
-import retrieveCategories from "../../app/backend/retrieveCategories";
+
+import retrieveJobOffers from "src/app/backend/retrievesJobOffer";
+import retrieveCategories from "src/app/backend/retrieveCategories";
 import UserStepsTimeline from "./modules/userStepsTimeline";
+import { JobOfferInterface } from "src/commons/jobOfferInterface";
+import { store } from "src/app/store";
 
 const JobView = (props: { offerId: string }) => {
   const { offerId } = props;

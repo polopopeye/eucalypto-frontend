@@ -3,7 +3,7 @@ import userSlice from "../slices/user/userSlice";
 import { store } from "../store";
 import { api } from "./apiEndPoints";
 import { toast } from "react-toastify";
-import { UserInterface } from "../../commons/userInterface";
+import { UserInterface } from "src/commons/userInterface";
 
 const retrieveUserInfo = (email: UserInterface["email"], next?: Function) => {
   const url = api.user + "/email/" + email;

@@ -4,9 +4,9 @@ import { MenuIcon, UserIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import logOut from "../../app/firebase/auth/logOut";
-import { store } from "../../app/store";
-import { UserInterface } from "../../commons/userInterface";
+import logOut from "src/app/firebase/auth/logOut";
+import { store } from "src/app/store";
+import { UserInterface } from "src/commons/userInterface";
 import { classNames } from "../Utils/classnames";
 
 import NavButton from "./modules/NavButton";

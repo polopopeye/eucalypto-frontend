@@ -7,11 +7,9 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 
 import { useRouter } from "next/router";
-
-import { CategoryInterface } from "../../../commons/categoryInterface";
-
-import modifyCategory from "../../../app/backend/modifyCategory";
-import deleteCategory from "../../../app/backend/deleteCategory";
+import { CategoryInterface } from "src/commons/categoryInterface";
+import modifyCategory from "src/app/backend/modifyCategory";
+import deleteCategory from "src/app/backend/deleteCategory";
 
 const ModifyCategory = (props: any) => {
   const router = useRouter();

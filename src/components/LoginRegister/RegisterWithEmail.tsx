@@ -1,13 +1,11 @@
-import React, { useRef } from "react";
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon, LockClosedIcon } from "@heroicons/react/outline";
-import { store } from "../../app/store";
-
+import React, { useRef, useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { LockClosedIcon } from "@heroicons/react/outline";
 import { MailIcon } from "@heroicons/react/solid";
-import registerEmail from "../../app/firebase/auth/registerEmail";
-import emailRegisterModalSlice from "../../app/slices/modals/emailRegisterModalSlice";
+
+import { store } from "src/app/store";
+import registerEmail from "src/app/firebase/auth/registerEmail";
+import emailRegisterModalSlice from "src/app/slices/modals/emailRegisterModalSlice";
 
 const RegisterWithEmail = () => {
   const [open, setOpen] = useState(

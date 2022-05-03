@@ -1,5 +1,5 @@
-import filteredJobOffersSlice from "../../../app/slices/jobs/filterJobOffersSlice";
-import { store } from "../../../app/store";
+import filteredJobOffersSlice from "src/app/slices/jobs/filterJobOffersSlice";
+import { store } from "src/app/store";
 
 export const filterJobOffers = (valueToSearch: string) => {
   const jobOffers = store.getState().jobs.allJobOffers;

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 
 export const Arrow = (props: { direction: string }) => {
   let src = "/img/steps/arrow/1.png";

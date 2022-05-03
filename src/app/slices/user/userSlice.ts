@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserInterface } from "../../../commons/userInterface";
+import { UserInterface } from "src/commons/userInterface";
 
 const user: UserInterface = {
   id: "",

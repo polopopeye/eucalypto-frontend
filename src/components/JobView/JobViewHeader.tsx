@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/solid";
 
 import Link from "next/link";
-import { JobOfferInterface } from "../../commons/jobOfferInterface";
+import { JobOfferInterface } from "src/commons/jobOfferInterface";
 
 export default function JobViewHeader(props: {
   alreadyApplied: any;

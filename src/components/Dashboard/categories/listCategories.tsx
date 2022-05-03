@@ -3,9 +3,8 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import retrieveCategories from "../../../app/backend/retrieveCategories";
-
-import { store } from "../../../app/store";
+import retrieveCategories from "src/app/backend/retrieveCategories";
+import { store } from "src/app/store";
 
 const ListCategories = () => {
   const [categories, setCategories] = useState(store.getState().category.tech);

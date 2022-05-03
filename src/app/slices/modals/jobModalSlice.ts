@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
 
 const jobModalSlice = createSlice({
   name: "jobModal",

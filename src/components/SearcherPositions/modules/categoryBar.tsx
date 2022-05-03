@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { store } from "../../../app/store";
-import { classNames } from "../../Utils/classnames";
-import { filterJobOffers, resetFilterJobOffers } from "./filterJobOffers";
+import React from "react";
+
+import { store } from "src/app/store";
+import { classNames } from "src/components/Utils/classnames";
+import { filterJobOffers } from "./filterJobOffers";
 
 const CategoryBar = () => {
   const techs = store.getState().category.tech;

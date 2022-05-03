@@ -10,10 +10,13 @@ import {
   ScrollPage,
   Sticky,
 } from "react-scroll-motion";
-import TextHeader from "../../../Utils/TextHeader/TextHeader";
+import TextHeader from "src/components/Utils/TextHeader/TextHeader";
+
 import Hero from "../../Hero/Hero";
 import Reviews from "../../Reviews/Reviews";
+
 import { Arrow } from "./ArrowImage";
+
 import EmptyStep from "./EmptyStep";
 import Step from "./Step";
 

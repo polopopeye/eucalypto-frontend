@@ -2,21 +2,20 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import { store } from "../../../app/store";
-import MultipleSelect from "../../Utils/MultipleSelect";
-
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { Switch } from "@headlessui/react";
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
-
 import { useRouter } from "next/router";
-import { classNames } from "../../Utils/classnames";
-import retrieveCategories from "../../../app/backend/retrieveCategories";
-import retrieveCompanyByOwner from "../../../app/backend/retrieveCompaniesByOwner";
-import { CompanyInterface } from "../../../commons/companyInterface";
-import modifyJobOffer from "../../../app/backend/modifyJobOffer";
-import deleteJobOffer from "../../../app/backend/deleteJobOffer";
+
+import { JobOfferInterface } from "src/commons/jobOfferInterface";
+import { store } from "src/app/store";
+import retrieveCategories from "src/app/backend/retrieveCategories";
+import retrieveCompanyByOwner from "src/app/backend/retrieveCompaniesByOwner";
+import { CompanyInterface } from "src/commons/companyInterface";
+import { classNames } from "src/components/Utils/classnames";
+import MultipleSelect from "src/components/Utils/MultipleSelect";
+import deleteJobOffer from "src/app/backend/deleteJobOffer";
+import modifyJobOffer from "src/app/backend/modifyJobOffer";
 
 const ModifyJobOffer = (props: any) => {
   const router = useRouter();

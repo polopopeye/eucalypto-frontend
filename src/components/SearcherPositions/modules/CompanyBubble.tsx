@@ -1,9 +1,9 @@
 import React from "react";
 
-import { store } from "../../../app/store";
-import jobModalSlice from "../../../app/slices/modals/jobModalSlice";
-import Badges from "../../Utils/categories/badges";
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
+import jobModalSlice from "src/app/slices/modals/jobModalSlice";
+import { JobOfferInterface } from "src/commons/jobOfferInterface";
+import { store } from "src/app/store";
+import Badges from "src/components/Utils/categories/badges";
 
 export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
   const { jobOffer } = prop;
