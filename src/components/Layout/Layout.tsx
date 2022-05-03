@@ -22,7 +22,7 @@ const Layout: React.FC = ({ children }: LayoutProps) => {
   }, [router]);
 
   return (
-    <div className={"w-full"}>
+    <div className="w-full">
       <div className="container  mx-auto">
         <Navbar />
         {children}
