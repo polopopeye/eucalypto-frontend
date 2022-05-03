@@ -17,7 +17,7 @@ import modifyCompany from "../../../app/backend/modifyCompany";
 import deleteCompany from "../../../app/backend/deleteCompany";
 import deleteFile from "../../../app/firebase/storage/deleteFile";
 
-const ModifyCompany = (props: any) => {
+const ModifyCompanyDash = (props: any) => {
   const router = useRouter();
 
   const [company, setCompany] = useState({
@@ -330,4 +330,4 @@ const ModifyCompany = (props: any) => {
   );
 };
 
-export default ModifyCompany;
+export default ModifyCompanyDash;

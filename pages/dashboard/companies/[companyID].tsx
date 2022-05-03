@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { store } from "../../../src/app/store";
 
-import ModifyCompany from "../../../src/components/Dashboard/companies/ModifyCompany";
+import ModifyCompanyDash from "../../../src/components/Dashboard/companies/ModifyCompanyDash";
 import getCompanyDataFromId from "../../../src/components/Utils/redux/getCompanyDataFromId";
 
 const ModifyCompanyPage = () => {
@@ -29,7 +29,7 @@ const ModifyCompanyPage = () => {
 
   return (
     <div className="pt-32">
-      {isLogedIn && company && <ModifyCompany company={company} />}
+      {isLogedIn && company && <ModifyCompanyDash company={company} />}
     </div>
   );
 };
