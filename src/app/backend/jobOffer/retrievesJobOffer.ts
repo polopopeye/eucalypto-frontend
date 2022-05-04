@@ -1,17 +1,22 @@
 import axios from 'axios';
 
-import { store } from '../../store';
+import { store } from 'src/app/store';
 import { api } from '../apiEndPoints';
 import { toast } from 'react-toastify';
 
-import personalJobOffersSlice from '../../slices/jobs/personalJobOffersSlice';
-import filteredJobOffersSlice from '../../slices/jobs/filterJobOffersSlice';
-import allJobOffersSlice from '../../slices/jobs/allJobOffersSlice';
+import filteredJobOffersSlice from 'src/app/slices/jobs/filterJobOffersSlice';
+import allJobOffersSlice from 'src/app/slices/jobs/allJobOffersSlice';
+import currentJobOfferSlice from 'src/app/slices/jobs/currentJobOffersSlice';
+import personalJobOffersSlice from 'src/app/slices/jobs/personalJobOffersSlice';
 
 interface propToFindJobOffers {
   propOrId: string;
   value: string | number | boolean;
-  reduxSpace?: 'filteredJobOffers' | 'personalJobOffers' | 'allJobOffers';
+  reduxSpace?:
+    | 'filteredJobOffers'
+    | 'personalJobOffers'
+    | 'allJobOffers'
+    | 'currentJobOffer';
 }
 const retrieveJobOffers = async (
   props: propToFindJobOffers,
@@ -23,6 +28,7 @@ const retrieveJobOffers = async (
     .get(url)
     .then((response) => {
       const jobOffersFound = response.data;
+
       if (
         props.reduxSpace === 'personalJobOffers' ||
         props.reduxSpace === undefined
@@ -34,6 +40,9 @@ const retrieveJobOffers = async (
       }
       if (props.reduxSpace === 'allJobOffers') {
         store.dispatch(allJobOffersSlice.actions.setData(jobOffersFound));
+      }
+      if (props.reduxSpace === 'currentJobOffer') {
+        store.dispatch(currentJobOfferSlice.actions.setData(jobOffersFound));
       }
 
       if (typeof next === 'function') {

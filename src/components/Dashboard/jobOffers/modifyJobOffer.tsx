@@ -20,9 +20,9 @@ import modifyJobOffer from 'src/app/backend/jobOffer/modifyJobOffer';
 const ModifyJobOffer = (props: any) => {
   const router = useRouter();
 
-  const [jobOffer, setJobOffer] = useState({
-    ...props.jobOffer,
-  } as JobOfferInterface);
+  const [jobOffer, setJobOffer] = useState(
+    store.getState().jobs.currentJobOffer as JobOfferInterface
+  );
   const [techs, setTechs] = useState(props.jobOffer.categories);
   const [isRemote, setIsRemote] = useState(props.jobOffer.isRemote);
 

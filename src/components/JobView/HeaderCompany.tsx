@@ -3,22 +3,21 @@ import { GlobeAltIcon, StarIcon } from '@heroicons/react/outline';
 import React, { useEffect, useState } from 'react';
 import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
 import { store } from 'src/app/store';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import getCompanyDataFromId from '../Utils/redux/getCompanyDataFromId';
 
-const HeaderCompany = (props: { companyId: string }) => {
-  const { companyId } = props;
-  const [company, setCompany] = useState(
-    getCompanyDataFromId(companyId as string)
+const HeaderCompany = () => {
+  const [jobOffer, setJobOffer] = useState(
+    store.getState().jobs.currentJobOffer as JobOfferInterface
   );
 
-  useEffect(() => {
-    if (!company) {
-      retrieveAllCompanies();
-    }
-  }, []);
+  const [company, setCompany] = useState(
+    getCompanyDataFromId(jobOffer.company as string)
+  );
 
   store.subscribe(() => {
-    setCompany(getCompanyDataFromId(companyId as string));
+    setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
+    setCompany(getCompanyDataFromId(jobOffer.company as string));
   });
 
   return (

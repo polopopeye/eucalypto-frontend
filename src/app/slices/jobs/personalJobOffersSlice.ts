@@ -4,10 +4,10 @@ const personalJobOffersSlice = createSlice({
   name: 'personalJobOffers',
   initialState: [],
   reducers: {
-    setData: (state, action) => {
+    setData: (state: any, action: { payload: any }) => {
       return (state = action.payload);
     },
-    emptyData: (state) => {
+    emptyData: (state: never[]) => {
       return (state = []);
     },
   },

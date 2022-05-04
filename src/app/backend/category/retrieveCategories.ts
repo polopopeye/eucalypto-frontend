@@ -7,7 +7,7 @@ import categorySlice from '../../slices/categories/categorySlice';
 
 interface retrieveCategories {
   propToFind: string;
-  value: string;
+  value?: string;
   saveIn: string;
 }
 

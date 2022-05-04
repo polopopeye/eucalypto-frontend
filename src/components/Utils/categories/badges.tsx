@@ -8,43 +8,45 @@ const Badges = (props: { categoriesId?: Array<string> }) => {
 
   const [badgesCategories] = useState([] as Array<CategoryInterface>);
 
-  store.subscribe(() => {
-    if (store.getState().category.tech) {
-      categoriesId?.forEach((categoryId) => {
-        const category = store
-          .getState()
-          .category.tech?.find((x: CategoryInterface) => x.id === categoryId);
+  const [categories] = useState(store.getState().category.tech);
 
-        if (category) {
-          if (!badgesCategories.some((x: any) => x.id === category.id)) {
-            badgesCategories.push(category);
-          }
+  // store.subscribe(() => {
+  if (categories) {
+    categoriesId?.forEach((categoryId) => {
+      const category = categories.find(
+        (x: CategoryInterface) => x.id === categoryId
+      );
+
+      if (category) {
+        if (!badgesCategories.some((x: any) => x.id === category.id)) {
+          badgesCategories.push(category);
         }
-      });
-    }
-  });
+      }
+    });
+  }
+  // });
 
-  useEffect(() => {
-    if (store.getState().category.tech) {
-      categoriesId?.forEach((categoryId) => {
-        const category = store
-          .getState()
-          .category.tech?.find((x: CategoryInterface) => x.id === categoryId);
+  // useEffect(() => {
+  //   if (store.getState().category.tech) {
+  //     categoriesId?.forEach((categoryId) => {
+  //       const category = store
+  //         .getState()
+  //         .category.tech?.find((x: CategoryInterface) => x.id === categoryId);
 
-        if (category) {
-          if (!badgesCategories.some((x: any) => x.id === category.id)) {
-            badgesCategories.push(category);
-          }
-        }
-      });
-    } else {
-      retrieveCategories({
-        propToFind: 'type',
-        value: 'tech',
-        saveIn: 'tech',
-      });
-    }
-  }, []);
+  //       if (category) {
+  //         if (!badgesCategories.some((x: any) => x.id === category.id)) {
+  //           badgesCategories.push(category);
+  //         }
+  //       }
+  //     });
+  //   } else {
+  //     retrieveCategories({
+  //       propToFind: 'type',
+  //       value: 'tech',
+  //       saveIn: 'tech',
+  //     });
+  //   }
+  // }, []);
 
   return (
     <div>

@@ -5,58 +5,34 @@ import AlertMsgAlreadyApplied from './modules/AlertMsgAlreadyApplied';
 
 import Badges from '../Utils/categories/badges';
 
-import getOfferDataFromId from '../Utils/redux/getOfferDataFromId';
-
-import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
-import retrieveCategories from 'src/app/backend/category/retrieveCategories';
 import UserStepsTimeline from './modules/userStepsTimeline';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import { store } from 'src/app/store';
 import JobViewHeader from './JobViewHeader';
 import HeaderCompany from './HeaderCompany';
+import LoadingComponent from '../Utils/LoadingComponent';
 
-const JobView = (props: { offerId: string }) => {
-  const { offerId } = props;
-
+const JobView = () => {
   const [jobOffer, setJobOffer] = useState(
-    getOfferDataFromId(offerId) as JobOfferInterface
+    store.getState().jobs.currentJobOffer as JobOfferInterface
   );
-
-  useEffect(() => {
-    retrieveJobOffers({
-      propOrId: 'published',
-      value: true,
-      reduxSpace: 'allJobOffers',
-    });
-
-    retrieveCategories({
-      propToFind: 'type',
-      value: 'tech',
-      saveIn: 'tech',
-    });
-  }, []);
-
   store.subscribe(() => {
-    setJobOffer(getOfferDataFromId(offerId) as JobOfferInterface);
+    setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
   });
-
   const [alreadyApplied, setAlreadyApplied] = useState(true);
 
   return (
     <div>
-      {jobOffer.name && (
+      {jobOffer.name ? (
         <div className="min-h-full pt-16">
           <main className="py-10">
             {/* Page header */}
-            <JobViewHeader
-              jobOffer={jobOffer}
-              alreadyApplied={alreadyApplied}
-            />
-            {alreadyApplied && <AlertMsgAlreadyApplied />}
+            <JobViewHeader alreadyApplied={alreadyApplied} />
+            {/* {alreadyApplied && <AlertMsgAlreadyApplied />} */}
 
             <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
               <div className="space-y-6 lg:col-start-1 lg:col-span-2">
-                <HeaderCompany companyId={jobOffer.company} />
+                <HeaderCompany />
 
                 {/* Description list*/}
                 <section aria-labelledby="applicant-information-title">
@@ -125,13 +101,12 @@ const JobView = (props: { offerId: string }) => {
                 </section>
               </div>
 
-              <UserStepsTimeline
-                job={jobOffer.job}
-                companyId={jobOffer.company}
-              />
+              <UserStepsTimeline />
             </div>
           </main>
         </div>
+      ) : (
+        <div className="pt-32">NO JOB OFFER FOUND</div>
       )}
     </div>
   );

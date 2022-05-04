@@ -2,6 +2,7 @@ import React from 'react';
 import { store } from '../../../app/store';
 import { CompanyInterface } from '../../../commons/companyInterface';
 
+// TODO: Optimize this function to avoid unnecessary calls to the API
 const getCompanyDataFromId = (companyId: string) => {
   const company = store
     .getState()

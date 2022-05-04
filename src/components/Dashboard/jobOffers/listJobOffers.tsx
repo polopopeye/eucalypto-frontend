@@ -9,24 +9,13 @@ const ListJobOffers = () => {
   const [jobOffers, setJobOffers] = useState(
     store.getState().jobs.personalJobOffers
   );
-  const [isAdmin, setIsAdmin] = useState(
+  const [isAdmin] = useState(
     store.getState().user.role === 'admin' ? true : false
   );
 
   store.subscribe(() => {
     setJobOffers(store.getState().jobs.personalJobOffers);
   });
-
-  useEffect(() => {
-    if (isAdmin) {
-      retrieveJobOffers({ propOrId: 'published', value: true });
-    } else {
-      retrieveJobOffers({
-        propOrId: 'aplicants',
-        value: store.getState().user.id as string,
-      });
-    }
-  }, []);
 
   return (
     <>

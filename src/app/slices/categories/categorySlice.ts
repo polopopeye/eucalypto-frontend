@@ -9,10 +9,10 @@ const categorySlice = createSlice({
   name: 'category',
   initialState: categoryRedux,
   reducers: {
-    setData: (state, action) => {
+    setData: (state: any, action: { payload: any }) => {
       return (state = action.payload);
     },
-    emptyData: (state) => {
+    emptyData: (state: ReduxCategoriesInterface) => {
       return (state = categoryRedux);
     },
   },

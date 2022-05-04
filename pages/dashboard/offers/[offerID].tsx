@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import ModifyJobOffer from 'src/components/Dashboard/jobOffers/modifyJobOffer';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
@@ -11,11 +12,13 @@ const ModifyJobOfferPage = () => {
   const router = useRouter();
   const { offerID } = router.query;
 
-  const [jobOffer] = useState(
-    store
-      .getState()
-      .jobs.personalJobOffers.find((x: JobOfferInterface) => x.id === offerID)
-  );
+  useEffect(() => {
+    retrieveJobOffers({
+      propOrId: 'id',
+      value: offerID as string,
+      reduxSpace: 'currentJobOffer',
+    });
+  }, [offerID]);
 
   const checkUserInfo = useCheckUserInfo();
   if (checkUserInfo.loading) return <LoadingComponent />;
@@ -23,7 +26,7 @@ const ModifyJobOfferPage = () => {
 
   return (
     <div className="pt-32">
-      {jobOffer && <ModifyJobOffer jobOffer={jobOffer} />}
+      <ModifyJobOffer />
     </div>
   );
 };

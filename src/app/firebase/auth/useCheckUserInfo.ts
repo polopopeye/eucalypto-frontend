@@ -1,6 +1,7 @@
 import { getAuth } from 'firebase/auth';
 
 import React, { useEffect, useState } from 'react';
+
 import retrieveUserInfo from 'src/app/backend/users/retrieveUserInfo';
 import { store } from 'src/app/store';
 

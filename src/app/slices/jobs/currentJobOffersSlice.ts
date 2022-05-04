@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const allCompaniesSlice = createSlice({
-  name: 'allCompanies',
-  initialState: [],
+const currentJobOfferSlice = createSlice({
+  name: 'currentJobOffer',
+  initialState: {},
   reducers: {
     setData: (state: any, action: { payload: any }) => {
       return (state = action.payload);
     },
-    emptyData: (state: never[]) => {
-      return (state = []);
+    emptyData: (state) => {
+      return (state = {});
     },
   },
 });
 
-export default allCompaniesSlice;
+export default currentJobOfferSlice;

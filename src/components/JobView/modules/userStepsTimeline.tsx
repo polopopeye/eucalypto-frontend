@@ -4,39 +4,28 @@ import React, { useEffect, useState } from 'react';
 
 import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
 import retrieveUserInfo from 'src/app/backend/users/retrieveUserInfo';
+import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import { store } from 'src/app/store';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import { classNames } from 'src/components/Utils/classnames';
+import LoadingComponent from 'src/components/Utils/LoadingComponent';
 import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
+import ApplyNowModule from './ApplyNowModule';
 
-const UserStepsTimeline = (props: { job: string; companyId: string }) => {
-  const { companyId } = props;
+const UserStepsTimeline = () => {
+  const [jobOffer, setJobOffer] = useState(
+    store.getState().jobs.currentJobOffer as JobOfferInterface
+  );
   const [company, setCompany] = useState(
-    getCompanyDataFromId(companyId as string)
+    getCompanyDataFromId(jobOffer.company as string)
   );
-
-  const [isLogedIn, setIsLogedIn] = useState(
-    store.getState().user.email ? true : false
-  );
-
   const [user, setUser] = useState(store.getState().user);
 
   store.subscribe(() => {
+    setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
     setUser(store.getState().user);
-    setCompany(getCompanyDataFromId(companyId as string));
+    setCompany(getCompanyDataFromId(jobOffer.company));
   });
-
-  useEffect(() => {
-    if (!company) {
-      retrieveAllCompanies();
-    }
-
-    if (user.email) {
-      setIsLogedIn(true);
-      retrieveUserInfo(user.email as string);
-    } else {
-      setIsLogedIn(false);
-    }
-  }, []);
 
   const eventTypes = {
     applied: { icon: UserIcon, bgColorClass: 'bg-gray-400' },
@@ -87,12 +76,15 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
   ];
 
   const alreadyApplied = false;
+  const checkUserInfo = useCheckUserInfo();
+  if (checkUserInfo.loading) return <LoadingComponent />;
+
   return (
     <section
       aria-labelledby="timeline-title"
       className="lg:col-start-3 lg:col-span-1"
     >
-      {isLogedIn && (
+      {checkUserInfo.isLogedIn && (
         <div className="flex items-center space-x-5 ml-6 w-full">
           <div className="flex-shrink-0">
             <div className="relative">
@@ -114,7 +106,7 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
             <p className="text-sm font-medium text-gray-500">
               Applied for{' '}
               <a href="#" className="text-gray-900">
-                {props.job}
+                {jobOffer.job}
               </a>{' '}
               <br></br>
               On: <b>{company?.name}</b>
@@ -179,11 +171,7 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
             </div>
           </>
         ) : (
-          <div className="mt-6 flex flex-col justify-stretch">
-            <div className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-              <Link href="/signin"> Apply Now</Link>
-            </div>
-          </div>
+          <ApplyNowModule jobOffer={jobOffer} />
         )}
       </div>
     </section>
