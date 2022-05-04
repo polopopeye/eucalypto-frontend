@@ -1,5 +1,5 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import registerUserInBackend from "../../backend/registerUserInBackend";
+import registerUserInBackend from "../../backend/users/registerUserInBackend";
 import { toast } from "react-toastify";
 import { errors } from "../constants";
 

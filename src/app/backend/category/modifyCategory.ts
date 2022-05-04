@@ -1,15 +1,17 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { CategoryInterface } from "src/commons/categoryInterface";
-import { api } from "./apiEndPoints";
 
+import { api } from "../apiEndPoints";
+import qs from "qs";
+
+import { CategoryInterface } from "../../../commons/categoryInterface";
 import retrieveCategories from "./retrieveCategories";
 
-const deleteCategory = (categoryData: CategoryInterface, next?: Function) => {
+const modifyCategory = (categoryData: CategoryInterface, next?: Function) => {
   axios
-    .delete(api.categories + "/" + categoryData.id)
+    .put(api.categories + "/" + categoryData.id, qs.stringify(categoryData))
     .then((response) => {
-      toast.success("Category Deleted Successfully");
+      toast.success("Category Updated Successfully");
 
       retrieveCategories(
         {
@@ -24,4 +26,4 @@ const deleteCategory = (categoryData: CategoryInterface, next?: Function) => {
       toast.error(err.message);
     });
 };
-export default deleteCategory;
+export default modifyCategory;

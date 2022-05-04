@@ -9,12 +9,12 @@ import { useRouter } from "next/router";
 
 import { JobOfferInterface } from "src/commons/jobOfferInterface";
 import { store } from "src/app/store";
-import retrieveCategories from "src/app/backend/retrieveCategories";
-import retrieveCompanyByOwner from "src/app/backend/retrieveCompaniesByOwner";
+import retrieveCategories from "src/app/backend/category/retrieveCategories";
+import retrieveCompanyByOwner from "src/app/backend/company/retrieveCompaniesByOwner";
 import { CompanyInterface } from "src/commons/companyInterface";
 import { classNames } from "src/components/Utils/classnames";
 import MultipleSelect from "src/components/Utils/MultipleSelect";
-import registerJobOffer from "src/app/backend/registerJobOffer";
+import registerJobOffer from "src/app/backend/jobOffer/registerJobOffer";
 
 const CreateNewJobOffer = () => {
   const router = useRouter();

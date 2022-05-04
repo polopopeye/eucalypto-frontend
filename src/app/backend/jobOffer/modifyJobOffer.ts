@@ -1,19 +1,18 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { api } from "./apiEndPoints";
+import { api } from "../apiEndPoints";
 import qs from "qs";
 
-import { CategoryInterface } from "../../commons/categoryInterface";
-
+import { JobOfferInterface } from "../../../commons/jobOfferInterface";
 import retrieveJobOffers from "./retrievesJobOffer";
-import { store } from "../store";
+import { store } from "../../store";
 
-const deleteJobOffer = (jobOfferData: CategoryInterface, next?: Function) => {
+const modifyJobOffer = (jobOfferData: JobOfferInterface, next?: Function) => {
   axios
-    .delete(api.jobOffers + "/" + jobOfferData.id)
+    .put(api.jobOffers + "/" + jobOfferData.id, qs.stringify(jobOfferData))
     .then((response) => {
-      toast.success("Job Offer Deleted Successfully");
+      toast.success("JobOffer Updated Successfully");
 
       if (store.getState().user?.role === "admin") {
         retrieveJobOffers(
@@ -37,4 +36,4 @@ const deleteJobOffer = (jobOfferData: CategoryInterface, next?: Function) => {
       toast.error(err.message);
     });
 };
-export default deleteJobOffer;
+export default modifyJobOffer;

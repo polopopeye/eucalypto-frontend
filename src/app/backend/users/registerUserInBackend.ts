@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { UserInterface } from "../../commons/userInterface";
-import { api } from "./apiEndPoints";
+import { UserInterface } from "../../../commons/userInterface";
+import { api } from "../apiEndPoints";
 
 const registerUserInBackend = (user: UserInterface) => {
   axios

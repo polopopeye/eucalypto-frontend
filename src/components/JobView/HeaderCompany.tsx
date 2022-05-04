@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { GlobeAltIcon, StarIcon } from "@heroicons/react/outline";
 import React, { useEffect, useState } from "react";
-import retrieveAllCompanies from "src/app/backend/retrieveCompanies";
+import retrieveAllCompanies from "src/app/backend/company/retrieveCompanies";
 import { store } from "src/app/store";
 import getCompanyDataFromId from "../Utils/redux/getCompanyDataFromId";
 

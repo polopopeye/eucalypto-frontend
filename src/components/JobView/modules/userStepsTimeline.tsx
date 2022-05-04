@@ -2,8 +2,8 @@ import { CheckIcon, ThumbUpIcon, UserIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-import retrieveAllCompanies from "src/app/backend/retrieveCompanies";
-import retrieveUserInfo from "src/app/backend/retrieveUserInfo";
+import retrieveAllCompanies from "src/app/backend/company/retrieveCompanies";
+import retrieveUserInfo from "src/app/backend/users/retrieveUserInfo";
 import { store } from "src/app/store";
 import { classNames } from "src/components/Utils/classnames";
 import getCompanyDataFromId from "src/components/Utils/redux/getCompanyDataFromId";

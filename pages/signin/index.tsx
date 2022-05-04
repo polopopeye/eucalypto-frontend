@@ -1,7 +1,7 @@
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import retrieveUserInfo from "../../src/app/backend/retrieveUserInfo";
+import retrieveUserInfo from "../../src/app/backend/users/retrieveUserInfo";
 
 import LoginRegister from "../../src/components/LoginRegister/LoginRegister";
 

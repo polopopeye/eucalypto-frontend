@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import retrieveCategories from "src/app/backend/retrieveCategories";
+import retrieveCategories from "src/app/backend/category/retrieveCategories";
 import { store } from "src/app/store";
 
 const ListCategories = () => {

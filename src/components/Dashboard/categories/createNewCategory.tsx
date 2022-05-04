@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 
 import { CategoryInterface } from "src/commons/categoryInterface";
-import registerCategory from "src/app/backend/registerCategory";
+import registerCategory from "src/app/backend/category/registerCategory";
 
 const CreateNewCategory = () => {
   const router = useRouter();

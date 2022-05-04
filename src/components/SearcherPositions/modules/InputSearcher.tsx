@@ -9,7 +9,7 @@ import {
   ViewBoardsIcon,
 } from "@heroicons/react/outline";
 
-import retrieveJobOffers from "src/app/backend/retrievesJobOffer";
+import retrieveJobOffers from "src/app/backend/jobOffer/retrievesJobOffer";
 import { store } from "src/app/store";
 import { JobOfferInterface } from "src/commons/jobOfferInterface";
 import filteredJobOffersSlice from "src/app/slices/jobs/filterJobOffersSlice";

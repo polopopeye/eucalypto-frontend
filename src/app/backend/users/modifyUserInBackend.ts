@@ -1,8 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { UserInterface } from "../../commons/userInterface";
+import { UserInterface } from "../../../commons/userInterface";
 
-import { api } from "./apiEndPoints";
+import { api } from "../apiEndPoints";
 import retrieveUserInfo from "./retrieveUserInfo";
 import qs from "qs";
 

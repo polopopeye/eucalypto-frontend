@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { errors } from "../constants";
 import { toast } from "react-toastify";
-import registerUserInBackend from "../../backend/registerUserInBackend";
+import registerUserInBackend from "../../backend/users/registerUserInBackend";
 
 const registerEmail = (email: string, password: string) => {
   const auth = getAuth();

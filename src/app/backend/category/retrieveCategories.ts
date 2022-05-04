@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { store } from "../store";
-import { api } from "./apiEndPoints";
+import { store } from "../../store";
+import { api } from "../apiEndPoints";
 import { toast } from "react-toastify";
-import categorySlice from "../slices/categories/categorySlice";
+import categorySlice from "../../slices/categories/categorySlice";
 
 interface retrieveCategories {
   propToFind: string;

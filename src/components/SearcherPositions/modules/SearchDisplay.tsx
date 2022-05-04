@@ -9,9 +9,9 @@ import BubbleUI from "react-bubble-ui";
 import "react-bubble-ui/dist/index.css";
 import ModalContainer from "./ModalContainer";
 import { store } from "../../../app/store";
-import retrieveJobOffers from "../../../app/backend/retrievesJobOffer";
+import retrieveJobOffers from "../../../app/backend/jobOffer/retrievesJobOffer";
 import { JobOfferInterface } from "../../../commons/jobOfferInterface";
-import retrieveCategories from "../../../app/backend/retrieveCategories";
+import retrieveCategories from "../../../app/backend/category/retrieveCategories";
 
 const SearchDisplay = () => {
   const [jobOffers, setJobOffers] = useState(

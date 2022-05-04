@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { CompanyInterface } from "../../../commons/companyInterface";
 import newUpload from "../../../app/firebase/storage/newUpload";
 import dashify from "dashify";
-import registerCompany from "../../../app/backend/registerCompany";
+import registerCompany from "../../../app/backend/company/registerCompany";
 
 const CreateNewCompany = () => {
   const router = useRouter();

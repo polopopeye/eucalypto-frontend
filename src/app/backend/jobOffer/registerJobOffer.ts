@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { JobOfferInterface } from "../../commons/jobOfferInterface";
-import { api } from "./apiEndPoints";
+import { JobOfferInterface } from "../../../commons/jobOfferInterface";
+import { api } from "../apiEndPoints";
 
 const registerJobOffer = (offerData: JobOfferInterface, next?: Function) => {
   axios

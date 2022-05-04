@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { store } from "../store";
-import { api } from "./apiEndPoints";
+import { store } from "../../store";
+import { api } from "../apiEndPoints";
 import { toast } from "react-toastify";
-import usersSlice from "../slices/user/usersSlice";
+import usersSlice from "../../slices/user/usersSlice";
 
 const retrieveAllUsersInfo = (next?: Function) => {
   const url = api.user;

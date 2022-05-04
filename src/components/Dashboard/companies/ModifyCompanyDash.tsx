@@ -10,10 +10,10 @@ import { useRouter } from "next/router";
 import { CompanyInterface } from "src/commons/companyInterface";
 import { store } from "src/app/store";
 import { filetoDataURL } from "src/components/Utils/toDataUrl";
-import deleteCompany from "src/app/backend/deleteCompany";
+import deleteCompany from "src/app/backend/company/deleteCompany";
 import deleteFile from "src/app/firebase/storage/deleteFile";
 import newUpload from "src/app/firebase/storage/newUpload";
-import modifyCompany from "src/app/backend/modifyCompany";
+import modifyCompany from "src/app/backend/company/modifyCompany";
 
 const ModifyCompanyDash = (props: any) => {
   const router = useRouter();

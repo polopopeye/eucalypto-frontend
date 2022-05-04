@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 
 import AlertMsgAlreadyApplied from "./modules/AlertMsgAlreadyApplied";
@@ -6,8 +7,8 @@ import Badges from "../Utils/categories/badges";
 
 import getOfferDataFromId from "../Utils/redux/getOfferDataFromId";
 
-import retrieveJobOffers from "src/app/backend/retrievesJobOffer";
-import retrieveCategories from "src/app/backend/retrieveCategories";
+import retrieveJobOffers from "src/app/backend/jobOffer/retrievesJobOffer";
+import retrieveCategories from "src/app/backend/category/retrieveCategories";
 import UserStepsTimeline from "./modules/userStepsTimeline";
 import { JobOfferInterface } from "src/commons/jobOfferInterface";
 import { store } from "src/app/store";
@@ -75,7 +76,10 @@ const JobView = (props: { offerId: string }) => {
                       <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                         <div className="sm:col-span-1">
                           <dt className="text-sm font-medium text-gray-500">
-                            <img src="https://blog.logrocket.com/wp-content/uploads/2021/08/react-nivo-pie-chart-example.png" />
+                            <img
+                              alt=""
+                              src="https://blog.logrocket.com/wp-content/uploads/2021/08/react-nivo-pie-chart-example.png"
+                            />
                           </dt>
                         </div>
 

@@ -7,12 +7,12 @@ import { toast } from "react-toastify";
 
 import { UserInterface } from "src/commons/userInterface";
 import { store } from "src/app/store";
-import retrieveCategories from "src/app/backend/retrieveCategories";
+import retrieveCategories from "src/app/backend/category/retrieveCategories";
 import { filetoDataURL } from "src/components/Utils/toDataUrl";
 import MultipleSelect from "src/components/Utils/MultipleSelect";
 import openFileInNewWindow from "src/components/Utils/openFileInNewWindow";
 import newUpload from "src/app/firebase/storage/newUpload";
-import modifyUserInBackend from "src/app/backend/modifyUserInBackend";
+import modifyUserInBackend from "src/app/backend/users/modifyUserInBackend";
 
 const UserSettings = () => {
   let user: UserInterface = { ...store.getState().user };

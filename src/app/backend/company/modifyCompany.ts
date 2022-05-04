@@ -1,10 +1,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { CompanyInterface } from "../../commons/companyInterface";
-import { api } from "./apiEndPoints";
+import { CompanyInterface } from "../../../commons/companyInterface";
+import { api } from "../apiEndPoints";
 import qs from "qs";
 import retrieveCompanyByOwner from "./retrieveCompaniesByOwner";
-import { store } from "../store";
+import { store } from "../../store";
 
 const modifyCompany = (companyData: CompanyInterface, next?: Function) => {
   axios

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { CompanyInterface } from "../../commons/companyInterface";
-import { api } from "./apiEndPoints";
+import { CompanyInterface } from "../../../commons/companyInterface";
+import { api } from "../apiEndPoints";
 
 const registerCompany = (companyData: CompanyInterface, next?: Function) => {
   axios

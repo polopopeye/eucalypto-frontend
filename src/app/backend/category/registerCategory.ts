@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { CategoryInterface } from "../../commons/categoryInterface";
-import { api } from "./apiEndPoints";
+import { CategoryInterface } from "../../../commons/categoryInterface";
+import { api } from "../apiEndPoints";
 
 const registerCategory = (categoryData: CategoryInterface, next?: Function) => {
   axios

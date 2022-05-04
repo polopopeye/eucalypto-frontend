@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import retrieveCompanyByOwner from "src/app/backend/retrieveCompaniesByOwner";
+import retrieveCompanyByOwner from "src/app/backend/company/retrieveCompaniesByOwner";
 import { store } from "src/app/store";
 
 const ListCompanies = () => {
