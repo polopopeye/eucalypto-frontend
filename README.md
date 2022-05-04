@@ -1,3 +1,14 @@
+# Git Commons errors
+
+idk why git sometimes use ignore the config of camel case by default this can trigger in some errors on deployment but working in other enviroments. to disable that and avoid this problems just update git config to:
+
+```
+$ git config --global core.ignorecase false
+$ git config core.ignorecase false
+```
+
+and make some lint commits to check all works properly
+
 commmands:
 "dev": "next dev",
 "build": "next build",

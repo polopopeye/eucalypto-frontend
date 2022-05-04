@@ -1,47 +1,19 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import useCheckUserInfo from "src/app/firebase/auth/useCheckUserInfo";
 
 import { store } from "../../../src/app/store";
 import UserProfile from "../../../src/components/Dashboard/user/UserProfile";
 
-const thereIsUserLogedIn = () => {
-  const userEmail = store.getState().user.email;
-  if (userEmail) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 const Index = () => {
-  const [isLogedIn, setIsLogedIn] = useState(false);
-
-  useEffect(() => {
-    if (thereIsUserLogedIn()) {
-      setIsLogedIn(true);
-    } else {
-      setIsLogedIn(false);
-      window.location.href = "/signin";
-    }
-  }, []);
-
-  store.subscribe(() => {
-    if (thereIsUserLogedIn()) {
-      setIsLogedIn(true);
-    } else {
-      setIsLogedIn(false);
-      window.location.href = "/signin";
-    }
-  });
+  const router = useRouter();
+  const checkUserInfo = useCheckUserInfo();
+  if (checkUserInfo.loading) return <div className="pt-32">Loading</div>;
+  if (!checkUserInfo.isLogedIn) router.push("/signin");
 
   return (
     <>
-      <div>
-        {isLogedIn ? (
-          <UserProfile />
-        ) : (
-          <div className="pt-32 text-center">Loading please wait...</div>
-        )}
-      </div>
+      <div>{checkUserInfo.isLogedIn && <UserProfile />}</div>
     </>
   );
 };
