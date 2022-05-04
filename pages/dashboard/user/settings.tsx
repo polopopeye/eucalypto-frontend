@@ -1,24 +1,21 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
+import LoadingComponent from 'src/components/Utils/LoadingComponent';
 import { store } from '../../../src/app/store';
 import UserSettings from '../../../src/components/Dashboard/user/UserSettings';
 
 const Settings = () => {
-  const [isLogedIn, setIsLogedIn] = useState(
-    store.getState().user?.email ? true : false
-  );
   const router = useRouter();
+  const checkUserInfo = useCheckUserInfo();
+  if (checkUserInfo.loading) return <LoadingComponent />;
+  if (!checkUserInfo.isLogedIn) router.push('/signin');
 
-  store.subscribe(() => {
-    if (store.getState().user?.email) {
-      setIsLogedIn(true);
-    } else {
-      setIsLogedIn(false);
-      router.push('/signin');
-    }
-  });
-
-  return <div className="pt-32">{isLogedIn && <UserSettings />}</div>;
+  return (
+    <div className="pt-32">
+      <UserSettings />
+    </div>
+  );
 };
 
 export default Settings;

@@ -13,7 +13,7 @@ import NavButton from './modules/NavButton';
 
 export default function Navbar() {
   const [isLogedIn, setIsLogedIn] = useState(false);
-  const [user, setUser] = useState({} as UserInterface);
+  const [user, setUser] = useState(store.getState().user as UserInterface);
 
   store.subscribe(() => {
     if (store.getState().user.email) {

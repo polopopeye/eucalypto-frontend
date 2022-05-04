@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
+import LoadingComponent from 'src/components/Utils/LoadingComponent';
 import { store } from '../../../src/app/store';
 import { CategoryInterface } from '../../../src/commons/categoryInterface';
 
@@ -8,29 +10,19 @@ import ModifyCategory from '../../../src/components/Dashboard/categories/modifyC
 const ModifyCompanyPage = () => {
   const router = useRouter();
   const { categoryID } = router.query;
-
-  const [isLogedIn, setIsLogedIn] = useState(
-    store.getState().user?.email ? true : false
-  );
-
-  const [category, setCategory] = useState(
+  const [category] = useState(
     store
       .getState()
       .category.tech?.find((x: CategoryInterface) => x.id === categoryID)
   );
 
-  store.subscribe(() => {
-    if (store.getState().user?.email) {
-      setIsLogedIn(true);
-    } else {
-      setIsLogedIn(false);
-      router.push('/signin');
-    }
-  });
+  const checkUserInfo = useCheckUserInfo();
+  if (checkUserInfo.loading) return <LoadingComponent />;
+  if (!checkUserInfo.isLogedIn) router.push('/signin');
 
   return (
     <div className="pt-32">
-      {isLogedIn && category && <ModifyCategory category={category} />}
+      {category && <ModifyCategory category={category} />}
     </div>
   );
 };

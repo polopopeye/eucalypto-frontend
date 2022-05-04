@@ -2,11 +2,12 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import LoginRegister from 'src/components/LoginRegister/LoginRegister';
+import LoadingComponent from 'src/components/Utils/LoadingComponent';
 
 const Index = () => {
   const router = useRouter();
   const checkUserInfo = useCheckUserInfo();
-  if (checkUserInfo.loading) return <div className="pt-32">Loading</div>;
+  if (checkUserInfo.loading) return <LoadingComponent />;
   if (checkUserInfo.isLogedIn) router.push('/dashboard/user');
 
   return (
