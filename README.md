@@ -104,3 +104,12 @@ to install:
 then just reset:
 `heroku repo:reset --app stage-front-eucalypto`
 The app will remain working no problem, we just delete all the cache and files of the remote git of heroku
+
+### Reseting current git
+
+This is the same as a pull but better, will force to get all the files from git.
+
+```
+$ git gc --prune=now
+$ git remote prune origin
+```
