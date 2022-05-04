@@ -1,4 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx lint-staged
+npm run format ./pages
+npm run format ./src
+npm run format ./styles
+npm run format ./typings
+
