@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { store } from "../../store";
-import { api } from "../apiEndPoints";
-import { toast } from "react-toastify";
+import { store } from '../../store';
+import { api } from '../apiEndPoints';
+import { toast } from 'react-toastify';
 
-import companySlice from "../../slices/companies/companySlice";
+import companySlice from '../../slices/companies/companySlice';
 
 // Retrieves company data of the owner of the current session
 const retrieveCompanyByOwner = async (userId: string, next?: Function) => {
-  const url = api.company + "/" + userId;
+  const url = api.company + '/' + userId;
 
   axios
     .get(url)
@@ -16,13 +16,13 @@ const retrieveCompanyByOwner = async (userId: string, next?: Function) => {
       const allCompaniesFound = response.data;
 
       store.dispatch(companySlice.actions.setData(allCompaniesFound));
-      if (typeof next === "function") {
+      if (typeof next === 'function') {
         next(response);
       }
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Error retrieving Company info");
+      toast.error('Error retrieving Company info');
     });
 };
 

@@ -15,7 +15,7 @@ export const filetoDataURL = async (element: any, callback: Function) => {
   const file = element.files[0];
   const reader = new FileReader();
   reader.onloadend = function () {
-    if (typeof callback === "function") {
+    if (typeof callback === 'function') {
       callback(reader.result);
     }
   };

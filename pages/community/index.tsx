@@ -1,5 +1,5 @@
-import React from "react";
-import CommunityFeed from "../../src/components/Community/CommunityFeed";
+import React from 'react';
+import CommunityFeed from '../../src/components/Community/CommunityFeed';
 
 const index = () => {
   return (

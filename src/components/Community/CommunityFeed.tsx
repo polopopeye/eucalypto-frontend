@@ -1,6 +1,6 @@
-import React from "react";
-import { Fragment } from "react";
-import { Menu, Popover, Transition } from "@headlessui/react";
+import React from 'react';
+import { Fragment } from 'react';
+import { Menu, Popover, Transition } from '@headlessui/react';
 import {
   ChatAltIcon,
   CodeIcon,
@@ -12,7 +12,7 @@ import {
   ShareIcon,
   StarIcon,
   ThumbUpIcon,
-} from "@heroicons/react/solid";
+} from '@heroicons/react/solid';
 import {
   BellIcon,
   FireIcon,
@@ -21,57 +21,57 @@ import {
   TrendingUpIcon,
   UserGroupIcon,
   XIcon,
-} from "@heroicons/react/outline";
-import EventCard from "./modules/EventCard";
-import ArticleCard from "./modules/ArticleCard";
-import FeaturedList from "./modules/featuredList/FeaturedList";
-import { classNames } from "../Utils/classnames";
+} from '@heroicons/react/outline';
+import EventCard from './modules/EventCard';
+import ArticleCard from './modules/ArticleCard';
+import FeaturedList from './modules/featuredList/FeaturedList';
+import { classNames } from '../Utils/classnames';
 
 const navigation = [
-  { name: "Home", href: "#", icon: HomeIcon, current: true },
-  { name: "Popular", href: "#", icon: FireIcon, current: false },
-  { name: "Communities", href: "#", icon: UserGroupIcon, current: false },
-  { name: "Trending", href: "#", icon: TrendingUpIcon, current: false },
+  { name: 'Home', href: '#', icon: HomeIcon, current: true },
+  { name: 'Popular', href: '#', icon: FireIcon, current: false },
+  { name: 'Communities', href: '#', icon: UserGroupIcon, current: false },
+  { name: 'Trending', href: '#', icon: TrendingUpIcon, current: false },
 ];
 
 const communities = [
-  { name: "Marketing", href: "#" },
-  { name: "Design", href: "#" },
-  { name: "Development", href: "#" },
-  { name: "Product", href: "#" },
-  { name: "Sales", href: "#" },
-  { name: "React", href: "#" },
-  { name: "Javascript", href: "#" },
-  { name: "GoLang", href: "#" },
-  { name: "NodeJS", href: "#" },
-  { name: "VueJS", href: "#" },
-  { name: "Angular", href: "#" },
-  { name: "React Native", href: "#" },
-  { name: "Flutter", href: "#" },
-  { name: "Ionic", href: "#" },
-  { name: "Electron", href: "#" },
-  { name: "PHP", href: "#" },
-  { name: "Ruby", href: "#" },
-  { name: "Python", href: "#" },
-  { name: "Java", href: "#" },
-  { name: "C++", href: "#" },
-  { name: "C#", href: "#" },
-  { name: "Swift", href: "#" },
-  { name: "Kotlin", href: "#" },
-  { name: "Rust", href: "#" },
-  { name: "Scala", href: "#" },
-  { name: "Dart", href: "#" },
-  { name: "Elixir", href: "#" },
-  { name: "Haskell", href: "#" },
-  { name: "Erlang", href: "#" },
-  { name: "Clojure", href: "#" },
-  { name: "Solidity", href: "#" },
-  { name: "CoffeeScript", href: "#" },
+  { name: 'Marketing', href: '#' },
+  { name: 'Design', href: '#' },
+  { name: 'Development', href: '#' },
+  { name: 'Product', href: '#' },
+  { name: 'Sales', href: '#' },
+  { name: 'React', href: '#' },
+  { name: 'Javascript', href: '#' },
+  { name: 'GoLang', href: '#' },
+  { name: 'NodeJS', href: '#' },
+  { name: 'VueJS', href: '#' },
+  { name: 'Angular', href: '#' },
+  { name: 'React Native', href: '#' },
+  { name: 'Flutter', href: '#' },
+  { name: 'Ionic', href: '#' },
+  { name: 'Electron', href: '#' },
+  { name: 'PHP', href: '#' },
+  { name: 'Ruby', href: '#' },
+  { name: 'Python', href: '#' },
+  { name: 'Java', href: '#' },
+  { name: 'C++', href: '#' },
+  { name: 'C#', href: '#' },
+  { name: 'Swift', href: '#' },
+  { name: 'Kotlin', href: '#' },
+  { name: 'Rust', href: '#' },
+  { name: 'Scala', href: '#' },
+  { name: 'Dart', href: '#' },
+  { name: 'Elixir', href: '#' },
+  { name: 'Haskell', href: '#' },
+  { name: 'Erlang', href: '#' },
+  { name: 'Clojure', href: '#' },
+  { name: 'Solidity', href: '#' },
+  { name: 'CoffeeScript', href: '#' },
   ,
 ];
 const tabs = [
-  { name: "Recent", href: "#", current: true },
-  { name: "Most Liked", href: "#", current: false },
+  { name: 'Recent', href: '#', current: true },
+  { name: 'Most Liked', href: '#', current: false },
 ];
 
 const CommunityFeed = () => {
@@ -82,8 +82,8 @@ const CommunityFeed = () => {
           as="div"
           className={({ open }) =>
             classNames(
-              open ? "fixed mt-32 inset-0 z-40 overflow-y-auto" : "",
-              "bg-white shadow-sm lg:static lg:overflow-y-visible"
+              open ? 'fixed mt-32 inset-0 z-40 overflow-y-auto' : '',
+              'bg-white shadow-sm lg:static lg:overflow-y-visible'
             )
           }
         >
@@ -150,12 +150,12 @@ const CommunityFeed = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      aria-current={item.current ? "page" : undefined}
+                      aria-current={item.current ? 'page' : undefined}
                       className={classNames(
                         item.current
-                          ? "bg-gray-100 text-gray-900"
-                          : "hover:bg-gray-50",
-                        "block rounded-md py-2 px-3 text-base font-medium"
+                          ? 'bg-gray-100 text-gray-900'
+                          : 'hover:bg-gray-50',
+                        'block rounded-md py-2 px-3 text-base font-medium'
                       )}
                     >
                       {item.name}
@@ -196,18 +196,18 @@ const CommunityFeed = () => {
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? "bg-gray-200 text-gray-900"
-                          : "text-gray-600 hover:bg-gray-50",
-                        "group flex items-center px-3 py-2 text-sm font-medium rounded-md"
+                          ? 'bg-gray-200 text-gray-900'
+                          : 'text-gray-600 hover:bg-gray-50',
+                        'group flex items-center px-3 py-2 text-sm font-medium rounded-md'
                       )}
-                      aria-current={item.current ? "page" : undefined}
+                      aria-current={item.current ? 'page' : undefined}
                     >
                       <item.icon
                         className={classNames(
                           item.current
-                            ? "text-gray-500"
-                            : "text-gray-400 group-hover:text-gray-500",
-                          "flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                            ? 'text-gray-500'
+                            : 'text-gray-400 group-hover:text-gray-500',
+                          'flex-shrink-0 -ml-1 mr-3 h-6 w-6'
                         )}
                         aria-hidden="true"
                       />
@@ -264,22 +264,22 @@ const CommunityFeed = () => {
                       <a
                         key={tab.name}
                         href={tab.href}
-                        aria-current={tab.current ? "page" : undefined}
+                        aria-current={tab.current ? 'page' : undefined}
                         className={classNames(
                           tab.current
-                            ? "text-gray-900"
-                            : "text-gray-500 hover:text-gray-700",
-                          tabIdx === 0 ? "rounded-l-lg" : "",
-                          tabIdx === tabs.length - 1 ? "rounded-r-lg" : "",
-                          "group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10"
+                            ? 'text-gray-900'
+                            : 'text-gray-500 hover:text-gray-700',
+                          tabIdx === 0 ? 'rounded-l-lg' : '',
+                          tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '',
+                          'group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10'
                         )}
                       >
                         <span>{tab.name}</span>
                         <span
                           aria-hidden="true"
                           className={classNames(
-                            tab.current ? "bg-primary" : "bg-transparent",
-                            "absolute inset-x-0 bottom-0 h-0.5"
+                            tab.current ? 'bg-primary' : 'bg-transparent',
+                            'absolute inset-x-0 bottom-0 h-0.5'
                           )}
                         />
                       </a>

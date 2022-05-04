@@ -1,19 +1,19 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import dashify from "dashify";
-import Link from "next/link";
-import { toast } from "react-toastify";
-import { useRouter } from "next/router";
+import React, { useState } from 'react';
+import dashify from 'dashify';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
-import { CompanyInterface } from "src/commons/companyInterface";
-import { store } from "src/app/store";
-import { filetoDataURL } from "src/components/Utils/toDataUrl";
-import deleteCompany from "src/app/backend/company/deleteCompany";
-import deleteFile from "src/app/firebase/storage/deleteFile";
-import newUpload from "src/app/firebase/storage/newUpload";
-import modifyCompany from "src/app/backend/company/modifyCompany";
+import { CompanyInterface } from 'src/commons/companyInterface';
+import { store } from 'src/app/store';
+import { filetoDataURL } from 'src/components/Utils/toDataUrl';
+import deleteCompany from 'src/app/backend/company/deleteCompany';
+import deleteFile from 'src/app/firebase/storage/deleteFile';
+import newUpload from 'src/app/firebase/storage/newUpload';
+import modifyCompany from 'src/app/backend/company/modifyCompany';
 
 const ModifyCompanyDash = (props: any) => {
   const router = useRouter();
@@ -71,8 +71,8 @@ const ModifyCompanyDash = (props: any) => {
 
                   <button
                     onClick={() => {
-                      if (document && document.getElementById("coverImg")) {
-                        document.getElementById("coverImg")!.click();
+                      if (document && document.getElementById('coverImg')) {
+                        document.getElementById('coverImg')!.click();
                       }
                     }}
                     type="button"
@@ -248,10 +248,10 @@ const ModifyCompanyDash = (props: any) => {
                 deleteCompany(company, () => {
                   deleteFile(
                     dashify((company.name as string).trim().toLowerCase()) +
-                      ".jpg",
-                    (store.getState().user.id as string) + "/company"
+                      '.jpg',
+                    (store.getState().user.id as string) + '/company'
                   );
-                  router.push("/dashboard/user");
+                  router.push('/dashboard/user');
                 });
               }}
             >
@@ -271,7 +271,7 @@ const ModifyCompanyDash = (props: any) => {
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={async () => {
-                toast.warn("Loading...");
+                toast.warn('Loading...');
 
                 if (company.createdAt) delete company.createdAt;
                 if (company.updatedAt) delete company.updatedAt;
@@ -283,19 +283,19 @@ const ModifyCompanyDash = (props: any) => {
                   await newUpload(
                     logo as string,
                     dashify((company.name as string).trim().toLowerCase()) +
-                      ".jpg",
-                    (store.getState().user.id as string) + "/company",
+                      '.jpg',
+                    (store.getState().user.id as string) + '/company',
                     (url: string) => {
                       company.coverImg = url;
 
                       modifyCompany(company, () => {
-                        router.push("/dashboard/user");
+                        router.push('/dashboard/user');
                       });
                     }
                   );
                 } else {
                   modifyCompany(company, () => {
-                    router.push("/dashboard/user");
+                    router.push('/dashboard/user');
                   });
                 }
               }}

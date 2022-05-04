@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Animator,
   batch,
@@ -11,25 +11,25 @@ import {
   Sticky,
   ZoomIn,
   ZoomOut,
-} from "react-scroll-motion";
-import Hero from "../../Hero/Hero";
-import Reviews from "../../Reviews/Reviews";
-import { Arrow } from "./ArrowImage";
-import EmptyStep from "./EmptyStep";
-import Step from "./Step";
+} from 'react-scroll-motion';
+import Hero from '../../Hero/Hero';
+import Reviews from '../../Reviews/Reviews';
+import { Arrow } from './ArrowImage';
+import EmptyStep from './EmptyStep';
+import Step from './Step';
 
 const MobileView = () => {
   const [windowWidth, setWindowWidth] = useState(0);
   const [windowHeight, setWindowHeigth] = useState(0);
 
   const stepImg = [
-    "/img/steps/1.png",
-    "/img/steps/2.png",
-    "/img/steps/3.png",
-    "/img/steps/4.png",
-    "/img/steps/5.png",
-    "/img/steps/6.png",
-    "/img/steps/7.png",
+    '/img/steps/1.png',
+    '/img/steps/2.png',
+    '/img/steps/3.png',
+    '/img/steps/4.png',
+    '/img/steps/5.png',
+    '/img/steps/6.png',
+    '/img/steps/7.png',
   ];
 
   useEffect(() => {

@@ -1,19 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import AlertMsgAlreadyApplied from "./modules/AlertMsgAlreadyApplied";
+import AlertMsgAlreadyApplied from './modules/AlertMsgAlreadyApplied';
 
-import Badges from "../Utils/categories/badges";
+import Badges from '../Utils/categories/badges';
 
-import getOfferDataFromId from "../Utils/redux/getOfferDataFromId";
+import getOfferDataFromId from '../Utils/redux/getOfferDataFromId';
 
-import retrieveJobOffers from "src/app/backend/jobOffer/retrievesJobOffer";
-import retrieveCategories from "src/app/backend/category/retrieveCategories";
-import UserStepsTimeline from "./modules/userStepsTimeline";
-import { JobOfferInterface } from "src/commons/jobOfferInterface";
-import { store } from "src/app/store";
-import JobViewHeader from "./JobViewHeader";
-import HeaderCompany from "./HeaderCompany";
+import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
+import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import UserStepsTimeline from './modules/userStepsTimeline';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
+import { store } from 'src/app/store';
+import JobViewHeader from './JobViewHeader';
+import HeaderCompany from './HeaderCompany';
 
 const JobView = (props: { offerId: string }) => {
   const { offerId } = props;
@@ -24,15 +24,15 @@ const JobView = (props: { offerId: string }) => {
 
   useEffect(() => {
     retrieveJobOffers({
-      propOrId: "published",
+      propOrId: 'published',
       value: true,
-      reduxSpace: "allJobOffers",
+      reduxSpace: 'allJobOffers',
     });
 
     retrieveCategories({
-      propToFind: "type",
-      value: "tech",
-      saveIn: "tech",
+      propToFind: 'type',
+      value: 'tech',
+      saveIn: 'tech',
     });
   }, []);
 

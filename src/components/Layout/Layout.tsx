@@ -1,9 +1,9 @@
-import { getAuth } from "firebase/auth";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { getAuth } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 
-import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
+import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
 
 type LayoutProps = {
   children?: React.ReactNode;
@@ -14,10 +14,10 @@ const Layout: React.FC = ({ children }: LayoutProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.pathname === "/search" || router.pathname === "/search/") {
-      document.body.style.overflow = "hidden";
+    if (router.pathname === '/search' || router.pathname === '/search/') {
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     }
   }, [router]);
 

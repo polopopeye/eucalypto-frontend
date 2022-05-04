@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import CompanyBubble from "./CompanyBubble";
+import CompanyBubble from './CompanyBubble';
 
 // @ts-ignore
-import BubbleUI from "react-bubble-ui";
+import BubbleUI from 'react-bubble-ui';
 // react-bubble-ui https://github.com/blakesanie/React-Bubble-UI
 
-import "react-bubble-ui/dist/index.css";
-import ModalContainer from "./ModalContainer";
-import { store } from "../../../app/store";
-import retrieveJobOffers from "../../../app/backend/jobOffer/retrievesJobOffer";
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
-import retrieveCategories from "../../../app/backend/category/retrieveCategories";
+import 'react-bubble-ui/dist/index.css';
+import ModalContainer from './ModalContainer';
+import { store } from '../../../app/store';
+import retrieveJobOffers from '../../../app/backend/jobOffer/retrievesJobOffer';
+import { JobOfferInterface } from '../../../commons/jobOfferInterface';
+import retrieveCategories from '../../../app/backend/category/retrieveCategories';
 
 const SearchDisplay = () => {
   const [jobOffers, setJobOffers] = useState(
@@ -22,15 +22,15 @@ const SearchDisplay = () => {
   });
   useEffect(() => {
     retrieveJobOffers({
-      propOrId: "published",
+      propOrId: 'published',
       value: true,
-      reduxSpace: "allJobOffers",
+      reduxSpace: 'allJobOffers',
     });
 
     retrieveCategories({
-      propToFind: "type",
-      value: "tech",
-      saveIn: "tech",
+      propToFind: 'type',
+      value: 'tech',
+      saveIn: 'tech',
     });
   }, []);
 
@@ -58,7 +58,7 @@ const SearchDisplay = () => {
       {isBrowser && (
         <BubbleUI
           style={{
-            height: innerHeight - 150 + "px",
+            height: innerHeight - 150 + 'px',
           }}
           options={{
             size: widthContainer,

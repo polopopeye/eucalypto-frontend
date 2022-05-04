@@ -72,5 +72,8 @@
   "engines": {
     "node": "17.x",
     "npm": "8.x"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }

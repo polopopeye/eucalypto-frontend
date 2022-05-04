@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { LockClosedIcon } from "@heroicons/react/outline";
-import { MailIcon } from "@heroicons/react/solid";
+import React, { useRef, useState } from 'react';
+import { Dialog } from '@headlessui/react';
+import { LockClosedIcon } from '@heroicons/react/outline';
+import { MailIcon } from '@heroicons/react/solid';
 
-import { store } from "src/app/store";
-import registerEmail from "src/app/firebase/auth/registerEmail";
-import emailRegisterModalSlice from "src/app/slices/modals/emailRegisterModalSlice";
+import { store } from 'src/app/store';
+import registerEmail from 'src/app/firebase/auth/registerEmail';
+import emailRegisterModalSlice from 'src/app/slices/modals/emailRegisterModalSlice';
 
 const RegisterWithEmail = () => {
   const [open, setOpen] = useState(

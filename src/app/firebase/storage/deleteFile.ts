@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {
   getStorage,
   ref,
   uploadString,
   getDownloadURL,
   deleteObject,
-} from "firebase/storage";
-import { toast } from "react-toastify";
+} from 'firebase/storage';
+import { toast } from 'react-toastify';
 
 export const deleteFile = async (
   fileName: string,
@@ -14,17 +14,17 @@ export const deleteFile = async (
   callback?: Function
 ) => {
   const storage = getStorage();
-  const storageRef = ref(storage, folderName + "/" + fileName);
+  const storageRef = ref(storage, folderName + '/' + fileName);
 
   deleteObject(storageRef)
     .then(() => {
-      toast.success("Deleted correctly");
-      if (typeof callback === "function") {
+      toast.success('Deleted correctly');
+      if (typeof callback === 'function') {
         callback();
       }
     })
     .catch((error) => {
-      toast.error("Error Deleting file");
+      toast.error('Error Deleting file');
     });
 };
 

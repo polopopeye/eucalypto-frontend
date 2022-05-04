@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { UserInterface } from "src/commons/userInterface";
+import { createSlice } from '@reduxjs/toolkit';
+import { UserInterface } from 'src/commons/userInterface';
 
 const user: UserInterface = {
-  id: "",
+  id: '',
   email: undefined,
   coverImg: undefined,
   displayName: undefined,
@@ -12,13 +12,13 @@ const user: UserInterface = {
   web: undefined,
   linkedIn: undefined,
   location: undefined,
-  role: "talent",
+  role: 'talent',
   languages: [],
   categories: [],
 };
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: user,
   reducers: {
     setData: (state, action) => {

@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import CategoryBar from "./modules/categoryBar";
-import InputSearcher from "./modules/InputSearcher";
-import SearchDisplay from "./modules/SearchDisplay";
+import CategoryBar from './modules/categoryBar';
+import InputSearcher from './modules/InputSearcher';
+import SearchDisplay from './modules/SearchDisplay';
 
 const SearcherPositions = () => {
   return (

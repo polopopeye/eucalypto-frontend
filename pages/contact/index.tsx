@@ -1,5 +1,5 @@
-import React from "react";
-import Contact from "../../src/components/Contact/Contact";
+import React from 'react';
+import Contact from '../../src/components/Contact/Contact';
 
 function contact() {
   return (

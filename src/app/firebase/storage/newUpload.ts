@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import {
   getStorage,
   ref,
   uploadString,
   getDownloadURL,
-} from "firebase/storage";
-import { toast } from "react-toastify";
+} from 'firebase/storage';
+import { toast } from 'react-toastify';
 
 export const newUpload = async (
   data_url: string,
@@ -14,20 +14,20 @@ export const newUpload = async (
   callback?: Function
 ) => {
   const storage = getStorage();
-  const storageRef = ref(storage, folderName + "/" + fileName);
+  const storageRef = ref(storage, folderName + '/' + fileName);
 
-  await uploadString(storageRef, data_url, "data_url").then((snapshot) => {
+  await uploadString(storageRef, data_url, 'data_url').then((snapshot) => {
     snapshot.ref;
-    console.log("Uploaded a base64 string!");
+    console.log('Uploaded a base64 string!');
     getDownloadURL(snapshot.ref)
       .then((url) => {
-        toast.success("Uploaded correctly");
-        if (typeof callback === "function") {
+        toast.success('Uploaded correctly');
+        if (typeof callback === 'function') {
           callback(url);
         }
       })
       .catch((error) => {
-        toast.error("Error uploading file");
+        toast.error('Error uploading file');
       });
   });
 };

@@ -1,5 +1,5 @@
-import { ChatAltIcon, EyeIcon } from "@heroicons/react/outline";
-import React from "react";
+import { ChatAltIcon, EyeIcon } from '@heroicons/react/outline';
+import React from 'react';
 
 interface TrendingCardProps {
   src: string;

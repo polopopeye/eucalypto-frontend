@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
-import { store } from "src/app/store";
+import { store } from 'src/app/store';
 
-import ModifyCompanyDash from "src/components/Dashboard/companies/ModifyCompanyDash";
-import getCompanyDataFromId from "src/components/Utils/redux/getCompanyDataFromId";
+import ModifyCompanyDash from 'src/components/Dashboard/companies/ModifyCompanyDash';
+import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
 
 const ModifyCompanyPage = () => {
   const router = useRouter();
@@ -23,7 +23,7 @@ const ModifyCompanyPage = () => {
       setIsLogedIn(true);
     } else {
       setIsLogedIn(false);
-      router.push("/signin");
+      router.push('/signin');
     }
   });
 

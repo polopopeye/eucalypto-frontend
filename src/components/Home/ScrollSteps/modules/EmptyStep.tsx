@@ -1,6 +1,6 @@
 // Due limitations of lib this component is an empty step and not a real one.
-import React from "react";
-import { Animator, FadeIn, ScrollPage } from "react-scroll-motion";
+import React from 'react';
+import { Animator, FadeIn, ScrollPage } from 'react-scroll-motion';
 
 interface EmptyStepProps {
   page: number;

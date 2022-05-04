@@ -1,20 +1,20 @@
-import axios from "axios";
-import { toast } from "react-toastify";
-import { CompanyInterface } from "../../../commons/companyInterface";
-import { api } from "../apiEndPoints";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { CompanyInterface } from '../../../commons/companyInterface';
+import { api } from '../apiEndPoints';
 
-import retrieveCompanyByOwner from "./retrieveCompaniesByOwner";
-import { store } from "../../store";
+import retrieveCompanyByOwner from './retrieveCompaniesByOwner';
+import { store } from '../../store';
 
 const deleteCompany = (companyData: CompanyInterface, next?: Function) => {
   axios
-    .delete(api.company + "/" + companyData.id)
+    .delete(api.company + '/' + companyData.id)
     .then((response) => {
       console.log(
-        "🚀 ~ file: deleteCompany.ts ~ line 14 ~ .then ~ response",
+        '🚀 ~ file: deleteCompany.ts ~ line 14 ~ .then ~ response',
         response
       );
-      toast.success("Company deleted Successfully");
+      toast.success('Company deleted Successfully');
       retrieveCompanyByOwner(store.getState().user?.id as string, next);
     })
     .catch((err) => {

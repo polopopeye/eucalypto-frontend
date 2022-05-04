@@ -1,8 +1,8 @@
-import React from "react";
-import Flickity from "react-flickity-component";
+import React from 'react';
+import Flickity from 'react-flickity-component';
 
-import TextHeader from "src/components/Utils/TextHeader/TextHeader";
-import ReviewCard from "./modules/ReviewCard";
+import TextHeader from 'src/components/Utils/TextHeader/TextHeader';
+import ReviewCard from './modules/ReviewCard';
 
 const Reviews = () => {
   const flickityOptions = {
@@ -20,8 +20,8 @@ const Reviews = () => {
       />
 
       <Flickity
-        className={"carousel"} // default ''
-        elementType={"div"} // default 'div'
+        className={'carousel'} // default ''
+        elementType={'div'} // default 'div'
         options={flickityOptions} // takes flickity options {}
         disableImagesLoaded={false} // default false
         reloadOnUpdate // default false

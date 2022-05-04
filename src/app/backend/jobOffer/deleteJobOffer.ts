@@ -1,24 +1,24 @@
-import axios from "axios";
-import { toast } from "react-toastify";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-import { api } from "../apiEndPoints";
-import qs from "qs";
+import { api } from '../apiEndPoints';
+import qs from 'qs';
 
-import { CategoryInterface } from "../../../commons/categoryInterface";
+import { CategoryInterface } from '../../../commons/categoryInterface';
 
-import retrieveJobOffers from "./retrievesJobOffer";
-import { store } from "../../store";
+import retrieveJobOffers from './retrievesJobOffer';
+import { store } from '../../store';
 
 const deleteJobOffer = (jobOfferData: CategoryInterface, next?: Function) => {
   axios
-    .delete(api.jobOffers + "/" + jobOfferData.id)
+    .delete(api.jobOffers + '/' + jobOfferData.id)
     .then((response) => {
-      toast.success("Job Offer Deleted Successfully");
+      toast.success('Job Offer Deleted Successfully');
 
-      if (store.getState().user?.role === "admin") {
+      if (store.getState().user?.role === 'admin') {
         retrieveJobOffers(
           {
-            propOrId: "published",
+            propOrId: 'published',
             value: true,
           },
           next
@@ -26,7 +26,7 @@ const deleteJobOffer = (jobOfferData: CategoryInterface, next?: Function) => {
       } else {
         retrieveJobOffers(
           {
-            propOrId: "aplicants",
+            propOrId: 'aplicants',
             value: store.getState().user?.id as string,
           },
           next

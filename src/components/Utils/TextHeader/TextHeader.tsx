@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface TextHeaderProps {
   category?: string;
@@ -11,7 +11,7 @@ const TextHeader = (props: TextHeaderProps) => {
   const { title, category, description, className } = props;
 
   return (
-    <div className={" lg:text-center p-4" + className}>
+    <div className={' lg:text-center p-4' + className}>
       <h2 className="text-base text-primary font-bold tracking-wide uppercase">
         {category}
       </h2>

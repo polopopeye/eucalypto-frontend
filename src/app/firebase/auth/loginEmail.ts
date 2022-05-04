@@ -1,13 +1,13 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { toast } from "react-toastify";
-import { errors } from "../constants";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { toast } from 'react-toastify';
+import { errors } from '../constants';
 
 const loginEmail = async (email: string | null, password: string | null) => {
   const auth = getAuth();
   if (email && password) {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        toast.success("Successfully Logged In");
+        toast.success('Successfully Logged In');
         const user = userCredential.user;
         return user;
       })

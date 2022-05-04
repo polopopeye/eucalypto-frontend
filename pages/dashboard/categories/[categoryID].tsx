@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { store } from "../../../src/app/store";
-import { CategoryInterface } from "../../../src/commons/categoryInterface";
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { store } from '../../../src/app/store';
+import { CategoryInterface } from '../../../src/commons/categoryInterface';
 
-import ModifyCategory from "../../../src/components/Dashboard/categories/modifyCategory";
+import ModifyCategory from '../../../src/components/Dashboard/categories/modifyCategory';
 
 const ModifyCompanyPage = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const ModifyCompanyPage = () => {
       setIsLogedIn(true);
     } else {
       setIsLogedIn(false);
-      router.push("/signin");
+      router.push('/signin');
     }
   });
 

@@ -1,7 +1,7 @@
-import { getAuth } from "firebase/auth";
+import { getAuth } from 'firebase/auth';
 
-import React, { useEffect, useState } from "react";
-import retrieveUserInfo from "src/app/backend/users/retrieveUserInfo";
+import React, { useEffect, useState } from 'react';
+import retrieveUserInfo from 'src/app/backend/users/retrieveUserInfo';
 
 const useCheckUserInfo = () => {
   const [loading, setLoading] = useState(true);

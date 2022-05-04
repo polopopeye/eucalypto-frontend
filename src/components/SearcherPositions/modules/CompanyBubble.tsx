@@ -1,25 +1,25 @@
-import React from "react";
+import React from 'react';
 
-import jobModalSlice from "src/app/slices/modals/jobModalSlice";
-import { JobOfferInterface } from "src/commons/jobOfferInterface";
-import { store } from "src/app/store";
-import Badges from "src/components/Utils/categories/badges";
+import jobModalSlice from 'src/app/slices/modals/jobModalSlice';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
+import { store } from 'src/app/store';
+import Badges from 'src/components/Utils/categories/badges';
 
 export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
   const { jobOffer } = prop;
   console.log(
-    "🚀 ~ file: CompanyBubble.tsx ~ line 12 ~ CompanyBubble ~ jobOffer",
+    '🚀 ~ file: CompanyBubble.tsx ~ line 12 ~ CompanyBubble ~ jobOffer',
     jobOffer
   );
   const bubbleSize = 0;
-  const textColor = "red";
+  const textColor = 'red';
   return (
     <div
       style={{
-        backgroundColor: "black",
-        cursor: "pointer",
+        backgroundColor: 'black',
+        cursor: 'pointer',
       }}
-      className={"companyBubble"}
+      className={'companyBubble'}
       onClick={() => {
         store.dispatch(
           jobModalSlice.actions.setData({ isOpen: true, data: jobOffer })
@@ -28,13 +28,13 @@ export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          alignSelf: "center",
-          height: "100%",
-          flexDirection: "column",
-          transition: "opacity 0.1s ease",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignSelf: 'center',
+          height: '100%',
+          flexDirection: 'column',
+          transition: 'opacity 0.1s ease',
         }}
       >
         <p
@@ -44,7 +44,7 @@ export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
             marginBottom: 6,
             fontWeight: 1000,
             maxWidth: 150,
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
           {jobOffer.name}
@@ -54,7 +54,7 @@ export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
             color: textColor,
             fontSize: 14,
 
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
           {jobOffer.salary}
@@ -64,7 +64,7 @@ export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
           style={{
             color: textColor,
             fontSize: 11,
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
           <Badges categoriesId={jobOffer.categories as Array<string>} />

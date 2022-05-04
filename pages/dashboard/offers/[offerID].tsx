@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import ModifyJobOffer from "src/components/Dashboard/jobOffers/modifyJobOffer";
-import { store } from "../../../src/app/store";
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import ModifyJobOffer from 'src/components/Dashboard/jobOffers/modifyJobOffer';
+import { store } from '../../../src/app/store';
 
-import { JobOfferInterface } from "../../../src/commons/jobOfferInterface";
+import { JobOfferInterface } from '../../../src/commons/jobOfferInterface';
 
 const ModifyJobOfferPage = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const ModifyJobOfferPage = () => {
       setIsLogedIn(true);
     } else {
       setIsLogedIn(false);
-      router.push("/signin");
+      router.push('/signin');
     }
   });
 

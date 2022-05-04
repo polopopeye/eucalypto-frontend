@@ -1,5 +1,5 @@
-import { ChatAltIcon, EyeIcon, ThumbUpIcon } from "@heroicons/react/outline";
-import React from "react";
+import { ChatAltIcon, EyeIcon, ThumbUpIcon } from '@heroicons/react/outline';
+import React from 'react';
 
 const FooterCard = (props: { type: any }) => {
   const { type } = props;

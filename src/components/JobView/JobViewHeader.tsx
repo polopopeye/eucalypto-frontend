@@ -4,10 +4,10 @@ import {
   CheckIcon,
   CurrencyDollarIcon,
   LocationMarkerIcon,
-} from "@heroicons/react/solid";
+} from '@heroicons/react/solid';
 
-import Link from "next/link";
-import { JobOfferInterface } from "src/commons/jobOfferInterface";
+import Link from 'next/link';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 
 export default function JobViewHeader(props: {
   alreadyApplied: any;
@@ -36,7 +36,7 @@ export default function JobViewHeader(props: {
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            {jobOffer.remote ? "Remote" : "Local"}
+            {jobOffer.remote ? 'Remote' : 'Local'}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CurrencyDollarIcon

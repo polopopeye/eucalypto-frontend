@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import DesktopView from "./modules/DesktopView";
+import DesktopView from './modules/DesktopView';
 
-import MobileView from "./modules/MobileView";
+import MobileView from './modules/MobileView';
 
 const ScrollSteps = () => {
   const [isBrowser, setIsBrowser] = useState(false);

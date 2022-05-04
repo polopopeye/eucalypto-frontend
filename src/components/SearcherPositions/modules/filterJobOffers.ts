@@ -1,25 +1,25 @@
-import filteredJobOffersSlice from "src/app/slices/jobs/filterJobOffersSlice";
-import { store } from "src/app/store";
+import filteredJobOffersSlice from 'src/app/slices/jobs/filterJobOffersSlice';
+import { store } from 'src/app/store';
 
 export const filterJobOffers = (valueToSearch: string) => {
   const jobOffers = store.getState().jobs.allJobOffers;
 
   const filterByProps = [
-    "name",
-    "id",
-    "description",
-    "job",
-    "location",
-    "remote",
-    "salary",
-    "categories",
-    "NOT_FOUND",
+    'name',
+    'id',
+    'description',
+    'job',
+    'location',
+    'remote',
+    'salary',
+    'categories',
+    'NOT_FOUND',
   ];
 
   for (let i = 0; i < filterByProps.length; i++) {
     const prop = filterByProps[i];
 
-    if (prop === "NOT_FOUND") {
+    if (prop === 'NOT_FOUND') {
       store.dispatch(filteredJobOffersSlice.actions.setData([]));
       return;
     }

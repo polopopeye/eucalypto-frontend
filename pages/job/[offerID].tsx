@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
-import React from "react";
-import JobView from "src/components/JobView/JobView";
+import { useRouter } from 'next/router';
+import React from 'react';
+import JobView from 'src/components/JobView/JobView';
 
 const Job = () => {
   const router = useRouter();

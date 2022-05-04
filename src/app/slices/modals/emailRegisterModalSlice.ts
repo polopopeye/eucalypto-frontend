@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const emailRegisterModalSlice = createSlice({
-  name: "emailRegisterModal",
+  name: 'emailRegisterModal',
   initialState: {
     isOpen: false,
     data: {},

@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { GlobeAltIcon, StarIcon } from "@heroicons/react/outline";
-import React, { useEffect, useState } from "react";
-import retrieveAllCompanies from "src/app/backend/company/retrieveCompanies";
-import { store } from "src/app/store";
-import getCompanyDataFromId from "../Utils/redux/getCompanyDataFromId";
+import { GlobeAltIcon, StarIcon } from '@heroicons/react/outline';
+import React, { useEffect, useState } from 'react';
+import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
+import { store } from 'src/app/store';
+import getCompanyDataFromId from '../Utils/redux/getCompanyDataFromId';
 
 const HeaderCompany = (props: { companyId: string }) => {
   const { companyId } = props;
@@ -41,7 +41,7 @@ const HeaderCompany = (props: { companyId: string }) => {
               {company.web && (
                 <div>
                   <a
-                    target={"_blank"}
+                    target={'_blank'}
                     href={company.web}
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     rel="noreferrer"
@@ -55,7 +55,7 @@ const HeaderCompany = (props: { companyId: string }) => {
               {company.linkedIn && (
                 <div>
                   <a
-                    target={"_blank"}
+                    target={'_blank'}
                     href={company.linkedIn}
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     rel="noreferrer"

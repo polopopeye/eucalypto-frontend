@@ -1,21 +1,21 @@
-import axios from "axios";
-import { toast } from "react-toastify";
-import { CategoryInterface } from "src/commons/categoryInterface";
-import { api } from "../apiEndPoints";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { CategoryInterface } from 'src/commons/categoryInterface';
+import { api } from '../apiEndPoints';
 
-import retrieveCategories from "./retrieveCategories";
+import retrieveCategories from './retrieveCategories';
 
 const deleteCategory = (categoryData: CategoryInterface, next?: Function) => {
   axios
-    .delete(api.categories + "/" + categoryData.id)
+    .delete(api.categories + '/' + categoryData.id)
     .then((response) => {
-      toast.success("Category Deleted Successfully");
+      toast.success('Category Deleted Successfully');
 
       retrieveCategories(
         {
-          propToFind: "type",
-          value: "tech",
-          saveIn: "tech",
+          propToFind: 'type',
+          value: 'tech',
+          saveIn: 'tech',
         },
         next
       );

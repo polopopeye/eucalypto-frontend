@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import retrieveCategories from "../../../app/backend/category/retrieveCategories";
-import { store } from "../../../app/store";
-import { CategoryInterface } from "../../../commons/categoryInterface";
+import React, { useEffect, useState } from 'react';
+import retrieveCategories from '../../../app/backend/category/retrieveCategories';
+import { store } from '../../../app/store';
+import { CategoryInterface } from '../../../commons/categoryInterface';
 
 const Badges = (props: { categoriesId?: Array<string> }) => {
   const { categoriesId } = props;
@@ -39,9 +39,9 @@ const Badges = (props: { categoriesId?: Array<string> }) => {
       });
     } else {
       retrieveCategories({
-        propToFind: "type",
-        value: "tech",
-        saveIn: "tech",
+        propToFind: 'type',
+        value: 'tech',
+        saveIn: 'tech',
       });
     }
   }, []);

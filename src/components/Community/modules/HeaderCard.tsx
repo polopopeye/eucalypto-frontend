@@ -1,12 +1,12 @@
-import { Menu } from "@headlessui/react";
+import { Menu } from '@headlessui/react';
 import {
   CodeIcon,
   DotsVerticalIcon,
   FlagIcon,
   StarIcon,
-} from "@heroicons/react/outline";
-import React from "react";
-import { classNames } from "../../Utils/classnames";
+} from '@heroicons/react/outline';
+import React from 'react';
+import { classNames } from '../../Utils/classnames';
 
 const HeaderCard = () => {
   return (
@@ -21,7 +21,7 @@ const HeaderCard = () => {
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium text-gray-900">
-            <a href={"#"} className="hover:underline">
+            <a href={'#'} className="hover:underline">
               EU-Startups
             </a>
           </p>
@@ -47,8 +47,8 @@ const HeaderCard = () => {
                     <a
                       href="#"
                       className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "flex px-4 py-2 text-sm"
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'flex px-4 py-2 text-sm'
                       )}
                     >
                       <StarIcon
@@ -64,8 +64,8 @@ const HeaderCard = () => {
                     <a
                       href="#"
                       className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "flex px-4 py-2 text-sm"
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'flex px-4 py-2 text-sm'
                       )}
                     >
                       <CodeIcon
@@ -81,8 +81,8 @@ const HeaderCard = () => {
                     <a
                       href="#"
                       className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "flex px-4 py-2 text-sm"
+                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        'flex px-4 py-2 text-sm'
                       )}
                     >
                       <FlagIcon

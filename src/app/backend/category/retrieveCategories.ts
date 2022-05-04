@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { store } from "../../store";
-import { api } from "../apiEndPoints";
-import { toast } from "react-toastify";
-import categorySlice from "../../slices/categories/categorySlice";
+import { store } from '../../store';
+import { api } from '../apiEndPoints';
+import { toast } from 'react-toastify';
+import categorySlice from '../../slices/categories/categorySlice';
 
 interface retrieveCategories {
   propToFind: string;
@@ -13,7 +13,7 @@ interface retrieveCategories {
 
 const retrieveCategories = (props: retrieveCategories, next?: Function) => {
   const { propToFind, value, saveIn } = props;
-  const url = api.categories + "/" + propToFind + "/" + value;
+  const url = api.categories + '/' + propToFind + '/' + value;
 
   axios
     .get(url)
@@ -41,13 +41,13 @@ const retrieveCategories = (props: retrieveCategories, next?: Function) => {
 
       store.dispatch(categorySlice.actions.setData(dataToAppend));
 
-      if (typeof next === "function") {
+      if (typeof next === 'function') {
         next(response);
       }
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Error retrieving user info");
+      toast.error('Error retrieving user info');
     });
 };
 

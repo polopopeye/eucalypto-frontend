@@ -1,4 +1,4 @@
-import { Menu } from "@headlessui/react";
+import { Menu } from '@headlessui/react';
 import {
   ChatAltIcon,
   CodeIcon,
@@ -7,10 +7,10 @@ import {
   FlagIcon,
   StarIcon,
   ThumbUpIcon,
-} from "@heroicons/react/outline";
-import React from "react";
-import FooterCard from "./FooterCard";
-import HeaderCard from "./HeaderCard";
+} from '@heroicons/react/outline';
+import React from 'react';
+import FooterCard from './FooterCard';
+import HeaderCard from './HeaderCard';
 
 const EventCard = () => {
   return (

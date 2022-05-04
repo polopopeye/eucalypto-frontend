@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ReduxCategoriesInterface } from "src/commons/categoryInterface";
+import { createSlice } from '@reduxjs/toolkit';
+import { ReduxCategoriesInterface } from 'src/commons/categoryInterface';
 
 const categoryRedux: ReduxCategoriesInterface = {
   tech: [],
 };
 
 const categorySlice = createSlice({
-  name: "category",
+  name: 'category',
   initialState: categoryRedux,
   reducers: {
     setData: (state, action) => {

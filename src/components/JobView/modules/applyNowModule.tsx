@@ -1,6 +1,6 @@
-import { CheckIcon } from "@heroicons/react/outline";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { CheckIcon } from '@heroicons/react/outline';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const applyNowModule = () => {
   const [alreadyApplied, setAlreadyApplied] = useState(true);

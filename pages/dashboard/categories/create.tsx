@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { store } from "../../../src/app/store";
-import CreateNewCategory from "../../../src/components/Dashboard/categories/createNewCategory";
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { store } from '../../../src/app/store';
+import CreateNewCategory from '../../../src/components/Dashboard/categories/createNewCategory';
 
 const CreateNewCategoryPage = () => {
   const [isLogedIn, setIsLogedIn] = useState(
@@ -14,7 +14,7 @@ const CreateNewCategoryPage = () => {
       setIsLogedIn(true);
     } else {
       setIsLogedIn(false);
-      router.push("/signin");
+      router.push('/signin');
     }
   });
 

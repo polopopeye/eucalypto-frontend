@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Footer = () => {
   return (
@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="flex  mx-auto w-full place-content-center mt-16 pb-16">
         <div className="text-footerBrand  px-1 mx-1 text-xs">
           Hi Im a footer
-        </div>{" "}
+        </div>{' '}
         yes
       </div>
     </div>

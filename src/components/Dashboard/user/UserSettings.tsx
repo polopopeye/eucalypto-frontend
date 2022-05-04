@@ -1,18 +1,18 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
 
-import { UserInterface } from "src/commons/userInterface";
-import { store } from "src/app/store";
-import retrieveCategories from "src/app/backend/category/retrieveCategories";
-import { filetoDataURL } from "src/components/Utils/toDataUrl";
-import MultipleSelect from "src/components/Utils/MultipleSelect";
-import openFileInNewWindow from "src/components/Utils/openFileInNewWindow";
-import newUpload from "src/app/firebase/storage/newUpload";
-import modifyUserInBackend from "src/app/backend/users/modifyUserInBackend";
+import { UserInterface } from 'src/commons/userInterface';
+import { store } from 'src/app/store';
+import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import { filetoDataURL } from 'src/components/Utils/toDataUrl';
+import MultipleSelect from 'src/components/Utils/MultipleSelect';
+import openFileInNewWindow from 'src/components/Utils/openFileInNewWindow';
+import newUpload from 'src/app/firebase/storage/newUpload';
+import modifyUserInBackend from 'src/app/backend/users/modifyUserInBackend';
 
 const UserSettings = () => {
   let user: UserInterface = { ...store.getState().user };
@@ -28,9 +28,9 @@ const UserSettings = () => {
   );
   useEffect(() => {
     retrieveCategories({
-      propToFind: "type",
-      value: "tech",
-      saveIn: "tech",
+      propToFind: 'type',
+      value: 'tech',
+      saveIn: 'tech',
     });
   }, []);
   store.subscribe(() => {
@@ -82,8 +82,8 @@ const UserSettings = () => {
 
                   <button
                     onClick={() => {
-                      if (document && document.getElementById("avatar")) {
-                        document.getElementById("avatar")!.click();
+                      if (document && document.getElementById('avatar')) {
+                        document.getElementById('avatar')!.click();
                       }
                     }}
                     type="button"
@@ -149,9 +149,9 @@ const UserSettings = () => {
                     setVariant={setLangs}
                     variant={langs}
                     children={[
-                      { value: "english", label: "english" },
-                      { value: "español", label: "español" },
-                      { value: "catalan", label: "catalan" },
+                      { value: 'english', label: 'english' },
+                      { value: 'español', label: 'español' },
+                      { value: 'catalan', label: 'catalan' },
                     ]}
                   />
                 </div>
@@ -353,8 +353,8 @@ const UserSettings = () => {
 
                   <button
                     onClick={(e) => {
-                      if (document && document.getElementById("curriculum")) {
-                        document.getElementById("curriculum")!.click();
+                      if (document && document.getElementById('curriculum')) {
+                        document.getElementById('curriculum')!.click();
                       }
                     }}
                     type="button"
@@ -393,7 +393,7 @@ const UserSettings = () => {
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
-                toast.warn("Loading...");
+                toast.warn('Loading...');
                 if (user.createdAt) delete user.createdAt;
                 if (user.updatedAt) delete user.updatedAt;
                 user.languages = langs;
@@ -403,7 +403,7 @@ const UserSettings = () => {
                   if (newCoverImgUpload) {
                     newUpload(
                       avatar as string,
-                      "profile.jpg",
+                      'profile.jpg',
                       user.id as string,
                       (url: string) => {
                         user.coverImg = url;
@@ -418,7 +418,7 @@ const UserSettings = () => {
                 if (newCurriculumUpload) {
                   newUpload(
                     curriculum as string,
-                    "curriculum.pdf",
+                    'curriculum.pdf',
                     user.id as string,
                     (url: string) => {
                       user.curriculum = url;

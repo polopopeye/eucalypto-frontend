@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { toast } from "react-toastify";
-import { Switch } from "@headlessui/react";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
+import { Switch } from '@headlessui/react';
+import { useRouter } from 'next/router';
 
-import { JobOfferInterface } from "src/commons/jobOfferInterface";
-import { store } from "src/app/store";
-import retrieveCategories from "src/app/backend/category/retrieveCategories";
-import retrieveCompanyByOwner from "src/app/backend/company/retrieveCompaniesByOwner";
-import { CompanyInterface } from "src/commons/companyInterface";
-import { classNames } from "src/components/Utils/classnames";
-import MultipleSelect from "src/components/Utils/MultipleSelect";
-import registerJobOffer from "src/app/backend/jobOffer/registerJobOffer";
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
+import { store } from 'src/app/store';
+import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import retrieveCompanyByOwner from 'src/app/backend/company/retrieveCompaniesByOwner';
+import { CompanyInterface } from 'src/commons/companyInterface';
+import { classNames } from 'src/components/Utils/classnames';
+import MultipleSelect from 'src/components/Utils/MultipleSelect';
+import registerJobOffer from 'src/app/backend/jobOffer/registerJobOffer';
 
 const CreateNewJobOffer = () => {
   const router = useRouter();
@@ -35,9 +35,9 @@ const CreateNewJobOffer = () => {
 
   useEffect(() => {
     retrieveCategories({
-      propToFind: "type",
-      value: "tech",
-      saveIn: "tech",
+      propToFind: 'type',
+      value: 'tech',
+      saveIn: 'tech',
     });
     retrieveCompanyByOwner(store.getState().user.id as string);
   }, []);
@@ -200,15 +200,15 @@ const CreateNewJobOffer = () => {
                       setIsRemote(e.valueOf());
                     }}
                     className={classNames(
-                      isRemote ? "bg-indigo-600" : "bg-gray-800",
-                      "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      isRemote ? 'bg-indigo-600' : 'bg-gray-800',
+                      'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
                     )}
                   >
                     <span
                       aria-hidden="true"
                       className={classNames(
-                        isRemote ? "translate-x-5" : "translate-x-0",
-                        "pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                        isRemote ? 'translate-x-5' : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
                       )}
                     />
                   </Switch>
@@ -293,14 +293,14 @@ const CreateNewJobOffer = () => {
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
-                toast.warn("Loading...");
+                toast.warn('Loading...');
                 jobOffer.deadLine = deadLine;
 
                 jobOffer.remote = isRemote;
                 jobOffer.categories = techs;
                 jobOffer.published = false;
                 registerJobOffer(jobOffer, () => {
-                  router.push("/dashboard/user");
+                  router.push('/dashboard/user');
                 });
               }}
             >
@@ -310,14 +310,14 @@ const CreateNewJobOffer = () => {
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
-                toast.warn("Loading...");
+                toast.warn('Loading...');
                 jobOffer.deadLine = deadLine;
 
                 jobOffer.remote = isRemote;
                 jobOffer.categories = techs;
                 jobOffer.published = true;
                 registerJobOffer(jobOffer, () => {
-                  router.push("/dashboard/user");
+                  router.push('/dashboard/user');
                 });
               }}
             >

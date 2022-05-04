@@ -1,7 +1,7 @@
-import React from "react";
-import { store } from "../../../app/store";
+import React from 'react';
+import { store } from '../../../app/store';
 
-import { JobOfferInterface } from "../../../commons/jobOfferInterface";
+import { JobOfferInterface } from '../../../commons/jobOfferInterface';
 
 const getOfferDataFromId = (offerId: string) => {
   const jobOffer = store

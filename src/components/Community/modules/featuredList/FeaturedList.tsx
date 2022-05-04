@@ -1,6 +1,6 @@
-import React from "react";
-import TrendingCard from "./TrendingCard";
-import ViewAllBtn from "./ViewAllBtn";
+import React from 'react';
+import TrendingCard from './TrendingCard';
+import ViewAllBtn from './ViewAllBtn';
 
 const FeaturedList = () => {
   return (

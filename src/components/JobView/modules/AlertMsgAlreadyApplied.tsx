@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { CheckCircleIcon } from "@heroicons/react/solid";
+import React, { useState } from 'react';
+import { CheckCircleIcon } from '@heroicons/react/solid';
 
 const AlertMsgAlreadyApplied = () => {
   return (

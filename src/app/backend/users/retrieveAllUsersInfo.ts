@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { store } from "../../store";
-import { api } from "../apiEndPoints";
-import { toast } from "react-toastify";
-import usersSlice from "../../slices/user/usersSlice";
+import { store } from '../../store';
+import { api } from '../apiEndPoints';
+import { toast } from 'react-toastify';
+import usersSlice from '../../slices/user/usersSlice';
 
 const retrieveAllUsersInfo = (next?: Function) => {
   const url = api.user;
@@ -12,13 +12,13 @@ const retrieveAllUsersInfo = (next?: Function) => {
     .get(url)
     .then((response) => {
       store.dispatch(usersSlice.actions.setData(response.data));
-      if (typeof next === "function") {
+      if (typeof next === 'function') {
         next(response.data);
       }
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Error retrieving all the users info");
+      toast.error('Error retrieving all the users info');
     });
 };
 

@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import { Disclosure, Menu } from "@headlessui/react";
-import { MenuIcon, UserIcon, XIcon } from "@heroicons/react/outline";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import logOut from "src/app/firebase/auth/logOut";
-import { store } from "src/app/store";
-import { UserInterface } from "src/commons/userInterface";
-import { classNames } from "../Utils/classnames";
+import { Disclosure, Menu } from '@headlessui/react';
+import { MenuIcon, UserIcon, XIcon } from '@heroicons/react/outline';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import logOut from 'src/app/firebase/auth/logOut';
+import { store } from 'src/app/store';
+import { UserInterface } from 'src/commons/userInterface';
+import { classNames } from '../Utils/classnames';
 
-import NavButton from "./modules/NavButton";
+import NavButton from './modules/NavButton';
 
 export default function Navbar() {
   const [isLogedIn, setIsLogedIn] = useState(false);
@@ -75,8 +75,8 @@ export default function Navbar() {
                             <Link href="/dashboard/user/">
                               <a
                                 className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-gray-700'
                                 )}
                               >
                                 Your Dashboard
@@ -89,8 +89,8 @@ export default function Navbar() {
                             <Link href="/dashboard/user/settings">
                               <a
                                 className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-gray-700'
                                 )}
                               >
                                 Settings
@@ -105,8 +105,8 @@ export default function Navbar() {
                                 logOut();
                               }}
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
                               Sign out
@@ -117,11 +117,11 @@ export default function Navbar() {
                     ) : (
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href={"/signin"}>
+                          <Link href={'/signin'}>
                             <a
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
                               SignIn / Login

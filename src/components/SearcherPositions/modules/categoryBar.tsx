@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { store } from "src/app/store";
-import { classNames } from "src/components/Utils/classnames";
-import { filterJobOffers } from "./filterJobOffers";
+import { store } from 'src/app/store';
+import { classNames } from 'src/components/Utils/classnames';
+import { filterJobOffers } from './filterJobOffers';
 
 const CategoryBar = () => {
   const techs = store.getState().category.tech;
@@ -10,7 +10,7 @@ const CategoryBar = () => {
   return (
     <>
       <h1 className="  font-bold text-lg pl-4">Search by tech:</h1>
-      <div style={{ zoom: "1.5" }}>
+      <div style={{ zoom: '1.5' }}>
         {techs?.map((tech, i) => (
           <span
             onClick={() => {
@@ -18,7 +18,7 @@ const CategoryBar = () => {
             }}
             key={i}
             className={classNames(
-              "bg-quaternary text-primary cursor-pointer  m-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium"
+              'bg-quaternary text-primary cursor-pointer  m-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium'
             )}
           >
             <svg

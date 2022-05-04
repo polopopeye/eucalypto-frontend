@@ -1,6 +1,6 @@
-import React from "react";
-import { store } from "../../../app/store";
-import { CompanyInterface } from "../../../commons/companyInterface";
+import React from 'react';
+import { store } from '../../../app/store';
+import { CompanyInterface } from '../../../commons/companyInterface';
 
 const getCompanyDataFromId = (companyId: string) => {
   const company = store

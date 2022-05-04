@@ -1,5 +1,5 @@
-import React from "react";
-import Select, { Option } from "rc-select";
+import React from 'react';
+import Select, { Option } from 'rc-select';
 
 const MultipleSelect = (props: {
   children: Array<object>;
@@ -8,10 +8,10 @@ const MultipleSelect = (props: {
 }) => {
   const { children, setVariant, variant } = props;
 
-  const randomClassName = Object.keys({ variant })[0] + "className";
+  const randomClassName = Object.keys({ variant })[0] + 'className';
 
   console.log(
-    "🚀 ~ file: MultipleSelect.tsx ~ line 12 ~ randomClassName",
+    '🚀 ~ file: MultipleSelect.tsx ~ line 12 ~ randomClassName',
     randomClassName
   );
   const handleOnblur = () => {
@@ -24,7 +24,7 @@ const MultipleSelect = (props: {
           .getElementsByClassName(randomClassName)
           .item(0)! as any;
 
-        ele.style.display = "none";
+        ele.style.display = 'none';
       }
     }
   };
@@ -38,7 +38,7 @@ const MultipleSelect = (props: {
         const ele = document
           .getElementsByClassName(randomClassName)
           .item(0)! as any;
-        ele.style.display = "block";
+        ele.style.display = 'block';
       }
     }
   };
@@ -55,7 +55,7 @@ const MultipleSelect = (props: {
       showArrow={true}
       optionFilterProp="children"
       optionLabelProp="children"
-      tokenSeparators={[" ", ","]}
+      tokenSeparators={[' ', ',']}
       onBlur={() => {
         handleOnblur();
       }}

@@ -1,6 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import { classNames } from "../../../Utils/classnames";
+import Image from 'next/image';
+import React from 'react';
+import { classNames } from '../../../Utils/classnames';
 
 interface StepProps {
   title: string;
@@ -27,7 +27,7 @@ const Step = (props: StepProps) => {
               className={classNames(
                 iconBackground,
                 iconForeground,
-                "rounded-lg inline-flex ring-2 ring-white"
+                'rounded-lg inline-flex ring-2 ring-white'
               )}
             >
               <img src={src} alt={title} />

@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { store } from "../../../src/app/store";
-import UserSettings from "../../../src/components/Dashboard/user/UserSettings";
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { store } from '../../../src/app/store';
+import UserSettings from '../../../src/components/Dashboard/user/UserSettings';
 
 const Settings = () => {
   const [isLogedIn, setIsLogedIn] = useState(
@@ -14,7 +14,7 @@ const Settings = () => {
       setIsLogedIn(true);
     } else {
       setIsLogedIn(false);
-      router.push("/signin");
+      router.push('/signin');
     }
   });
 

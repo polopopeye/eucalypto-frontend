@@ -1,25 +1,25 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import { store } from "../../../app/store";
+import React, { useState } from 'react';
+import { store } from '../../../app/store';
 
-import { filetoDataURL } from "../../Utils/toDataUrl";
-import Link from "next/link";
-import { toast } from "react-toastify";
+import { filetoDataURL } from '../../Utils/toDataUrl';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
 
-import { useRouter } from "next/router";
-import { CompanyInterface } from "../../../commons/companyInterface";
-import newUpload from "../../../app/firebase/storage/newUpload";
-import dashify from "dashify";
-import registerCompany from "../../../app/backend/company/registerCompany";
+import { useRouter } from 'next/router';
+import { CompanyInterface } from '../../../commons/companyInterface';
+import newUpload from '../../../app/firebase/storage/newUpload';
+import dashify from 'dashify';
+import registerCompany from '../../../app/backend/company/registerCompany';
 
 const CreateNewCompany = () => {
   const router = useRouter();
 
   const [company, setCompany] = useState({} as CompanyInterface);
   const [owners, setOwners] = useState([store.getState().user?.id as string]);
-  const [logo, setLogo] = useState("");
+  const [logo, setLogo] = useState('');
   // const [isAdmin] = useState(
   //   store.getState().user.role === 'admin' ? true : false
   // );
@@ -69,8 +69,8 @@ const CreateNewCompany = () => {
 
                   <button
                     onClick={() => {
-                      if (document && document.getElementById("coverImg")) {
-                        document.getElementById("coverImg")!.click();
+                      if (document && document.getElementById('coverImg')) {
+                        document.getElementById('coverImg')!.click();
                       }
                     }}
                     type="button"
@@ -264,24 +264,24 @@ const CreateNewCompany = () => {
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={async () => {
-                toast.warn("Loading...");
+                toast.warn('Loading...');
                 company.published = true;
                 company.owners = owners;
 
                 if (logo && company.name) {
                   await newUpload(
                     logo as string,
-                    dashify(company.name.trim().toLowerCase()) + ".jpg",
-                    (store.getState().user.id as string) + "/company",
+                    dashify(company.name.trim().toLowerCase()) + '.jpg',
+                    (store.getState().user.id as string) + '/company',
                     (url: string) => {
                       company.coverImg = url;
                       registerCompany(company, () => {
-                        router.push("/dashboard/user");
+                        router.push('/dashboard/user');
                       });
                     }
                   );
                 } else {
-                  toast.error("please upload a logo");
+                  toast.error('please upload a logo');
                 }
               }}
             >

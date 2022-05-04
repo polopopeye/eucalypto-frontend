@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import retrieveCompanyByOwner from "src/app/backend/company/retrieveCompaniesByOwner";
-import { store } from "src/app/store";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import retrieveCompanyByOwner from 'src/app/backend/company/retrieveCompaniesByOwner';
+import { store } from 'src/app/store';
 
 const ListCompanies = () => {
   const [companies, setCompanies] = useState(
@@ -74,7 +74,7 @@ const ListCompanies = () => {
                         </td>
 
                         <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <Link href={"/dashboard/companies/" + company.id}>
+                          <Link href={'/dashboard/companies/' + company.id}>
                             <a className="text-indigo-600 hover:text-indigo-900 p-1">
                               Edit Company
                             </a>

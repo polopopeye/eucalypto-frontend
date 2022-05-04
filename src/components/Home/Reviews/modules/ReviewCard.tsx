@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import Stars from "./Stars";
+import React from 'react';
+import Stars from './Stars';
 
 interface TextHeaderProps {
   stars: number;

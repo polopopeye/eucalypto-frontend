@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Link from "next/link";
-import { toast } from "react-toastify";
+import Link from 'next/link';
+import { toast } from 'react-toastify';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import { CategoryInterface } from "src/commons/categoryInterface";
-import registerCategory from "src/app/backend/category/registerCategory";
+import { CategoryInterface } from 'src/commons/categoryInterface';
+import registerCategory from 'src/app/backend/category/registerCategory';
 
 const CreateNewCategory = () => {
   const router = useRouter();
@@ -95,11 +95,11 @@ const CreateNewCategory = () => {
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={async () => {
-                toast.warn("Loading...");
+                toast.warn('Loading...');
                 category.published = true;
 
                 registerCategory(category, () => {
-                  router.push("/dashboard/user");
+                  router.push('/dashboard/user');
                 });
               }}
             >

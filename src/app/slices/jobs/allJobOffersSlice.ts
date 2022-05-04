@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const allJobOffersSlice = createSlice({
-  name: "allJobOffers",
+  name: 'allJobOffers',
   initialState: [],
   reducers: {
     setData: (state, action) => {

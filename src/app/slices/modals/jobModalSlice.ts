@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const jobModalSlice = createSlice({
-  name: "jobModal",
+  name: 'jobModal',
   initialState: {
     isOpen: false,
     data: {} as any,

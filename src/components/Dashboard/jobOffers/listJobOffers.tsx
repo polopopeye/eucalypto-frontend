@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import retrieveJobOffers from "src/app/backend/jobOffer/retrievesJobOffer";
-import { store } from "src/app/store";
-import { JobOfferInterface } from "src/commons/jobOfferInterface";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
+import { store } from 'src/app/store';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 
 const ListJobOffers = () => {
   const [jobOffers, setJobOffers] = useState(
     store.getState().jobs.personalJobOffers
   );
   const [isAdmin, setIsAdmin] = useState(
-    store.getState().user.role === "admin" ? true : false
+    store.getState().user.role === 'admin' ? true : false
   );
 
   store.subscribe(() => {
@@ -19,10 +19,10 @@ const ListJobOffers = () => {
 
   useEffect(() => {
     if (isAdmin) {
-      retrieveJobOffers({ propOrId: "published", value: true });
+      retrieveJobOffers({ propOrId: 'published', value: true });
     } else {
       retrieveJobOffers({
-        propOrId: "aplicants",
+        propOrId: 'aplicants',
         value: store.getState().user.id as string,
       });
     }
@@ -35,7 +35,7 @@ const ListJobOffers = () => {
           <h1 className="text-xl font-semibold text-gray-900">Jobs Offers</h1>
           <p className="mt-2 text-sm text-gray-700">
             List of all the jobsOffers you applied to
-            {isAdmin && " - Currently you are admin... So you can see all"}
+            {isAdmin && ' - Currently you are admin... So you can see all'}
           </p>
         </div>
       </div>
@@ -113,7 +113,7 @@ const ListJobOffers = () => {
                         </td>
 
                         <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <Link href={"/dashboard/offers/" + jobOffer.id}>
+                          <Link href={'/dashboard/offers/' + jobOffer.id}>
                             <a className="text-indigo-600 hover:text-indigo-900 p-1">
                               Edit JobOffer
                             </a>

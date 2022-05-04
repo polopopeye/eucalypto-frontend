@@ -1,5 +1,5 @@
-import React from "react";
-import SearcherPositions from "src/components/SearcherPositions/SearcherPositions";
+import React from 'react';
+import SearcherPositions from 'src/components/SearcherPositions/SearcherPositions';
 
 const index = () => {
   return (

@@ -1,6 +1,6 @@
-import React from "react";
-import FooterCard from "./FooterCard";
-import HeaderCard from "./HeaderCard";
+import React from 'react';
+import FooterCard from './FooterCard';
+import HeaderCard from './HeaderCard';
 
 const ArticleCard = () => {
   return (

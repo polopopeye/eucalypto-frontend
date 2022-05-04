@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Animator,
   batch,
@@ -9,16 +9,16 @@ import {
   ScrollContainer,
   ScrollPage,
   Sticky,
-} from "react-scroll-motion";
-import TextHeader from "src/components/Utils/TextHeader/TextHeader";
+} from 'react-scroll-motion';
+import TextHeader from 'src/components/Utils/TextHeader/TextHeader';
 
-import Hero from "../../Hero/Hero";
-import Reviews from "../../Reviews/Reviews";
+import Hero from '../../Hero/Hero';
+import Reviews from '../../Reviews/Reviews';
 
-import { Arrow } from "./ArrowImage";
+import { Arrow } from './ArrowImage';
 
-import EmptyStep from "./EmptyStep";
-import Step from "./Step";
+import EmptyStep from './EmptyStep';
+import Step from './Step';
 
 const DesktopView = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -26,13 +26,13 @@ const DesktopView = () => {
   const [windowOrientation, setWindowOrientation] = useState(0);
 
   const stepImg = [
-    "/img/steps/1.png",
-    "/img/steps/2.png",
-    "/img/steps/3.png",
-    "/img/steps/4.png",
-    "/img/steps/5.png",
-    "/img/steps/6.png",
-    "/img/steps/7.png",
+    '/img/steps/1.png',
+    '/img/steps/2.png',
+    '/img/steps/3.png',
+    '/img/steps/4.png',
+    '/img/steps/5.png',
+    '/img/steps/6.png',
+    '/img/steps/7.png',
   ];
 
   useEffect(() => {

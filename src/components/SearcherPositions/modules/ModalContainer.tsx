@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/link-passhref */
 
-import { useRef, useState } from "react";
-import { Dialog } from "@headlessui/react";
+import { useRef, useState } from 'react';
+import { Dialog } from '@headlessui/react';
 
-import ModalJob from "./ModalJob";
-import { store } from "src/app/store";
-import jobModalSlice from "src/app/slices/modals/jobModalSlice";
-import Link from "next/link";
-import { JobOfferInterface } from "src/commons/jobOfferInterface";
+import ModalJob from './ModalJob';
+import { store } from 'src/app/store';
+import jobModalSlice from 'src/app/slices/modals/jobModalSlice';
+import Link from 'next/link';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 
 export default function ModalContainer() {
   const [jobOffer, setJobOffer] = useState(
@@ -52,7 +52,7 @@ export default function ModalContainer() {
             </div>
           </div>
           <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-            <Link href={"/job/" + jobOffer.id}>
+            <Link href={'/job/' + jobOffer.id}>
               <button
                 type="button"
                 className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-secondary text-base font-medium text-white hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:col-start-2 sm:text-sm"

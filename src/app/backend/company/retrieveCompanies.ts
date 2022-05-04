@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { store } from "../../store";
-import { api } from "../apiEndPoints";
-import { toast } from "react-toastify";
+import { store } from '../../store';
+import { api } from '../apiEndPoints';
+import { toast } from 'react-toastify';
 
-import allCompaniesSlice from "../../slices/companies/allCompaniesSlice";
+import allCompaniesSlice from '../../slices/companies/allCompaniesSlice';
 
 // Retrieves all company data
 const retrieveAllCompanies = async (next?: Function) => {
@@ -16,13 +16,13 @@ const retrieveAllCompanies = async (next?: Function) => {
       const allCompaniesFound = response.data;
 
       store.dispatch(allCompaniesSlice.actions.setData(allCompaniesFound));
-      if (typeof next === "function") {
+      if (typeof next === 'function') {
         next(response);
       }
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Error retrieving Company info");
+      toast.error('Error retrieving Company info');
     });
 };
 

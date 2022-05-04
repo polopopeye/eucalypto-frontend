@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Link from "next/link";
-import { toast } from "react-toastify";
+import Link from 'next/link';
+import { toast } from 'react-toastify';
 
-import { useRouter } from "next/router";
-import { CategoryInterface } from "src/commons/categoryInterface";
-import modifyCategory from "src/app/backend/category/modifyCategory";
-import deleteCategory from "src/app/backend/category/deleteCategory";
+import { useRouter } from 'next/router';
+import { CategoryInterface } from 'src/commons/categoryInterface';
+import modifyCategory from 'src/app/backend/category/modifyCategory';
+import deleteCategory from 'src/app/backend/category/deleteCategory';
 
 const ModifyCategory = (props: any) => {
   const router = useRouter();
@@ -90,7 +90,7 @@ const ModifyCategory = (props: any) => {
               className="bg-red-600 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-200 hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={async () => {
                 deleteCategory(category, () => {
-                  router.push("/dashboard/user");
+                  router.push('/dashboard/user');
                 });
               }}
             >
@@ -110,14 +110,14 @@ const ModifyCategory = (props: any) => {
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={async () => {
-                toast.warn("Loading...");
+                toast.warn('Loading...');
                 if (category.createdAt) delete category.createdAt;
                 if (category.updatedAt) delete category.updatedAt;
 
                 category.published = true;
 
                 modifyCategory(category, () => {
-                  router.push("/dashboard/user");
+                  router.push('/dashboard/user');
                 });
               }}
             >

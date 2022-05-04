@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { Combobox } from "@headlessui/react";
-import { SearchIcon } from "@heroicons/react/solid";
+import { useState } from 'react';
+import { Combobox } from '@headlessui/react';
+import { SearchIcon } from '@heroicons/react/solid';
 import {
   CodeIcon,
   ExclamationCircleIcon,
   LinkIcon,
   PencilAltIcon,
   ViewBoardsIcon,
-} from "@heroicons/react/outline";
+} from '@heroicons/react/outline';
 
-import retrieveJobOffers from "src/app/backend/jobOffer/retrievesJobOffer";
-import { store } from "src/app/store";
-import { JobOfferInterface } from "src/commons/jobOfferInterface";
-import filteredJobOffersSlice from "src/app/slices/jobs/filterJobOffersSlice";
-import { filterJobOffers, resetFilterJobOffers } from "./filterJobOffers";
-import { classNames } from "src/components/Utils/classnames";
+import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
+import { store } from 'src/app/store';
+import { JobOfferInterface } from 'src/commons/jobOfferInterface';
+import filteredJobOffersSlice from 'src/app/slices/jobs/filterJobOffersSlice';
+import { filterJobOffers, resetFilterJobOffers } from './filterJobOffers';
+import { classNames } from 'src/components/Utils/classnames';
 
 const InputSearcher = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   return (
     <Combobox

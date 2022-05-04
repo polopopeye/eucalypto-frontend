@@ -1,12 +1,12 @@
-import { CheckIcon, ThumbUpIcon, UserIcon } from "@heroicons/react/outline";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { CheckIcon, ThumbUpIcon, UserIcon } from '@heroicons/react/outline';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
-import retrieveAllCompanies from "src/app/backend/company/retrieveCompanies";
-import retrieveUserInfo from "src/app/backend/users/retrieveUserInfo";
-import { store } from "src/app/store";
-import { classNames } from "src/components/Utils/classnames";
-import getCompanyDataFromId from "src/components/Utils/redux/getCompanyDataFromId";
+import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
+import retrieveUserInfo from 'src/app/backend/users/retrieveUserInfo';
+import { store } from 'src/app/store';
+import { classNames } from 'src/components/Utils/classnames';
+import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
 
 const UserStepsTimeline = (props: { job: string; companyId: string }) => {
   const { companyId } = props;
@@ -39,50 +39,50 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
   }, []);
 
   const eventTypes = {
-    applied: { icon: UserIcon, bgColorClass: "bg-gray-400" },
-    advanced: { icon: ThumbUpIcon, bgColorClass: "bg-primary" },
-    completed: { icon: CheckIcon, bgColorClass: "bg-green-500" },
+    applied: { icon: UserIcon, bgColorClass: 'bg-gray-400' },
+    advanced: { icon: ThumbUpIcon, bgColorClass: 'bg-primary' },
+    completed: { icon: CheckIcon, bgColorClass: 'bg-green-500' },
   };
   const timeline = [
     {
       id: 1,
       type: eventTypes.applied,
-      content: "Applied to",
-      target: "Front End Developer",
-      date: "Sep 20",
-      datetime: "2020-09-20",
+      content: 'Applied to',
+      target: 'Front End Developer',
+      date: 'Sep 20',
+      datetime: '2020-09-20',
     },
     {
       id: 2,
       type: eventTypes.advanced,
-      content: "Advanced to phone screening by",
-      target: "Bethany Blake",
-      date: "Sep 22",
-      datetime: "2020-09-22",
+      content: 'Advanced to phone screening by',
+      target: 'Bethany Blake',
+      date: 'Sep 22',
+      datetime: '2020-09-22',
     },
     {
       id: 3,
       type: eventTypes.completed,
-      content: "Completed phone screening with",
-      target: "Martha Gardner",
-      date: "Sep 28",
-      datetime: "2020-09-28",
+      content: 'Completed phone screening with',
+      target: 'Martha Gardner',
+      date: 'Sep 28',
+      datetime: '2020-09-28',
     },
     {
       id: 4,
       type: eventTypes.advanced,
-      content: "Advanced to interview by",
-      target: "Bethany Blake",
-      date: "Sep 30",
-      datetime: "2020-09-30",
+      content: 'Advanced to interview by',
+      target: 'Bethany Blake',
+      date: 'Sep 30',
+      datetime: '2020-09-30',
     },
     {
       id: 5,
       type: eventTypes.completed,
-      content: "Completed interview with",
-      target: "Katherine Snyder",
-      date: "Oct 4",
-      datetime: "2020-10-04",
+      content: 'Completed interview with',
+      target: 'Katherine Snyder',
+      date: 'Oct 4',
+      datetime: '2020-10-04',
     },
   ];
 
@@ -112,10 +112,10 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
               {user.displayName}
             </h1>
             <p className="text-sm font-medium text-gray-500">
-              Applied for{" "}
+              Applied for{' '}
               <a href="#" className="text-gray-900">
                 {props.job}
-              </a>{" "}
+              </a>{' '}
               <br></br>
               On: <b>{company?.name}</b>
             </p>
@@ -149,7 +149,7 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
                           <span
                             className={classNames(
                               item.type.bgColorClass,
-                              "h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
+                              'h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white'
                             )}
                           >
                             <item.type.icon
@@ -161,7 +161,7 @@ const UserStepsTimeline = (props: { job: string; companyId: string }) => {
                         <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                           <div>
                             <p className="text-sm text-gray-500">
-                              {item.content}{" "}
+                              {item.content}{' '}
                               <a href="#" className="font-medium text-gray-900">
                                 {item.target}
                               </a>

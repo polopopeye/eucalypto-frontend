@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/link-passhref */
-import Link from "next/link";
+import Link from 'next/link';
 
-import ListCategories from "../categories/listCategories";
-import ListCompanies from "../companies/listCompanies";
-import ListJobOffers from "../jobOffers/listJobOffers";
+import ListCategories from '../categories/listCategories';
+import ListCompanies from '../companies/listCompanies';
+import ListJobOffers from '../jobOffers/listJobOffers';
 
 export default function UserProfile() {
   return (
