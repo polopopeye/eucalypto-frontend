@@ -1,8 +1,8 @@
 import React from "react";
-// import Flickity from 'react-flickity-component';
+import Flickity from "react-flickity-component";
 
 import TextHeader from "src/components/Utils/TextHeader/TextHeader";
-// import ReviewCard from './modules/ReviewCard';
+import ReviewCard from "./modules/ReviewCard";
 
 const Reviews = () => {
   const flickityOptions = {
@@ -19,9 +19,9 @@ const Reviews = () => {
         description="Check out what our customers have to say about us."
       />
 
-      {/* <Flickity
-        className={'carousel'} // default ''
-        elementType={'div'} // default 'div'
+      <Flickity
+        className={"carousel"} // default ''
+        elementType={"div"} // default 'div'
         options={flickityOptions} // takes flickity options {}
         disableImagesLoaded={false} // default false
         reloadOnUpdate // default false
@@ -54,7 +54,7 @@ const Reviews = () => {
                   magnam"
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
         />
-      </Flickity> */}
+      </Flickity>
     </div>
   );
 };

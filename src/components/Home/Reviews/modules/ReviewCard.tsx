@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Stars from "./Stars";
 
@@ -17,7 +18,7 @@ const ReviewCard = (props: TextHeaderProps) => {
         <div className="grid grid-cols-2 gap-8">
           <div className="float-right right-0 text-right self-end justify-end content-end items-end">
             <img
-              className="inline-block h-auto w-full rounded-full float-right right-0 w-32 "
+              className="inline-block h-auto rounded-full float-right right-0 w-32 "
               src={src}
               alt={name}
             />
