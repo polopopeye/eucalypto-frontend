@@ -5,23 +5,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import logOut from 'src/app/firebase/auth/logOut';
+import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import { store } from 'src/app/store';
 import { UserInterface } from 'src/commons/userInterface';
 import { classNames } from '../Utils/classnames';
+import LoadingComponent from '../Utils/LoadingComponent';
 
 import NavButton from './modules/NavButton';
 
-export default function Navbar() {
-  const [isLogedIn, setIsLogedIn] = useState(false);
+const Navbar = () => {
+  const checkUserInfo = useCheckUserInfo();
   const [user, setUser] = useState(store.getState().user as UserInterface);
+  if (checkUserInfo.loading) return <LoadingComponent />;
 
   store.subscribe(() => {
-    if (store.getState().user.email) {
-      setIsLogedIn(true);
-      setUser(store.getState().user);
-    } else {
-      setIsLogedIn(false);
-    }
+    setUser(store.getState().user);
   });
 
   return (
@@ -45,7 +43,9 @@ export default function Navbar() {
                   <NavButton href="/" text="Home" />
                   <NavButton href="/search" text="Search for a project" />
                   <NavButton href="/community" text="Community" />
-                  {!isLogedIn && <NavButton href="/signin" text="Sign In" />}
+                  {!checkUserInfo.isLogedIn && (
+                    <NavButton href="/signin" text="Sign In" />
+                  )}
                   <NavButton href="/contact" text="Let's talk" />
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function Navbar() {
                   <div>
                     <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                       <span className="sr-only">Open user menu</span>
-                      {isLogedIn ? (
+                      {checkUserInfo.isLogedIn ? (
                         <img
                           className="h-auto w-12 rounded-full"
                           src={user.coverImg}
@@ -68,7 +68,7 @@ export default function Navbar() {
                   </div>
 
                   <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    {isLogedIn ? (
+                    {checkUserInfo.isLogedIn ? (
                       <>
                         <Menu.Item>
                           {({ active }) => (
@@ -171,7 +171,7 @@ export default function Navbar() {
                 Community
               </Disclosure.Button>
 
-              {!isLogedIn && (
+              {!checkUserInfo.isLogedIn && (
                 <Disclosure.Button
                   as="a"
                   href="/signin"
@@ -184,7 +184,7 @@ export default function Navbar() {
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="flex items-center px-4">
                 <div className="flex-shrink-0">
-                  {isLogedIn ? (
+                  {checkUserInfo.isLogedIn ? (
                     <img
                       className="h-auto w-12 rounded-full"
                       src={user.coverImg}
@@ -203,7 +203,7 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              {isLogedIn && (
+              {checkUserInfo.isLogedIn && (
                 <div className="mt-3 space-y-1">
                   <Disclosure.Button
                     as="a"
@@ -239,4 +239,6 @@ export default function Navbar() {
       )}
     </Disclosure>
   );
-}
+};
+
+export default Navbar;

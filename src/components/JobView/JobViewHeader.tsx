@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
+import ApplyNowModule from './modules/ApplyNowModule';
 
 export default function JobViewHeader(props: { alreadyApplied: any }) {
   const [jobOffer, setJobOffer] = useState(
@@ -62,27 +63,7 @@ export default function JobViewHeader(props: { alreadyApplied: any }) {
         </div>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
-        {alreadyApplied ? (
-          <>
-            <button
-              type="button"
-              className="w-full inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg mr-2 font-medium text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-            >
-              <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-              Already Applied
-            </button>
-          </>
-        ) : (
-          <>
-            <button
-              type="button"
-              className="w-full inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg mr-2 font-medium text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-            >
-              <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-              <Link href="/signin">Apply Now</Link>
-            </button>
-          </>
-        )}
+        <ApplyNowModule />
       </div>
     </div>
   );

@@ -169,7 +169,7 @@ const UserStepsTimeline = () => {
             </div>
           </>
         ) : (
-          <ApplyNowModule jobOffer={jobOffer} />
+          <ApplyNowModule />
         )}
       </div>
     </section>

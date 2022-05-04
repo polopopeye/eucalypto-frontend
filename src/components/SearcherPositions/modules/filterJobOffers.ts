@@ -4,6 +4,10 @@ import { store } from 'src/app/store';
 export const filterJobOffers = (valueToSearch: string) => {
   const jobOffers = store.getState().jobs.allJobOffers;
 
+  if (!jobOffers) {
+    store.dispatch(filteredJobOffersSlice.actions.setData([]));
+    return;
+  }
   const filterByProps = [
     'name',
     'id',
