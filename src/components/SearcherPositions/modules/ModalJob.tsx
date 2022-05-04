@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
-import Stars from '../../Home/Reviews/modules/Stars';
+
 import HeaderCompany from '../../JobView/HeaderCompany';
 
 export default function ModalJob() {
@@ -12,7 +12,7 @@ export default function ModalJob() {
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <div className="px-4  sm:px-6">
-        <HeaderCompany companyId={jobOffer.company} />
+        <HeaderCompany />
 
         <h1 className=" text-xl font-bold py-8">{jobOffer.name}</h1>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">Details</p>

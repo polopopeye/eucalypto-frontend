@@ -1,9 +1,7 @@
 import { CheckIcon, ThumbUpIcon, UserIcon } from '@heroicons/react/outline';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
 
-import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
-import retrieveUserInfo from 'src/app/backend/users/retrieveUserInfo';
+import React, { useState } from 'react';
+
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';

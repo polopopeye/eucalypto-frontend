@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import AlertMsgAlreadyApplied from './modules/AlertMsgAlreadyApplied';
 
@@ -10,7 +10,6 @@ import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import { store } from 'src/app/store';
 import JobViewHeader from './JobViewHeader';
 import HeaderCompany from './HeaderCompany';
-import LoadingComponent from '../Utils/LoadingComponent';
 
 const JobView = () => {
   const [jobOffer, setJobOffer] = useState(

@@ -4,6 +4,7 @@ import jobModalSlice from 'src/app/slices/modals/jobModalSlice';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import { store } from 'src/app/store';
 import Badges from 'src/components/Utils/categories/badges';
+import currentJobOfferSlice from 'src/app/slices/jobs/currentJobOffersSlice';
 
 export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
   const { jobOffer } = prop;
@@ -24,6 +25,7 @@ export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
         store.dispatch(
           jobModalSlice.actions.setData({ isOpen: true, data: jobOffer })
         );
+        store.dispatch(currentJobOfferSlice.actions.setData(jobOffer));
       }}
     >
       <div
