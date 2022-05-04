@@ -18,7 +18,7 @@ const retrieveAllUsersInfo = (next?: Function) => {
     })
     .catch((error) => {
       console.log(error);
-      toast.error("Error retrieving user info");
+      toast.error("Error retrieving all the users info");
     });
 };
 
