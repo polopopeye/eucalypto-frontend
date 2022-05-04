@@ -31,7 +31,7 @@ const ApplyNowModule = () => {
         </>
       )}
     </>
-  );
+  ); 
 };
 
 export default ApplyNowModule;
