@@ -1,7 +1,7 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import registerUserInBackend from '../../backend/users/registerUserInBackend';
-import { toast } from 'react-toastify';
-import { errors } from '../constants';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import registerUserInBackend from "../../backend/users/registerUserInBackend";
+import { toast } from "react-toastify";
+import { errors } from "../constants";
 
 const registerGoogle = async () => {
   const auth = getAuth();
@@ -14,10 +14,10 @@ const registerGoogle = async () => {
       registerUserInBackend({
         completeName: nameId,
         displayName: nameId,
-        languages: ['english'],
-        role: 'talent',
+        languages: ["english"],
+        role: "talent",
         coverImg:
-          photoURL || 'https://picsum.photos/seed/' + email + '/200/200',
+          photoURL || "https://picsum.photos/seed/" + email + "/200/200",
         email: email as string,
         published: true,
       });
