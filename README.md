@@ -69,8 +69,38 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on Heroku
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To deploy just be sure u have added the remote git to push, https://devcenter.heroku.com/articles/git and https://gist.github.com/randallreedjr/aa89e069371d07371882eea2df15fb4d is usefull doc
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`Staging => https://git.heroku.com/stage-front-eucalypto.git`
+
+`git remote add heroku https://git.heroku.com/stage-front-eucalypto.git `
+
+or
+
+`heroku git:remote -a stage-front-eucalypto`
+
+and
+`git push heroku`
+
+To delete a remote git this is the command: `git remote remove heroku`
+To list all the remotes git `git remote -v`
+
+Is a good practice delete the cached files to avoid any problems, normally this is not nee
+
+### Clearing build cache
+
+if you want to clear cache first install `heroku plugins:install heroku-builds`
+then use it:
+`heroku builds:cache:purge -a stage-front-eucalypto`
+you have to confirm typing the app name: `stage-front-eucalypto`
+
+### Clearing All (Reseting Git)
+
+if you want to clear all before an push, firs be sure to have heroku-repo plugin:
+to install:
+`heroku plugins:install heroku-repo`
+then just reset:
+`heroku repo:reset --app stage-front-eucalypto`
+The app will remain working no problem, we just delete all the cache and files of the remote git of heroku
