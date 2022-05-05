@@ -22,7 +22,7 @@ const UserStepsTimeline = () => {
   store.subscribe(() => {
     setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
     setUser(store.getState().user);
-    setCompany(getCompanyDataFromId(jobOffer.company));
+    setCompany(getCompanyDataFromId(jobOffer.company as string));
   });
 
   const eventTypes = {
