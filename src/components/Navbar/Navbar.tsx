@@ -18,11 +18,11 @@ const Navbar = () => {
   const router = useRouter();
   const checkUserInfo = useCheckUserInfo();
   const [user, setUser] = useState(store.getState().user as UserInterface);
-  if (checkUserInfo.loading) return <LoadingComponent />;
 
   store.subscribe(() => {
     setUser(store.getState().user);
   });
+  if (checkUserInfo.loading) return <LoadingComponent />;
 
   return (
     <Disclosure

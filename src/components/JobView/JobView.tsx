@@ -22,7 +22,7 @@ const JobView = () => {
 
   return (
     <div>
-      {jobOffer.name ? (
+      {jobOffer ? (
         <div className="min-h-full pt-16">
           <main className="py-10">
             {/* Page header */}

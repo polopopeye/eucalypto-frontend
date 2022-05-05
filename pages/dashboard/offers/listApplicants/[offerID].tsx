@@ -15,26 +15,21 @@ const ModifyJobOfferPage = () => {
   const router = useRouter();
   const { offerID } = router.query;
 
-  useEffect(() => {
-    if (offerID) {
-      retrieveJobOffers({
-        propOrId: 'id',
-        value: offerID as string,
-        reduxSpace: 'currentJobOffer',
-      });
-      retrieveAllUsersInfo();
-      retrieveCategories({
-        propToFind: 'type',
-        value: 'tech',
-        saveIn: 'tech',
-      });
-    }
-  }, [offerID]);
-
   const checkUserInfo = useCheckUserInfo();
   if (checkUserInfo.loading) return <LoadingComponent />;
   if (!checkUserInfo.isLogedIn) router.push('/signin');
   retrieveCompanyByOwner();
+  retrieveJobOffers({
+    propOrId: 'id',
+    value: offerID as string,
+    reduxSpace: 'currentJobOffer',
+  });
+  retrieveAllUsersInfo();
+  retrieveCategories({
+    propToFind: 'type',
+    value: 'tech',
+    saveIn: 'tech',
+  });
 
   return (
     <div className="pt-32">

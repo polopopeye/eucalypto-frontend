@@ -12,26 +12,21 @@ const ModifyJobOfferPage = () => {
   const router = useRouter();
   const { offerID } = router.query;
 
-  useEffect(() => {
-    if (offerID) {
-      retrieveJobOffers({
-        propOrId: 'id',
-        value: offerID as string,
-        reduxSpace: 'currentJobOffer',
-      });
-      retrieveCategories({
-        propToFind: 'type',
-        value: 'tech',
-        saveIn: 'tech',
-      });
-      // TODO: This is not necesary to filter for an admin
-      retrieveCompanyByOwner(store.getState().user.id as string);
-    }
-  }, [offerID]);
-
   const checkUserInfo = useCheckUserInfo();
   if (checkUserInfo.loading) return <LoadingComponent />;
   if (!checkUserInfo.isLogedIn) router.push('/signin');
+  retrieveJobOffers({
+    propOrId: 'id',
+    value: offerID as string,
+    reduxSpace: 'currentJobOffer',
+  });
+  retrieveCategories({
+    propToFind: 'type',
+    value: 'tech',
+    saveIn: 'tech',
+  });
+  // TODO: This is not necesary to filter for an admin
+  retrieveCompanyByOwner(store.getState().user.id as string);
 
   return (
     <div className="pt-32">

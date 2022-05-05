@@ -11,16 +11,14 @@ const Index = () => {
   const router = useRouter();
   const checkUserInfo = useCheckUserInfo();
 
+  if (checkUserInfo.loading) return <LoadingComponent />;
+  if (!checkUserInfo.isLogedIn) router.push('/signin');
+  retrieveCompanyByOwner();
   retrieveCategories({
     propToFind: 'type',
     value: 'tech',
     saveIn: 'tech',
   });
-
-  if (checkUserInfo.loading) return <LoadingComponent />;
-  if (!checkUserInfo.isLogedIn) router.push('/signin');
-  retrieveCompanyByOwner();
-
   return (
     <>
       <UserProfile />

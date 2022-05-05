@@ -12,22 +12,20 @@ const Job = () => {
   const { offerID } = router.query;
   const checkUserInfo = useCheckUserInfo();
 
-  useEffect(() => {
-    retrieveJobOffers({
-      propOrId: 'id',
-      value: offerID as string,
-      reduxSpace: 'currentJobOffer',
-    });
-    retrieveCategories({
-      propToFind: 'type',
-      value: 'tech',
-      saveIn: 'tech',
-    });
-
-    retrieveAllCompanies();
-  }, [offerID]);
-
   if (checkUserInfo.loading) return <LoadingComponent />;
+
+  retrieveJobOffers({
+    propOrId: 'id',
+    value: offerID as string,
+    reduxSpace: 'currentJobOffer',
+  });
+  retrieveCategories({
+    propToFind: 'type',
+    value: 'tech',
+    saveIn: 'tech',
+  });
+
+  retrieveAllCompanies();
 
   return (
     <div>
