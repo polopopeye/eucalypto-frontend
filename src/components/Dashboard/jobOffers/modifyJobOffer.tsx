@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { Switch } from '@headlessui/react';
@@ -17,14 +17,21 @@ import MultipleSelect from 'src/components/Utils/MultipleSelect';
 import deleteJobOffer from 'src/app/backend/jobOffer/deleteJobOffer';
 import modifyJobOffer from 'src/app/backend/jobOffer/modifyJobOffer';
 
-const ModifyJobOffer = (props: any) => {
+const ModifyJobOffer = () => {
   const router = useRouter();
+  const deadLineRef = useRef(null) as any;
+  const companyRef = useRef(null) as any;
 
-  const [jobOffer, setJobOffer] = useState(
-    store.getState().jobs.currentJobOffer as JobOfferInterface
+  const [jobOffer, setJobOffer] = useState({
+    ...store.getState().jobs.currentJobOffer,
+  } as JobOfferInterface);
+
+  const categories = store.getState().jobs.currentJobOffer.categories || [];
+  const [techs, setTechs] = useState([...categories] as Array<string>);
+
+  const [isRemote, setIsRemote] = useState(
+    store.getState().jobs.currentJobOffer.remote || false
   );
-  const [techs, setTechs] = useState(props.jobOffer.categories);
-  const [isRemote, setIsRemote] = useState(props.jobOffer.isRemote);
 
   const [techMultipleSelect, setTechMultipleSelect] = useState(
     store.getState().category?.tech
@@ -33,18 +40,33 @@ const ModifyJobOffer = (props: any) => {
     store.getState().company.personalcompanies
   );
 
-  useEffect(() => {
-    retrieveCategories({
-      propToFind: 'type',
-      value: 'tech',
-      saveIn: 'tech',
-    });
-    retrieveCompanyByOwner(store.getState().user.id as string);
-  }, []);
+  const [deadLine, setDeadLine] = useState(
+    new Date(store.getState().jobs.currentJobOffer.deadLine || '1/1/2021')
+      .toISOString()
+      .substring(0, 16)
+  );
 
   store.subscribe(() => {
     setTechMultipleSelect(store.getState().category?.tech);
+
     setCompanies(store.getState().company.personalcompanies);
+    if (companyRef.current)
+      companyRef.current.value = store.getState().jobs.currentJobOffer.company;
+
+    setJobOffer({
+      ...store.getState().jobs.currentJobOffer,
+    });
+
+    const date = new Date(
+      store.getState().jobs.currentJobOffer.deadLine as string
+    )
+      .toISOString()
+      .substring(0, 16);
+    setDeadLine(date);
+    if (deadLineRef.current) deadLineRef.current.value = date as string;
+
+    const categories = store.getState().jobs.currentJobOffer.categories || [];
+    setTechs([...categories] as Array<string>);
   });
 
   return (
@@ -95,6 +117,7 @@ const ModifyJobOffer = (props: any) => {
 
                   <div className="mt-1">
                     <select
+                      ref={companyRef}
                       id="company"
                       name="company"
                       className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -269,17 +292,15 @@ const ModifyJobOffer = (props: any) => {
                     type="datetime-local"
                     id="deadLine"
                     name="deadLine"
-                    defaultValue={new Date(jobOffer.deadLine)
-                      .toISOString()
-                      .substring(0, 16)}
+                    defaultValue={deadLine}
+                    ref={deadLineRef}
                     min={new Date().toISOString().substring(0, 16)}
                     max="2030-06-14T00:00"
                     onChange={(e) => {
                       const date = new Date(e.target.value)
                         .toISOString()
                         .substring(0, 16);
-
-                      jobOffer.deadLine = date;
+                      setDeadLine(date);
                     }}
                   />
                 </div>
@@ -316,6 +337,7 @@ const ModifyJobOffer = (props: any) => {
               onClick={() => {
                 toast.warn('Loading...');
                 jobOffer.remote = isRemote;
+                jobOffer.deadLine = deadLine;
 
                 jobOffer.categories = techs;
                 jobOffer.published = false;
@@ -335,12 +357,21 @@ const ModifyJobOffer = (props: any) => {
               onClick={() => {
                 toast.warn('Loading...');
                 jobOffer.remote = isRemote;
+                jobOffer.deadLine = deadLine;
+                console.log(
+                  '🚀 ~ file: modifyJobOffer.tsx ~ line 347 ~ ModifyJobOffer ~ deadLine',
+                  deadLine
+                );
 
                 jobOffer.categories = techs;
                 jobOffer.published = true;
                 if (jobOffer.createdAt) delete jobOffer.createdAt;
                 if (jobOffer.updatedAt) delete jobOffer.updatedAt;
 
+                console.log(
+                  '🚀 ~ file: modifyJobOffer.tsx ~ line 347 ~ modifyJobOffer ~ jobOffer',
+                  jobOffer
+                );
                 modifyJobOffer(jobOffer, () => {
                   router.push('/dashboard/user');
                 });

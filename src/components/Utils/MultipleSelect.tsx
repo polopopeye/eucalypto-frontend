@@ -10,10 +10,6 @@ const MultipleSelect = (props: {
 
   const randomClassName = Object.keys({ variant })[0] + 'className';
 
-  console.log(
-    '🚀 ~ file: MultipleSelect.tsx ~ line 12 ~ randomClassName',
-    randomClassName
-  );
   const handleOnblur = () => {
     if (document) {
       if (
