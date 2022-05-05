@@ -6,14 +6,18 @@ import { api } from '../apiEndPoints';
 import retrieveUserInfo from './retrieveUserInfo';
 import qs from 'qs';
 
-const modifyUserInBackend = (user: UserInterface) => {
-  const params = new URLSearchParams();
-
+const modifyUserInBackend = (user: UserInterface, next?: Function) => {
   axios
     .put(api.user + '/' + user.id, qs.stringify(user))
     .then((response) => {
       toast.success('User modified');
-      retrieveUserInfo(user.email);
+      retrieveUserInfo({
+        prop: 'id',
+        value: user.id as string,
+      });
+      if (next) {
+        next();
+      }
     })
     .catch((error) => {
       console.log('error');

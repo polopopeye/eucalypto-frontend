@@ -13,7 +13,7 @@ const initialStateJobOffers: JobOfferInterface = {
   categories: undefined,
   deadLine: undefined,
   published: undefined,
-  aplicants: undefined,
+  applicants: undefined,
   updatedAt: undefined,
   createdAt: undefined,
 };

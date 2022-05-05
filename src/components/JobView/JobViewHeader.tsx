@@ -12,15 +12,13 @@ import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import ApplyNowModule from './modules/ApplyNowModule';
 
-export default function JobViewHeader(props: { alreadyApplied: any }) {
+export default function JobViewHeader() {
   const [jobOffer, setJobOffer] = useState(
     store.getState().jobs.currentJobOffer as JobOfferInterface
   );
   store.subscribe(() => {
     setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
   });
-
-  const { alreadyApplied } = props;
 
   const closeDate =
     jobOffer.deadLine && new Date(jobOffer.deadLine).toISOString().slice(0, 10);

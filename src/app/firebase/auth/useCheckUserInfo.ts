@@ -10,7 +10,7 @@ const useCheckUserInfo = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
 
   useEffect(() => {
-    if (store.getState().user.email) {
+    if (store.getState().user.email && store.getState().user.id) {
       //User Data previously saved in the store
       setIsLogedIn(true);
       setLoading(false);
@@ -18,9 +18,15 @@ const useCheckUserInfo = () => {
       getAuth().onAuthStateChanged((user) => {
         if (user) {
           setIsLogedIn(true);
-          retrieveUserInfo(user.email as string, () => {
-            setLoading(false);
-          });
+          retrieveUserInfo(
+            {
+              prop: 'email',
+              value: user.email as string,
+            },
+            () => {
+              setLoading(false);
+            }
+          );
         } else {
           setLoading(false);
         }

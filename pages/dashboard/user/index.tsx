@@ -4,12 +4,22 @@ import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
 
 import UserProfile from '../../../src/components/Dashboard/user/UserProfile';
+import retrieveCompanyByOwner from 'src/app/backend/company/retrieveCompaniesByOwner';
+import retrieveCategories from 'src/app/backend/category/retrieveCategories';
 
 const Index = () => {
   const router = useRouter();
   const checkUserInfo = useCheckUserInfo();
+
+  retrieveCategories({
+    propToFind: 'type',
+    value: 'tech',
+    saveIn: 'tech',
+  });
+
   if (checkUserInfo.loading) return <LoadingComponent />;
   if (!checkUserInfo.isLogedIn) router.push('/signin');
+  retrieveCompanyByOwner();
 
   return (
     <>

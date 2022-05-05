@@ -3,6 +3,7 @@ interface ApiInterface {
   user: string;
   company: string;
   categories: string;
+  statusJobOffers: string;
   jobOffers: string;
   article: string;
   events: string;
@@ -14,6 +15,7 @@ export const api: ApiInterface = {
   company: process.env.NEXT_PUBLIC_API_BACKEND + '/company',
   categories: process.env.NEXT_PUBLIC_API_BACKEND + '/categories',
   jobOffers: process.env.NEXT_PUBLIC_API_BACKEND + '/job-offers',
+  statusJobOffers: process.env.NEXT_PUBLIC_API_BACKEND + '/status-job-offers',
   article: process.env.NEXT_PUBLIC_API_BACKEND + '/article',
   events: process.env.NEXT_PUBLIC_API_BACKEND + '/events',
 };

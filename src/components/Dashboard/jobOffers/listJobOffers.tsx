@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
+import Badges from 'src/components/Utils/categories/badges';
+import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
 
 const ListJobOffers = () => {
   const [jobOffers, setJobOffers] = useState(
@@ -81,7 +83,12 @@ const ListJobOffers = () => {
                     jobOffers.map((jobOffer: JobOfferInterface) => (
                       <tr key={jobOffer.id}>
                         <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
-                          <h1>{jobOffer.company}</h1>
+                          <h1>
+                            {
+                              getCompanyDataFromId(jobOffer.company as string)
+                                .name
+                            }
+                          </h1>
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
                           <h1>{jobOffer.name}</h1>
@@ -94,17 +101,35 @@ const ListJobOffers = () => {
                         </td>
 
                         <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
-                          {jobOffer.categories?.map(
+                          <Badges
+                            categoriesId={jobOffer.categories as Array<string>}
+                          />
+
+                          {/* {jobOffer.categories?.map(
                             (category: string, index) => (
                               <span key={index}>{category}</span>
                             )
-                          )}
+                          )} */}
                         </td>
 
                         <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <Link href={'/dashboard/offers/' + jobOffer.id}>
                             <a className="text-indigo-600 hover:text-indigo-900 p-1">
                               Edit JobOffer
+                            </a>
+                          </Link>
+                          <Link
+                            href={
+                              '/dashboard/offers/listApplicants/' + jobOffer.id
+                            }
+                          >
+                            <a className="text-indigo-600 hover:text-indigo-900 p-1">
+                              View applicants list
+                            </a>
+                          </Link>
+                          <Link href={'/job/' + jobOffer.id}>
+                            <a className="text-indigo-600 hover:text-indigo-900 p-1">
+                              View job Offer
                             </a>
                           </Link>
                         </td>

@@ -25,7 +25,7 @@ const modifyJobOffer = (jobOfferData: JobOfferInterface, next?: Function) => {
       } else {
         retrieveJobOffers(
           {
-            propOrId: 'aplicants',
+            propOrId: 'applicants',
             value: store.getState().user?.id as string,
           },
           next

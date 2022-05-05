@@ -12,7 +12,7 @@ export interface JobOfferInterface {
   deadLine?: string;
   published?: boolean;
 
-  aplicants?: Array<string> | undefined;
+  applicants?: Array<string> | undefined;
   updatedAt?: Date;
   createdAt?: Date;
 }

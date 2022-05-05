@@ -26,7 +26,7 @@ const JobView = () => {
         <div className="min-h-full pt-16">
           <main className="py-10">
             {/* Page header */}
-            <JobViewHeader alreadyApplied={alreadyApplied} />
+            <JobViewHeader />
             {/* {alreadyApplied && <AlertMsgAlreadyApplied />} */}
 
             <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">

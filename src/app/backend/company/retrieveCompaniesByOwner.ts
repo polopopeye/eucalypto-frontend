@@ -7,8 +7,9 @@ import { toast } from 'react-toastify';
 import companySlice from '../../slices/companies/companySlice';
 
 // Retrieves company data of the owner of the current session
-const retrieveCompanyByOwner = async (userId: string, next?: Function) => {
-  const url = api.company + '/' + userId;
+const retrieveCompanyByOwner = async (userId?: string, next?: Function) => {
+  const dinamicUserId = userId ? userId : store.getState().user?.id;
+  const url = api.company + '/' + dinamicUserId;
 
   axios
     .get(url)

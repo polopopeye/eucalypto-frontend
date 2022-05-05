@@ -8,11 +8,7 @@ import currentJobOfferSlice from 'src/app/slices/jobs/currentJobOffersSlice';
 
 export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
   const { jobOffer } = prop;
-  console.log(
-    '🚀 ~ file: CompanyBubble.tsx ~ line 12 ~ CompanyBubble ~ jobOffer',
-    jobOffer
-  );
-  const bubbleSize = 0;
+
   const textColor = 'red';
   return (
     <div

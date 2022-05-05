@@ -2,27 +2,25 @@ import React from 'react';
 import { store } from '../../../app/store';
 import { CompanyInterface } from '../../../commons/companyInterface';
 
-// TODO: Optimize this function to avoid unnecessary calls to the API
 const getCompanyDataFromId = (companyId: string) => {
+  const personalCompany = store
+    .getState()
+    .company.personalcompanies.find(
+      (x: CompanyInterface) => x.id === companyId
+    );
+
+  if (personalCompany) {
+    return personalCompany as CompanyInterface;
+  }
+
   const company = store
     .getState()
     .company.allCompanies.find((x: CompanyInterface) => x.id === companyId);
 
   if (company) {
-    return company as unknown as CompanyInterface;
-  } else {
-    const personalCompany = store
-      .getState()
-      .company.personalcompanies.find(
-        (x: CompanyInterface) => x.id === companyId
-      );
-
-    if (personalCompany) {
-      return personalCompany as unknown as CompanyInterface;
-    } else {
-      false;
-    }
+    return company as CompanyInterface;
   }
+  return {} as CompanyInterface;
 };
 
 export default getCompanyDataFromId;

@@ -3,6 +3,7 @@ import { Disclosure, Menu } from '@headlessui/react';
 import { MenuIcon, UserIcon, XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import logOut from 'src/app/firebase/auth/logOut';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
@@ -14,6 +15,7 @@ import LoadingComponent from '../Utils/LoadingComponent';
 import NavButton from './modules/NavButton';
 
 const Navbar = () => {
+  const router = useRouter();
   const checkUserInfo = useCheckUserInfo();
   const [user, setUser] = useState(store.getState().user as UserInterface);
   if (checkUserInfo.loading) return <LoadingComponent />;
@@ -102,7 +104,9 @@ const Navbar = () => {
                           {({ active }) => (
                             <a
                               onClick={() => {
-                                logOut();
+                                logOut(() => {
+                                  router.push('/');
+                                });
                               }}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
@@ -225,7 +229,9 @@ const Navbar = () => {
                   >
                     <a
                       onClick={() => {
-                        logOut();
+                        logOut(() => {
+                          router.push('/');
+                        });
                       }}
                     >
                       Sign out

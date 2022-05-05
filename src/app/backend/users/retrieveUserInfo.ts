@@ -6,40 +6,46 @@ import { toast } from 'react-toastify';
 import { UserInterface } from 'src/commons/userInterface';
 import retrieveJobOffers from '../jobOffer/retrievesJobOffer';
 
-const retrieveUserInfo = (email: UserInterface['email'], next?: Function) => {
-  const url = api.user + '/email/' + email;
+interface retrieveUserInfoInterface {
+  prop: string;
+  value: string;
+}
 
-  if (email) {
-    axios
-      .get(url)
-      .then((response) => {
-        const user = response.data[0];
-        store.dispatch(userSlice.actions.setData(response.data[0]));
+const retrieveUserInfo = (
+  props: retrieveUserInfoInterface,
+  next?: Function
+) => {
+  const url = api.user + '/' + props.prop + '/' + props.value;
 
-        // TODO: Is not necesary to retrieve job offers? maybe is better just only get the applicants job
-        if (user.role === 'admin') {
-          retrieveJobOffers({
-            propOrId: 'published',
-            value: true,
-            reduxSpace: 'personalJobOffers',
-          });
-        } else {
-          retrieveJobOffers({
-            propOrId: 'aplicants',
-            value: store.getState().user.id as string,
-            reduxSpace: 'personalJobOffers',
-          });
-        }
+  axios
+    .get(url)
+    .then((response) => {
+      const user = response.data[0];
+      store.dispatch(userSlice.actions.setData(response.data[0]));
 
-        if (typeof next === 'function') {
-          next();
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error('Error retrieving user info');
-      });
-  }
+      // TODO: Is not necesary to retrieve job offers? maybe is better just only get the applicants job
+      if (user.role === 'admin') {
+        retrieveJobOffers({
+          propOrId: 'published',
+          value: true,
+          reduxSpace: 'personalJobOffers',
+        });
+      } else {
+        retrieveJobOffers({
+          propOrId: 'applicants',
+          value: store.getState().user.id as string,
+          reduxSpace: 'personalJobOffers',
+        });
+      }
+
+      if (typeof next === 'function') {
+        next();
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error('Error retrieving user info');
+    });
 };
 
 export default retrieveUserInfo;

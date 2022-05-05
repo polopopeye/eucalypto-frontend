@@ -13,8 +13,11 @@ import MultipleSelect from 'src/components/Utils/MultipleSelect';
 import openFileInNewWindow from 'src/components/Utils/openFileInNewWindow';
 import newUpload from 'src/app/firebase/storage/newUpload';
 import modifyUserInBackend from 'src/app/backend/users/modifyUserInBackend';
+import { useRouter } from 'next/router';
 
 const UserSettings = () => {
+  const router = useRouter();
+
   let user: UserInterface = { ...store.getState().user };
   const [langs, setLangs] = useState(user.languages);
   const [techs, setTechs] = useState(user.categories);
@@ -26,13 +29,7 @@ const UserSettings = () => {
   const [techMultipleSelect, setTechMultipleSelect] = useState(
     store.getState().category.tech
   );
-  useEffect(() => {
-    retrieveCategories({
-      propToFind: 'type',
-      value: 'tech',
-      saveIn: 'tech',
-    });
-  }, []);
+
   store.subscribe(() => {
     setTechMultipleSelect(store.getState().category.tech);
   });
@@ -407,11 +404,15 @@ const UserSettings = () => {
                       user.id as string,
                       (url: string) => {
                         user.coverImg = url;
-                        modifyUserInBackend(user);
+                        modifyUserInBackend(user, () => {
+                          router.push('/dashboard/user');
+                        });
                       }
                     );
                   } else {
-                    modifyUserInBackend(user);
+                    modifyUserInBackend(user, () => {
+                      router.push('/dashboard/user');
+                    });
                   }
                 };
 
