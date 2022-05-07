@@ -116,12 +116,12 @@ const ListCompanies = () => {
                     </div>
                   </Link>
 
-                  {/* <Link href={'/job/' + jobOffer.id}> */}
-                  <div className="cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
-                    <ViewListIcon className="h-5 w-5 mr-4" />
-                    View Job Offers of this company
-                  </div>
-                  {/* </Link> */}
+                  <Link href={'/dashboard/companies/jobs/' + company.id}>
+                    <div className="cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
+                      <ViewListIcon className="h-5 w-5 mr-4" />
+                      View Job Offers of this company
+                    </div>
+                  </Link>
                 </div>
               </span>
             </div>

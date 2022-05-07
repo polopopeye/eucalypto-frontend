@@ -1,6 +1,6 @@
 export interface JobOfferInterface {
   id?: string;
-
+  fulltime?: string;
   company?: string;
   job?: string;
   location?: string;

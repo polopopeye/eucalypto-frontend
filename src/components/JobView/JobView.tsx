@@ -10,6 +10,7 @@ import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import { store } from 'src/app/store';
 import JobViewHeader from './JobViewHeader';
 import HeaderCompany from './HeaderCompany';
+import { ResponsivePie } from '@nivo/pie';
 
 const JobView = () => {
   const postInHtml = useRef() as any;
@@ -23,11 +24,40 @@ const JobView = () => {
 
   useEffect(() => {
     postInHtml.current.innerHTML = jobOffer.description;
-    console.log(
-      '🚀 ~ file: JobView.tsx ~ line 26 ~ useEffect ~ postInHtml.current.innerHTML',
-      postInHtml.current.innerHTML
-    );
   }, [jobOffer.description]);
+
+  const data = [
+    {
+      id: 'java',
+      label: 'java',
+      value: 10,
+      color: 'hsl(90, 70%, 50%)',
+    },
+    {
+      id: 'erlang',
+      label: 'erlang',
+      value: 10,
+      color: 'hsl(56, 70%, 50%)',
+    },
+    {
+      id: 'ruby',
+      label: 'ruby',
+      value: 20,
+      color: 'hsl(103, 70%, 50%)',
+    },
+    {
+      id: 'haskell',
+      label: 'haskell',
+      value: 50,
+      color: 'hsl(186, 70%, 50%)',
+    },
+    {
+      id: 'go',
+      label: 'go',
+      value: 10,
+      color: 'hsl(104, 70%, 50%)',
+    },
+  ];
 
   return (
     <div>
@@ -59,10 +89,38 @@ const JobView = () => {
                     <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
                       <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                         <div className="sm:col-span-2">
-                          <dt className="text-sm font-medium text-gray-500">
-                            <img
+                          <dt className="text-sm font-medium text-gray-500 h-80 w-full">
+                            {/* <img
                               alt=""
                               src="https://blog.logrocket.com/wp-content/uploads/2021/08/react-nivo-pie-chart-example.png"
+                            /> */}
+                            asdfasdfa
+                            <ResponsivePie
+                              margin={{
+                                top: 40,
+                                right: 80,
+                                bottom: 80,
+                                left: 80,
+                              }}
+                              data={data}
+                              innerRadius={0.5}
+                              padAngle={0.7}
+                              cornerRadius={3}
+                              activeOuterRadiusOffset={8}
+                              borderWidth={1}
+                              borderColor={{
+                                from: 'color',
+                                modifiers: [['darker', 0.2]],
+                              }}
+                              arcLinkLabelsSkipAngle={10}
+                              arcLinkLabelsTextColor="#333333"
+                              arcLinkLabelsThickness={2}
+                              arcLinkLabelsColor={{ from: 'color' }}
+                              arcLabelsSkipAngle={10}
+                              arcLabelsTextColor={{
+                                from: 'color',
+                                modifiers: [['darker', 2]],
+                              }}
                             />
                           </dt>
                         </div>

@@ -116,6 +116,28 @@ const CreateNewJobOffer = () => {
 
               <div className="sm:col-span-2">
                 <label
+                  htmlFor="fulltime"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Time (fullTime? or partTime?) 4h or 8h or 12h or 16h or 20h /
+                  week etc...
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="fulltime"
+                    name="fulltime"
+                    type="text"
+                    autoComplete="fulltime"
+                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                    onChange={(e) => {
+                      jobOffer.fulltime = e.target.value;
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-2">
+                <label
                   htmlFor="location"
                   className="block text-sm font-medium text-gray-700"
                 >

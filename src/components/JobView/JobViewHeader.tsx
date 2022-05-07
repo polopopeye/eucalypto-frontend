@@ -35,7 +35,7 @@ export default function JobViewHeader() {
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            Full-time??? IN PROGRESSS
+            {jobOffer.fulltime}
           </div>
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <LocationMarkerIcon
