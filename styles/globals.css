@@ -145,3 +145,7 @@
   font-size: 0.875em;
   list-style: circle;
 }
+
+iframe {
+  max-width: 100%;
+}
