@@ -7,18 +7,21 @@ import { toast } from 'react-toastify';
 
 import { UserInterface } from 'src/commons/userInterface';
 import { store } from 'src/app/store';
-import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+
 import { filetoDataURL } from 'src/components/Utils/toDataUrl';
 import MultipleSelect from 'src/components/Utils/MultipleSelect';
 import openFileInNewWindow from 'src/components/Utils/openFileInNewWindow';
 import newUpload from 'src/app/firebase/storage/newUpload';
 import modifyUserInBackend from 'src/app/backend/users/modifyUserInBackend';
 import { useRouter } from 'next/router';
+import { TrashIcon } from '@heroicons/react/outline';
+import deleteUserInBackend from 'src/app/backend/users/deleteUserInBackend';
+import retrieveAllUsersInfo from 'src/app/backend/users/retrieveAllUsersInfo';
 
-const UserSettings = () => {
+const UserSettings = (props: { user: UserInterface }) => {
   const router = useRouter();
 
-  let user: UserInterface = { ...store.getState().user };
+  let user: UserInterface = { ...props.user };
   const [langs, setLangs] = useState(user.languages);
   const [techs, setTechs] = useState(user.categories);
   const [avatar, setAvatar] = useState(user.coverImg);
@@ -302,29 +305,32 @@ const UserSettings = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Role
-                </label>
-                <div className="mt-1">
-                  <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    defaultValue={user.role}
-                    onChange={(e) => {
-                      user.role = e.target.value;
-                    }}
+              {(store.getState().user.role === 'admin' ||
+                store.getState().user.id === 'uLj5JdpTDUGlhxNqQeAJ') && (
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="country"
+                    className="block text-sm font-medium text-gray-700"
                   >
-                    <option value="talent">Talent</option>
-                    <option value="admin">Admin</option>
-                  </select>
+                    Role
+                  </label>
+                  <div className="mt-1">
+                    <select
+                      id="country"
+                      name="country"
+                      autoComplete="country-name"
+                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      defaultValue={user.role}
+                      onChange={(e) => {
+                        user.role = e.target.value;
+                      }}
+                    >
+                      <option value="talent">Talent</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="sm:col-span-2">
                 <label
@@ -378,6 +384,21 @@ const UserSettings = () => {
 
         <div className="pt-5">
           <div className="flex justify-end">
+            {user.id !== store.getState().user.id && (
+              <div
+                onClick={() => {
+                  deleteUserInBackend(user.id as string, () => {
+                    retrieveAllUsersInfo();
+                    router.push('/dashboard/user');
+                  });
+                }}
+                className="cursor-pointer bg-red-600 flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-red-900"
+              >
+                <TrashIcon className="h-5 w-5 mr-4" />
+                Delete User
+              </div>
+            )}
+
             <Link href="/dashboard/user">
               <button
                 type="button"

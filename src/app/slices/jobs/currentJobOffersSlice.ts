@@ -3,7 +3,7 @@ import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 
 const initialStateJobOffers: JobOfferInterface = {
   id: undefined,
-  name: undefined,
+
   company: undefined,
   job: undefined,
   location: undefined,

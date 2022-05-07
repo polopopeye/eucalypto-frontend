@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import AlertMsgAlreadyApplied from './modules/AlertMsgAlreadyApplied';
 
@@ -12,6 +12,7 @@ import JobViewHeader from './JobViewHeader';
 import HeaderCompany from './HeaderCompany';
 
 const JobView = () => {
+  const postInHtml = useRef() as any;
   const [jobOffer, setJobOffer] = useState(
     store.getState().jobs.currentJobOffer as JobOfferInterface
   );
@@ -19,6 +20,14 @@ const JobView = () => {
     setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
   });
   const [alreadyApplied, setAlreadyApplied] = useState(true);
+
+  useEffect(() => {
+    postInHtml.current.innerHTML = jobOffer.description;
+    console.log(
+      '🚀 ~ file: JobView.tsx ~ line 26 ~ useEffect ~ postInHtml.current.innerHTML',
+      postInHtml.current.innerHTML
+    );
+  }, [jobOffer.description]);
 
   return (
     <div>
@@ -49,22 +58,13 @@ const JobView = () => {
                     </div>
                     <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
                       <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                        <div className="sm:col-span-1">
+                        <div className="sm:col-span-2">
                           <dt className="text-sm font-medium text-gray-500">
                             <img
                               alt=""
                               src="https://blog.logrocket.com/wp-content/uploads/2021/08/react-nivo-pie-chart-example.png"
                             />
                           </dt>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                          <dt className="text-sm font-medium text-gray-500">
-                            Application for
-                          </dt>
-                          <dd className="mt-1 text-sm text-gray-900">
-                            {jobOffer.job}
-                          </dd>
                         </div>
 
                         {jobOffer.categories && (
@@ -90,8 +90,12 @@ const JobView = () => {
                           <dt className="text-sm font-medium text-gray-500">
                             About
                           </dt>
-                          <dd className="mt-1 text-sm text-gray-900">
-                            {jobOffer.description}
+                          <dd
+                            id="post-content"
+                            ref={postInHtml}
+                            className="mt-1 text-sm text-gray-900"
+                          >
+                            {/* {eval(jobOffer.description as string */}
                           </dd>
                         </div>
                       </dl>

@@ -16,7 +16,7 @@ const ModifyJobOfferPage = () => {
   if (checkUserInfo.loading) return <LoadingComponent />;
   if (!checkUserInfo.isLogedIn) router.push('/signin');
   retrieveJobOffers({
-    propOrId: 'id',
+    prop: 'id',
     value: offerID as string,
     reduxSpace: 'currentJobOffer',
   });

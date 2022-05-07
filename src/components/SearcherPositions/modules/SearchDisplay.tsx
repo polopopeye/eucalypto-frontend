@@ -22,7 +22,7 @@ const SearchDisplay = () => {
   });
   useEffect(() => {
     retrieveJobOffers({
-      propOrId: 'published',
+      prop: 'published',
       value: true,
       reduxSpace: 'allJobOffers',
     });

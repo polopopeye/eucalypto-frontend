@@ -9,7 +9,7 @@ const registerCategory = (categoryData: CategoryInterface, next?: Function) => {
     .then((response) => {
       toast.success('Category Created Successfully');
       if (typeof next === 'function') {
-        next(response);
+        next(response.data);
       }
     })
     .catch((err) => {

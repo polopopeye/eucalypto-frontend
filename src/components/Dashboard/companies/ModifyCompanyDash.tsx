@@ -14,6 +14,7 @@ import deleteCompany from 'src/app/backend/company/deleteCompany';
 import deleteFile from 'src/app/firebase/storage/deleteFile';
 import newUpload from 'src/app/firebase/storage/newUpload';
 import modifyCompany from 'src/app/backend/company/modifyCompany';
+import { TrashIcon } from '@heroicons/react/outline';
 
 const ModifyCompanyDash = (props: any) => {
   const router = useRouter();
@@ -243,7 +244,7 @@ const ModifyCompanyDash = (props: any) => {
           <div className="flex justify-end">
             <button
               type="button"
-              className="bg-red-600 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-200 hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="bg-red-600 flex py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-200 hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={async () => {
                 deleteCompany(company, () => {
                   deleteFile(
@@ -255,6 +256,7 @@ const ModifyCompanyDash = (props: any) => {
                 });
               }}
             >
+              <TrashIcon className="w-5 h-5 mr-4" />
               Delete company
             </button>
 

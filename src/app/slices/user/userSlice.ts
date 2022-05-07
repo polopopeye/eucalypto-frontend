@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { UserInterface } from 'src/commons/userInterface';
 
 const user: UserInterface = {
-  id: '',
+  id: undefined,
   email: undefined,
   coverImg: undefined,
   displayName: undefined,

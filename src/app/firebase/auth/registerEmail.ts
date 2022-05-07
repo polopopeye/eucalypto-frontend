@@ -5,16 +5,17 @@ import { toast } from 'react-toastify';
 import registerUserInBackend from '../../backend/users/registerUserInBackend';
 
 const registerEmail = (email: string, password: string) => {
+  const normalizedEmail = email.toLowerCase().trim();
   const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(auth, normalizedEmail, password)
     .then((userCredential) => {
       registerUserInBackend({
-        completeName: email,
-        displayName: email,
+        completeName: normalizedEmail,
+        displayName: normalizedEmail,
         languages: ['english'],
         role: 'talent',
-        coverImg: 'https://picsum.photos/seed/' + email + '/200/200',
-        email: email,
+        coverImg: 'https://picsum.photos/seed/' + normalizedEmail + '/200/200',
+        email: normalizedEmail,
         published: true,
       });
     })

@@ -9,7 +9,7 @@ const registerCompany = (companyData: CompanyInterface, next?: Function) => {
     .then((response) => {
       toast.success('Company Created Successfully');
       if (typeof next === 'function') {
-        next(response);
+        next(response.data);
       }
     })
     .catch((err) => {

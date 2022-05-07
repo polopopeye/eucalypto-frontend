@@ -12,6 +12,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://unpkg.com/flickity@2/dist/flickity.min.css"
           ></link>
+          <script
+            src="https://cdn.tiny.cloud/1/4ge8itj7zovsnq0e89lw5enf1fudbp3nyiin4xdch5zmnzjq/tinymce/5/tinymce.min.js"
+            referrerPolicy="origin"
+          />
         </Head>
         <body className={currentTheme}>
           <Main />

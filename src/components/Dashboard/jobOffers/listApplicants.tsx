@@ -7,6 +7,7 @@ import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import TextHeader from 'src/components/Utils/TextHeader/TextHeader';
 import Badges from 'src/components/Utils/categories/badges';
 import getUserDataFromId from 'src/components/Utils/redux/getUserDataFromId';
+import UpdateStatus from './UpdateStatus';
 
 const NoApplicantFound = () => {
   return (
@@ -42,11 +43,7 @@ const ListApplicants = () => {
 
   return (
     <div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
-      <TextHeader
-        title={jobOffer.name}
-        description={jobOffer.description}
-        category={jobOffer.deadLine}
-      />
+      <TextHeader title={jobOffer.job} category={jobOffer.deadLine} />
       <hr className="mt-8" />
       <Badges categoriesId={jobOffer.categories} />
       <hr className="mt-8" />
@@ -56,7 +53,7 @@ const ListApplicants = () => {
             const applicant = getUserDataFromId(applicantId);
 
             return (
-              <>
+              <div key={applicantId}>
                 <div className="ml-4 mt-4">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
@@ -157,18 +154,35 @@ const ListApplicants = () => {
                     />
                     <span>
                       curriculum:
-                      <a
-                        className="mt-4 ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        href={applicant?.curriculum}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Curriculum
-                      </a>
+                      {applicant?.curriculum ? (
+                        <a
+                          className="mt-4 ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          href={applicant?.curriculum}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View Curriculum
+                        </a>
+                      ) : (
+                        <span>No curriculum uploaded</span>
+                      )}
                     </span>
                   </div>
                 </div>
-              </>
+
+                <div className="ml-4 mt-4">
+                  <div className="w-full ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <MailIcon
+                      className="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    <span className="w-full">
+                      Update Applicant Status:
+                      <UpdateStatus applicantId={applicantId} />
+                    </span>
+                  </div>
+                </div>
+              </div>
             );
           })
         ) : (

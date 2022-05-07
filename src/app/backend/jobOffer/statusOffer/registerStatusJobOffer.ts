@@ -12,10 +12,6 @@ const registerStatusJobOffer = (
   axios
     .post(api.statusJobOffers, offerData)
     .then((response) => {
-      console.log(
-        '🚀 ~ file: registerStatusJobOffer.ts ~ line 15 ~ .then ~ response',
-        response.data
-      );
       // if (store.getState().user.role === 'admin') {
       //   retrieveJobOffers({
       //     propOrId: 'published',
@@ -31,7 +27,7 @@ const registerStatusJobOffer = (
       // }
 
       if (typeof next === 'function') {
-        next(response);
+        next(response.data);
       }
     })
     .catch((err) => {

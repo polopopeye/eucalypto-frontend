@@ -31,7 +31,7 @@ const ApplyNowModule = () => {
   const handleModifyJobOffer = (id: string, applicants: Array<string>) => {
     modifyJobOffer({ id: id, applicants: applicants }, () => {
       retrieveJobOffers({
-        propOrId: 'id',
+        prop: 'id',
         value: id,
         reduxSpace: 'currentJobOffer',
       });
@@ -48,7 +48,7 @@ const ApplyNowModule = () => {
     const statusJobOffer = {
       idJob: jobOffer.id as string,
       idUser: user.id as string,
-      status: 'applied',
+      status: 'default',
       description:
         'Applied to ' + getCompanyDataFromId(jobOffer.company as string).name,
       published: true,

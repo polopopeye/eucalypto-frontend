@@ -3,23 +3,30 @@ import { store } from '../../../app/store';
 import { CompanyInterface } from '../../../commons/companyInterface';
 
 const getCompanyDataFromId = (companyId: string) => {
-  const personalCompany = store
-    .getState()
-    .company.personalcompanies.find(
+  const personalCompaniesReduxSpace =
+    store.getState().company.personalcompanies;
+
+  const allCompaniesReduxSpace = store.getState().company.allCompanies;
+
+  if (personalCompaniesReduxSpace) {
+    const personalCompany = personalCompaniesReduxSpace.find(
       (x: CompanyInterface) => x.id === companyId
     );
 
-  if (personalCompany) {
-    return personalCompany as CompanyInterface;
+    if (personalCompany) {
+      return personalCompany as CompanyInterface;
+    }
+  }
+  if (allCompaniesReduxSpace) {
+    const company = allCompaniesReduxSpace.find(
+      (x: CompanyInterface) => x.id === companyId
+    );
+
+    if (company) {
+      return company as CompanyInterface;
+    }
   }
 
-  const company = store
-    .getState()
-    .company.allCompanies.find((x: CompanyInterface) => x.id === companyId);
-
-  if (company) {
-    return company as CompanyInterface;
-  }
   return {} as CompanyInterface;
 };
 

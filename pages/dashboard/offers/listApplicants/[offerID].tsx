@@ -20,7 +20,7 @@ const ModifyJobOfferPage = () => {
   if (!checkUserInfo.isLogedIn) router.push('/signin');
   retrieveCompanyByOwner();
   retrieveJobOffers({
-    propOrId: 'id',
+    prop: 'id',
     value: offerID as string,
     reduxSpace: 'currentJobOffer',
   });

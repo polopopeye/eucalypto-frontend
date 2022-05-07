@@ -18,7 +18,7 @@ const retrieveCompanyByOwner = async (userId?: string, next?: Function) => {
 
       store.dispatch(companySlice.actions.setData(allCompaniesFound));
       if (typeof next === 'function') {
-        next(response);
+        next(allCompaniesFound);
       }
     })
     .catch((error) => {

@@ -31,12 +31,12 @@ const Navbar = () => {
     >
       {({ open }) => (
         <>
-          <div className="  mx-auto px-32">
+          <div className="  mx-auto px-16">
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block  ml-16 h-auto w-64"
+                    className="block    h-auto w-64"
                     src="/img/logo1.png"
                     alt="Workflow"
                   />
@@ -44,7 +44,8 @@ const Navbar = () => {
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <NavButton href="/" text="Home" />
                   <NavButton href="/search" text="Search for a project" />
-                  <NavButton href="/community" text="Community" />
+                  {/* TODO: FINISH COMUNITY PART */}
+                  {/* <NavButton href="/community" text="Community" /> */}
                   {!checkUserInfo.isLogedIn && (
                     <NavButton href="/signin" text="Sign In" />
                   )}
@@ -105,7 +106,7 @@ const Navbar = () => {
                             <a
                               onClick={() => {
                                 logOut(() => {
-                                  router.push('/');
+                                  window.location.reload();
                                 });
                               }}
                               className={classNames(
@@ -230,7 +231,7 @@ const Navbar = () => {
                     <a
                       onClick={() => {
                         logOut(() => {
-                          router.push('/');
+                          window.location.reload();
                         });
                       }}
                     >

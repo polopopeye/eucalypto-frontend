@@ -17,7 +17,7 @@ const modifyJobOffer = (jobOfferData: JobOfferInterface, next?: Function) => {
       if (store.getState().user?.role === 'admin') {
         retrieveJobOffers(
           {
-            propOrId: 'published',
+            prop: 'published',
             value: true,
           },
           next
@@ -25,7 +25,7 @@ const modifyJobOffer = (jobOfferData: JobOfferInterface, next?: Function) => {
       } else {
         retrieveJobOffers(
           {
-            propOrId: 'applicants',
+            prop: 'applicants',
             value: store.getState().user?.id as string,
           },
           next

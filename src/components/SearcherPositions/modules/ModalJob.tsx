@@ -14,7 +14,6 @@ export default function ModalJob() {
       <div className="px-4  sm:px-6">
         <HeaderCompany />
 
-        <h1 className=" text-xl font-bold py-8">{jobOffer.name}</h1>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">Details</p>
       </div>
       <div className="border-t border-gray-200 px-4 py-5 sm:px-6">

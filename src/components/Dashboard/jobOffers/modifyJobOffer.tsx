@@ -16,6 +16,7 @@ import { classNames } from 'src/components/Utils/classnames';
 import MultipleSelect from 'src/components/Utils/MultipleSelect';
 import deleteJobOffer from 'src/app/backend/jobOffer/deleteJobOffer';
 import modifyJobOffer from 'src/app/backend/jobOffer/modifyJobOffer';
+import { Editor } from '@tinymce/tinymce-react';
 
 const ModifyJobOffer = () => {
   const router = useRouter();
@@ -84,28 +85,6 @@ const ModifyJobOffer = () => {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Page offer tittle
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    defaultValue={jobOffer.name}
-                    onChange={(e) => {
-                      jobOffer.name = e.target.value;
-                    }}
-                  />
-                </div>
-              </div>
-
               {companies && (
                 <div className="sm:col-span-2">
                   <label
@@ -243,7 +222,7 @@ const ModifyJobOffer = () => {
                 </Switch.Group>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-6">
                 <label
                   htmlFor="description"
                   className="block text-sm font-medium text-gray-700"
@@ -251,14 +230,33 @@ const ModifyJobOffer = () => {
                   Add your description
                 </label>
                 <div className="mt-1">
-                  <textarea
-                    rows={4}
-                    name="description"
-                    id="description"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    defaultValue={jobOffer.description}
-                    onChange={(e) => {
-                      jobOffer.description = e.target.value;
+                  <Editor
+                    // onInit={(evt, editor) => (editorRef.current = editor)}
+                    initialValue={jobOffer.description}
+                    onChange={(evt, editor) => {
+                      jobOffer.description = editor.getContent();
+                    }}
+                    init={{
+                      height: 500,
+                      menubar: false,
+                      plugins: [
+                        ' imagetools advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                        'a11ychecker   casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+                      ],
+
+                      toolbar_mode: 'floating',
+                      tinycomments_mode: 'embedded',
+                      tinycomments_author: 'Kenneth Suarez',
+
+                      toolbar:
+                        ' paste preview | undo redo | media image imagetools | checklist code | formatpainter pageembed table | formatselect | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat ',
+                      content_style:
+                        'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                     }}
                   />
                 </div>

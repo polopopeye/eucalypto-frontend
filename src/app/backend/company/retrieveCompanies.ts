@@ -17,7 +17,7 @@ const retrieveAllCompanies = async (next?: Function) => {
 
       store.dispatch(allCompaniesSlice.actions.setData(allCompaniesFound));
       if (typeof next === 'function') {
-        next(response);
+        next(allCompaniesFound);
       }
     })
     .catch((error) => {

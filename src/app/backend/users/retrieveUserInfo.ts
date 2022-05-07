@@ -9,6 +9,7 @@ import retrieveJobOffers from '../jobOffer/retrievesJobOffer';
 interface retrieveUserInfoInterface {
   prop: string;
   value: string;
+  reduxSpace?: 'user' | 'current' | 'none';
 }
 
 const retrieveUserInfo = (
@@ -20,26 +21,32 @@ const retrieveUserInfo = (
   axios
     .get(url)
     .then((response) => {
-      const user = response.data[0];
-      store.dispatch(userSlice.actions.setData(response.data[0]));
+      const user = response.data[0] ? response.data[0] : response.data;
 
-      // TODO: Is not necesary to retrieve job offers? maybe is better just only get the applicants job
-      if (user.role === 'admin') {
-        retrieveJobOffers({
-          propOrId: 'published',
-          value: true,
-          reduxSpace: 'personalJobOffers',
-        });
+      if (!props.reduxSpace) {
+        store.dispatch(userSlice.actions.setData(user));
       } else {
-        retrieveJobOffers({
-          propOrId: 'applicants',
-          value: store.getState().user.id as string,
-          reduxSpace: 'personalJobOffers',
-        });
+        if (props.reduxSpace === 'user' || props.reduxSpace === 'current') {
+          store.dispatch(userSlice.actions.setData(user));
+        }
       }
+      // TODO: Is not necesary to retrieve job offers? maybe is better just only get the applicants job
+      // if (user.role === 'admin') {
+      //   retrieveJobOffers({
+      //     propOrId: 'published',
+      //     value: true,
+      //     reduxSpace: 'personalJobOffers',
+      //   });
+      // } else {
+      //   retrieveJobOffers({
+      //     propOrId: 'applicants',
+      //     value: store.getState().user.id as string,
+      //     reduxSpace: 'personalJobOffers',
+      //   });
+      // }
 
       if (typeof next === 'function') {
-        next();
+        next(user);
       }
     })
     .catch((error) => {

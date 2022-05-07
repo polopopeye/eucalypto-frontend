@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { Switch } from '@headlessui/react';
@@ -15,9 +16,11 @@ import { CompanyInterface } from 'src/commons/companyInterface';
 import { classNames } from 'src/components/Utils/classnames';
 import MultipleSelect from 'src/components/Utils/MultipleSelect';
 import registerJobOffer from 'src/app/backend/jobOffer/registerJobOffer';
+import { Editor } from '@tinymce/tinymce-react';
 
 const CreateNewJobOffer = () => {
   const router = useRouter();
+  const editorRef = useRef();
 
   const [jobOffer, setJobOffer] = useState({} as JobOfferInterface);
   const [techs, setTechs] = useState([]);
@@ -62,27 +65,6 @@ const CreateNewJobOffer = () => {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Page offer tittle
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    onChange={(e) => {
-                      jobOffer.name = e.target.value;
-                    }}
-                  />
-                </div>
-              </div>
-
               {companies && (
                 <div className="sm:col-span-2">
                   <label
@@ -215,7 +197,7 @@ const CreateNewJobOffer = () => {
                 </Switch.Group>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-6">
                 <label
                   htmlFor="description"
                   className="block text-sm font-medium text-gray-700"
@@ -223,13 +205,33 @@ const CreateNewJobOffer = () => {
                   Add your description
                 </label>
                 <div className="mt-1">
-                  <textarea
-                    rows={4}
-                    name="description"
-                    id="description"
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    onChange={(e) => {
-                      jobOffer.description = e.target.value;
+                  <Editor
+                    // onInit={(evt, editor) => (editorRef.current = editor)}
+                    // initialValue={postInHtml}
+                    onChange={(evt, editor) => {
+                      jobOffer.description = editor.getContent();
+                    }}
+                    init={{
+                      height: 500,
+                      menubar: false,
+                      plugins: [
+                        ' imagetools advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount',
+                        'a11ychecker   casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+                      ],
+
+                      toolbar_mode: 'floating',
+                      tinycomments_mode: 'embedded',
+                      tinycomments_author: 'Kenneth Suarez',
+
+                      toolbar:
+                        ' paste preview | undo redo | media image imagetools | checklist code | formatpainter pageembed table | formatselect | ' +
+                        'bold italic backcolor | alignleft aligncenter ' +
+                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                        'removeformat ',
+                      content_style:
+                        'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                     }}
                   />
                 </div>
@@ -289,7 +291,9 @@ const CreateNewJobOffer = () => {
                 Cancel
               </button>
             </Link>
-            <button
+
+            {/* TODO: BETTER INTEGRATION WITH DRAFT, NOT WORKING PROPERLY RIGHT NOW */}
+            {/* <button
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
@@ -305,7 +309,7 @@ const CreateNewJobOffer = () => {
               }}
             >
               Save as draft
-            </button>
+            </button> */}
             <button
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

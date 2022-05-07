@@ -10,24 +10,29 @@ import currentJobOfferSlice from 'src/app/slices/jobs/currentJobOffersSlice';
 import personalJobOffersSlice from 'src/app/slices/jobs/personalJobOffersSlice';
 
 interface propToFindJobOffers {
-  propOrId: string;
+  prop: string;
   value: string | number | boolean;
   reduxSpace?:
     | 'filteredJobOffers'
     | 'personalJobOffers'
     | 'allJobOffers'
-    | 'currentJobOffer';
+    | 'currentJobOffer'
+    | 'none';
 }
 const retrieveJobOffers = async (
   props: propToFindJobOffers,
   next?: Function
 ) => {
-  const url = api.jobOffers + '/' + props.propOrId + '/' + props.value;
+  const url = api.jobOffers + '/' + props.prop + '/' + props.value;
 
   axios
     .get(url)
     .then((response) => {
       const jobOffersFound = response.data;
+      console.log(
+        '🚀 ~ file: retrievesJobOffer.ts ~ line 32 ~ .then ~ jobOffersFound',
+        jobOffersFound
+      );
 
       if (
         props.reduxSpace === 'personalJobOffers' ||
@@ -46,7 +51,7 @@ const retrieveJobOffers = async (
       }
 
       if (typeof next === 'function') {
-        next(response);
+        next(jobOffersFound);
       }
     })
     .catch((error) => {

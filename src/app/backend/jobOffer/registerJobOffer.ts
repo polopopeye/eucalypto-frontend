@@ -11,13 +11,13 @@ const registerJobOffer = (offerData: JobOfferInterface, next?: Function) => {
     .then((response) => {
       if (store.getState().user.role === 'admin') {
         retrieveJobOffers({
-          propOrId: 'published',
+          prop: 'published',
           value: true,
           reduxSpace: 'personalJobOffers',
         });
       } else {
         retrieveJobOffers({
-          propOrId: 'applicants',
+          prop: 'applicants',
           value: store.getState().user.id as string,
           reduxSpace: 'personalJobOffers',
         });
@@ -25,7 +25,7 @@ const registerJobOffer = (offerData: JobOfferInterface, next?: Function) => {
 
       toast.success('Job Offer Created Successfully');
       if (typeof next === 'function') {
-        next(response);
+        next(response.data);
       }
     })
     .catch((err) => {

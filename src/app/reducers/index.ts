@@ -6,8 +6,10 @@ import usersSlice from '../slices/user/usersSlice';
 import modalsReducer from './modalsReducer';
 import jobsReducer from './jobsReducers';
 import companiesReducer from './companiesReducers';
+import appReducers from './appReducers';
 
 const allReducers = combineReducers({
+  app: appReducers,
   modals: modalsReducer,
   jobs: jobsReducer,
   company: companiesReducer,

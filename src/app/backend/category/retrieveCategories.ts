@@ -19,6 +19,10 @@ const retrieveCategories = (props: retrieveCategories, next?: Function) => {
     .get(url)
     .then((response) => {
       const allCategoriesFound = response.data;
+      console.log(
+        '🚀 ~ file: retrieveCategories.ts ~ line 22 ~ .then ~ allCategoriesFound',
+        allCategoriesFound
+      );
 
       let newCategoryToAppendToRedux = [] as any;
 
@@ -42,7 +46,7 @@ const retrieveCategories = (props: retrieveCategories, next?: Function) => {
       store.dispatch(categorySlice.actions.setData(dataToAppend));
 
       if (typeof next === 'function') {
-        next(response);
+        next(allCategoriesFound);
       }
     })
     .catch((error) => {

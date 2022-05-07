@@ -15,7 +15,7 @@ const Job = () => {
   if (checkUserInfo.loading) return <LoadingComponent />;
 
   retrieveJobOffers({
-    propOrId: 'id',
+    prop: 'id',
     value: offerID as string,
     reduxSpace: 'currentJobOffer',
   });

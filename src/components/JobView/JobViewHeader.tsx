@@ -27,7 +27,7 @@ export default function JobViewHeader() {
     <div className="lg:flex lg:items-center lg:justify-between px-8">
       <div className="flex-1 min-w-0">
         <h2 className="mt-2 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-          {jobOffer.name}
+          {jobOffer.job}
         </h2>
         <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
           <div className="mt-2 flex items-center text-sm text-gray-500">

@@ -45,7 +45,7 @@ export default function CompanyBubble(prop: { jobOffer: JobOfferInterface }) {
             textAlign: 'center',
           }}
         >
-          {jobOffer.name}
+          {jobOffer.job}
         </p>
         <p
           style={{

@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import retrieveCategories from 'src/app/backend/category/retrieveCategories';
-import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
+
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
-import { store } from '../../../src/app/store';
-import UserSettings from '../../../src/components/Dashboard/user/UserSettings';
+import { store } from '../../../../src/app/store';
+import UserSettings from '../../../../src/components/Dashboard/user/UserSettings';
 
 const Settings = () => {
   const router = useRouter();
@@ -21,7 +21,7 @@ const Settings = () => {
 
   return (
     <div className="pt-32">
-      <UserSettings />
+      <UserSettings user={store.getState().user} />
     </div>
   );
 };

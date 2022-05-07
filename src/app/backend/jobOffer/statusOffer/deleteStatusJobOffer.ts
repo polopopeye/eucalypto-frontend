@@ -4,7 +4,7 @@ import { api } from '../../apiEndPoints';
 
 interface DeleteStatusJobOfferProps {
   userId: string;
-  jobId: string;
+  jobId?: string;
 }
 
 const deleteStatusJobOffer = (
@@ -12,13 +12,19 @@ const deleteStatusJobOffer = (
   next?: Function
 ) => {
   const { userId, jobId } = props;
+
+  // API Url => if jobID, delete by user and object id else delete by statusId check endpoints doc
+  const url = jobId
+    ? api.statusJobOffers + '/' + userId + '/' + jobId
+    : api.statusJobOffers + '/' + userId;
+
   axios
-    .delete(api.statusJobOffers + '/' + userId + '/' + jobId)
+    .delete(url)
     .then((response) => {
-      console.log(
-        '🚀 ~ file: deleteJobOffer.ts ~ line 21 ~ .then ~ response',
-        response
-      );
+      toast.success('Status JobOffer Deleted Successfully');
+      if (next) {
+        next();
+      }
     })
     .catch((err) => {
       toast.error(err.message);

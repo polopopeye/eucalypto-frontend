@@ -1,4 +1,9 @@
-import { CheckIcon, ThumbUpIcon, UserIcon } from '@heroicons/react/outline';
+import {
+  BriefcaseIcon,
+  CheckIcon,
+  ThumbUpIcon,
+  UserIcon,
+} from '@heroicons/react/outline';
 
 import React, { useEffect, useState } from 'react';
 import retrieveStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/retrieveStatusJobOffer';
@@ -56,12 +61,6 @@ const UserStepsTimeline = () => {
     );
   }, [jobOffer, user]);
 
-  // const eventTypes = {
-  //   applied: { icon: UserIcon, bgColorClass: 'bg-gray-400' },
-  //   advanced: { icon: ThumbUpIcon, bgColorClass: 'bg-primary' },
-  //   completed: { icon: CheckIcon, bgColorClass: 'bg-green-500' },
-  // };
-
   const checkUserInfo = useCheckUserInfo();
 
   if (checkUserInfo.loading) return <LoadingComponent />;
@@ -114,7 +113,8 @@ const UserStepsTimeline = () => {
             </h2>
             <div className="mt-6 flow-root">
               <ul role="list" className="-mb-8">
-                {statusJobOffers?.length &&
+                {statusJobOffers &&
+                  statusJobOffers.length &&
                   statusJobOffers.map((item, itemIdx) => (
                     <li key={item.id}>
                       <div className="relative pb-8">
@@ -125,10 +125,25 @@ const UserStepsTimeline = () => {
                                 'h-10 w-10 rounded-full flex items-center justify-center bg-green-500 ring-8 ring-white'
                               )}
                             >
-                              <CheckIcon
-                                className="w-8 h-8 text-white"
-                                aria-hidden="true"
-                              />
+                              {(item.status === 'default' ||
+                                item.status === 'applied') && (
+                                <BriefcaseIcon
+                                  aria-hidden="true"
+                                  className="w-8 h-8 text-white"
+                                />
+                              )}
+                              {item.status === 'completed' && (
+                                <CheckIcon
+                                  aria-hidden="true"
+                                  className="w-8 h-8 text-white"
+                                />
+                              )}
+                              {item.status === 'progress' && (
+                                <ThumbUpIcon
+                                  aria-hidden="true"
+                                  className="w-8 h-8 text-white"
+                                />
+                              )}
                             </span>
                           </div>
                           <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
