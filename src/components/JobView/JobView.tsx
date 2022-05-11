@@ -17,6 +17,7 @@ const JobView = () => {
   const [jobOffer, setJobOffer] = useState(
     store.getState().jobs.currentJobOffer as JobOfferInterface
   );
+  const [data, setData] = useState([]);
   store.subscribe(() => {
     setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
   });
@@ -26,38 +27,11 @@ const JobView = () => {
     postInHtml.current.innerHTML = jobOffer.description;
   }, [jobOffer.description]);
 
-  const data = [
-    {
-      id: 'java',
-      label: 'java',
-      value: 10,
-      color: 'hsl(90, 70%, 50%)',
-    },
-    {
-      id: 'erlang',
-      label: 'erlang',
-      value: 10,
-      color: 'hsl(56, 70%, 50%)',
-    },
-    {
-      id: 'ruby',
-      label: 'ruby',
-      value: 20,
-      color: 'hsl(103, 70%, 50%)',
-    },
-    {
-      id: 'haskell',
-      label: 'haskell',
-      value: 50,
-      color: 'hsl(186, 70%, 50%)',
-    },
-    {
-      id: 'go',
-      label: 'go',
-      value: 10,
-      color: 'hsl(104, 70%, 50%)',
-    },
-  ];
+  useEffect(() => {
+    if (jobOffer.technologies) {
+      setData(jobOffer.technologies as any);
+    }
+  }, [jobOffer.technologies]);
 
   return (
     <div>
@@ -90,11 +64,6 @@ const JobView = () => {
                       <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                         <div className="sm:col-span-2">
                           <dt className="text-sm font-medium text-gray-500 h-80 w-full">
-                            {/* <img
-                              alt=""
-                              src="https://blog.logrocket.com/wp-content/uploads/2021/08/react-nivo-pie-chart-example.png"
-                            /> */}
-                            asdfasdfa
                             <ResponsivePie
                               margin={{
                                 top: 40,
@@ -102,7 +71,7 @@ const JobView = () => {
                                 bottom: 80,
                                 left: 80,
                               }}
-                              data={data}
+                              data={data as any}
                               innerRadius={0.5}
                               padAngle={0.7}
                               cornerRadius={3}

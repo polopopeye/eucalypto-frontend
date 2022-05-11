@@ -1,0 +1,79 @@
+{
+  "hidefiles.configurationType": "local",
+  "hidefiles.globalConfig": {
+    "profiles": [
+      {
+        "hidden": [
+          "node_modules/",
+          ".next/",
+          ".vscode/",
+          ".env.example",
+          ".env.local",
+          ".env.example",
+          ".gitignore",
+          "cypress.json",
+          "firestore.rules",
+          "firestore.indexes.json",
+          "next-env.d.ts",
+          ".npmrc",
+          "package-lock.json"
+        ],
+        "name": "Clean, Only necesary",
+        "description": "",
+        "detail": "",
+        "peek": []
+      },
+      {
+        "hidden": [
+          "$Clean, Only necesary",
+          "tsconfig.json",
+          "tailwind.config.js",
+          "Procfile",
+          "postcss.config.js",
+          "package.json",
+          "next.config.js",
+          ".eslintrc.json",
+          "typings/react-bubble-ui.d.ts",
+          ".husky/",
+          "cypress/",
+          "typings/"
+        ],
+        "name": "Super Clean",
+        "description": "",
+        "detail": "",
+        "peek": []
+      }
+    ]
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "node_modules/": true,
+    ".next/": true,
+    ".vscode/": true,
+    ".env.example": true,
+    ".env.local": true,
+    ".gitignore": true,
+    "cypress.json": true,
+    "firestore.rules": true,
+    "firestore.indexes.json": true,
+    "next-env.d.ts": true,
+    ".npmrc": true,
+    "package-lock.json": true,
+    "tsconfig.json": true,
+    "tailwind.config.js": true,
+    "Procfile": true,
+    "postcss.config.js": true,
+    "package.json": true,
+    "next.config.js": true,
+    ".eslintrc.json": true,
+    "typings/react-bubble-ui.d.ts": true,
+    ".husky/": true,
+    "cypress/": true,
+    "typings/": true
+  },
+  "hidefiles.selectedProfile": "Super Clean"
+}

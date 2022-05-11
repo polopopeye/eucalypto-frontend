@@ -2,51 +2,180 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
-import { Switch } from '@headlessui/react';
+import { Dialog, Switch } from '@headlessui/react';
 import { useRouter } from 'next/router';
-
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import { store } from 'src/app/store';
-import retrieveCategories from 'src/app/backend/category/retrieveCategories';
-import retrieveCompanyByOwner from 'src/app/backend/company/retrieveCompaniesByOwner';
 import { CompanyInterface } from 'src/commons/companyInterface';
 import { classNames } from 'src/components/Utils/classnames';
-import MultipleSelect from 'src/components/Utils/MultipleSelect';
 import registerJobOffer from 'src/app/backend/jobOffer/registerJobOffer';
 import { Editor } from '@tinymce/tinymce-react';
+import { TrashIcon } from '@heroicons/react/outline';
+
+function ModalCreateTechnology(props: {
+  setOpen: any;
+  open: any;
+  setTechsOffer: any;
+  setCategory: any;
+}) {
+  const { open, setOpen, setTechsOffer, setCategory } = props;
+  const techRef = useRef() as RefObject<HTMLSelectElement>;
+  const valueRef = useRef() as RefObject<HTMLInputElement>;
+
+  const [techs, setTechs] = useState(store.getState().category?.tech);
+
+  store.subscribe(() => {
+    setTechs(store.getState().category?.tech);
+  });
+
+  return (
+    <Dialog
+      as="div"
+      className="fixed z-10 inset-0 overflow-y-auto"
+      onClose={() => {
+        setOpen(false);
+      }}
+      open={open}
+    >
+      <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+
+        {/* This element is to trick the browser into centering the modal contents. */}
+        <span
+          className="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true"
+        >
+          &#8203;
+        </span>
+
+        <div className="relative inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+          <div>
+            <label
+              htmlFor="tech"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Tech:
+            </label>
+            <div className="mt-1">
+              <select
+                ref={techRef}
+                id="tech"
+                name="tech"
+                autoComplete="tech-name"
+                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+              >
+                <option value=""></option>
+                {techs?.map((tech, index) => {
+                  return (
+                    <option key={tech.id} value={index}>
+                      {tech.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            <label
+              htmlFor="value"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Value (0-100) %:
+            </label>
+            <div className="mt-1">
+              <input
+                ref={valueRef}
+                type="number"
+                name="value"
+                id="value"
+                className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                placeholder="value"
+              />
+            </div>
+          </div>
+          <div className="mt-5 sm:mt-6">
+            <button
+              type="button"
+              className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+              onClick={async () => {
+                const techIndex = techRef.current!.value as unknown as number;
+
+                const dataTech = techs && techs[techIndex];
+                const value = valueRef.current!.value;
+
+                if (dataTech && value) {
+                  setCategory((prevState: any) => {
+                    if (prevState) {
+                      const isDuplicated = prevState.some(
+                        (categoryId: any) => categoryId === dataTech.id
+                      );
+
+                      if (isDuplicated) return prevState;
+
+                      if (!isDuplicated) {
+                        return [...prevState, dataTech.id];
+                      }
+                    } else {
+                      return [dataTech.id];
+                    }
+                  });
+
+                  setTechsOffer((prevState: any) => {
+                    if (prevState) {
+                      const isDuplicated = prevState.some(
+                        (tech: any) => tech.id === dataTech.name
+                      );
+
+                      if (!isDuplicated) {
+                        return [...prevState, { id: dataTech.name, value }];
+                      }
+                      if (isDuplicated) {
+                        toast.error('Technology already added');
+                        return prevState;
+                      }
+                    } else {
+                      return [{ id: dataTech.name, value }];
+                    }
+                  });
+
+                  setOpen(false);
+                }
+              }}
+            >
+              Add new technology
+            </button>
+          </div>
+        </div>
+      </div>
+    </Dialog>
+  );
+}
 
 const CreateNewJobOffer = () => {
   const router = useRouter();
-  const editorRef = useRef();
 
   const [jobOffer, setJobOffer] = useState({} as JobOfferInterface);
-  const [techs, setTechs] = useState([]);
+
   const [isRemote, setIsRemote] = useState(false);
   const [deadLine, setDeadLine] = useState(
     new Date().toISOString().substring(0, 16)
   );
 
-  const [techMultipleSelect, setTechMultipleSelect] = useState(
-    store.getState().category?.tech
+  const [category, setCategory] = useState([]);
+  const [techsOffer, setTechsOffer] = useState(
+    [] as JobOfferInterface['technologies']
   );
+
+  const [openModalCreateTechnology, setOpenModalCreateTechnology] =
+    useState(false);
+
   const [companies, setCompanies] = useState(
     store.getState().company.personalcompanies
   );
 
-  useEffect(() => {
-    retrieveCategories({
-      propToFind: 'type',
-      value: 'tech',
-      saveIn: 'tech',
-    });
-    retrieveCompanyByOwner(store.getState().user.id as string);
-  }, []);
-
   store.subscribe(() => {
-    setTechMultipleSelect(store.getState().category?.tech);
     setCompanies(store.getState().company.personalcompanies);
   });
 
@@ -228,8 +357,6 @@ const CreateNewJobOffer = () => {
                 </label>
                 <div className="mt-1">
                   <Editor
-                    // onInit={(evt, editor) => (editorRef.current = editor)}
-                    // initialValue={postInHtml}
                     onChange={(evt, editor) => {
                       jobOffer.description = editor.getContent();
                     }}
@@ -239,7 +366,7 @@ const CreateNewJobOffer = () => {
                       plugins: [
                         ' imagetools advlist autolink lists link image charmap print preview anchor',
                         'searchreplace visualblocks code fullscreen',
-                        'insertdatetime media table paste code help wordcount',
+                        'insertdatetime media table code help wordcount',
                         'a11ychecker   casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
                       ],
 
@@ -266,12 +393,42 @@ const CreateNewJobOffer = () => {
                 >
                   Techs and skills
                 </label>
-                <div className="mt-1 w-full flex rounded-md shadow-sm">
-                  <MultipleSelect
-                    setVariant={setTechs}
-                    variant={techs}
-                    children={techMultipleSelect as object[]}
-                  />
+                <hr className="my-2" />
+                <a
+                  onClick={() => {
+                    setOpenModalCreateTechnology(true);
+                  }}
+                  className="cursor-pointer bg-primary text-white p-2 m-2 rounded-lg"
+                >
+                  Add new Technology
+                </a>
+
+                <div className="mt-1 w-full flex-col rounded-md shadow-sm">
+                  {techsOffer?.map((tech, index) => {
+                    return (
+                      <div
+                        key={tech.id}
+                        className="border flex rounded-md border-2 w-full border-gray-700"
+                      >
+                        <div className="px-2 w-full self-center">
+                          {tech.id} :
+                        </div>
+                        <div className="w-full self-center">{tech.value} %</div>
+                        <div className="w-full text-right">
+                          <button
+                            onClick={() => {
+                              setTechsOffer((currentState) =>
+                                currentState?.filter((tech, i) => i !== index)
+                              );
+                            }}
+                            className="bg-red-300 hover:bg-red-600 right-0 justify-end p-2 m-1 rounded-md"
+                          >
+                            <TrashIcon className="w-5 h-auto" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -314,34 +471,17 @@ const CreateNewJobOffer = () => {
               </button>
             </Link>
 
-            {/* TODO: BETTER INTEGRATION WITH DRAFT, NOT WORKING PROPERLY RIGHT NOW */}
-            {/* <button
-              type="button"
-              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              onClick={() => {
-                toast.warn('Loading...');
-                jobOffer.deadLine = deadLine;
-
-                jobOffer.remote = isRemote;
-                jobOffer.categories = techs;
-                jobOffer.published = false;
-                registerJobOffer(jobOffer, () => {
-                  router.push('/dashboard/user');
-                });
-              }}
-            >
-              Save as draft
-            </button> */}
             <button
               type="button"
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
                 toast.warn('Loading...');
                 jobOffer.deadLine = deadLine;
-
                 jobOffer.remote = isRemote;
-                jobOffer.categories = techs;
+                jobOffer.categories = category;
+                jobOffer.technologies = techsOffer;
                 jobOffer.published = true;
+
                 registerJobOffer(jobOffer, () => {
                   router.push('/dashboard/user');
                 });
@@ -352,6 +492,12 @@ const CreateNewJobOffer = () => {
           </div>
         </div>
       </form>
+      <ModalCreateTechnology
+        open={openModalCreateTechnology}
+        setOpen={setOpenModalCreateTechnology}
+        setTechsOffer={setTechsOffer}
+        setCategory={setCategory}
+      />
     </div>
   );
 };

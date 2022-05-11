@@ -20,19 +20,6 @@ const SearchDisplay = () => {
   store.subscribe(() => {
     setJobOffers(store.getState().jobs.filteredJobOffers);
   });
-  useEffect(() => {
-    retrieveJobOffers({
-      prop: 'published',
-      value: true,
-      reduxSpace: 'allJobOffers',
-    });
-
-    retrieveCategories({
-      propToFind: 'type',
-      value: 'tech',
-      saveIn: 'tech',
-    });
-  }, []);
 
   const [isBrowser, setIsBrowser] = useState(false);
   const [innerHeight, setInnerHeight] = useState(0);

@@ -23,7 +23,8 @@ const ListJobOffers = (props: {
     return (
       <>
         <div className="text-xl font-bold text-center mt-16 mb-16">
-          This seems a little empty... Go and apply for new job offers! 😂
+          This seems a little empty... Update your profile, upload your CV and
+          apply for job Offers
         </div>
       </>
     );

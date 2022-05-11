@@ -29,10 +29,6 @@ const retrieveJobOffers = async (
     .get(url)
     .then((response) => {
       const jobOffersFound = response.data;
-      console.log(
-        '🚀 ~ file: retrievesJobOffer.ts ~ line 32 ~ .then ~ jobOffersFound',
-        jobOffersFound
-      );
 
       if (
         props.reduxSpace === 'personalJobOffers' ||

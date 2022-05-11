@@ -9,6 +9,11 @@ export interface JobOfferInterface {
   salary?: string;
   categories?: Array<string>;
   deadLine?: string;
+  technologies?: Array<{
+    id: string;
+    name: string;
+    value: string | number;
+  }>;
   published?: boolean;
 
   applicants?: Array<string> | undefined;
