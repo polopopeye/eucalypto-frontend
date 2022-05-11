@@ -4,6 +4,10 @@ import styles from './earth.module.css';
 const EarthMoving = () => {
   return (
     <>
+      <div className="z-[100] absolute text-center w-1/2 font-bold text-primary text-7xl">
+        <h1 className="my-8">Our location...</h1>
+        <h1 className="my-8"> Worldwide</h1>
+      </div>
       <div
         id="earthMoving"
         style={{

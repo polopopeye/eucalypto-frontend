@@ -31,7 +31,7 @@ const Contact = () => {
           <ul className=" font-semibold text-xl">
             <li className="p-2">📧 gsaitta@eucalyptogroup.com</li>
             <li className="p-2">📱 +34 633 882 353</li>
-            <hr></hr>
+            <hr className="my-2"></hr>
             <li className="p-2">📧 amartinez@eucalyptogroup.com</li>
             <li className="p-2">📱 +34 681 293 343</li>
           </ul>
