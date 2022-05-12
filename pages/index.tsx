@@ -1,6 +1,5 @@
 import Hero from 'src/components/Home/Hero/Hero';
 import Reviews from 'src/components/Home/Reviews/Reviews';
-import ScrollSteps from '../src/components/Home/ScrollSteps/ScrollSteps';
 
 const Home = () => {
   return (
@@ -14,7 +13,6 @@ const Home = () => {
         href="/search"
       />
       <Reviews />
-      {/* <ScrollSteps /> */}
     </div>
   );
 };
