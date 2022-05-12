@@ -19,7 +19,7 @@ const index = () => {
 
   return (
     <div className="pt-32">
-      <SearcherPositions></SearcherPositions>
+      <SearcherPositions />
     </div>
   );
 };

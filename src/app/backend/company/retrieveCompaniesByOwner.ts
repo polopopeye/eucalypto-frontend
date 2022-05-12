@@ -8,8 +8,12 @@ import companySlice from '../../slices/companies/companySlice';
 
 // Retrieves company data of the owner of the current session
 const retrieveCompanyByOwner = async (userId?: string, next?: Function) => {
+  const isAdmin = store.getState().user.role === 'admin' ? true : false;
+
   const dinamicUserId = userId ? userId : store.getState().user?.id;
-  const url = api.company + '/' + dinamicUserId;
+
+  // If the user is an admin, retrieve all companies
+  const url = isAdmin ? api.company : api.company + '/' + dinamicUserId;
 
   axios
     .get(url)

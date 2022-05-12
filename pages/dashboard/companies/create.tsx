@@ -5,7 +5,7 @@ import { store } from 'src/app/store';
 import CreateNewCompany from 'src/components/Dashboard/companies/createNewCompany';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
 
-const CreateNewJobOfferPage = () => {
+const CreateNewCompanyPage = () => {
   const router = useRouter();
   const checkUserInfo = useCheckUserInfo();
   if (checkUserInfo.loading) return <LoadingComponent />;
@@ -18,4 +18,4 @@ const CreateNewJobOfferPage = () => {
   );
 };
 
-export default CreateNewJobOfferPage;
+export default CreateNewCompanyPage;

@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useRef, useState } from 'react';
 
-import AlertMsgAlreadyApplied from './modules/AlertMsgAlreadyApplied';
-
 import Badges from '../Utils/categories/badges';
 
 import UserStepsTimeline from './modules/userStepsTimeline';
@@ -21,7 +19,6 @@ const JobView = () => {
   store.subscribe(() => {
     setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
   });
-  const [alreadyApplied, setAlreadyApplied] = useState(true);
 
   useEffect(() => {
     postInHtml.current.innerHTML = jobOffer.description;
@@ -40,7 +37,6 @@ const JobView = () => {
           <main className="py-10">
             {/* Page header */}
             <JobViewHeader />
-            {/* {alreadyApplied && <AlertMsgAlreadyApplied />} */}
 
             <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
               <div className="space-y-6 lg:col-start-1 lg:col-span-2">
@@ -121,9 +117,7 @@ const JobView = () => {
                             id="post-content"
                             ref={postInHtml}
                             className="mt-1 text-sm text-gray-900"
-                          >
-                            {/* {eval(jobOffer.description as string */}
-                          </dd>
+                          ></dd>
                         </div>
                       </dl>
                     </div>

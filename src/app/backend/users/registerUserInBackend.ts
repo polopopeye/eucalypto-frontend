@@ -10,6 +10,7 @@ const registerUserInBackend = (user: UserInterface) => {
     .then((response) => {
       toast.success('Welcome to the community!');
 
+      // TODO: Is not necesary when manually creating a user
       retrieveUserInfo({
         prop: 'email',
         value: user.email as string,
