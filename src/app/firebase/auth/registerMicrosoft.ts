@@ -12,7 +12,7 @@ const registerMicrosoft = async () => {
   signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
-      const { email, displayName, photoURL } = user;
+      const { email, displayName } = user;
       const nameId = (displayName as string) || (email as string);
       registerUserInBackend(
         {
@@ -20,8 +20,7 @@ const registerMicrosoft = async () => {
           displayName: nameId,
           languages: ['english'],
           role: 'talent',
-          coverImg:
-            photoURL || 'https://picsum.photos/seed/' + email + '/200/200',
+          coverImg: '/img/Icono_Negativo.png',
           email: email as string,
           published: true,
         },
