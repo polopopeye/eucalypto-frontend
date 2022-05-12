@@ -273,7 +273,7 @@ const UserSettings = (props: { user: UserInterface }) => {
                   </select>
 
                   <div className="grid items-center">
-                    {techsSelected.map((techId, index) => {
+                    {techsSelected?.map((techId, index) => {
                       const techs = store.getState().category.tech;
                       const techData = techs?.find(
                         (tech) => tech.id === techId

@@ -14,7 +14,7 @@ const CategoryBar = () => {
 
   return (
     <>
-      <h1 className="  font-bold text-lg pl-4">Search by tech:</h1>
+      <h1 className="  font-bold text-lg pl-4">Search:</h1>
       <div style={{ zoom: '1.5' }}>
         {techs
           ?.sort((a: any, b: any) => {
