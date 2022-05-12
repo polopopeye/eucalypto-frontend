@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <Disclosure
       as="nav"
-      className="bg-primary pt-4 shadow fixed w-full z-40 left-0"
+      className=" bg-primary pt-4 shadow fixed w-full z-40 left-0"
     >
       {({ open }) => (
         <>

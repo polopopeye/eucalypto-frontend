@@ -1,6 +1,14 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable @next/next/no-img-element */
-import { MailIcon, PencilIcon, ViewListIcon } from '@heroicons/react/outline';
+import {
+  CalendarIcon,
+  ColorSwatchIcon,
+  CurrencyDollarIcon,
+  LocationMarkerIcon,
+  MailIcon,
+  PencilIcon,
+  ViewListIcon,
+} from '@heroicons/react/outline';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
@@ -67,7 +75,7 @@ const ListJobOffers = (props: {
               </div>
               <div className=" ml-4 mt-4 grid gap-2 grid-cols-2  p-4 ">
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <CurrencyDollarIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -77,7 +85,7 @@ const ListJobOffers = (props: {
                   </span>
                 </div>
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <LocationMarkerIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -87,7 +95,7 @@ const ListJobOffers = (props: {
                   </span>
                 </div>
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <LocationMarkerIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -97,7 +105,7 @@ const ListJobOffers = (props: {
                   </span>
                 </div>
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <CalendarIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -107,7 +115,7 @@ const ListJobOffers = (props: {
                   </span>
                 </div>
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <ColorSwatchIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />

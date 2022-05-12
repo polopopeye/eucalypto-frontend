@@ -10,11 +10,11 @@ import BubbleUI from 'react-bubble-ui';
 import 'react-bubble-ui/dist/index.css';
 import ModalContainer from './ModalContainer';
 import { store } from '../../../app/store';
-import retrieveJobOffers from '../../../app/backend/jobOffer/retrievesJobOffer';
+
 import { JobOfferInterface } from '../../../commons/jobOfferInterface';
-import retrieveCategories from '../../../app/backend/category/retrieveCategories';
+
 import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
-import { MailIcon } from '@heroicons/react/outline';
+
 import Badges from 'src/components/Utils/categories/badges';
 import jobModalSlice from 'src/app/slices/modals/jobModalSlice';
 import currentJobOfferSlice from 'src/app/slices/jobs/currentJobOffersSlice';
@@ -36,7 +36,7 @@ const SearchDisplay = () => {
   return (
     <div>
       {isBrowser && (
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 mt-8">
           {jobOffers.map((jobOffer: JobOfferInterface, i) => {
             const companyData = getCompanyDataFromId(
               jobOffer.company as string
@@ -55,11 +55,11 @@ const SearchDisplay = () => {
                       currentJobOfferSlice.actions.setData(jobOffer)
                     );
                   }}
-                  className="cursor-pointer"
+                  className="transition-all cursor-pointer border-2 border-gray-300 hover:border-primary hover:-m-1 rounded-lg m-2"
                 >
                   <div className="flex-1 flex flex-col p-8">
                     <img
-                      className="w-32 h-auto flex-shrink-0 mx-auto rounded-md"
+                      className="transition-all w-32 hover:w-36 h-auto flex-shrink-0 mx-auto rounded-md"
                       src={companyData.coverImg}
                       alt=""
                     />

@@ -4,7 +4,8 @@ import { store } from 'src/app/store';
 import { classNames } from 'src/components/Utils/classnames';
 import { filterJobOffers } from './filterJobOffers';
 
-const CategoryBar = () => {
+const CategoryBar = (props: any) => {
+  const { setQuery } = props;
   const [techs, setTechs] = useState([
     ...(store.getState().category.tech as any),
   ]);
@@ -24,10 +25,12 @@ const CategoryBar = () => {
             <span
               onClick={() => {
                 filterJobOffers(tech.name as string);
+                setQuery(tech.name as string);
               }}
               key={i}
               className={classNames(
-                'bg-quaternary text-primary cursor-pointer  m-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium'
+                'transition-all duration-500 bg-quaternary text-primary cursor-pointer  m-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium',
+                'hover:bg-primary hover:text-white '
               )}
             >
               <svg

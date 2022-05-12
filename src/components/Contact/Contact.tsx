@@ -36,10 +36,10 @@ const Contact = () => {
           </div> */}
         </li>
         <li
-          className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 p-2"
-          style={{ zIndex: 2 }}
+          className="col-span-1 m-4 rounded-lg shadow divide-y divide-gray-200 p-2"
+          style={{ zIndex: 2, backgroundColor: 'rgb(255 255 255 / 84%)' }}
         >
-          <div className="p-4">
+          <div className="p-4  ">
             <TextHeader
               title="Get in touch"
               description="we love to hear from you, feel free to contact us anytime for any questions or feedback"

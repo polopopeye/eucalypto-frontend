@@ -21,7 +21,7 @@ const NavButton = (props: NavButton) => {
       );
     } else {
       setClassName(
-        'border-transparent font-light text-gray-100 hover:border-gray-300 hover:text-secondary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+        'transition-all  duration-500 border-transparent font-light text-gray-100 hover:border-gray-300 hover:text-secondary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
       );
     }
   }, [router]);
