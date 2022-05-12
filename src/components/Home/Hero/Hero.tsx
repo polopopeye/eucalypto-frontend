@@ -52,6 +52,22 @@ export default function Hero(props: HeroProps) {
         </div>
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <video
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          className=" fixed -mt-12 left-0"
+          style={{
+            width: '100% !important',
+            height: 'auto',
+          }}
+        >
+          <source
+            src="https://firebasestorage.googleapis.com/v0/b/eucalypto-group.appspot.com/o/production%20ID_4478322.mp4?alt=media&token=b56364a6-c707-4e2c-b5dc-ddee6f45eac5"
+            type="video/mp4"
+          />
+          Tu navegador no soporta el formato de video
+        </video>
         <img
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
           src={src}

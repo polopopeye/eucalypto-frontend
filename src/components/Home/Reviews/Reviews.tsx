@@ -12,7 +12,7 @@ const Reviews = () => {
   };
 
   return (
-    <div>
+    <div className="pt-16">
       <TextHeader
         title="We love our talents and partners"
         category="Reviews"
