@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 
 import CompanyBubble from './CompanyBubble';
@@ -12,6 +13,11 @@ import { store } from '../../../app/store';
 import retrieveJobOffers from '../../../app/backend/jobOffer/retrievesJobOffer';
 import { JobOfferInterface } from '../../../commons/jobOfferInterface';
 import retrieveCategories from '../../../app/backend/category/retrieveCategories';
+import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
+import { MailIcon } from '@heroicons/react/outline';
+import Badges from 'src/components/Utils/categories/badges';
+import jobModalSlice from 'src/app/slices/modals/jobModalSlice';
+import currentJobOfferSlice from 'src/app/slices/jobs/currentJobOffersSlice';
 
 const SearchDisplay = () => {
   const [jobOffers, setJobOffers] = useState(
@@ -22,52 +28,58 @@ const SearchDisplay = () => {
   });
 
   const [isBrowser, setIsBrowser] = useState(false);
-  const [innerHeight, setInnerHeight] = useState(0);
-  const [innerWidth, setInnerWidth] = useState(0);
-  const [windowOrientation, setWindowOrientation] = useState(0);
-
-  const [widthContainer, setWidthContainer] = useState(0);
 
   useEffect(() => {
     setIsBrowser(typeof window !== undefined ? true : false);
-    setInnerWidth(typeof window !== undefined ? window.innerWidth : 0);
-    setInnerHeight(typeof window !== undefined ? window.innerHeight : 0);
-    setWindowOrientation(
-      typeof window !== undefined ? window.screen.orientation.angle : 0
-    );
-    setWidthContainer(
-      window.innerWidth > 1024 ? 1024 / 4.5 : window.innerWidth / 5.5
-    );
   }, []);
 
   return (
     <div>
       {isBrowser && (
-        <BubbleUI
-          style={{
-            height: innerHeight - 150 + 'px',
-          }}
-          options={{
-            size: widthContainer,
-            minSize: 100,
-            gutter: 20,
-            provideProps: true,
-            numCols: 4,
-            fringeWidth:
-              windowOrientation === 0 ? innerHeight / 6 : widthContainer,
-            yRadius: innerHeight / 5,
-            xRadius: widthContainer * 2,
-            cornerRadius: 50,
-            showGuides: false,
-            compact: false,
-            gravitation: 5,
-          }}
-        >
-          {jobOffers &&
-            jobOffers.map((jobOffer: JobOfferInterface, i) => (
-              <CompanyBubble jobOffer={jobOffer} key={i} />
-            ))}
-        </BubbleUI>
+        <div className="grid grid-cols-3">
+          {jobOffers.map((jobOffer: JobOfferInterface, i) => {
+            const companyData = getCompanyDataFromId(
+              jobOffer.company as string
+            );
+            return (
+              <>
+                <div
+                  onClick={() => {
+                    store.dispatch(
+                      jobModalSlice.actions.setData({
+                        isOpen: true,
+                        data: jobOffer,
+                      })
+                    );
+                    store.dispatch(
+                      currentJobOfferSlice.actions.setData(jobOffer)
+                    );
+                  }}
+                  className="cursor-pointer"
+                >
+                  <div className="flex-1 flex flex-col p-8">
+                    <img
+                      className="w-32 h-auto flex-shrink-0 mx-auto rounded-md"
+                      src={companyData.coverImg}
+                      alt=""
+                    />
+                    <h3 className="mt-6 text-gray-900 text-sm font-medium">
+                      {jobOffer.job}
+                    </h3>
+                    <dl className="mt-1 flex-grow flex flex-col justify-between">
+                      <dd className="text-gray-500 text-sm">
+                        {companyData.name}
+                      </dd>
+                      <dd className="mt-3">
+                        <Badges categoriesId={jobOffer.categories} />
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </>
+            );
+          })}
+        </div>
       )}
       <ModalContainer />
     </div>

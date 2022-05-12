@@ -116,7 +116,7 @@ const ListCompanies = () => {
                   <div className="grid grid-cols-2">
                     <Link href={'/dashboard/companies/' + company.id}>
                       <div className="cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
-                        <PencilIcon className="h-5 w-5 mr-4" /> Edit Job Offer
+                        <PencilIcon className="h-5 w-5 mr-4" /> Edit Company
                       </div>
                     </Link>
 

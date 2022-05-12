@@ -133,7 +133,7 @@ const CreateNewCompany = () => {
                   <input
                     id="web"
                     name="web"
-                    type="text"
+                    type="url"
                     autoComplete="web"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     onChange={(e) => {
@@ -154,7 +154,7 @@ const CreateNewCompany = () => {
                   <input
                     id="linkedIn"
                     name="linkedIn"
-                    type="text"
+                    type="url"
                     autoComplete="linkedIn"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     onChange={(e) => {
@@ -175,7 +175,7 @@ const CreateNewCompany = () => {
                   <input
                     id="email"
                     name="email"
-                    type="text"
+                    type="email"
                     autoComplete="email"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     onChange={(e) => {

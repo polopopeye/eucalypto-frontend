@@ -14,7 +14,7 @@ const ListJobOffers = (props: {
   description: string;
   jobsOffers: Array<JobOfferInterface>;
 }) => {
-  const { jobsOffers } = props;
+  const jobsOffers = [...props.jobsOffers];
   const [isAdmin, setIsAdmin] = useState(
     store.getState().user.role === 'admin'
   );

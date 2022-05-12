@@ -41,7 +41,12 @@ const HeaderCompany = () => {
                 <div>
                   <a
                     target={'_blank'}
-                    href={company.web}
+                    href={
+                      company.web.substring(0, 8) === 'https://' ||
+                      company.web.substring(0, 7) === 'http://'
+                        ? company.web
+                        : 'https://' + company.web
+                    }
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     rel="noreferrer"
                   >
@@ -55,7 +60,12 @@ const HeaderCompany = () => {
                 <div>
                   <a
                     target={'_blank'}
-                    href={company.linkedIn}
+                    href={
+                      company.linkedIn.substring(0, 8) === 'https://' ||
+                      company.linkedIn.substring(0, 7) === 'http://'
+                        ? company.linkedIn
+                        : 'https://' + company.linkedIn
+                    }
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     rel="noreferrer"
                   >

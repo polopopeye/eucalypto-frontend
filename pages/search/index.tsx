@@ -10,6 +10,11 @@ const index = () => {
     value: true,
     reduxSpace: 'allJobOffers',
   });
+  retrieveJobOffers({
+    prop: 'published',
+    value: true,
+    reduxSpace: 'filteredJobOffers',
+  });
   retrieveCategories({
     propToFind: 'type',
     value: 'tech',

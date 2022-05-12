@@ -23,7 +23,7 @@ const CategoryBar = () => {
           .map((tech, i) => (
             <span
               onClick={() => {
-                filterJobOffers(tech.id as string);
+                filterJobOffers(tech.name as string);
               }}
               key={i}
               className={classNames(
