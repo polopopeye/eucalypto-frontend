@@ -14,52 +14,38 @@ import newUpload from 'src/app/firebase/storage/newUpload';
 import modifyUserInBackend from 'src/app/backend/users/modifyUserInBackend';
 import { useRouter } from 'next/router';
 import { TrashIcon } from '@heroicons/react/outline';
-import deleteUserInBackend from 'src/app/backend/users/deleteUserInBackend';
-import retrieveAllUsersInfo from 'src/app/backend/users/retrieveAllUsersInfo';
+
 import { CategoryInterface } from 'src/commons/categoryInterface';
 import { defaultLangs } from './deafultLangs';
+import registerUserInBackend from 'src/app/backend/users/registerUserInBackend';
+import retrieveAllUsersInfo from 'src/app/backend/users/retrieveAllUsersInfo';
 
-const UserSettings = (props: { user: UserInterface }) => {
+const CreateNewUser = () => {
   const router = useRouter();
 
-  let user: UserInterface = { ...props.user };
-  const [avatar, setAvatar] = useState(user.coverImg);
+  let user: UserInterface = {};
 
-  // this filter the user categories to only the ones that are not selected
-  const defaultCategoryList = store
-    .getState()
-    .category.tech?.filter((tech) =>
-      user.categories?.every((catId) => catId != tech.id)
-    );
+  const [avatar, setAvatar] = useState('/img/Icono_Negativo.png');
 
   const [category, setCategory] = useState(
-    defaultCategoryList as CategoryInterface[]
+    store.getState().category.tech as CategoryInterface[]
   );
-  const [techsSelected, setTechsSelected] = useState(
-    user.categories as Array<string>
-  );
+  const [techsSelected, setTechsSelected] = useState([] as Array<string>);
 
-  // this filter the user langs to only the ones that are not selected
-  const defaultLangsList = defaultLangs?.filter((lang) =>
-    user.languages?.every((langUser) => langUser != lang)
-  );
+  // this filter the english default selected lang
+  const defaultLangsList = defaultLangs?.filter((lang) => 'english' != lang);
 
-  const [langs, setlangs] = useState(defaultLangsList as string[]);
-  const [langsSelected, setLangsSelected] = useState(
-    user.languages as Array<string>
-  );
+  const [langs, setlangs] = useState(defaultLangsList as Array<string>);
+  const [langsSelected, setLangsSelected] = useState([
+    'english',
+  ] as Array<string>);
 
-  const [curriculum, setCurriculum] = useState(user.curriculum);
+  const [curriculum, setCurriculum] = useState(undefined as any);
   const [newCoverImgUpload, setNewCoverImgUpload] = useState(false);
   const [newCurriculumUpload, setNewCurriculumUpload] = useState(false);
 
   store.subscribe(() => {
-    const defaultCategoryList = store
-      .getState()
-      .category.tech?.filter((tech) =>
-        user.categories?.every((catId) => catId != tech.id)
-      );
-    setCategory(defaultCategoryList as CategoryInterface[]);
+    setCategory(store.getState().category.tech as CategoryInterface[]);
   });
 
   return (
@@ -519,21 +505,6 @@ const UserSettings = (props: { user: UserInterface }) => {
 
         <div className="pt-5">
           <div className="flex justify-end">
-            {user.id !== store.getState().user.id && (
-              <div
-                onClick={() => {
-                  deleteUserInBackend(user.id as string, () => {
-                    retrieveAllUsersInfo();
-                    router.push('/dashboard/user');
-                  });
-                }}
-                className="cursor-pointer bg-red-600 flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-red-900"
-              >
-                <TrashIcon className="h-5 w-5 mr-4" />
-                Delete User
-              </div>
-            )}
-
             <Link href="/dashboard/user">
               <button
                 type="button"
@@ -547,8 +518,6 @@ const UserSettings = (props: { user: UserInterface }) => {
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
                 toast.warn('Loading...');
-                if (user.createdAt) delete user.createdAt;
-                if (user.updatedAt) delete user.updatedAt;
 
                 user.languages = langsSelected;
                 user.categories = techsSelected;
@@ -561,14 +530,19 @@ const UserSettings = (props: { user: UserInterface }) => {
                       user.id as string,
                       (url: string) => {
                         user.coverImg = url;
-                        modifyUserInBackend(user, () => {
-                          router.push('/dashboard/user');
+
+                        registerUserInBackend(user, () => {
+                          retrieveAllUsersInfo(() => {
+                            router.push('/dashboard/user');
+                          });
                         });
                       }
                     );
                   } else {
-                    modifyUserInBackend(user, () => {
-                      router.push('/dashboard/user');
+                    registerUserInBackend(user, () => {
+                      retrieveAllUsersInfo(() => {
+                        router.push('/dashboard/user');
+                      });
                     });
                   }
                 };
@@ -597,4 +571,4 @@ const UserSettings = (props: { user: UserInterface }) => {
   );
 };
 
-export default UserSettings;
+export default CreateNewUser;

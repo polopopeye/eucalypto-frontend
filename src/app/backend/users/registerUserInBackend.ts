@@ -4,17 +4,27 @@ import { UserInterface } from '../../../commons/userInterface';
 import { api } from '../apiEndPoints';
 import retrieveUserInfo from './retrieveUserInfo';
 
-const registerUserInBackend = (user: UserInterface) => {
+const registerUserInBackend = (user: UserInterface, next?: Function) => {
   axios
     .post(api.user, user)
     .then((response) => {
       toast.success('Welcome to the community!');
 
-      // TODO: Is not necesary when manually creating a user
-      retrieveUserInfo({
-        prop: 'email',
-        value: user.email as string,
-      });
+      // if (
+      //   options?.retrieve === true ||
+      //   options?.retrieve === undefined ||
+      //   options === undefined
+      // ) {
+      //   retrieveUserInfo({
+      //     prop: 'email',
+      //     value: user.email as string,
+      //   });
+      // }
+
+      if (next) {
+        // HERE WE DONT HAVE THE UID OF THE USER
+        next(user);
+      }
     })
     .catch((error) => {
       console.log('error');

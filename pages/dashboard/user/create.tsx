@@ -5,44 +5,33 @@ import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import retrieveAllUsersInfo from 'src/app/backend/users/retrieveAllUsersInfo';
 import retrieveUserInfo from 'src/app/backend/users/retrieveUserInfo';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
+import { store } from 'src/app/store';
 import { UserInterface } from 'src/commons/userInterface';
+import CreateNewUser from 'src/components/Dashboard/user/CreateNewUser';
 import UserSettings from 'src/components/Dashboard/user/UserSettings';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
 
-const Settings = () => {
+const CreateUserPage = () => {
   const router = useRouter();
-  const { userId } = router.query;
-  const checkUserInfo = useCheckUserInfo();
-  const [user, setUser] = useState(undefined as unknown as UserInterface);
 
-  useEffect(() => {
-    retrieveUserInfo(
-      {
-        prop: 'id',
-        value: userId as string,
-        reduxSpace: 'none',
-      },
-      (userData: UserInterface) => {
-        console.log(
-          '🚀 ~ file: [userId].tsx ~ line 34 ~ Settings ~ userData',
-          userData
-        );
-        setUser(userData);
-      }
-    );
-  }, [userId]);
+  const checkUserInfo = useCheckUserInfo();
 
   if (checkUserInfo.loading) return <LoadingComponent />;
   if (!checkUserInfo.isLogedIn) router.push('/signin');
+  if (store.getState().user.role !== 'admin') router.push('/signin');
+
   retrieveCategories({
     propToFind: 'type',
     value: 'tech',
     saveIn: 'tech',
   });
+  console.log('retrieved');
 
-  if (!user) return <LoadingComponent />;
-
-  return <div className="pt-32">{user && <UserSettings user={user} />}</div>;
+  return (
+    <div className="pt-32">
+      <CreateNewUser />
+    </div>
+  );
 };
 
-export default Settings;
+export default CreateUserPage;
