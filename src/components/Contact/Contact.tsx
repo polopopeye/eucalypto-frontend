@@ -8,14 +8,32 @@ import EarthMoving from './earthResponsive/EarthMoving';
 const Contact = () => {
   return (
     <>
+      <video
+        autoPlay={true}
+        muted={true}
+        loop={true}
+        className=" fixed -mt-12 left-0"
+        style={{
+          width: '100% !important',
+          height: 'auto',
+        }}
+      >
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/eucalypto-group.appspot.com/o/production%20ID_4478322.mp4?alt=media&token=b56364a6-c707-4e2c-b5dc-ddee6f45eac5"
+          type="video/mp4"
+        />
+        Tu navegador no soporta el formato de video
+      </video>
+
       <ul
         role="list"
         className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2"
       >
         <li className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
-          <div className="w-full flex items-center justify-between p-6 space-x-6">
-            <EarthMoving />
-          </div>
+          {/* <div className="z-[100] absolute text-center w-1/2 font-bold text-white text-7xl">
+            <h1 className="my-8">Our location...</h1>
+            <h1 className="my-8"> Worldwide</h1>
+          </div> */}
         </li>
         <li
           className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 p-2"
