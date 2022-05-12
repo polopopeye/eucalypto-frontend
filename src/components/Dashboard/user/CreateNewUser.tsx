@@ -11,19 +11,22 @@ import { store } from 'src/app/store';
 import { filetoDataURL } from 'src/components/Utils/toDataUrl';
 import openFileInNewWindow from 'src/components/Utils/openFileInNewWindow';
 import newUpload from 'src/app/firebase/storage/newUpload';
-import modifyUserInBackend from 'src/app/backend/users/modifyUserInBackend';
 import { useRouter } from 'next/router';
-import { TrashIcon } from '@heroicons/react/outline';
+import { CheckCircleIcon, TrashIcon } from '@heroicons/react/outline';
 
 import { CategoryInterface } from 'src/commons/categoryInterface';
 import { defaultLangs } from './deafultLangs';
 import registerUserInBackend from 'src/app/backend/users/registerUserInBackend';
 import retrieveAllUsersInfo from 'src/app/backend/users/retrieveAllUsersInfo';
+import { Switch } from '@headlessui/react';
+import registerUserInBackendManual from 'src/app/backend/users/registerUserInBackendManual';
+import sendMailWelcomeMessage from 'src/app/backend/mail/sendMailWelcomeMessage';
+import { classNames } from 'src/components/Utils/classnames';
 
 const CreateNewUser = () => {
   const router = useRouter();
 
-  let user: UserInterface = {};
+  const [user, setUser] = useState({} as UserInterface);
 
   const [avatar, setAvatar] = useState('/img/Icono_Negativo.png');
 
@@ -43,6 +46,8 @@ const CreateNewUser = () => {
   const [curriculum, setCurriculum] = useState(undefined as any);
   const [newCoverImgUpload, setNewCoverImgUpload] = useState(false);
   const [newCurriculumUpload, setNewCurriculumUpload] = useState(false);
+
+  const [isWelcomeMessage, setIsWelcomeMessage] = useState(false);
 
   store.subscribe(() => {
     setCategory(store.getState().category.tech as CategoryInterface[]);
@@ -108,9 +113,10 @@ const CreateNewUser = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="username"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm flex font-medium text-gray-700"
                 >
-                  Display Name
+                  Display Name{' '}
+                  <CheckCircleIcon className="text-red-900 w-4 h-4" />
                 </label>
                 <div className="mt-1 flex rounded-md shadow-sm">
                   <input
@@ -119,7 +125,6 @@ const CreateNewUser = () => {
                     id="username"
                     autoComplete="username"
                     className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
-                    defaultValue={user.displayName}
                     onChange={(e) => {
                       user.displayName = e.target.value;
                     }}
@@ -129,9 +134,10 @@ const CreateNewUser = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="username"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm flex font-medium text-gray-700"
                 >
                   Complete Name
+                  <CheckCircleIcon className="text-red-900 w-4 h-4" />
                 </label>
                 <div className="mt-1 flex rounded-md shadow-sm">
                   <input
@@ -140,7 +146,6 @@ const CreateNewUser = () => {
                     id="username"
                     autoComplete="username"
                     className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
-                    defaultValue={user.completeName}
                     onChange={(e) => {
                       user.completeName = e.target.value;
                     }}
@@ -297,9 +302,10 @@ const CreateNewUser = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block flex text-sm font-medium text-gray-700"
                 >
                   Email address
+                  <CheckCircleIcon className="text-red-900 w-4 h-4" />
                 </label>
                 <div className="mt-1">
                   <input
@@ -407,9 +413,10 @@ const CreateNewUser = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="location"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block flex text-sm font-medium text-gray-700"
                 >
                   Location
+                  <CheckCircleIcon className="text-red-900 w-4 h-4" />
                 </label>
                 <div className="mt-1">
                   <input
@@ -426,14 +433,56 @@ const CreateNewUser = () => {
                 </div>
               </div>
 
+              <div className="sm:col-span-2">
+                <Switch.Group
+                  as="div"
+                  className="flex items-center justify-between"
+                >
+                  <span className="flex-grow flex flex-col">
+                    <Switch.Label
+                      as="span"
+                      className="text-sm font-medium text-gray-900"
+                      passive
+                    >
+                      Send Welcome Email?
+                    </Switch.Label>
+                    <Switch.Description
+                      as="span"
+                      className="text-sm text-gray-500"
+                    >
+                      if true, when the user is created we are going to send a
+                      welcome message.
+                    </Switch.Description>
+                  </span>
+                  <Switch
+                    checked={isWelcomeMessage}
+                    onChange={(e) => {
+                      setIsWelcomeMessage(e.valueOf());
+                    }}
+                    className={classNames(
+                      isWelcomeMessage ? 'bg-indigo-600' : 'bg-gray-800',
+                      'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                    )}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={classNames(
+                        isWelcomeMessage ? 'translate-x-5' : 'translate-x-0',
+                        'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                      )}
+                    />
+                  </Switch>
+                </Switch.Group>
+              </div>
+
               {(store.getState().user.role === 'admin' ||
                 store.getState().user.id === 'uLj5JdpTDUGlhxNqQeAJ') && (
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="country"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block flex text-sm font-medium text-gray-700"
                   >
-                    Role
+                    Role <CheckCircleIcon className="text-red-900 w-4 h-4" />
                   </label>
                   <div className="mt-1">
                     <select
@@ -441,11 +490,12 @@ const CreateNewUser = () => {
                       name="country"
                       autoComplete="country-name"
                       className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                      defaultValue={user.role}
+                      defaultValue=""
                       onChange={(e) => {
                         user.role = e.target.value;
                       }}
                     >
+                      <option value=""></option>
                       <option value="talent">Talent</option>
                       <option value="admin">Admin</option>
                     </select>
@@ -519,6 +569,8 @@ const CreateNewUser = () => {
               onClick={() => {
                 toast.warn('Loading...');
 
+                user.coverImg = avatar;
+                user.published = true;
                 user.languages = langsSelected;
                 user.categories = techsSelected;
 
@@ -531,7 +583,10 @@ const CreateNewUser = () => {
                       (url: string) => {
                         user.coverImg = url;
 
-                        registerUserInBackend(user, () => {
+                        registerUserInBackendManual(user, () => {
+                          if (isWelcomeMessage) {
+                            sendMailWelcomeMessage(user);
+                          }
                           retrieveAllUsersInfo(() => {
                             router.push('/dashboard/user');
                           });
@@ -539,7 +594,10 @@ const CreateNewUser = () => {
                       }
                     );
                   } else {
-                    registerUserInBackend(user, () => {
+                    registerUserInBackendManual(user, () => {
+                      if (isWelcomeMessage) {
+                        sendMailWelcomeMessage(user);
+                      }
                       retrieveAllUsersInfo(() => {
                         router.push('/dashboard/user');
                       });
@@ -562,7 +620,7 @@ const CreateNewUser = () => {
                 }
               }}
             >
-              Save
+              Register New User Name
             </button>
           </div>
         </div>

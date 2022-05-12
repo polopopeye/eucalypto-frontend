@@ -2,16 +2,14 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { UserInterface } from '../../../commons/userInterface';
 import { api } from '../apiEndPoints';
-import retrieveUserInfo from './retrieveUserInfo';
 
-const registerUserInBackend = (user: UserInterface, next?: Function) => {
+const registerUserInBackendManual = (user: UserInterface, next?: Function) => {
   axios
-    .post(api.user, user)
+    .post(api.userManualCreate, user)
     .then((response) => {
-      toast.success('Welcome to the community!');
-
       if (next) {
         // HERE WE DONT HAVE THE UID OF THE USER
+        toast.success('User Created Successfully!');
         next(user);
       }
     })
@@ -22,4 +20,4 @@ const registerUserInBackend = (user: UserInterface, next?: Function) => {
       toast.error('Error registering user');
     });
 };
-export default registerUserInBackend;
+export default registerUserInBackendManual;

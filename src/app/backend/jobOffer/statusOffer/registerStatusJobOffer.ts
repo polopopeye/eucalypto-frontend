@@ -12,20 +12,6 @@ const registerStatusJobOffer = (
   axios
     .post(api.statusJobOffers, offerData)
     .then((response) => {
-      // if (store.getState().user.role === 'admin') {
-      //   retrieveJobOffers({
-      //     propOrId: 'published',
-      //     value: true,
-      //     reduxSpace: 'personalJobOffers',
-      //   });
-      // } else {
-      //   retrieveJobOffers({
-      //     propOrId: 'applicants',
-      //     value: store.getState().user.id as string,
-      //     reduxSpace: 'personalJobOffers',
-      //   });
-      // }
-
       if (typeof next === 'function') {
         next(response.data);
       }

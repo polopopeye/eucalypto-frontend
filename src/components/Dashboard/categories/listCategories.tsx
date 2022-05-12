@@ -7,10 +7,12 @@ import retrieveCategories from 'src/app/backend/category/retrieveCategories';
 import { store } from 'src/app/store';
 
 const ListCategories = () => {
-  const [categories, setCategories] = useState(store.getState().category.tech);
+  const [categories, setCategories] = useState([
+    ...(store.getState().category.tech as any),
+  ]);
 
   store.subscribe(() => {
-    setCategories(store.getState().category.tech);
+    setCategories([...(store.getState().category.tech as any)]);
   });
 
   useEffect(() => {
@@ -61,24 +63,28 @@ const ListCategories = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {categories &&
-                    categories.map((category: any) => (
-                      <tr key={category.id}>
-                        <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
-                          <h1>{category.type}</h1>
-                        </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
-                          <h1>{category.name}</h1>
-                        </td>
+                    categories
+                      .sort((a: any, b: any) => {
+                        return b.createdAt._seconds - a.createdAt._seconds;
+                      })
+                      .map((category: any) => (
+                        <tr key={category.id}>
+                          <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
+                            <h1>{category.type}</h1>
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
+                            <h1>{category.name}</h1>
+                          </td>
 
-                        <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <Link href={'/dashboard/categories/' + category.id}>
-                            <a className="text-indigo-600 hover:text-indigo-900 p-1">
-                              Edit Category
-                            </a>
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
+                          <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                            <Link href={'/dashboard/categories/' + category.id}>
+                              <a className="text-indigo-600 hover:text-indigo-900 p-1">
+                                Edit Category
+                              </a>
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
                 </tbody>
               </table>
             </div>

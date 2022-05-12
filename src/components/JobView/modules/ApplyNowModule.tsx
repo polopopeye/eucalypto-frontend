@@ -7,6 +7,7 @@ import modifyJobOffer from 'src/app/backend/jobOffer/modifyJobOffer';
 import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import deleteStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/deleteStatusJobOffer';
 import registerStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/registerStatusJobOffer';
+import sendMailNewApply from 'src/app/backend/mail/sendMailNewApply';
 
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import { store } from 'src/app/store';
@@ -55,6 +56,7 @@ const ApplyNowModule = () => {
     } as StatusJobOfferInterface;
 
     registerStatusJobOffer(statusJobOffer);
+    sendMailNewApply({ user, jobOffer });
   };
   const handleUnapplyForJob = () => {
     const jobOfferapplicants = jobOffer.applicants?.filter(

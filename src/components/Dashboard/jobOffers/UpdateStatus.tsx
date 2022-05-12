@@ -9,6 +9,9 @@ import { CheckIcon } from '@heroicons/react/outline';
 import deleteStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/deleteStatusJobOffer';
 import modifyStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/modifyStatusJobOffer';
 import registerStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/registerStatusJobOffer';
+import sendMailStatusChanged from 'src/app/backend/mail/sendMailStatusChanged';
+import getUserDataFromId from 'src/components/Utils/redux/getUserDataFromId';
+import { UserInterface } from 'src/commons/userInterface';
 
 function ModalCreate(props: {
   setOpen: any;
@@ -103,6 +106,11 @@ function ModalCreate(props: {
                 statusNewJobOffer.published = true;
 
                 registerStatusJobOffer(statusNewJobOffer, () => {
+                  sendMailStatusChanged({
+                    user: getUserDataFromId(applicantId) as UserInterface,
+                    jobOffer: store.getState().jobs.currentJobOffer,
+                    statusDescription: statusNewJobOffer.description as string,
+                  });
                   retrieveStatusJobOffer(
                     {
                       userId: applicantId,
@@ -275,6 +283,10 @@ const UpdateStatus = (props: { applicantId: string }) => {
         },
         (status: Array<StatusJobOfferInterface>) => {
           setStatusJobOffers(status);
+          console.log(
+            '🚀 ~ file: UpdateStatus.tsx ~ line 286 ~ useEffect ~ status',
+            status
+          );
         }
       );
     }
@@ -284,50 +296,54 @@ const UpdateStatus = (props: { applicantId: string }) => {
     <>
       {statusJobOffers && (
         <>
-          {statusJobOffers.map((status) => (
-            <div
-              className="p-4 m-4 grid  grid-cols-2 gap-4 border-2 border-secondary rounded-md"
-              key={status.id}
-            >
-              <div>
-                {status.description} ({status.status})
+          {statusJobOffers
+            .sort((a: any, b: any) => {
+              return a.createdAt._seconds - b.createdAt._seconds;
+            })
+            .map((status) => (
+              <div
+                className="p-4 m-4 grid  grid-cols-2 gap-4 border-2 border-secondary rounded-md"
+                key={status.id}
+              >
+                <div>
+                  {status.description} ({status.status})
+                </div>
+                <div className=" text-right">
+                  <a
+                    className="cursor-pointer bg-red-500 text-white p-2 m-2 rounded-lg"
+                    onClick={() => {
+                      deleteStatusJobOffer(
+                        {
+                          userId: status.id as string,
+                        },
+                        () => {
+                          retrieveStatusJobOffer(
+                            {
+                              jobId: jobOffer.id as string,
+                              userId: props.applicantId as string,
+                            },
+                            (status: any) => {
+                              setStatusJobOffers(status);
+                            }
+                          );
+                        }
+                      );
+                    }}
+                  >
+                    delete
+                  </a>
+                  <a
+                    className="cursor-pointer bg-primary text-white p-2 m-2 rounded-lg"
+                    onClick={() => {
+                      setCurrentStatus(status);
+                      setOpenEditModal(true);
+                    }}
+                  >
+                    modify
+                  </a>
+                </div>
               </div>
-              <div className=" text-right">
-                <a
-                  className="cursor-pointer bg-red-500 text-white p-2 m-2 rounded-lg"
-                  onClick={() => {
-                    deleteStatusJobOffer(
-                      {
-                        userId: status.id as string,
-                      },
-                      () => {
-                        retrieveStatusJobOffer(
-                          {
-                            jobId: jobOffer.id as string,
-                            userId: props.applicantId as string,
-                          },
-                          (status: any) => {
-                            setStatusJobOffers(status);
-                          }
-                        );
-                      }
-                    );
-                  }}
-                >
-                  delete
-                </a>
-                <a
-                  className="cursor-pointer bg-primary text-white p-2 m-2 rounded-lg"
-                  onClick={() => {
-                    setCurrentStatus(status);
-                    setOpenEditModal(true);
-                  }}
-                >
-                  modify
-                </a>
-              </div>
-            </div>
-          ))}
+            ))}
           <ModalUpdate
             statusJobOffer={currentStatus}
             open={openEditModal}
@@ -345,7 +361,8 @@ const UpdateStatus = (props: { applicantId: string }) => {
         >
           Create New Status
         </a>
-        <a
+        {/* TODO: DISCARD APROVE APPLICANT */}
+        {/* <a
           onClick={() => {
             setOpenCreateModal(true);
           }}
@@ -360,7 +377,7 @@ const UpdateStatus = (props: { applicantId: string }) => {
           className="cursor-pointer bg-primary text-white p-2 m-2 rounded-lg"
         >
           APROVE APPLICANT
-        </a>
+        </a> */}
       </div>
       <ModalCreate
         open={openCreateModal}

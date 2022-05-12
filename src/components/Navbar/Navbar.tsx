@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable @next/next/no-img-element */
 import { Disclosure, Menu } from '@headlessui/react';
 import { MenuIcon, UserIcon, XIcon } from '@heroicons/react/outline';
@@ -35,13 +36,15 @@ const Navbar = () => {
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="block    h-auto w-64"
-                    src="/img/logo1.png"
-                    alt="Workflow"
-                  />
+                  <Link href="/">
+                    <img
+                      className="block  cursor-pointer  h-auto w-64"
+                      src="/img/logo1.png"
+                      alt="Workflow"
+                    />
+                  </Link>
                 </div>
-                <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <div className="hidden sm:ml-6 sm:flex sm:space-x-8 cursor-pointer">
                   <NavButton href="/" text="Home" />
                   <NavButton href="/search" text="Search for a project" />
                   {/* TODO: FINISH COMUNITY PART */}
@@ -111,7 +114,7 @@ const Navbar = () => {
                               }}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
+                                'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
                               )}
                             >
                               Sign out

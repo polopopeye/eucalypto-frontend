@@ -31,14 +31,18 @@ const Badges = (props: { categoriesId?: Array<string> }) => {
 
   return (
     <div>
-      {badgesCategories?.map((category: CategoryInterface, i: number) => (
-        <span
-          key={i}
-          className="m-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-primary"
-        >
-          {category.name}
-        </span>
-      ))}
+      {badgesCategories
+        ?.sort((a: any, b: any) => {
+          return b.createdAt._seconds - a.createdAt._seconds;
+        })
+        .map((category: CategoryInterface, i: number) => (
+          <span
+            key={i}
+            className="m-2 inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-primary"
+          >
+            {category.name}
+          </span>
+        ))}
     </div>
   );
 };
