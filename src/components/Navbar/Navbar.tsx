@@ -174,12 +174,19 @@ const Navbar = () => {
                 Search for a project
               </Disclosure.Button>
               <Disclosure.Button
+                href="/contact"
+                as="a"
+                className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+              >
+                Let&#39;s talk
+              </Disclosure.Button>
+              {/* <Disclosure.Button
                 href="/community"
                 as="a"
                 className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
               >
                 Community
-              </Disclosure.Button>
+              </Disclosure.Button> */}
 
               {!checkUserInfo.isLogedIn && (
                 <Disclosure.Button

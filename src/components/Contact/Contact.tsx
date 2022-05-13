@@ -12,13 +12,28 @@ const Contact = () => {
         autoPlay={true}
         muted={true}
         loop={true}
-        className=" fixed -mt-12 left-0"
+        className="hidden md:block fixed -mt-12 left-0"
         style={{
-          width: '100% !important',
+          width: '150% !important',
+          maxWidth: '150% !important',
           height: 'auto',
         }}
       >
         <source src="/file/heroVideo/world.mp4" type="video/mp4" />
+        Tu navegador no soporta el formato de video
+      </video>
+      <video
+        autoPlay={true}
+        muted={true}
+        loop={true}
+        className="block md:hidden fixed -mt-12 left-0"
+        style={{
+          height: '90% !important',
+          marginLeft: '-25% !important',
+          maxWidth: 'none !important',
+        }}
+      >
+        <source src="/file/heroVideo/world2.mp4" type="video/mp4" />
         Tu navegador no soporta el formato de video
       </video>
 
