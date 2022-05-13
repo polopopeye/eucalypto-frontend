@@ -52,7 +52,7 @@ const ListJobOffers = (props: {
             <Link href="/dashboard/offers/create">
               <a
                 type="button"
-                className="relative float-right -mt-10 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+                className="relative float-right -mt-24 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
               >
                 <PlusCircleIcon className="w-5 h-5 mr-2" />
                 Create new Job Offer
@@ -70,12 +70,12 @@ const ListJobOffers = (props: {
           const companyData = getCompanyDataFromId(jobOffer.company as string);
           return (
             <div
-              className="-ml-4 mt-4 border border-gray-300"
+              className="-ml-4 mt-4 border border-gray-300 break-all"
               key={jobOffer.id}
             >
               <div className="ml-4 mt-4">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+                  <div className="m-auto">
                     <img
                       className="w-64 h-auto"
                       src={companyData.coverImg}
@@ -92,7 +92,7 @@ const ListJobOffers = (props: {
                   </div>
                 </div>
               </div>
-              <div className=" ml-4 mt-4 grid gap-2 grid-cols-2  p-4 ">
+              <div className=" ml-4 mt-4 grid gap-2 md:grid-cols-2 grid-cols-1  p-4 ">
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   <CurrencyDollarIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
@@ -150,7 +150,7 @@ const ListJobOffers = (props: {
 
                   {isAdmin ? (
                     <>
-                      <div className="grid grid-cols-3 col-end-3">
+                      <div className="grid grid-cols-1 md:grid-cols-3 md:col-end-3">
                         <Link href={'/dashboard/offers/' + jobOffer.id}>
                           <div className="cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
                             <PencilIcon className="h-5 w-5 mr-4" /> Edit Job

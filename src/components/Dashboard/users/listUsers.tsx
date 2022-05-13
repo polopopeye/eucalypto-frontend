@@ -37,9 +37,7 @@ const ListUsers = () => {
         <>
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h1 className="text-xl font-semibold text-gray-900">
-                Users / Talents
-              </h1>
+              <h1 className="text-xl font-semibold text-gray-900">Users</h1>
               <p className="mt-2 text-sm text-gray-700">
                 List of all the Users
               </p>
@@ -51,7 +49,7 @@ const ListUsers = () => {
                 <Link href="/dashboard/user/create">
                   <a
                     type="button"
-                    className="relative float-right -mt-10 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+                    className="relative float-right -mt-24 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
                   >
                     <PlusCircleIcon className="w-5 h-5 mr-2" />
                     Create new User
@@ -69,12 +67,12 @@ const ListUsers = () => {
               .map((user) => {
                 return (
                   <div
-                    className="ml-4 mt-4 border border-gray-300"
+                    className="ml-4 mt-4 border border-gray-300 break-all"
                     key={user.id}
                   >
                     <div className="ml-4 mt-4">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0">
+                      <div className="grid grid-cols-1 md:grid-cols-2">
+                        <div className="m-auto">
                           <img
                             className="h-32 w-auto rounded-full"
                             src={user?.coverImg}
@@ -91,7 +89,7 @@ const ListUsers = () => {
                         </div>
                       </div>
                     </div>
-                    <div className=" ml-4 mt-4 grid gap-2 grid-cols-2  p-4 ">
+                    <div className=" ml-4 mt-4 grid gap-2 md:grid-cols-2 grid-cols-1  p-4 ">
                       <div className=" ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         <PhoneIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-400"
@@ -194,7 +192,7 @@ const ListUsers = () => {
                       <span className="grid grid-cols-1 md:grid-cols-3 w-full">
                         <div></div>
                         <div></div>
-                        <div className="grid grid-cols-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2">
                           <Link href={'/dashboard/user/settings/' + user.id}>
                             <div className="cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
                               <PencilIcon className="h-5 w-5 mr-4" />

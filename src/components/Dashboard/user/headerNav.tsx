@@ -34,7 +34,10 @@ const HeaderNav = () => {
   return (
     <div>
       <div className="border-b border-gray-200 cursor-pointer mb-16">
-        <nav className="-mb-px flex" aria-label="Tabs">
+        <nav
+          className="-mb-px grid grid-cols-2 md:grid-cols-4"
+          aria-label="Tabs"
+        >
           {tabs.map((tab) => {
             if (tab.admin && !isAdmin) {
               return null;
@@ -52,7 +55,7 @@ const HeaderNav = () => {
                   tab.name === current
                     ? 'border-secondary text-secondary font-bold'
                     : 'border-transparent text-gray-500 font-medium hover:text-gray-700 hover:border-gray-500',
-                  'w-1/4 py-4 px-1 text-center border-b-2 flex text-sm'
+                  '  py-4 px-1 text-center border-b-2 flex text-sm w-full'
                 )}
               >
                 <tab.icon
