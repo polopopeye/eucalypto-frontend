@@ -5,13 +5,7 @@ import Reviews from 'src/components/Home/Reviews/Reviews';
 const Home = () => {
   return (
     <div>
-      <Hero
-        title="Finding hidden"
-        titleFeatured=" oportunities"
-        description="Eucalyptus meaning origins from ancient greek: it means hidden good, well, beauty"
-        btnText="Search for a project"
-        href="/search"
-      />
+      <Hero btnText="Search for a project" href="/search" />
       <Reviews />
       <Lifecicle />
     </div>

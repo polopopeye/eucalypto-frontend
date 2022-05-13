@@ -1,13 +1,57 @@
+/* eslint-disable @next/next/no-img-element */
+import React, { RefObject, useEffect } from 'react';
+import Typed from 'typed.js';
 interface HeroProps {
-  title: string;
-  titleFeatured: string;
-  description: string;
   href: string;
   btnText: string;
 }
 
 export default function Hero(props: HeroProps) {
-  const { title, titleFeatured, description, href, btnText } = props;
+  const el = React.useRef(null);
+  const subtitleEl = React.useRef(null);
+
+  const typed = React.useRef(null) as any;
+  const subtitle = React.useRef(null) as any;
+  var options = {
+    strings: [
+      'Finding hidden <b class="text-tertiary">Oportunities</b>',
+      'Join, choose and <b class="text-tertiary">play!</b>',
+    ],
+    typeSpeed: 150,
+    startDelay: 1000,
+    backSpeed: 100,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|',
+    autoInsertCss: true,
+    backDelay: 10000,
+  };
+  var options2 = {
+    strings: [
+      'Eucalyptus  meaning origins from ancient greek: it means hidden good, well, beauty...',
+      'The community in which you chose the opportunity for your next tech challenge!',
+      'Eucalyptus is a platform that connects you with the best resources and tools to help you build your next tech challenge.',
+    ],
+    typeSpeed: 0,
+    startDelay: 0,
+    backSpeed: 0,
+    loop: true,
+    showCursor: false,
+    backDelay: 15000,
+  };
+  useEffect(() => {
+    if (el.current && !typed.current) {
+      typed.current = new Typed(el.current as any, options);
+    }
+  }, [el]);
+
+  useEffect(() => {
+    if (subtitleEl.current && !subtitle.current) {
+      subtitle.current = new Typed(subtitleEl.current as any, options2);
+    }
+  }, [subtitleEl]);
+
+  const { href, btnText } = props;
 
   return (
     <div className="relative bg-white overflow-hidden mb-4">
@@ -25,18 +69,10 @@ export default function Hero(props: HeroProps) {
         Tu navegador no soporta el formato de video
       </video>
 
-      {/* <iframe
-        className="w-full h-full absolute left-0 hidden lg:block"
-        src="https://www.youtube.com/embed/Lfggatcjy5U?autoplay=1&controls=0&showinfo=0&loop=1"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe> */}
-
       <img
         className="absolute left-0 block lg:hidden"
         src="/file/heroVideo/main.png"
+        alt=""
       ></img>
 
       <div
@@ -56,14 +92,14 @@ export default function Hero(props: HeroProps) {
         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div className="sm:text-center lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl  pt-16 pb-16">
-              <span className="block xl:inline text-white">{title}</span>
-              <span className="block text-tertiary xl:inline">
-                {titleFeatured}
+              <span className="block xl:inline text-white" ref={el}>
+                {/* TITLE TEXT AUTO TYPED */}
               </span>
             </h1>
-            <p className="mt-3 text-base text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-              {description}
-            </p>
+            <p
+              ref={subtitleEl}
+              className="mt-3 text-base text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+            ></p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
                 {btnText && (
