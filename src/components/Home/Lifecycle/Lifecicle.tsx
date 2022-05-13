@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import TextHeader from 'src/components/Utils/TextHeader/TextHeader';
-import PostIt from './postIt';
+import PostIt from './PostIt';
 
 const Lifecicle = () => {
   return (
