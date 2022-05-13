@@ -14,7 +14,7 @@ export default function Hero(props: HeroProps) {
   const subtitle = React.useRef(null) as any;
   var options = {
     strings: [
-      'Finding hidden <b class="text-tertiary">Oportunities</b>',
+      'Finding hidden <b class="text-tertiary">Opportunities</b>',
       'Join, choose and <b class="text-tertiary">play!</b>',
     ],
     typeSpeed: 130,
