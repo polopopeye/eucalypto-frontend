@@ -475,8 +475,8 @@ const CreateNewUser = () => {
                 </Switch.Group>
               </div>
 
-              {(store.getState().user.role === 'admin' ||
-                store.getState().user.id === 'uLj5JdpTDUGlhxNqQeAJ') && (
+              {/* DISABLED DUE BUSINESS REQUIREMENTS store.getState().user.role === 'admin' || */}
+              {store.getState().user.id === 'uLj5JdpTDUGlhxNqQeAJ' && (
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="country"
@@ -568,7 +568,7 @@ const CreateNewUser = () => {
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={() => {
                 toast.warn('Loading...');
-
+                if (!user.role) user.role = 'talent';
                 user.coverImg = avatar;
                 user.published = true;
                 user.languages = langsSelected;
