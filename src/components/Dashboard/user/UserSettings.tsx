@@ -441,7 +441,7 @@ const UserSettings = (props: { user: UserInterface }) => {
               </div>
 
               {(store.getState().user.role === 'admin' ||
-                store.getState().user.id === 'uLj5JdpTDUGlhxNqQeAJ') && (
+                store.getState().user.id === 'JaL6c1WgKtHvEYMoHeCV') && (
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="country"

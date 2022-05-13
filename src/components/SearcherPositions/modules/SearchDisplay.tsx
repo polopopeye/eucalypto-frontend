@@ -24,7 +24,7 @@ const SearchDisplay = () => {
     store.getState().jobs.allJobOffers || []
   );
   store.subscribe(() => {
-    setJobOffers(store.getState().jobs.filteredJobOffers);
+    setJobOffers(store.getState().jobs.filteredJobOffers || []);
   });
 
   const [isBrowser, setIsBrowser] = useState(false);
