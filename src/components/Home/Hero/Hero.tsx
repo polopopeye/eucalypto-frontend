@@ -73,10 +73,13 @@ export default function Hero(props: HeroProps) {
       </video>
 
       <img
-        className="absolute left-0 block lg:hidden"
+        className="absolute left-0 block lg:hidden h-full w-auto"
         src="/file/heroVideo/main.png"
         alt=""
-      ></img>
+        style={{
+          maxWidth: 'none',
+        }}
+      />
 
       <div
         style={{ background: 'rgb(6 28 45 / 67%)' }}
@@ -94,14 +97,17 @@ export default function Hero(props: HeroProps) {
 
         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div className="sm:text-center lg:text-left">
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl  pt-16 pb-16">
-              <span className="block xl:inline text-white" ref={el}>
+            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl   pt-16 sm:pb-8 md:pb-16">
+              <span
+                className="block min-h-[128px] xl:inline text-white"
+                ref={el}
+              >
                 {/* TITLE TEXT AUTO TYPED */}
               </span>
             </h1>
             <p
               ref={subtitleEl}
-              className="mt-3 text-base text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+              className="mt-3 text-base min-h-[64px] text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
             ></p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
