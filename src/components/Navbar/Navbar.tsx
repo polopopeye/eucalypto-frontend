@@ -32,15 +32,15 @@ const Navbar = () => {
     >
       {({ open }) => (
         <>
-          <div className="  mx-auto px-8 md:px-16">
+          <div className="  mx-auto px-4 md:px-16">
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <Link href="/">
                     <img
-                      className="block  cursor-pointer  h-auto w-64"
+                      className="block cursor-pointer h-auto w-60"
                       src="/file/img/logo1.png"
-                      alt="Workflow"
+                      alt="Eucalypto Group"
                     />
                   </Link>
                 </div>

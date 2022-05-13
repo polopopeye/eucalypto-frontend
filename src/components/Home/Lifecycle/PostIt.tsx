@@ -15,8 +15,12 @@ const PostIt = (props: {
         className
       }
     >
-      <h1 className="font-bold text-xl md:text-4xl m-2 p-2">{step}</h1>
-      <p className=" text-xl lg:text-2xl px-4 mx-4 pb-16">{description}</p>
+      <h1 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-4xl m-2 p-2">
+        {step}
+      </h1>
+      <p className=" text-xs sm:text-xl lg:text-2xl px-0 sm:px-4 mx-2 sm:mx-4 pb-16">
+        {description}
+      </p>
     </div>
   );
 };

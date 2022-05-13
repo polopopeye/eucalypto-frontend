@@ -36,7 +36,7 @@ const SearchDisplay = () => {
   return (
     <div>
       {isBrowser && (
-        <div className="grid grid-cols-3 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-8">
           {jobOffers.map((jobOffer: JobOfferInterface, i) => {
             const companyData = getCompanyDataFromId(
               jobOffer.company as string

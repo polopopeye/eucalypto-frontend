@@ -20,7 +20,7 @@ const RegisterWithEmail = () => {
     <div>
       <Dialog
         as="div"
-        className="fixed z-10 inset-0 overflow-y-auto"
+        className="fixed z-50 inset-0 overflow-y-auto"
         onClose={() => {
           store.dispatch(
             emailRegisterModalSlice.actions.setData({ isOpen: false, data: {} })

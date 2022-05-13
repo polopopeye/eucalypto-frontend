@@ -11,16 +11,6 @@ type LayoutProps = {
 };
 
 const Layout: React.FC = ({ children }: LayoutProps) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (router.pathname === '/search' || router.pathname === '/search/') {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [router]);
-
   return (
     <div className="w-full">
       <div className="container  mx-auto">
