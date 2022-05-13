@@ -17,13 +17,12 @@ export default function Hero(props: HeroProps) {
       'Finding hidden <b class="text-tertiary">Oportunities</b>',
       'Join, choose and <b class="text-tertiary">play!</b>',
     ],
-    typeSpeed: 150,
+    typeSpeed: 130,
     startDelay: 1000,
     backSpeed: 100,
     loop: true,
-    showCursor: true,
-    cursorChar: '|',
-    autoInsertCss: true,
+    showCursor: false,
+
     backDelay: 10000,
   };
   var options2 = {
@@ -97,17 +96,16 @@ export default function Hero(props: HeroProps) {
 
         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div className="sm:text-center lg:text-left">
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl   pt-16 sm:pb-8 md:pb-16">
-              <span
-                className="block min-h-[128px] xl:inline text-white"
+            <div className="pt-32  ">
+              <h1
+                className="text-4xl tracking-tight font-extrabold text-gray-100 sm:text-5xl md:text-6xl  min-h-[128px] max-h-[128px] "
                 ref={el}
-              >
-                {/* TITLE TEXT AUTO TYPED */}
-              </span>
-            </h1>
+              ></h1>
+            </div>
+
             <p
               ref={subtitleEl}
-              className="mt-3 text-base min-h-[64px] text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+              className="mt-3 text-base min-h-[64px] max-h-[64px] text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
             ></p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
