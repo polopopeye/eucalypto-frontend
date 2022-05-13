@@ -36,7 +36,7 @@ const EventCard = () => {
           </div>
         </div>
         <div className="ml-4  p-4  w-72">
-          <img src="/img/community/events/1.jpg"></img>
+          <img src="/file/img/community/events/1.jpg"></img>
         </div>
       </div>
       <FooterCard type="Event" />

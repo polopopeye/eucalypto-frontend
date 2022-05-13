@@ -8,7 +8,7 @@ interface StarsProps {
 
 const Stars = (props: StarsProps) => {
   const { stars } = props;
-  const className = 'inline-block h-6 w-6 mr-1 text-primary';
+  const className = 'inline-block h-6 w-6 mr-1 text-secondary';
 
   return (
     <div className="flex">

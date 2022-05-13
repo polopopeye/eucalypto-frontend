@@ -16,34 +16,34 @@ const FeaturedList = () => {
           <div className="mt-6 flow-root">
             <div className="-my-4 divide-y divide-gray-200">
               <TrendingCard
-                src="/img/community/profile/1.png"
+                src="/file/img/community/profile/1.png"
                 body="Web Design Tutorials - What Is Search Engine Optimization?"
                 visits={100}
               />
               <TrendingCard
-                src="/img/community/profile/1.png"
+                src="/file/img/community/profile/1.png"
                 body="EU-Startups Summit"
                 visits={100}
               />
 
               <TrendingCard
-                src="/img/community/profile/1.png"
+                src="/file/img/community/profile/1.png"
                 body="Web Design Tutorials - What Is Search Engine Optimization?"
                 visits={100}
               />
               <TrendingCard
-                src="/img/community/profile/1.png"
+                src="/file/img/community/profile/1.png"
                 body="EU-Startups Summit"
                 visits={100}
               />
 
               <TrendingCard
-                src="/img/community/profile/1.png"
+                src="/file/img/community/profile/1.png"
                 body="Web Design Tutorials - What Is Search Engine Optimization?"
                 visits={100}
               />
               <TrendingCard
-                src="/img/community/profile/1.png"
+                src="/file/img/community/profile/1.png"
                 body="EU-Startups Summit"
                 visits={100}
               />

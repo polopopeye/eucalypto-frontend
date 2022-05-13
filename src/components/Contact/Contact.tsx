@@ -18,16 +18,13 @@ const Contact = () => {
           height: 'auto',
         }}
       >
-        <source
-          src="https://firebasestorage.googleapis.com/v0/b/eucalypto-group.appspot.com/o/production%20ID_4478322.mp4?alt=media&token=b56364a6-c707-4e2c-b5dc-ddee6f45eac5"
-          type="video/mp4"
-        />
+        <source src="/file/heroVideo/world.mp4" type="video/mp4" />
         Tu navegador no soporta el formato de video
       </video>
 
       <ul
         role="list"
-        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2"
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         <li className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
           {/* <div className="z-[100] absolute text-center w-1/2 font-bold text-white text-7xl">
@@ -36,14 +33,19 @@ const Contact = () => {
           </div> */}
         </li>
         <li
-          className="col-span-1 m-4 rounded-lg shadow divide-y divide-gray-200 p-2"
-          style={{ zIndex: 2, backgroundColor: 'rgb(255 255 255 / 84%)' }}
+          className="col-span-1 lg:col-span-2 m-4 rounded-lg shadow bg-primary divide-y divide-gray-200 p-2 text-white"
+          style={{ zIndex: 2, background: 'rgb(6 28 45 / 67%)' }}
         >
           <div className="p-4  ">
-            <TextHeader
-              title="Get in touch"
-              description="we love to hear from you, feel free to contact us anytime for any questions or feedback"
-            />
+            <div className=" lg:text-center p-4">
+              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-tertiary sm:text-4xl">
+                Get in touch
+              </p>
+              <p className="mt-4 max-w-2xl text-xl text-gray-100 lg:mx-auto">
+                we love to hear from you, feel free to contact us anytime for
+                any questions or feedback
+              </p>
+            </div>
           </div>
           <hr></hr>
           <ul className=" font-semibold text-xl">

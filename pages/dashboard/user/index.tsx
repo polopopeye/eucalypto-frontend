@@ -17,7 +17,6 @@ const Index = () => {
   if (checkUserInfo.loading) return <LoadingComponent />;
   if (!checkUserInfo.isLogedIn) router.push('/signin');
 
-  //TODO: RECHECK WHEN IS NECESARY TO GET COMPANIES BY OWNER OR GET ALL COMPANIES
   retrieveCompanyByOwner();
   retrieveCategories({
     propToFind: 'type',

@@ -28,7 +28,7 @@ const CreateNewUser = () => {
 
   const [user, setUser] = useState({} as UserInterface);
 
-  const [avatar, setAvatar] = useState('/img/Icono_Negativo.png');
+  const [avatar, setAvatar] = useState('/file/img/Icono_Negativo.png');
 
   const [category, setCategory] = useState(
     store.getState().category.tech as CategoryInterface[]

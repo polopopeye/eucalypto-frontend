@@ -15,7 +15,7 @@ const HeaderCard = () => {
         <div className="flex-shrink-0">
           <img
             className="h-10 w-10 rounded-full"
-            src="/img/community/profile/1.png"
+            src="/file/img/community/profile/1.png"
             alt="EU-Startups"
           />
         </div>

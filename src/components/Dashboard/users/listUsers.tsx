@@ -1,8 +1,13 @@
 /* eslint-disable @next/next/link-passhref */
 import {
+  BriefcaseIcon,
+  ColorSwatchIcon,
+  LocationMarkerIcon,
   MailIcon,
   PencilIcon,
   PhoneIcon,
+  PlusCircleIcon,
+  UserIcon,
   ViewListIcon,
 } from '@heroicons/react/outline';
 import Link from 'next/link';
@@ -14,13 +19,14 @@ import Badges from 'src/components/Utils/categories/badges';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
 
 const ListUsers = () => {
-  const [isAdmin] = useState(
+  const [isAdmin, setIsAdmin] = useState(
     store.getState().user.role === 'admin' ? true : false
   );
   const [users, setUsers] = useState([...store.getState().users]);
 
   store.subscribe(() => {
     setUsers([...store.getState().users]);
+    setIsAdmin(store.getState().user.role === 'admin');
   });
 
   if (!users) return <LoadingComponent />;
@@ -39,7 +45,23 @@ const ListUsers = () => {
               </p>
             </div>
           </div>
-          <div className="-ml-4 -mt-4   justify-between items-center flex-wrap sm:flex-nowrap">
+          {isAdmin && (
+            <>
+              <div className="m-auto w-full text-right">
+                <Link href="/dashboard/user/create">
+                  <a
+                    type="button"
+                    className="relative float-right -mt-10 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+                  >
+                    <PlusCircleIcon className="w-5 h-5 mr-2" />
+                    Create new User
+                  </a>
+                </Link>
+              </div>
+            </>
+          )}
+
+          <div className="-ml-4 mt-4 justify-between items-center flex-wrap sm:flex-nowrap">
             {users
               .sort((a: any, b: any) => {
                 return b.createdAt._seconds - a.createdAt._seconds;
@@ -89,7 +111,7 @@ const ListUsers = () => {
                         </span>
                       </div>
                       <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <MailIcon
+                        <BriefcaseIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                           aria-hidden="true"
                         />
@@ -98,7 +120,7 @@ const ListUsers = () => {
                         </span>
                       </div>
                       <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <MailIcon
+                        <BriefcaseIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                           aria-hidden="true"
                         />
@@ -107,7 +129,7 @@ const ListUsers = () => {
                         </span>
                       </div>
                       <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <MailIcon
+                        <LocationMarkerIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                           aria-hidden="true"
                         />
@@ -137,17 +159,17 @@ const ListUsers = () => {
                         </span>
                       </div>
                       <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <MailIcon
+                        <ColorSwatchIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                           aria-hidden="true"
                         />
                         <span>
-                          categories:
+                          Tecnologies/aptitudes:
                           <Badges categoriesId={user?.categories} />
                         </span>
                       </div>
                       <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        <MailIcon
+                        <UserIcon
                           className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                           aria-hidden="true"
                         />

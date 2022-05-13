@@ -1,3 +1,5 @@
+import { ArchiveIcon, BriefcaseIcon, UserIcon } from '@heroicons/react/outline';
+import { CollectionIcon } from '@heroicons/react/solid';
 import { useState } from 'react';
 import dashboardNavHeaderSlice from 'src/app/slices/app/dashboardNavHeader';
 import { store } from 'src/app/store';
@@ -24,42 +26,48 @@ const HeaderNav = () => {
   });
 
   const tabs = [
-    { name: 'Jobs Offers' },
-    { name: 'Users', admin: true },
-    { name: 'Companies', admin: true },
-    { name: 'Categories', admin: true },
+    { name: 'Jobs Offers', icon: ArchiveIcon },
+    { name: 'Users', admin: true, icon: UserIcon },
+    { name: 'Companies', admin: true, icon: BriefcaseIcon },
+    { name: 'Categories', admin: true, icon: CollectionIcon },
   ];
   return (
     <div>
-      <div className="hidden sm:block">
-        <div className="border-b border-gray-200">
-          <nav className="-mb-px flex" aria-label="Tabs">
-            {tabs.map((tab) => {
-              if (tab.admin && !isAdmin) {
-                return null;
-              }
-              return (
-                <a
-                  onClick={() => {
-                    setCurrent(tab.name);
-                    store.dispatch(
-                      dashboardNavHeaderSlice.actions.setData(tab.name)
-                    );
-                  }}
-                  key={tab.name}
+      <div className="border-b border-gray-200 cursor-pointer mb-16">
+        <nav className="-mb-px flex" aria-label="Tabs">
+          {tabs.map((tab) => {
+            if (tab.admin && !isAdmin) {
+              return null;
+            }
+            return (
+              <a
+                onClick={() => {
+                  setCurrent(tab.name);
+                  store.dispatch(
+                    dashboardNavHeaderSlice.actions.setData(tab.name)
+                  );
+                }}
+                key={tab.name}
+                className={classNames(
+                  tab.name === current
+                    ? 'border-secondary text-secondary font-bold'
+                    : 'border-transparent text-gray-500 font-medium hover:text-gray-700 hover:border-gray-500',
+                  'w-1/4 py-4 px-1 text-center border-b-2 flex text-sm'
+                )}
+              >
+                <tab.icon
                   className={classNames(
                     tab.name === current
-                      ? 'border-secondary text-secondary font-bold'
-                      : 'border-transparent text-gray-500 font-medium hover:text-gray-700 hover:border-gray-300',
-                    'w-1/4 py-4 px-1 text-center border-b-2  text-sm'
+                      ? 'text-secondary h-7 w-7'
+                      : 'text-gray-500 h-5 w-5',
+                    'ml-1 mr-2  '
                   )}
-                >
-                  {tab.name}
-                </a>
-              );
-            })}
-          </nav>
-        </div>
+                />
+                {tab.name}
+              </a>
+            );
+          })}
+        </nav>
       </div>
 
       {current === 'Jobs Offers' && (

@@ -4,11 +4,10 @@ interface HeroProps {
   description: string;
   href: string;
   btnText: string;
-  src: string;
 }
 
 export default function Hero(props: HeroProps) {
-  const { title, titleFeatured, description, href, btnText, src } = props;
+  const { title, titleFeatured, description, href, btnText } = props;
 
   return (
     <div className="relative bg-white overflow-hidden mb-4">
@@ -22,19 +21,30 @@ export default function Hero(props: HeroProps) {
           height: 'auto',
         }}
       >
-        <source
-          src="https://firebasestorage.googleapis.com/v0/b/eucalypto-group.appspot.com/o/production%20ID_4478322.mp4?alt=media&token=b56364a6-c707-4e2c-b5dc-ddee6f45eac5"
-          type="video/mp4"
-        />
+        <source src="/file/heroVideo/heroVideo.mp4" type="video/mp4" />
         Tu navegador no soporta el formato de video
       </video>
 
+      {/* <iframe
+        className="w-full h-full absolute left-0 hidden lg:block"
+        src="https://www.youtube.com/embed/Lfggatcjy5U?autoplay=1&controls=0&showinfo=0&loop=1"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe> */}
+
+      <img
+        className="absolute left-0 block lg:hidden"
+        src="/file/heroVideo/main.png"
+      ></img>
+
       <div
-        style={{ background: '#ffffff96' }}
-        className="ml-4 mb-4 relative z-10 pb-8   sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32"
+        style={{ background: 'rgb(6 28 45 / 67%)' }}
+        className="lg:ml-4 mb-4 relative z-10 pb-8   sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-8 xl:pb-32"
       >
         <svg
-          className="hidden lg:block text-primary absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+          className="hidden lg:block text-secondary absolute right-0 inset-y-0 h-full w-16 transform translate-x-1/2"
           fill="currentColor"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
@@ -46,12 +56,12 @@ export default function Hero(props: HeroProps) {
         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div className="sm:text-center lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl  pt-16 pb-16">
-              <span className="block xl:inline">{title}</span>
-              <span className="block text-primary xl:inline">
+              <span className="block xl:inline text-white">{title}</span>
+              <span className="block text-tertiary xl:inline">
                 {titleFeatured}
               </span>
             </h1>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            <p className="mt-3 text-base text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
               {description}
             </p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
@@ -59,7 +69,7 @@ export default function Hero(props: HeroProps) {
                 {btnText && (
                   <a
                     href={href}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-secondary md:py-4 md:text-lg md:px-10"
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-primary md:py-4 md:text-lg md:px-10"
                   >
                     {btnText}
                   </a>

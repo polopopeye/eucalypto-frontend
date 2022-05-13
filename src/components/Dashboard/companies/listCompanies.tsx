@@ -1,25 +1,32 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable @next/next/no-img-element */
-import { MailIcon, PencilIcon, ViewListIcon } from '@heroicons/react/outline';
+import {
+  BriefcaseIcon,
+  GlobeIcon,
+  LocationMarkerIcon,
+  MailIcon,
+  PencilIcon,
+  PhoneIcon,
+  PlusCircleIcon,
+  ViewListIcon,
+} from '@heroicons/react/outline';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import retrieveCompanyByOwner from 'src/app/backend/company/retrieveCompaniesByOwner';
+import React, { useState } from 'react';
 import { store } from 'src/app/store';
 import { CompanyInterface } from 'src/commons/companyInterface';
-import Badges from 'src/components/Utils/categories/badges';
 
 const ListCompanies = () => {
   const [companies, setCompanies] = useState([
     ...store.getState().company.personalcompanies,
   ]);
+  const [isAdmin, setIsAdmin] = useState(
+    store.getState().user.role === 'admin'
+  );
 
   store.subscribe(() => {
     setCompanies([...store.getState().company.personalcompanies]);
+    setIsAdmin(store.getState().user.role === 'admin');
   });
-
-  useEffect(() => {
-    retrieveCompanyByOwner(store.getState().user.id as string);
-  }, []);
 
   return (
     <>
@@ -31,6 +38,21 @@ const ListCompanies = () => {
           </p>
         </div>
       </div>
+      {isAdmin && (
+        <>
+          <div className="m-auto w-full text-right">
+            <Link href="/dashboard/companies/create">
+              <a
+                type="button"
+                className="relative float-right -mt-10 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+              >
+                <PlusCircleIcon className="w-5 h-5 mr-2" />
+                Create new Company
+              </a>
+            </Link>
+          </div>
+        </>
+      )}
 
       {companies &&
         companies
@@ -38,7 +60,7 @@ const ListCompanies = () => {
             return b.createdAt._seconds - a.createdAt._seconds;
           })
           .map((company: CompanyInterface) => (
-            <div className="ml-4 mt-4 border border-gray-300" key={company.id}>
+            <div className="-ml-4 mt-4 border border-gray-300" key={company.id}>
               <div className="ml-4 mt-4">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
@@ -58,7 +80,7 @@ const ListCompanies = () => {
               </div>
               <div className=" ml-4 mt-4 grid gap-2 grid-cols-2  p-4 ">
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <LocationMarkerIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -69,7 +91,7 @@ const ListCompanies = () => {
                 </div>
 
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <GlobeIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -79,7 +101,7 @@ const ListCompanies = () => {
                   </span>
                 </div>
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <BriefcaseIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -99,7 +121,7 @@ const ListCompanies = () => {
                   </span>
                 </div>
                 <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <MailIcon
+                  <PhoneIcon
                     className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
@@ -131,34 +153,6 @@ const ListCompanies = () => {
               </div>
             </div>
           ))}
-
-      {/* <tbody className="divide-y divide-gray-200 bg-white">
-        
-                      <tr key={company.id}>
-                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                          <div className="mb-4 p-2  sm:mb-0 sm:mr-4 flex">
-                            <img
-                              className="w-64 h-auto"
-                              src={company.coverImg}
-                              alt="company logo"
-                            />
-                          </div>
-                        </td>
-
-                        <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
-                          <h1>{company.name}</h1>
-                        </td>
-
-                        <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <Link href={'/dashboard/companies/' + company.id}>
-                            <a className="text-indigo-600 hover:text-indigo-900 p-1">
-                              Edit Company
-                            </a>
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody> */}
     </>
   );
 };

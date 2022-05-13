@@ -32,14 +32,14 @@ const Navbar = () => {
     >
       {({ open }) => (
         <>
-          <div className="  mx-auto px-16">
+          <div className="  mx-auto px-8 md:px-16">
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <Link href="/">
                     <img
                       className="block  cursor-pointer  h-auto w-64"
-                      src="/img/logo1.png"
+                      src="/file/img/logo1.png"
                       alt="Workflow"
                     />
                   </Link>
@@ -63,12 +63,13 @@ const Navbar = () => {
                       <span className="sr-only">Open user menu</span>
                       {checkUserInfo.isLogedIn ? (
                         <img
+                          style={{ minHeight: '42px' }}
                           className="h-auto w-12 rounded-full"
                           src={user.coverImg}
                           alt=""
                         />
                       ) : (
-                        <UserIcon className="h-8 w-8 rounded-full" />
+                        <UserIcon className="h-8 w-8 rounded-full text-gray-100 md:text-gray-900" />
                       )}
                     </Menu.Button>
                   </div>
@@ -82,7 +83,7 @@ const Navbar = () => {
                               <a
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
+                                  'block px-4 py-2 text-sm text-gray-700 hover:bg-secondary'
                                 )}
                               >
                                 Your Dashboard
@@ -96,7 +97,7 @@ const Navbar = () => {
                               <a
                                 className={classNames(
                                   active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
+                                  'block px-4 py-2 text-sm text-gray-700 hover:bg-secondary'
                                 )}
                               >
                                 Settings
@@ -104,6 +105,7 @@ const Navbar = () => {
                             </Link>
                           )}
                         </Menu.Item>
+                        <hr className="py-2"></hr>
                         <Menu.Item>
                           {({ active }) => (
                             <a
@@ -114,7 +116,7 @@ const Navbar = () => {
                               }}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
+                                'block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-red-500'
                               )}
                             >
                               Sign out
@@ -189,27 +191,29 @@ const Navbar = () => {
                 </Disclosure.Button>
               )}
             </div>
-            <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="pt-4 pb-3 ">
+              <hr className="py-2"></hr>
+
               <div className="flex items-center px-4">
-                <div className="flex-shrink-0">
-                  {checkUserInfo.isLogedIn ? (
-                    <img
-                      className="h-auto w-12 rounded-full"
-                      src={user.coverImg}
-                      alt=""
-                    />
-                  ) : (
-                    <UserIcon className="h-8 w-8 rounded-full" />
-                  )}
-                </div>
-                <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">
-                    {user.displayName}
-                  </div>
-                  <div className="text-sm font-medium text-gray-500">
-                    {user.email}
-                  </div>
-                </div>
+                {checkUserInfo.isLogedIn && (
+                  <>
+                    <div className="flex-shrink-0">
+                      <img
+                        className="h-auto w-12 rounded-full"
+                        src={user.coverImg}
+                        alt="profile picture"
+                      />
+                    </div>
+                    <div className="ml-3">
+                      <div className="text-base font-medium text-secondary">
+                        {user.displayName}
+                      </div>
+                      <div className="text-sm font-medium text-gray-500">
+                        {user.email}
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
               {checkUserInfo.isLogedIn && (
                 <div className="mt-3 space-y-1">
@@ -218,7 +222,7 @@ const Navbar = () => {
                     href="/dashboard/user/"
                     className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
-                    Your Profile
+                    Your Dashboard
                   </Disclosure.Button>
                   <Disclosure.Button
                     as="a"
@@ -227,11 +231,12 @@ const Navbar = () => {
                   >
                     Settings
                   </Disclosure.Button>
+                  <hr className="py-4"></hr>
                   <Disclosure.Button
                     type="button"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                    className="w-full block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-100 hover:bg-red-500"
                   >
-                    <a
+                    <button
                       onClick={() => {
                         logOut(() => {
                           window.location.reload();
@@ -239,7 +244,7 @@ const Navbar = () => {
                       }}
                     >
                       Sign out
-                    </a>
+                    </button>
                   </Disclosure.Button>
                 </div>
               )}

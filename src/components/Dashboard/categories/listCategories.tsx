@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 // THIS PAGE ONLY SHOW THE TECH CATEGORY
 
+import { PlusCircleIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import retrieveCategories from 'src/app/backend/category/retrieveCategories';
@@ -10,18 +11,13 @@ const ListCategories = () => {
   const [categories, setCategories] = useState([
     ...(store.getState().category.tech as any),
   ]);
-
+  const [isAdmin, setIsAdmin] = useState(
+    store.getState().user.role === 'admin'
+  );
   store.subscribe(() => {
     setCategories([...(store.getState().category.tech as any)]);
+    setIsAdmin(store.getState().user.role === 'admin');
   });
-
-  useEffect(() => {
-    retrieveCategories({
-      propToFind: 'type',
-      value: 'tech',
-      saveIn: 'tech',
-    });
-  }, []);
 
   return (
     <>
@@ -33,6 +29,22 @@ const ListCategories = () => {
           </p>
         </div>
       </div>
+      {isAdmin && (
+        <>
+          <div className="m-auto w-full text-right">
+            <Link href="/dashboard/categories/create">
+              <a
+                type="button"
+                className="relative float-right -mt-10 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+              >
+                <PlusCircleIcon className="w-5 h-5 mr-2" />
+                Create new Category
+              </a>
+            </Link>
+          </div>
+        </>
+      )}
+
       <div className="mt-8 flex flex-col">
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">

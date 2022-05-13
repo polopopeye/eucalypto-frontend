@@ -7,6 +7,7 @@ import {
   LocationMarkerIcon,
   MailIcon,
   PencilIcon,
+  PlusCircleIcon,
   ViewListIcon,
 } from '@heroicons/react/outline';
 import Link from 'next/link';
@@ -45,6 +46,21 @@ const ListJobOffers = (props: {
           <p className="mt-2 text-sm text-gray-700">{props.description}</p>
         </div>
       </div>
+      {isAdmin && (
+        <>
+          <div className="m-auto w-full text-right">
+            <Link href="/dashboard/offers/create">
+              <a
+                type="button"
+                className="relative float-right -mt-10 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+              >
+                <PlusCircleIcon className="w-5 h-5 mr-2" />
+                Create new Job Offer
+              </a>
+            </Link>
+          </div>
+        </>
+      )}
 
       {jobsOffers
         .sort((a: any, b: any) => {
@@ -53,7 +69,10 @@ const ListJobOffers = (props: {
         .map((jobOffer: JobOfferInterface) => {
           const companyData = getCompanyDataFromId(jobOffer.company as string);
           return (
-            <div className="ml-4 mt-4 border border-gray-300" key={jobOffer.id}>
+            <div
+              className="-ml-4 mt-4 border border-gray-300"
+              key={jobOffer.id}
+            >
               <div className="ml-4 mt-4">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">

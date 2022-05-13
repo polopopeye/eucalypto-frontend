@@ -20,7 +20,7 @@ const registerMicrosoft = async () => {
           displayName: nameId,
           languages: ['english'],
           role: 'talent',
-          coverImg: '/img/Icono_Negativo.png',
+          coverImg: '/file/img/Icono_Negativo.png',
           email: email as string,
           published: true,
         },
