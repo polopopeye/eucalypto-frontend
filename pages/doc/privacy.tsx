@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 const Privacy = () => {
@@ -315,7 +316,7 @@ const Privacy = () => {
         the option to register with us using your existing social media account
         details, like your Facebook, Twitter, or other social media account. If
         you choose to register in this way, we will collect the information
-        described in the section called&nbsp;'
+        described in the section called&nbsp;
         <a href="https://app.termly.io/dashboard/website/08ec3b99-8c2b-4a7a-be55-de4f42718022/privacy-policy#sociallogins">
           HOW DO WE HANDLE YOUR SOCIAL LOGINS?
         </a>
@@ -372,8 +373,8 @@ const Privacy = () => {
           Services&nbsp;(such as the date/time stamps associated with your
           usage, pages and files viewed, searches, and other actions you take
           such as which features you use), device event information (such as
-          system activity, error reports (sometimes called&nbsp;'crash dumps'),
-          and hardware settings).
+          system activity, error reports (sometimes called&nbsp;&rsquo;crash
+          dumps&rsquo;), and hardware settings).
         </li>
       </ul>
       <ul>
@@ -390,18 +391,18 @@ const Privacy = () => {
       <ul>
         <li>
           <em>Location Data.</em>&nbsp;We collect location data such as
-          information about your device's location, which can be either precise
-          or imprecise. How much information we collect depends on the type and
-          settings of the device you use to access the Services. For example, we
-          may use GPS and other technologies to collect geolocation data that
-          tells us your current location (based on your IP address). You can opt
-          out of allowing us to collect this information either by refusing
-          access to the information or by disabling your Location setting on
-          your device. However, if you choose to opt out, you may not be able to
-          use certain aspects of the Services.
+          information about your device&rsquo;s location, which can be either
+          precise or imprecise. How much information we collect depends on the
+          type and settings of the device you use to access the Services. For
+          example, we may use GPS and other technologies to collect geolocation
+          data that tells us your current location (based on your IP address).
+          You can opt out of allowing us to collect this information either by
+          refusing access to the information or by disabling your Location
+          setting on your device. However, if you choose to opt out, you may not
+          be able to use certain aspects of the Services.
         </li>
       </ul>
-      <ol start="2">
+      <ol>
         <li>
           <strong> HOW DO WE PROCESS YOUR INFORMATION?</strong>
         </li>
@@ -457,7 +458,7 @@ const Privacy = () => {
         </li>
       </ul>
       <p>&nbsp;</p>
-      <ol start="3">
+      <ol>
         <li>
           <strong>
             {' '}
@@ -648,7 +649,7 @@ const Privacy = () => {
         </li>
       </ul>
       <p>&nbsp;</p>
-      <ol start="4">
+      <ol>
         <li>
           <strong>
             {' '}
@@ -697,7 +698,7 @@ const Privacy = () => {
         </li>
       </ul>
       <p>&nbsp;</p>
-      <ol start="5">
+      <ol>
         <li>
           <strong> DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</strong>
         </li>
@@ -720,7 +721,7 @@ const Privacy = () => {
         set out in our Cookie Notice.
       </p>
       <p>&nbsp;</p>
-      <ol start="6">
+      <ol>
         <li>
           <strong> HOW DO WE HANDLE YOUR SOCIAL LOGINS?</strong>
         </li>
@@ -758,7 +759,7 @@ const Privacy = () => {
         their sites and apps.
       </p>
       <p>&nbsp;</p>
-      <ol start="7">
+      <ol>
         <li>
           <strong> HOW LONG DO WE KEEP YOUR INFORMATION?</strong>
         </li>
@@ -793,7 +794,7 @@ const Privacy = () => {
         processing until deletion is possible.
       </p>
       <p>&nbsp;</p>
-      <ol start="8">
+      <ol>
         <li>
           <strong> HOW DO WE KEEP YOUR INFORMATION SAFE?</strong>
         </li>
@@ -824,7 +825,7 @@ const Privacy = () => {
         Services within a secure environment.
       </p>
       <p>&nbsp;</p>
-      <ol start="9">
+      <ol>
         <li>
           <strong> WHAT ARE YOUR PRIVACY RIGHTS?</strong>
         </li>
@@ -968,7 +969,7 @@ const Privacy = () => {
         email us at&nbsp;hello@eucalyptogroup.com.
       </p>
       <p>&nbsp;</p>
-      <ol start="10">
+      <ol>
         <li>
           <strong> CONTROLS FOR DO-NOT-TRACK FEATURES</strong>
         </li>
@@ -988,7 +989,7 @@ const Privacy = () => {
         notice.
       </p>
       <p>&nbsp;</p>
-      <ol start="11">
+      <ol>
         <li>
           <strong>
             {' '}
@@ -1469,7 +1470,7 @@ const Privacy = () => {
         would like to hear from you.
       </p>
       <p>&nbsp;</p>
-      <ol start="12">
+      <ol>
         <li>
           <strong> DO WE MAKE UPDATES TO THIS NOTICE?</strong>
         </li>
@@ -1495,7 +1496,7 @@ const Privacy = () => {
         frequently to be informed of how we are protecting your information.
       </p>
       <p>&nbsp;</p>
-      <ol start="13">
+      <ol>
         <li>
           <strong> HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</strong>
         </li>
@@ -1527,7 +1528,7 @@ const Privacy = () => {
       <p>Cerdanyola del Valles,&nbsp;Barcelona&nbsp;08290</p>
       <p>Spain</p>
       <p>&nbsp;</p>
-      <ol start="14">
+      <ol>
         <li>
           <strong>
             {' '}
