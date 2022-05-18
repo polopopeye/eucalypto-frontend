@@ -55,7 +55,7 @@ export default function Hero(props: HeroProps) {
   return (
     <div
       className="relative bg-white  overflow-hidden mb-4"
-      style={{ width: '110%' }}
+      style={{ width: '100%' }}
     >
       <video
         autoPlay={true}

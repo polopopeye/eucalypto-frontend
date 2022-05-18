@@ -3,7 +3,7 @@ import React from 'react';
 const PostIt = (props: {
   options: {
     step: string;
-    description: string;
+    description: Array<string>;
     className: string;
   };
 }) => {
@@ -15,11 +15,19 @@ const PostIt = (props: {
         className
       }
     >
-      <h1 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-4xl m-2 p-2">
+      <h1 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-2xl m-2 p-2">
         {step}
       </h1>
-      <p className=" text-xs sm:text-xl lg:text-2xl px-0 sm:px-4 mx-2 sm:mx-4 pb-16">
-        {description}
+      <p className=" text-xs sm:text-xl lg:text-lg px-0 sm:px-4 mx-2 sm:mx-4 pb-16">
+        <ul>
+          {description &&
+            description.length &&
+            description.map((item, index) => (
+              <li className="list-disc" key={index}>
+                {item}
+              </li>
+            ))}
+        </ul>
       </p>
     </div>
   );

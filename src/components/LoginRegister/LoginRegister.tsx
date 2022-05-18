@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useRef } from 'react';
 import { LockClosedIcon, MailIcon } from '@heroicons/react/outline';
 
@@ -243,7 +244,7 @@ export default function LoginRegister() {
         <div className="hidden lg:block relative w-0 flex-1">
           <img
             className="absolute inset-0 h-full w-full object-cover"
-            src="/file/img/signin.jpg"
+            src="/file/img/signIn.jpg"
             alt=""
           />
         </div>
