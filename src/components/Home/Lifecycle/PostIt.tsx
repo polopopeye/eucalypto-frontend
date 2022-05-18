@@ -11,14 +11,14 @@ const PostIt = (props: {
   return (
     <div
       className={
-        'bg-yellow-200 aspect-square shadow-2xl hover:text-primary hover:bg-tertiary z-10 ' +
+        'col-span-2 bg-yellow-200 aspect-square shadow-2xl hover:text-primary hover:bg-tertiary z-10 ' +
         className
       }
     >
-      <h1 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-2xl m-2 p-2">
+      <h1 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-lg m-2 p-2">
         {step}
       </h1>
-      <p className=" text-xs sm:text-xl lg:text-lg px-0 sm:px-4 mx-8 sm:mx-4 pb-16">
+      <p className=" text-xs sm:text-xl lg:text-xs px-0 sm:px-4 mx-8 sm:mx-4 pb-16">
         <ul>
           {description &&
             description.length &&
