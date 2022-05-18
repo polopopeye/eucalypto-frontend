@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/globals.css';
 
 import type { AppProps } from 'next/app';
@@ -11,9 +11,15 @@ import firebase from '../src/app/firebase';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TagManager from 'react-gtm-module';
 
 function MyApp({ Component, pageProps }: any) {
   firebase();
+
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'G-X9780PKFXK' });
+  }, []);
+
   return (
     <Provider store={store}>
       <Layout>

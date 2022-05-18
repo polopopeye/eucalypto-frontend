@@ -43,7 +43,7 @@ const Reviews = () => {
           stars={5}
           name="Katie L."
           review="I was scared about changing company, but thanks to Eucalypto took the right decision. I feel very satisfied with my new job!"
-          src="/file/img/reviews/katie.jpg"
+          src="/file/img/reviews/empty.png"
         />
         <ReviewCard
           stars={5}
