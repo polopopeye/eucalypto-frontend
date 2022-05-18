@@ -18,7 +18,7 @@ const PostIt = (props: {
       <h1 className="font-bold text-lg sm:text-xl md:text-2xl lg:text-2xl m-2 p-2">
         {step}
       </h1>
-      <p className=" text-xs sm:text-xl lg:text-lg px-0 sm:px-4 mx-2 sm:mx-4 pb-16">
+      <p className=" text-xs sm:text-xl lg:text-lg px-0 sm:px-4 mx-8 sm:mx-4 pb-16">
         <ul>
           {description &&
             description.length &&
