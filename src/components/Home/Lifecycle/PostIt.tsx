@@ -15,10 +15,10 @@ const PostIt = (props: {
         className
       }
     >
-      <h1 className="font-bold text-lg sm:text-lg md:text-lg lg:text-lg xl:text-base m-2 p-2">
+      <h1 className="font-bold text-xs sm:text-lg md:text-lg lg:text-lg xl:text-base m-2 p-2">
         {step}
       </h1>
-      <p className=" text-xs sm:text-xl lg:text-xs xl:text-xs px-0 sm:px-4 mx-8 sm:mx-4 pb-16">
+      <p className=" text-xs aspect-square sm:text-base lg:text-xs xl:text-sm px-0 sm:px-4 mr-2 ml-6 sm:ml-4 sm:mr-2  pb-4">
         <ul>
           {description &&
             description.length &&
