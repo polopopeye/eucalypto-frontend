@@ -9,7 +9,7 @@ const Lifecicle = () => {
       <hr className="my-2"></hr>
       <TextHeader title="Eucalypto’s lifecycle" category="how we work" />
       <div className="px:4 md:px-4 lg:px-16 py-4">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-4 md:gap-x-0 gap-y-4 p-4 md:p-2 md:px-2 lg:px-32 xl:px-64 ">
+        <div className="grid grid-cols-4 lg:grid-cols-5 gap-x-4 md:gap-x-0 gap-y-4 p-4 md:p-2 md:px-2 lg:px-32 xl:px-64 ">
           <PostIt
             options={{
               step: 'Join the community everyone is talking about:',
