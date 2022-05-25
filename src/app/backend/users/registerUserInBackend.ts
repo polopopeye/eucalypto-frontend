@@ -9,7 +9,6 @@ const registerUserInBackend = (user: UserInterface, next?: Function) => {
     .post(api.user, user)
     .then((response) => {
       toast.success('Welcome to the community!');
-
       if (next) {
         // HERE WE DONT HAVE THE UID OF THE USER
         next(user);

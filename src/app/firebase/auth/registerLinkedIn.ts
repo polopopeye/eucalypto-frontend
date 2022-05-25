@@ -1,57 +1,21 @@
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  OAuthProvider,
-} from 'firebase/auth';
-import registerUserInBackend from '../../backend/users/registerUserInBackend';
-import { toast } from 'react-toastify';
-import { errors } from '../constants';
+// TODO: PLS IMPROVE THIS; OAUTH 2.0.
 
 const registerLinkedIn = async () => {
-  const auth = getAuth();
-  const provider = new OAuthProvider('linkedin.com');
-  // const provider = new OAuthProvider('microsoft.com');
-  //www.linkedin.com/oauth/v2/authorization
-  // TODO: change localhost by the real url
-  https: provider.setCustomParameters({
-    tenant: 'common',
-    client_id: '78pctji9v7v9at',
-    response_type: 'code',
-    redirect_uri: 'http://localhost:3000/dashboard/user',
-    scope: 'r_liteprofile r_emailaddress',
-  });
+  // https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin%2Fcontext&tabs=HTTPS
 
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      console.log(
-        '🚀 ~ file: registerLinkedIn.ts ~ line 13 ~ .then ~ result',
-        result
-      );
-      const user = result.user;
-      const { email, displayName, photoURL } = user;
-      // const nameId = (displayName as string) || (email as string);
-      // registerUserInBackend({
-      //   completeName: nameId,
-      //   displayName: nameId,
-      //   languages: ['english'],
-      //   role: 'talent',
-      //   coverImg:
-      //     photoURL || 'https://picsum.photos/seed/' + email + '/200/200',
-      //   email: email as string,
-      //   published: true,
-      // });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      console.log(
-        '🚀 ~ file: registerLinkedIn.ts ~ line 47 ~ registerLinkedIn ~ errorCode',
-        errorCode
-      );
-      const errorMessage = errors[errorCode];
-      toast.error(errorMessage);
-      return errorMessage;
-    });
+  const currentHost = window.location.origin;
+
+  const config = {
+    client_id: '78pctji9v7v9at',
+    redirect_uri: currentHost + '/signin', // CHANGE TO WORK ON PROD
+  };
+  const linkedinRedirectUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&scope=r_emailaddress,r_liteprofile`;
+
+  const openPopUp = () => {
+    window.location.href = linkedinRedirectUrl;
+  };
+
+  openPopUp();
 };
 
 export default registerLinkedIn;
