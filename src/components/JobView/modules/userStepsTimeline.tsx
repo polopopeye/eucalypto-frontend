@@ -93,7 +93,7 @@ const UserStepsTimeline = () => {
               {user.displayName}
             </h1>
             <p className="text-sm font-medium text-gray-500">
-              Applied for{' '}
+              Application for{' '}
               <a href="#" className="text-gray-900">
                 {jobOffer.job}
               </a>{' '}
