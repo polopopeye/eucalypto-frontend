@@ -36,11 +36,12 @@ export default function ModalJob() {
             <dt className="text-sm font-medium text-gray-500">About</dt>
             <dd className="mt-1 text-sm text-gray-900 h-96  ">
               <ResponsivePie
+                enableArcLabels={false}
                 margin={{
                   top: 40,
-                  right: 80,
+                  right: 100,
                   bottom: 80,
-                  left: 80,
+                  left: 100,
                 }}
                 data={jobOffer.technologies as any}
                 innerRadius={0.5}
@@ -60,6 +61,15 @@ export default function ModalJob() {
                 arcLabelsTextColor={{
                   from: 'color',
                   modifiers: [['darker', 2]],
+                }}
+                tooltip={(data: any) => {
+                  const { id } = data.datum.data;
+
+                  return (
+                    <>
+                      <div className="bg-white p-2 rounded-md">{id}</div>
+                    </>
+                  );
                 }}
               />
             </dd>

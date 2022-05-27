@@ -9,8 +9,6 @@ import { store } from 'src/app/store';
 import JobViewHeader from './JobViewHeader';
 import HeaderCompany from './HeaderCompany';
 import { ResponsivePie } from '@nivo/pie';
-import { PencilAltIcon } from '@heroicons/react/outline';
-import Link from 'next/link';
 
 const JobView = () => {
   const postInHtml = useRef() as any;
