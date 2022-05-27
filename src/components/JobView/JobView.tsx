@@ -63,11 +63,12 @@ const JobView = () => {
                         <div className="sm:col-span-2">
                           <dt className="text-sm font-medium text-gray-500 h-80 w-full">
                             <ResponsivePie
+                              enableArcLabels={false}
                               margin={{
                                 top: 40,
-                                right: 80,
-                                bottom: 80,
-                                left: 80,
+                                right: 90,
+                                bottom: 90,
+                                left: 90,
                               }}
                               data={data as any}
                               innerRadius={0.5}
@@ -79,9 +80,20 @@ const JobView = () => {
                                 from: 'color',
                                 modifiers: [['darker', 0.2]],
                               }}
+                              tooltip={(data: any) => {
+                                const { id } = data.datum.data;
+
+                                return (
+                                  <>
+                                    <div className="bg-white p-2 rounded-md">
+                                      {id}
+                                    </div>
+                                  </>
+                                );
+                              }}
                               arcLinkLabelsSkipAngle={10}
                               arcLinkLabelsTextColor="#333333"
-                              arcLinkLabelsThickness={2}
+                              arcLinkLabelsThickness={3}
                               arcLinkLabelsColor={{ from: 'color' }}
                               arcLabelsSkipAngle={10}
                               arcLabelsTextColor={{

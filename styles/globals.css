@@ -52,6 +52,9 @@ body * {
 #post-content li {
   font-size: 0.875em;
   list-style: circle;
+  white-space: nowrap !important;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 
 iframe {

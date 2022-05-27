@@ -50,30 +50,7 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true,
-    "node_modules/": true,
-    ".next/": true,
-    ".vscode/": true,
-    ".env.example": true,
-    ".env.local": true,
-    ".gitignore": true,
-    "cypress.json": true,
-    "firestore.rules": true,
-    "firestore.indexes.json": true,
-    "next-env.d.ts": true,
-    ".npmrc": true,
-    "package-lock.json": true,
-    "tsconfig.json": true,
-    "tailwind.config.js": true,
-    "Procfile": true,
-    "postcss.config.js": true,
-    "package.json": true,
-    "next.config.js": true,
-    ".eslintrc.json": true,
-    "typings/react-bubble-ui.d.ts": true,
-    ".husky/": true,
-    "cypress/": true,
-    "typings/": true
+    "**/.DS_Store": true
   },
-  "hidefiles.selectedProfile": "Super Clean"
+  "hidefiles.selectedProfile": "Show All Files"
 }
