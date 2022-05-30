@@ -62,7 +62,7 @@ const ListJobOffers = (props: {
         </>
       )}
 
-      <div className="grid grid-cols-1 xl:grid-cols-2">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
         {jobsOffers
           .sort((a: any, b: any) => {
             return b.createdAt._seconds - a.createdAt._seconds;
@@ -73,11 +73,11 @@ const ListJobOffers = (props: {
             );
             return (
               <div
-                className="-ml-4 mt-4 border border-gray-300 break-all"
+                className="mt-4 border border-gray-300 rounded-md break-all"
                 key={jobOffer.id}
               >
                 <div className="ml-4 mt-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
                     <div className="m-auto">
                       <img
                         className="w-64 h-auto"
@@ -95,7 +95,7 @@ const ListJobOffers = (props: {
                     </div>
                   </div>
                 </div>
-                <div className=" ml-4 mt-4 grid gap-2 md:grid-cols-2 grid-cols-1  p-4 ">
+                <div className=" mx-4 mt-4 grid gap-2 md:grid-cols-2 grid-cols-1  p-4 ">
                   <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <CurrencyDollarIcon
                       className="-ml-1 mr-2 h-5 w-5 text-gray-400"
@@ -147,7 +147,7 @@ const ListJobOffers = (props: {
                     </span>
                   </div>
                 </div>
-                <div className="w-full ml-3 relative inline-flex items-center px-4 py-2 border shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <div className="w-full -ml-2 flex items-center py-2 shadow-sm text-sm font-medium rounded-md text-gray-700 ">
                   <div className="flex">
                     {isAdmin ? (
                       <>

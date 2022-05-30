@@ -14,7 +14,7 @@ import deleteCompany from 'src/app/backend/company/deleteCompany';
 import deleteFile from 'src/app/firebase/storage/deleteFile';
 import newUpload from 'src/app/firebase/storage/newUpload';
 import modifyCompany from 'src/app/backend/company/modifyCompany';
-import { TrashIcon } from '@heroicons/react/outline';
+import { CheckCircleIcon, TrashIcon } from '@heroicons/react/outline';
 
 const ModifyCompanyDash = (props: any) => {
   const router = useRouter();
@@ -40,8 +40,8 @@ const ModifyCompanyDash = (props: any) => {
               </p>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="col-span-6">
+            <div className="mt-6 grid grid-cols-2 gap-y-6 gap-x-4 md:grid-cols-3">
+              <div className="col-span-2 md:col-span-3">
                 <label
                   htmlFor="photo"
                   className="block text-sm font-medium text-gray-700"
@@ -84,12 +84,13 @@ const ModifyCompanyDash = (props: any) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 flex"
                 >
-                  Name of the company
+                  Name of the company{' '}
+                  <CheckCircleIcon className="text-red-900 w-4 h-4" />
                 </label>
                 <div className="mt-1">
                   <input
@@ -109,9 +110,10 @@ const ModifyCompanyDash = (props: any) => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="description"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 flex"
                 >
-                  Add your description
+                  Description of the company
+                  <CheckCircleIcon className="text-red-900 w-4 h-4" />
                 </label>
                 <div className="mt-1">
                   <textarea
@@ -127,7 +129,7 @@ const ModifyCompanyDash = (props: any) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <label
                   htmlFor="web"
                   className="block text-sm font-medium text-gray-700"
@@ -149,12 +151,12 @@ const ModifyCompanyDash = (props: any) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <label
                   htmlFor="linkedIn"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  linkedIn of the company
+                  LinkedIn of the company
                 </label>
                 <div className="mt-1">
                   <input
@@ -171,12 +173,12 @@ const ModifyCompanyDash = (props: any) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  email of the company
+                  Email of the company
                 </label>
                 <div className="mt-1">
                   <input
@@ -193,12 +195,12 @@ const ModifyCompanyDash = (props: any) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <label
                   htmlFor="phone"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  phone of the company
+                  Phone of the company
                 </label>
                 <div className="mt-1">
                   <input
@@ -215,12 +217,12 @@ const ModifyCompanyDash = (props: any) => {
                 </div>
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <label
                   htmlFor="country"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 flex"
                 >
-                  country
+                  Country <CheckCircleIcon className="text-red-900 w-4 h-4" />
                 </label>
                 <div className="mt-1">
                   <input
