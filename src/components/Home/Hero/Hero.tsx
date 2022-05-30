@@ -27,7 +27,7 @@ export default function Hero(props: HeroProps) {
   };
   var options2 = {
     strings: [
-      'Eucalypto means "hidden good" in ancent Greek: We know that the best opportunities are hidden. Join us and find them!',
+      'Eucalypto means "hidden good" in ancient Greek: We know that the best opportunities are hidden. Join us and find them!',
       'The community in which you chose the opportunity for your next tech challenge!',
       'Eucalypto is a platform that connects you with the best resources and tools to help you build your next tech challenge.',
     ],
