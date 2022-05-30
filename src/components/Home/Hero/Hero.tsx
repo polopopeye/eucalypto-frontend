@@ -27,7 +27,7 @@ export default function Hero(props: HeroProps) {
   };
   var options2 = {
     strings: [
-      'Eucalyptus  meaning origins from ancient greek: it means hidden good, well, beauty...',
+      'Eucalypto means hidden good in ancent Greek: it means hidden good, well, beauty...',
       'The community in which you chose the opportunity for your next tech challenge!',
       'Eucalyptus is a platform that connects you with the best resources and tools to help you build your next tech challenge.',
     ],

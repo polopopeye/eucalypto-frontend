@@ -48,8 +48,8 @@ const Contact = () => {
                 Get in touch
               </p>
               <p className="mt-4 max-w-2xl text-xl text-gray-100 lg:mx-auto">
-                We love to hear from you, feel free to contact us anytime for
-                any questions or feedback
+                We would love to hear from you, feel free to contact us anytime
+                for any questions or feedback
               </p>
             </div>
           </div>

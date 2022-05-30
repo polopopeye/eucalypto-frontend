@@ -16,7 +16,7 @@ const Reviews = () => {
       <TextHeader
         title="We love our talents and partners"
         category="Reviews"
-        description="Check out what the people say about us."
+        description="Check out what people say about us."
       />
       <hr className="my-4"></hr>
 

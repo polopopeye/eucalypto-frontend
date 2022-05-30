@@ -37,8 +37,8 @@ const Lifecicle = () => {
             options={{
               step: 'Find the hottest and most exciting challenges',
               description: [
-                ' Match with your dream projects',
-                ' We are transparent: Salary, Company, Location, tech upfront',
+                'Match with your dream projects',
+                'Upfront Salary, Company, Location, tech',
                 'Follow up the process in our web app',
               ],
               className: '-rotate-6',
@@ -81,11 +81,11 @@ const Lifecicle = () => {
           </div>
           <PostIt
             options={{
-              step: 'We will be your agent:',
+              step: 'We will be your advisor:',
               description: [
                 'We have more than 7 years’ experience in the field, real knowledge not just keywords',
                 'We have a specialized team supporting you in every step of the selection process                 ',
-                'You struggle in anything? We will coach you!',
+                'You struggle with anything? We will coach you!',
                 'We counsel, you decide',
               ],
               className: '-rotate-12',
