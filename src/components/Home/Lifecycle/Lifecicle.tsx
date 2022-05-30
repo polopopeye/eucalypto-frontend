@@ -68,7 +68,7 @@ const Lifecicle = () => {
                 'Let’s celebrate it with a beer, coffee or lunch :D',
               ],
               className: 'rotate-3',
-              href: 'https://www.linkedin.com/company/85973376/admin/',
+              href: 'https://www.linkedin.com/company/85973376/',
             }}
           />
 
