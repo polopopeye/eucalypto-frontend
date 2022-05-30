@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import React from 'react';
 import TextHeader from 'src/components/Utils/TextHeader/TextHeader';
 import PostIt from './PostIt';
@@ -20,6 +21,7 @@ const Lifecicle = () => {
               ],
 
               className: 'rotate-6',
+              href: '/dashboard/user',
             }}
           />
 
@@ -40,6 +42,7 @@ const Lifecicle = () => {
                 'Follow up the process in our web app',
               ],
               className: '-rotate-6',
+              href: '/search',
             }}
           />
           <div className="lg:block hidden"></div>
@@ -65,6 +68,7 @@ const Lifecicle = () => {
                 'Let’s celebrate it with a beer, coffee or lunch :D',
               ],
               className: 'rotate-3',
+              href: 'https://www.linkedin.com/company/85973376/admin/',
             }}
           />
 
@@ -85,6 +89,7 @@ const Lifecicle = () => {
                 'We counsel, you decide',
               ],
               className: '-rotate-12',
+              href: '/contact',
             }}
           />
         </div>

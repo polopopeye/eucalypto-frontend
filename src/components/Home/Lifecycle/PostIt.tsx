@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const PostIt = (props: {
@@ -5,15 +6,22 @@ const PostIt = (props: {
     step: string;
     description: Array<string>;
     className: string;
+    href?: string;
   };
 }) => {
-  const { step, description, className } = props.options;
+  const { step, description, className, href } = props.options;
+  const router = useRouter();
   return (
     <div
       className={
-        'col-span-2 bg-yellow-200 aspect-square shadow-2xl hover:text-primary hover:bg-tertiary z-10 ' +
+        'col-span-2 bg-yellow-200 aspect-square shadow-2xl hover:text-primary hover:bg-tertiary z-10 cursor-pointer ' +
         className
       }
+      onClick={() => {
+        if (href) {
+          router.push(href);
+        }
+      }}
     >
       <h1 className="font-bold text-xs sm:text-lg md:text-lg lg:text-lg xl:text-base m-2 p-2">
         {step}

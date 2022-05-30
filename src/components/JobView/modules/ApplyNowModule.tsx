@@ -162,6 +162,14 @@ function ModalFullfillDataBeforeApply(props: { setOpen: any; open: any }) {
                           user.curriculum = url;
                           modifyUserInBackend(user, () => {
                             setOpen(false);
+                            setTimeout(() => {
+                              if (
+                                document &&
+                                document.getElementById('apply-now')
+                              ) {
+                                document.getElementById('apply-now')!.click();
+                              }
+                            }, 2000);
                           });
                         }
                       );
@@ -169,6 +177,11 @@ function ModalFullfillDataBeforeApply(props: { setOpen: any; open: any }) {
                   } else {
                     modifyUserInBackend(user, () => {
                       setOpen(false);
+                      setTimeout(() => {
+                        if (document && document.getElementById('apply-now')) {
+                          document.getElementById('apply-now')!.click();
+                        }
+                      }, 2000);
                     });
                   }
                 }

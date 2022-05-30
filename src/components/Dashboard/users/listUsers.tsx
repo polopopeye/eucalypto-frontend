@@ -71,7 +71,7 @@ const ListUsers = () => {
                     key={user.id}
                   >
                     <div className="ml-4 mt-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="m-auto">
                           <img
                             className="h-32 w-auto rounded-full"
@@ -192,16 +192,16 @@ const ListUsers = () => {
                       <span className="grid grid-cols-1 md:grid-cols-3 w-full">
                         <div></div>
                         <div></div>
-                        <div className="grid grid-cols-1 md:grid-cols-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <Link href={'/dashboard/user/settings/' + user.id}>
-                            <div className="cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
+                            <div className="cursor-pointer w-full bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
                               <PencilIcon className="h-5 w-5 mr-4" />
                               Edit
                             </div>
                           </Link>
 
                           <Link href={'/dashboard/user/jobs/' + user.id}>
-                            <div className="cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
+                            <div className="cursor-pointer w-full  bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
                               <ViewListIcon className="h-5 w-5 mr-4" />
                               View Jobs Applied
                             </div>

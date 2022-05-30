@@ -36,6 +36,10 @@ body * {
   font-family: Poppins;
 }
 
+a {
+  cursor: pointer;
+}
+
 /* HIDE TYNYMCE ALERT API ERRORS AND WARNINGS  */
 .tox-notifications-container {
   display: none;

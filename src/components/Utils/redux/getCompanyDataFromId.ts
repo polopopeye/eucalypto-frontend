@@ -8,7 +8,7 @@ const getCompanyDataFromId = (companyId: string) => {
 
   const allCompaniesReduxSpace = store.getState().company.allCompanies;
 
-  if (personalCompaniesReduxSpace) {
+  if (personalCompaniesReduxSpace.length) {
     const personalCompany = personalCompaniesReduxSpace.find(
       (x: CompanyInterface) => x.id === companyId
     );
@@ -17,7 +17,7 @@ const getCompanyDataFromId = (companyId: string) => {
       return personalCompany as CompanyInterface;
     }
   }
-  if (allCompaniesReduxSpace) {
+  if (allCompaniesReduxSpace.length) {
     const company = allCompaniesReduxSpace.find(
       (x: CompanyInterface) => x.id === companyId
     );

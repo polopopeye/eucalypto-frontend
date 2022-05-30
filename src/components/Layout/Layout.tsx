@@ -13,7 +13,7 @@ type LayoutProps = {
 const Layout: React.FC = ({ children }: LayoutProps) => {
   return (
     <div className="w-full">
-      <div className="container  mx-auto">
+      <div className="container mx-auto px-2 xl:px-8">
         <Navbar />
         {children}
       </div>

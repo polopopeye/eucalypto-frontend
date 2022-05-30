@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
-import { ArrowLeftIcon } from '@heroicons/react/outline';
+import { ArrowLeftIcon, ViewListIcon } from '@heroicons/react/outline';
 import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import TextHeader from 'src/components/Utils/TextHeader/TextHeader';
@@ -55,7 +55,7 @@ const ListApplicants = () => {
             return (
               <div key={applicantId}>
                 <div className="ml-4 mt-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="m-auto">
                       <img
                         className="h-32 w-auto rounded-full"
@@ -196,6 +196,13 @@ const ListApplicants = () => {
         >
           <ArrowLeftIcon className="w-5 h-5 mx-4" /> Back to dashboard
         </button>
+      </Link>
+
+      <Link href={'/job/' + jobOffer.id}>
+        <div className="cursor-pointer w-full bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
+          <ViewListIcon className="h-5 w-5 mr-4" />
+          View Job Offer
+        </div>
       </Link>
     </div>
   );

@@ -226,25 +226,6 @@ const CreateNewCompany = () => {
                   />
                 </div>
               </div>
-
-              {/* {isAdmin && (
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="username"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Owners of the company <br></br> ( users who has access to
-                    publish with this company)
-                  </label>
-                  <div className="mt-1 w-full flex rounded-md shadow-sm">
-                    <MultipleSelect
-                      setVariant={setOwners}
-                      variant={owners}
-                      children={[{ id: '1', name: 'user1' }]}
-                    />
-                  </div>
-                </div>
-              )} */}
             </div>
           </div>
         </div>

@@ -23,10 +23,6 @@ const Settings = () => {
         reduxSpace: 'none',
       },
       (userData: UserInterface) => {
-        console.log(
-          '🚀 ~ file: [userId].tsx ~ line 34 ~ Settings ~ userData',
-          userData
-        );
         setUser(userData);
       }
     );

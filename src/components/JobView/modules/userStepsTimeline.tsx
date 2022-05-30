@@ -5,6 +5,7 @@ import {
   PencilAltIcon,
   ThumbUpIcon,
   UserIcon,
+  ViewListIcon,
 } from '@heroicons/react/outline';
 import Link from 'next/link';
 
@@ -207,10 +208,23 @@ const UserStepsTimeline = () => {
         )}
         {store.getState().user.role === 'admin' && (
           <>
+            <Link href={'/dashboard/offers/listApplicants/' + jobOffer.id}>
+              <button
+                type="button"
+                className="w-full mt-16 inline-flex items-center text-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg mr-2 font-medium text-white bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:bg-secondary"
+              >
+                <ViewListIcon
+                  className="-ml-1 mr-2 h-5 w-5"
+                  aria-hidden="true"
+                />
+                View applicants list
+              </button>
+            </Link>
+
             <Link href={'/dashboard/offers/' + jobOffer.id}>
               <button
                 type="button"
-                className="w-full mt-16 mb-4 inline-flex items-center text-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg mr-2 font-medium text-white bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:bg-secondary"
+                className="w-full mt-4 inline-flex items-center text-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg mr-2 font-medium text-white bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:bg-secondary"
               >
                 <PencilAltIcon
                   className="-ml-1 mr-2 h-5 w-5"
@@ -223,7 +237,7 @@ const UserStepsTimeline = () => {
             <Link href={'/dashboard/companies/' + jobOffer.company}>
               <button
                 type="button"
-                className="w-full inline-flex items-center text-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg mr-2 font-medium text-white bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:bg-secondary"
+                className="w-full mt-4 inline-flex items-center text-center px-4 py-2 border border-transparent rounded-md shadow-sm text-lg mr-2 font-medium text-white bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary hover:bg-secondary"
               >
                 <PencilAltIcon
                   className="-ml-1 mr-2 h-5 w-5"

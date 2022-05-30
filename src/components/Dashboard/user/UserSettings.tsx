@@ -26,15 +26,20 @@ const UserSettings = (props: { user: UserInterface }) => {
   const [avatar, setAvatar] = useState(user.coverImg);
 
   // this filter the user categories to only the ones that are not selected
-  const defaultCategoryList = store
-    .getState()
-    .category.tech?.filter((tech) =>
-      user.categories?.every((catId) => catId != tech.id)
-    );
+
+  if (user.categories) {
+  }
+
+  const defaultCategoryList = store.getState().category.tech?.filter((tech) => {
+    if (user.categories)
+      return user.categories?.every((catId) => catId != tech.id);
+    return tech;
+  });
 
   const [category, setCategory] = useState(
     defaultCategoryList as CategoryInterface[]
   );
+
   const [techsSelected, setTechsSelected] = useState(
     user.categories as Array<string>
   );
@@ -56,9 +61,11 @@ const UserSettings = (props: { user: UserInterface }) => {
   store.subscribe(() => {
     const defaultCategoryList = store
       .getState()
-      .category.tech?.filter((tech) =>
-        user.categories?.every((catId) => catId != tech.id)
-      );
+      .category.tech?.filter((tech) => {
+        if (user.categories)
+          return user.categories?.every((catId) => catId != tech.id);
+        return tech;
+      });
     setCategory(defaultCategoryList as CategoryInterface[]);
   });
 
