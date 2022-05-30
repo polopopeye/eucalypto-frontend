@@ -14,10 +14,6 @@ const retrieveAllCompanies = async (next?: Function) => {
     .get(url)
     .then((response) => {
       const allCompaniesFound = response.data;
-      console.log(
-        '🚀 ~ file: retrieveCompanies.ts ~ line 17 ~ .then ~ allCompaniesFound',
-        allCompaniesFound
-      );
 
       store.dispatch(allCompaniesSlice.actions.setData(allCompaniesFound));
       if (typeof next === 'function') {
