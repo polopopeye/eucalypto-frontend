@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Poppins;
+  src: url(/file/fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: PoppinsBold;
+  src: url(/file/fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: PoppinsLight;
+  src: url(/file/fonts/Poppins-Light.ttf);
+}
+
 .theme-default {
   --color-primary: #061c2d;
   --color-secondary: #62d2a2;
@@ -18,6 +33,7 @@
 
 body * {
   transition: all 0.3s ease;
+  font-family: Poppins;
 }
 
 /* HIDE TYNYMCE ALERT API ERRORS AND WARNINGS  */
