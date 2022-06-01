@@ -10,7 +10,7 @@ import {
 const Stats = () => {
   return (
     <>
-      <div className="grid grid-cols-5 text-center py-8">
+      <div className="grid-cols-1 sm:grid grid-cols-5 text-center py-8">
         <div className="col-span-2 ">
           <p className="py-5 text-primary font-bold text-xl bg-white w-20 h-20 m-auto rounded-full border-secondary border-4 ">
             +
@@ -25,7 +25,7 @@ const Stats = () => {
             <p>Years of experience</p>
           </div>
         </div>
-        <div>
+        <div className="py-8 sm:py-0">
           <p className="py-5 text-primary font-bold text-xl bg-white w-20 h-20 m-auto rounded-full border-secondary border-4">
             +
             <AnimatedNumber

@@ -72,8 +72,8 @@ export default function Hero(props: HeroProps) {
       </video>
 
       <img
-        className="absolute left-0 block lg:hidden h-full w-auto"
-        src="/file/heroVideo/main.png"
+        className="absolute left-0 block lg:hidden h-full w-auto -ml-72"
+        src="/file/img/aboutus/2.jpg"
         alt=""
         style={{
           maxWidth: 'none',
@@ -107,7 +107,7 @@ export default function Hero(props: HeroProps) {
               ref={subtitleEl}
               className="mt-3 text-base min-h-[64px] max-h-[64px] text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
             ></p>
-            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+            <div className="my-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
                 {btnText && (
                   <a
