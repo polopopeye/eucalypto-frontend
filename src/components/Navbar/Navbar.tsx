@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <Disclosure
       as="nav"
-      className=" bg-primary pt-4 shadow fixed w-full z-40 left-0"
+      className=" bg-primary pt-4 shadow fixed w-full z-40 left-0 border-b-2 border-secondary"
     >
       {({ open }) => (
         <>
@@ -59,7 +59,7 @@ const Navbar = () => {
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
                   <div>
-                    <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <Menu.Button className="bg-white rounded-full flex text-sm outline-none ring-1 ring-offset-1 hover:ring-offset-2 ring-primary">
                       <span className="sr-only">Open user menu</span>
                       {checkUserInfo.isLogedIn ? (
                         <img
@@ -74,7 +74,7 @@ const Navbar = () => {
                     </Menu.Button>
                   </div>
 
-                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-20 focus:outline-none">
                     {checkUserInfo.isLogedIn ? (
                       <>
                         <Menu.Item>
@@ -116,7 +116,7 @@ const Navbar = () => {
                               }}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-red-500'
+                                'block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-red-500 hover:text-white'
                               )}
                             >
                               Sign out

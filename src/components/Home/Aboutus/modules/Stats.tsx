@@ -1,6 +1,12 @@
 import React from 'react';
 // @ts-ignore
 import AnimatedNumber from 'animated-number-react';
+import {
+  AcademicCapIcon,
+  BriefcaseIcon,
+  UserGroupIcon,
+  UsersIcon,
+} from '@heroicons/react/outline';
 
 const Stats = () => {
   const [num, setNum] = React.useState(331231);
@@ -17,7 +23,10 @@ const Stats = () => {
               formatValue={(value: any) => value.toFixed(0)}
             />
           </p>
-          <p className="py-2 drop-shadow-2xl">Years of experience</p>
+          <div className="py-2 grid grid-cols-[20px_1fr] w-48 m-auto">
+            <AcademicCapIcon className="w-5 h-5" />
+            <p>Years of experience</p>
+          </div>
         </div>
         <div>
           <p className="py-5 text-primary font-bold text-xl bg-white w-20 h-20 m-auto rounded-full border-secondary border-4">
@@ -28,7 +37,10 @@ const Stats = () => {
               formatValue={(value: any) => value.toFixed(0)}
             />
           </p>
-          <p className="py-2">Candidates</p>
+          <div className="py-2 grid grid-cols-[20px_1fr] w-32 m-auto">
+            <UserGroupIcon className="w-5 h-5" />
+            <p>Candidates</p>
+          </div>
         </div>
         <div className="col-span-2">
           <p className="py-5 text-primary font-bold text-xl bg-white w-20 h-20 m-auto rounded-full border-secondary border-4">
@@ -39,7 +51,10 @@ const Stats = () => {
               formatValue={(value: any) => value.toFixed(0)}
             />
           </p>
-          <p className="py-2">Companies</p>
+          <div className="py-2 grid grid-cols-[20px_1fr] w-32 m-auto">
+            <BriefcaseIcon className="w-5 h-5 " />
+            <p>Companies</p>
+          </div>
         </div>
       </div>
     </>

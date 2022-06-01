@@ -20,11 +20,11 @@ const Aboutus = () => {
             }}
           ></div>
           <div>
-            <div className="p-4 m-2 pt-8">
+            <div className="p-4 m-2 pt-2">
               <h2 className="text-base text-secondary font-bold tracking-wide uppercase">
                 About us
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl text-center text-gray-300">
+              <p className="mt-2  pt-4 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl text-center text-gray-300">
                 Who we are?
               </p>
               <p className="mt-4 max-w-2xl text-xl text-gray-300 lg:mx-auto">
@@ -80,7 +80,7 @@ const Aboutus = () => {
             We are specialized in the recruitment of tech talents, all over
             Europe.
           </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">
+          <p className="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto text-center">
             We have 7+ years of experience in account & team management,
             proposing added-value IT recruitment services.
           </p>

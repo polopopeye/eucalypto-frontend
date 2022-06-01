@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <div>
       <Hero btnText="Search for a project" href="/search" />
-      <Aboutus />
       <Reviews />
+      <Aboutus />
       <Lifecicle />
     </div>
   );
