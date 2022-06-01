@@ -5,12 +5,9 @@ import {
   AcademicCapIcon,
   BriefcaseIcon,
   UserGroupIcon,
-  UsersIcon,
 } from '@heroicons/react/outline';
 
 const Stats = () => {
-  const [num, setNum] = React.useState(331231);
-
   return (
     <>
       <div className="grid grid-cols-5 text-center py-8">
@@ -19,7 +16,7 @@ const Stats = () => {
             +
             <AnimatedNumber
               value={7}
-              duration={4000}
+              duration={6000}
               formatValue={(value: any) => value.toFixed(0)}
             />
           </p>
@@ -33,7 +30,7 @@ const Stats = () => {
             +
             <AnimatedNumber
               value={500}
-              duration={5000}
+              duration={7000}
               formatValue={(value: any) => value.toFixed(0)}
             />
           </p>
@@ -47,7 +44,7 @@ const Stats = () => {
             +
             <AnimatedNumber
               value={50}
-              duration={6000}
+              duration={8000}
               formatValue={(value: any) => value.toFixed(0)}
             />
           </p>
