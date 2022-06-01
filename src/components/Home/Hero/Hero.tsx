@@ -82,7 +82,7 @@ export default function Hero(props: HeroProps) {
 
       <div
         style={{ background: 'rgb(6 28 45 / 67%)' }}
-        className="lg:ml-4 mb-4 relative z-10 pb-8   sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-8 xl:pb-32"
+        className="lg:ml-4 mb-6 relative z-10 pb-8   sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-1 xl:pb-20"
       >
         <svg
           className="hidden lg:block text-secondary absolute right-0 inset-y-0 h-full w-16 transform translate-x-1/2"
@@ -118,6 +118,16 @@ export default function Hero(props: HeroProps) {
                   </a>
                 )}
               </div>
+              {/* <div className="rounded-md shadow ml-4">
+                {btnText && (
+                  <a
+                    href={href}
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-primary md:py-4 md:text-lg md:px-10"
+                  >
+                    {btnText}
+                  </a>
+                )}
+              </div> */}
             </div>
           </div>
         </main>

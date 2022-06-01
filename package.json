@@ -23,6 +23,7 @@
     "@reduxjs/toolkit": "^1.8.1",
     "@tinymce/tinymce-react": "^4.0.0",
     "@types/cytoscape": "^3.19.4",
+    "animated-number-react": "^0.1.2",
     "axios": "^0.26.1",
     "cytoscape": "^3.21.1",
     "cytoscape-react": "^2.0.0",
