@@ -51,13 +51,13 @@ export default function JobViewHeader() {
             />
             {jobOffer.salary}
           </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
+          {/* <div className="mt-2 flex items-center text-sm text-gray-500">
             <CalendarIcon
               className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
             Closing on {closeDate}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
