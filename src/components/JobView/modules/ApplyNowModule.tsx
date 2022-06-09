@@ -21,9 +21,8 @@ import { StatusJobOfferInterface } from 'src/commons/statusJobOfferInterface';
 import { UserInterface } from 'src/commons/userInterface';
 import CvDropZone from 'src/components/Dashboard/user/modules/CvDropZone';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
-import openFileInNewWindow from 'src/components/Utils/openFileInNewWindow';
+
 import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
-import { filetoDataURL } from 'src/components/Utils/toDataUrl';
 
 function ModalFullfillDataBeforeApply(props: { setOpen: any; open: any }) {
   const { open, setOpen } = props;
