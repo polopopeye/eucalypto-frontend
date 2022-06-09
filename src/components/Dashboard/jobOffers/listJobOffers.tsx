@@ -1,22 +1,17 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable @next/next/no-img-element */
 import {
-  CalendarIcon,
   ColorSwatchIcon,
-  CurrencyDollarIcon,
   LocationMarkerIcon,
-  MailIcon,
   PencilIcon,
   PlusCircleIcon,
   ViewListIcon,
 } from '@heroicons/react/outline';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
+import React, { useState } from 'react';
 import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import Badges from 'src/components/Utils/categories/badges';
-import LoadingComponent from 'src/components/Utils/LoadingComponent';
 import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
 
 const ListJobOffers = (props: {
@@ -62,7 +57,7 @@ const ListJobOffers = (props: {
         </>
       )}
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
         {jobsOffers
           .sort((a: any, b: any) => {
             return b.createdAt._seconds - a.createdAt._seconds;
@@ -95,8 +90,8 @@ const ListJobOffers = (props: {
                     </div>
                   </div>
                 </div>
-                <div className=" mx-4 mt-4 grid gap-2 md:grid-cols-2 grid-cols-1  p-4 ">
-                  <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <div className=" mx-4 mt-4 grid gap-2 md:grid-cols-1 grid-cols-1  p-4 ">
+                  {/* <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <CurrencyDollarIcon
                       className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                       aria-hidden="true"
@@ -105,7 +100,7 @@ const ListJobOffers = (props: {
                       Salary:
                       <h1>{jobOffer.salary}</h1>
                     </span>
-                  </div>
+                  </div> */}
                   <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <LocationMarkerIcon
                       className="-ml-1 mr-2 h-5 w-5 text-gray-400"
@@ -116,7 +111,7 @@ const ListJobOffers = (props: {
                       <h1>{jobOffer.location}</h1>
                     </span>
                   </div>
-                  <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  {/* <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <LocationMarkerIcon
                       className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                       aria-hidden="true"
@@ -125,8 +120,8 @@ const ListJobOffers = (props: {
                       Remote:
                       <h1>{jobOffer.remote ? 'Yes' : 'No'}</h1>
                     </span>
-                  </div>
-                  <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  </div> */}
+                  {/* <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <CalendarIcon
                       className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                       aria-hidden="true"
@@ -135,8 +130,8 @@ const ListJobOffers = (props: {
                       Deadline:
                       <h1>{jobOffer.deadLine}</h1>
                     </span>
-                  </div>
-                  <div className="  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  </div> */}
+                  <div className="   ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <ColorSwatchIcon
                       className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                       aria-hidden="true"
@@ -147,44 +142,37 @@ const ListJobOffers = (props: {
                     </span>
                   </div>
                 </div>
-                <div className="w-full -ml-2 flex items-center py-2 shadow-sm text-sm font-medium rounded-md text-gray-700 ">
-                  <div className="flex">
-                    {isAdmin ? (
-                      <>
-                        <div className=" grid grid-cols-1 md:grid-cols-3 gap-2 md:col-end-3">
-                          <Link href={'/dashboard/offers/' + jobOffer.id}>
-                            <div className="w-full cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
-                              <PencilIcon className="h-5 w-5 mr-4" /> Edit Job
-                              Offer
-                            </div>
-                          </Link>
-                          <Link
-                            href={
-                              '/dashboard/offers/listApplicants/' + jobOffer.id
-                            }
-                          >
-                            <div className="w-full cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
-                              <ViewListIcon className="h-5 w-5 mr-4" />
-                              View Applicants list
-                            </div>
-                          </Link>
-                          <Link href={'/job/' + jobOffer.id}>
-                            <div className="w-full cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
-                              <ViewListIcon className="h-5 w-5 mr-4" />
-                              View Job Offer
-                            </div>
-                          </Link>
+                <div className=" grid grid-cols-1 justify-items-center mx-16">
+                  {isAdmin ? (
+                    <>
+                      <Link href={'/dashboard/offers/' + jobOffer.id}>
+                        <div className="w-full cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
+                          <PencilIcon className="h-5 w-5 mr-4" /> Edit Job Offer
                         </div>
-                      </>
-                    ) : (
+                      </Link>
+                      <Link
+                        href={'/dashboard/offers/listApplicants/' + jobOffer.id}
+                      >
+                        <div className="w-full cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
+                          <ViewListIcon className="h-5 w-5 mr-4" />
+                          View Applicants list
+                        </div>
+                      </Link>
                       <Link href={'/job/' + jobOffer.id}>
                         <div className="w-full cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
                           <ViewListIcon className="h-5 w-5 mr-4" />
                           View Job Offer
                         </div>
                       </Link>
-                    )}
-                  </div>
+                    </>
+                  ) : (
+                    <Link href={'/job/' + jobOffer.id}>
+                      <div className="w-full cursor-pointer bg-primary flex rounded-lg p-2 m-2 justify-center items-center text-white hover:bg-secondary">
+                        <ViewListIcon className="h-5 w-5 mr-4" />
+                        View Job Offer
+                      </div>
+                    </Link>
+                  )}
                 </div>
               </div>
             );

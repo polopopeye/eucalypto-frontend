@@ -15,10 +15,6 @@ const getDataLinkedIn = (authCode: string) => {
   axios
     .post(url, { authCode, uri })
     .then((res) => {
-      console.log(
-        '🚀 ~ file: LoginRegister.tsx ~ line 19 ~ axios.get ~ res',
-        res.data
-      );
       const email = res.data.email.elements[0]['handle~'].emailAddress;
       const profile = res.data.profile;
       const completeName =

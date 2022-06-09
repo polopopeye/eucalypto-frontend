@@ -2,7 +2,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { UserInterface } from '../../../commons/userInterface';
 import { api } from '../apiEndPoints';
-import retrieveUserInfo from './retrieveUserInfo';
 
 const registerUserInBackend = (user: UserInterface, next?: Function) => {
   axios
