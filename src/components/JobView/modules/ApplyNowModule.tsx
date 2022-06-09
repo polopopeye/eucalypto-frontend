@@ -19,6 +19,7 @@ import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import { StatusJobOfferInterface } from 'src/commons/statusJobOfferInterface';
 import { UserInterface } from 'src/commons/userInterface';
+import CvDropZone from 'src/components/Dashboard/user/modules/CvDropZone';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
 import openFileInNewWindow from 'src/components/Utils/openFileInNewWindow';
 import getCompanyDataFromId from 'src/components/Utils/redux/getCompanyDataFromId';
@@ -67,51 +68,11 @@ function ModalFullfillDataBeforeApply(props: { setOpen: any; open: any }) {
           <div>
             {!user.curriculum && (
               <>
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Upload your Curriculum Vitae
-                </label>
-                <div className="mt-1">
-                  <input
-                    className="hidden"
-                    type="file"
-                    accept=".pdf"
-                    id="curriculum"
-                    name="curriculum"
-                    onChange={async (e) => {
-                      filetoDataURL(e.target, (url: any) => {
-                        setCurriculum(url);
-                        setNewCurriculumUpload(true);
-                      });
-                    }}
-                  />
-
-                  <button
-                    onClick={(e) => {
-                      if (document && document.getElementById('curriculum')) {
-                        document.getElementById('curriculum')!.click();
-                      }
-                    }}
-                    type="button"
-                    className="cursor-pointer mb-4 w-full bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Upload CV
-                  </button>
-
-                  {curriculum && (
-                    <button
-                      type="button"
-                      className="cursor-pointer text-white w-full bg-primary hover:bg-secondary py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => {
-                        openFileInNewWindow(curriculum);
-                      }}
-                    >
-                      View your current Curriculum
-                    </button>
-                  )}
-                </div>
+                <CvDropZone
+                  setCurriculum={setCurriculum}
+                  curriculum={curriculum}
+                  setNewCurriculumUpload={setNewCurriculumUpload}
+                />
               </>
             )}
 

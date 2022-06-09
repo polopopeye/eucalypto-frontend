@@ -39,6 +39,7 @@
     "react-cytoscape": "^1.0.6",
     "react-cytoscapejs": "^1.2.1",
     "react-dom": "18.0.0",
+    "react-dropzone": "^14.2.1",
     "react-firebase-hooks": "^5.0.3",
     "react-firebaseui": "^6.0.0",
     "react-flickity-component": "^3.6.2",

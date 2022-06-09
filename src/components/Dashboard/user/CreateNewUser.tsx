@@ -8,20 +8,20 @@ import { toast } from 'react-toastify';
 import { UserInterface } from 'src/commons/userInterface';
 import { store } from 'src/app/store';
 
-import { filetoDataURL } from 'src/components/Utils/toDataUrl';
-import openFileInNewWindow from 'src/components/Utils/openFileInNewWindow';
 import newUpload from 'src/app/firebase/storage/newUpload';
 import { useRouter } from 'next/router';
 import { CheckCircleIcon, TrashIcon } from '@heroicons/react/outline';
 
 import { CategoryInterface } from 'src/commons/categoryInterface';
 import { defaultLangs } from './deafultLangs';
-import registerUserInBackend from 'src/app/backend/users/registerUserInBackend';
+
 import retrieveAllUsersInfo from 'src/app/backend/users/retrieveAllUsersInfo';
 import { Switch } from '@headlessui/react';
 import registerUserInBackendManual from 'src/app/backend/users/registerUserInBackendManual';
 import sendMailWelcomeMessage from 'src/app/backend/mail/sendMailWelcomeMessage';
 import { classNames } from 'src/components/Utils/classnames';
+import ProfileDropZone from './modules/ProfileDropZone';
+import CvDropZone from './modules/CvDropZone';
 
 const CreateNewUser = () => {
   const router = useRouter();
@@ -69,46 +69,11 @@ const CreateNewUser = () => {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="photo"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Photo
-                </label>
-                <div className="mt-1 grid w-full items-center">
-                  <span className="h-56 w-56 rounded-full overflow-hidden bg-gray-100 m-auto">
-                    <img src={avatar} className="h-auto w-56" alt="avatar" />
-                  </span>
-                  <label htmlFor="avatar">Choose a profile picture:</label>
-
-                  <input
-                    className="hidden"
-                    type="file"
-                    accept=".img, .png, .jpg, .jpeg"
-                    id="avatar"
-                    name="avatar"
-                    onChange={async (e) => {
-                      filetoDataURL(e.target, (url: any) => {
-                        setAvatar(url);
-                        setNewCoverImgUpload(true);
-                      });
-                    }}
-                  />
-
-                  <button
-                    onClick={() => {
-                      if (document && document.getElementById('avatar')) {
-                        document.getElementById('avatar')!.click();
-                      }
-                    }}
-                    type="button"
-                    className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
+              <ProfileDropZone
+                avatar={avatar}
+                setAvatar={setAvatar}
+                setNewCoverImgUpload={setNewCoverImgUpload}
+              />
 
               <div className="sm:col-span-2">
                 <label
@@ -502,53 +467,11 @@ const CreateNewUser = () => {
                   </div>
                 </div>
               )}
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Upload / Modify your Curriculum Vitae
-                </label>
-                <div className="mt-1">
-                  <input
-                    className="hidden"
-                    type="file"
-                    accept=".pdf"
-                    id="curriculum"
-                    name="curriculum"
-                    onChange={async (e) => {
-                      filetoDataURL(e.target, (url: any) => {
-                        setCurriculum(url);
-                        setNewCurriculumUpload(true);
-                      });
-                    }}
-                  />
-
-                  <button
-                    onClick={(e) => {
-                      if (document && document.getElementById('curriculum')) {
-                        document.getElementById('curriculum')!.click();
-                      }
-                    }}
-                    type="button"
-                    className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Upload / Modify CV
-                  </button>
-
-                  {curriculum && (
-                    <a
-                      className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => {
-                        openFileInNewWindow(curriculum);
-                      }}
-                    >
-                      View your current Curriculum
-                    </a>
-                  )}
-                </div>
-              </div>
+              <CvDropZone
+                curriculum={curriculum}
+                setCurriculum={setCurriculum}
+                setNewCurriculumUpload={setNewCurriculumUpload}
+              />
             </div>
           </div>
         </div>

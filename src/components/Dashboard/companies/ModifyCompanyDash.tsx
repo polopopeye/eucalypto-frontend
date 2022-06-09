@@ -9,12 +9,13 @@ import { useRouter } from 'next/router';
 
 import { CompanyInterface } from 'src/commons/companyInterface';
 import { store } from 'src/app/store';
-import { filetoDataURL } from 'src/components/Utils/toDataUrl';
+
 import deleteCompany from 'src/app/backend/company/deleteCompany';
 import deleteFile from 'src/app/firebase/storage/deleteFile';
 import newUpload from 'src/app/firebase/storage/newUpload';
 import modifyCompany from 'src/app/backend/company/modifyCompany';
 import { CheckCircleIcon, TrashIcon } from '@heroicons/react/outline';
+import ComapanyImageDropZone from './modules/ComapanyImageDropZone';
 
 const ModifyCompanyDash = (props: any) => {
   const router = useRouter();
@@ -36,53 +37,16 @@ const ModifyCompanyDash = (props: any) => {
                 Modify company profile
               </h3>
               <p className="mt-1 text-sm text-gray-500">
-                Modify company profile
+                In this page you can modify the company details
               </p>
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-y-6 gap-x-4 md:grid-cols-3">
-              <div className="col-span-2 md:col-span-3">
-                <label
-                  htmlFor="photo"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Logo / Cover image of the company
-                </label>
-                <div className="mt-1 grid w-full items-center">
-                  {logo && (
-                    <span className="h-80 w-80 rounded-lg overflow-hidden bg-gray-100 m-auto">
-                      <img src={logo} className="h-auto w-80" alt="logo" />
-                    </span>
-                  )}
-                  <label htmlFor="coverImg">Choose a logo:</label>
-
-                  <input
-                    className="hidden"
-                    type="file"
-                    accept=".img, .png, .jpg, .jpeg"
-                    id="coverImg"
-                    name="coverImg"
-                    onChange={async (e) => {
-                      filetoDataURL(e.target, (url: any) => {
-                        setLogo(url);
-                        setNewUploadCoverImg(true);
-                      });
-                    }}
-                  />
-
-                  <button
-                    onClick={() => {
-                      if (document && document.getElementById('coverImg')) {
-                        document.getElementById('coverImg')!.click();
-                      }
-                    }}
-                    type="button"
-                    className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div>
+              <ComapanyImageDropZone
+                logo={logo}
+                setLogo={setLogo}
+                setNewUploadCoverImg={setNewUploadCoverImg}
+              />
 
               <div className="sm:col-span-1">
                 <label
