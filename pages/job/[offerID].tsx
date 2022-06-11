@@ -10,22 +10,23 @@ import LoadingComponent from 'src/components/Utils/LoadingComponent';
 const Job = () => {
   const router = useRouter();
   const { offerID } = router.query;
-  const checkUserInfo = useCheckUserInfo();
 
+  const checkUserInfo = useCheckUserInfo();
   if (checkUserInfo.loading) return <LoadingComponent />;
 
-  retrieveJobOffers({
-    prop: 'id',
-    value: offerID as string,
-    reduxSpace: 'currentJobOffer',
-  });
+  retrieveAllCompanies();
   retrieveCategories({
     propToFind: 'type',
     value: 'tech',
     saveIn: 'tech',
   });
-
-  retrieveAllCompanies();
+  if (offerID) {
+    retrieveJobOffers({
+      prop: 'id',
+      value: offerID as any,
+      reduxSpace: 'currentJobOffer',
+    });
+  }
 
   return (
     <div>

@@ -32,7 +32,7 @@ const HeaderCompany = () => {
             />
           </div>
           <div className="p-2">
-            <h4 className="text-lg font-bold">{company.name}</h4>
+            <h4 className="text-lg font-bold">{company.name} asdf</h4>
             <p className="mt-1">{company.description}</p>
             <hr className="mt-4 mb-4" />
 
