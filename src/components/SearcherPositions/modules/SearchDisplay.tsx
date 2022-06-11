@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 
-import 'react-bubble-ui/dist/index.css';
 import ModalContainer from './ModalContainer';
 import { store } from '../../../app/store';
 

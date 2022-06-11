@@ -33,7 +33,6 @@
           "package.json",
           "next.config.js",
           ".eslintrc.json",
-          "typings/react-bubble-ui.d.ts",
           ".husky/",
           "cypress/",
           "typings/"
