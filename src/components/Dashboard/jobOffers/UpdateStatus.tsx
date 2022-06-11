@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import retrieveStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/retrieveStatusJobOffer';
 import { store } from 'src/app/store';
 import { StatusJobOfferInterface } from 'src/commons/statusJobOfferInterface';
-
-import { Fragment, useRef } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { CheckIcon } from '@heroicons/react/outline';
+import { Dialog } from '@headlessui/react';
 import deleteStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/deleteStatusJobOffer';
 import modifyStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/modifyStatusJobOffer';
 import registerStatusJobOffer from 'src/app/backend/jobOffer/statusOffer/registerStatusJobOffer';

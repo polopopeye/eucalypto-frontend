@@ -1,24 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import { GlobeAltIcon, StarIcon } from '@heroicons/react/outline';
-import React, { useEffect, useState } from 'react';
-import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
-import { store } from 'src/app/store';
-import { JobOfferInterface } from 'src/commons/jobOfferInterface';
+import { GlobeAltIcon } from '@heroicons/react/outline';
+import React from 'react';
 import getCompanyDataFromId from '../Utils/redux/getCompanyDataFromId';
 
-const HeaderCompany = () => {
-  const [jobOffer, setJobOffer] = useState(
-    store.getState().jobs.currentJobOffer as JobOfferInterface
-  );
+const HeaderCompany = (props: { companyId: string }) => {
+  const { companyId } = props;
 
-  const [company, setCompany] = useState(
-    getCompanyDataFromId(jobOffer.company as string)
-  );
-
-  store.subscribe(() => {
-    setJobOffer(store.getState().jobs.currentJobOffer as JobOfferInterface);
-    setCompany(getCompanyDataFromId(jobOffer.company as string));
-  });
+  const company = getCompanyDataFromId(companyId);
 
   return (
     <div>
@@ -32,7 +20,7 @@ const HeaderCompany = () => {
             />
           </div>
           <div className="p-2">
-            <h4 className="text-lg font-bold">{company.name} asdf</h4>
+            <h4 className="text-lg font-bold">{company.name}</h4>
             <p className="mt-1">{company.description}</p>
             <hr className="mt-4 mb-4" />
 
