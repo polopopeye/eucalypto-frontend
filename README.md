@@ -1,3 +1,6 @@
+github of Website https://eucalyptogroup.com
+
+
 # Git Commons errors
 
 idk why git sometimes use ignore the config of camel case by default this can trigger in some errors on deployment but working in other enviroments. to disable that and avoid this problems just update git config to:
