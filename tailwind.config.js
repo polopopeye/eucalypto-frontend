@@ -17,11 +17,15 @@ module.exports = {
         secondary: 'var(--color-secondary)',
         tertiary: 'var(--color-tertiary)',
         quaternary: 'var(--color-quaternary)',
+        textBtn: 'var(--color-text-btn)',
         rose: colors.rose,
       },
       fontFamily: {
         sans: ['Poppins'],
         poppins: ['Poppins'],
+      },
+      animation: {
+        'bubble-translate': 'bubleTranslate 30s linear infinite',
       },
     },
   },

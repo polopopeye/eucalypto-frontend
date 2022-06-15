@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import React, { RefObject, useEffect } from 'react';
 import Typed from 'typed.js';
 interface HeroProps {
@@ -80,23 +81,10 @@ export default function Hero(props: HeroProps) {
         }}
       />
 
-      <div
-        style={{ background: 'rgb(6 28 45 / 67%)' }}
-        className="lg:ml-4 mb-6 relative z-10 pb-8   sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-1 xl:pb-20"
-      >
-        <svg
-          className="hidden lg:block text-secondary absolute right-0 inset-y-0 h-full w-16 transform translate-x-1/2"
-          fill="currentColor"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <polygon points="50,0 100,0 50,100 0,100" />
-        </svg>
-
-        <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+      <div className=" relative z-10 bg-[url('/file/webDesign/heroBg.png')] bg-cover -mt-8 pb-16">
+        <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-32 xl:mt-28">
           <div className="sm:text-center lg:text-left">
-            <div className="pt-32  ">
+            <div className="pt-24 w-[450px] ">
               <h1
                 className="text-4xl tracking-tight font-extrabold text-gray-100 sm:text-5xl md:text-6xl  min-h-[128px] max-h-[128px] "
                 ref={el}
@@ -105,29 +93,24 @@ export default function Hero(props: HeroProps) {
 
             <p
               ref={subtitleEl}
-              className="mt-3 text-base min-h-[64px] max-h-[64px] text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+              className="mt-3 md:mt-12 text-base min-h-[64px] max-h-[64px] text-gray-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto  md:text-xl lg:mx-0"
             ></p>
-            <div className="my-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-              <div className="rounded-md shadow">
-                {btnText && (
-                  <a
-                    href={href}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-primary md:py-4 md:text-lg md:px-10"
-                  >
+            <img
+              src="/file/webDesign/bubble.png"
+              className="absolute  right-72 animate-bubble-translate"
+            />
+            <img
+              src="/file/webDesign/bubble.png"
+              className="absolute animate-bubble-translate "
+            />
+            <div className=" pt-12 sm:mt-8 sm:flex sm:justify-center lg:justify-end w-full lg:max-w-[550px] ">
+              {btnText && (
+                <Link href={href}>
+                  <a className="w-64 md:w-72 flex items-center justify-center  border border-transparent text-base font-bold rounded-md text-textBtn hover:text-white  bg-[url('/file/webDesign/mainBtn.png')] bg-contain bg-no-repeat hover:bg-[url('/file/webDesign/secondaryBtn.png')] py-3 md:py-4 md:text-xl md:px-10">
                     {btnText}
                   </a>
-                )}
-              </div>
-              {/* <div className="rounded-md shadow ml-4">
-                {btnText && (
-                  <a
-                    href={href}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-primary md:py-4 md:text-lg md:px-10"
-                  >
-                    {btnText}
-                  </a>
-                )}
-              </div> */}
+                </Link>
+              )}
             </div>
           </div>
         </main>

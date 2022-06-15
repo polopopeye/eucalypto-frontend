@@ -17,11 +17,63 @@
   src: url(/file/fonts/Poppins-Light.ttf);
 }
 
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes bubleTranslate {
+  0% {
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+  20% {
+    opacity: 1;
+    margin-top: 0px;
+  }
+  50% {
+    opacity: 0;
+    margin-left: 500px;
+  }
+  70% {
+    opacity: 1;
+    margin-top: -100px;
+  }
+  100% {
+    opacity: 0;
+    margin-top: -100px;
+    margin-left: -100px;
+  }
+}
+
 .theme-default {
   --color-primary: #061c2d;
   --color-secondary: #62d2a2;
   --color-tertiary: #9df3c4;
   --color-quaternary: #d7fbe8;
+  --color-text-btn: #075e4e; /* hero text btn - textBtn  */
 }
 
 .theme-dark {
