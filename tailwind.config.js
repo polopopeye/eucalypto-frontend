@@ -18,6 +18,8 @@ module.exports = {
         tertiary: 'var(--color-tertiary)',
         quaternary: 'var(--color-quaternary)',
         textBtn: 'var(--color-text-btn)',
+        'gradient-1': 'var(--color-gradient-1)',
+        'gradient-2': 'var(--color-gradient-2)',
         rose: colors.rose,
       },
       fontFamily: {
@@ -26,6 +28,10 @@ module.exports = {
       },
       animation: {
         'bubble-translate': 'bubleTranslate 30s linear infinite',
+      },
+      aspectRatio: {
+        '21/9': '21 / 9', // 21:9 aspect ratio wide screen
+        'home/hero': '23 / 9', // Home video hero aspect ratio
       },
     },
   },

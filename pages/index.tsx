@@ -5,12 +5,12 @@ import Reviews from 'src/components/Home/Reviews/Reviews';
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero btnText="Search for a project" href="/search" />
       <Reviews />
       <Aboutus />
       <Lifecicle />
-    </div>
+    </>
   );
 };
 

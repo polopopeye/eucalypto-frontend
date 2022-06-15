@@ -17,11 +17,11 @@ const NavButton = (props: NavButton) => {
   useEffect(() => {
     if (router.pathname === href || router.pathname === href + '/') {
       setClassName(
-        'border-primary font-bold text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+        'border-primary font-bold text-gradient-1 inline-flex items-center px-1 pt-1 border-b-2 text-sm'
       );
     } else {
       setClassName(
-        'transition-all  duration-500 border-transparent font-light text-gray-100 hover:border-gray-300 hover:text-secondary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+        'transition-all  duration-500 border-transparent font-light text-white hover:border-gray-300 hover:text-secondary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
       );
     }
   }, [router]);

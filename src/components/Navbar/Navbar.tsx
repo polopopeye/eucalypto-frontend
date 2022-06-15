@@ -28,7 +28,11 @@ const Navbar = () => {
   return (
     <Disclosure
       as="nav"
-      className=" bg-primary pt-4 shadow fixed w-full z-40 left-0 border-b-2 border-secondary"
+      className=" bg-primary pt-4 shadow fixed w-full z-40 left-0 border-b-8  w-full"
+      style={{
+        borderImage:
+          'linear-gradient(to right, var(--color-gradient-1), var(--color-gradient-2)) 1',
+      }}
     >
       {({ open }) => (
         <>
@@ -38,7 +42,7 @@ const Navbar = () => {
                 <div className="flex-shrink-0 flex items-center">
                   <Link href="/">
                     <img
-                      className="block cursor-pointer h-auto w-60"
+                      className="block cursor-pointer h-auto w-44 mr-16"
                       src="/file/img/logo1.png"
                       alt="Eucalypto Group"
                     />

@@ -54,15 +54,12 @@ export default function Hero(props: HeroProps) {
   const { href, btnText } = props;
 
   return (
-    <div
-      className="relative bg-white  overflow-hidden mb-4"
-      style={{ width: '100%' }}
-    >
+    <div className="relative bg-white  overflow-hidden mb-4 w-full">
       <video
         autoPlay={true}
         muted={true}
         loop={true}
-        className=" absolute -mt-12 left-0 hidden lg:block"
+        className=" absolute lg:mt-8  xl:-mt-16 2xl:-mt-48 left-0 hidden lg:block"
         style={{
           width: '100% !important',
           height: 'auto',
@@ -73,18 +70,18 @@ export default function Hero(props: HeroProps) {
       </video>
 
       <img
-        className="absolute left-0 block lg:hidden h-full w-auto -ml-72"
+        className="absolute right-0 block lg:hidden h-full w-auto -ml-0"
         src="/file/img/aboutus/2.jpg"
         alt=""
         style={{
           maxWidth: 'none',
         }}
       />
-
-      <div className=" relative z-10 bg-[url('/file/webDesign/heroBg.png')] bg-cover -mt-8 pb-16">
-        <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-32 xl:mt-28">
+      {/* aspect-home/hero */}
+      <div className=" relative z-10 bg-[url('/file/webDesign/heroBg.png')] bg-cover -mt-8">
+        <main className="mt-10 mx-auto mx-8 md:mx-32 xl:mx-32 max-w-7xl   sm:mt-12  md:mt-16 lg:mt-20   xl:mt-28">
           <div className="sm:text-center lg:text-left">
-            <div className="pt-24 w-[450px] ">
+            <div className="pt-24 max-w-[450px] ">
               <h1
                 className="text-4xl tracking-tight font-extrabold text-gray-100 sm:text-5xl md:text-6xl  min-h-[128px] max-h-[128px] "
                 ref={el}
@@ -103,7 +100,7 @@ export default function Hero(props: HeroProps) {
               src="/file/webDesign/bubble.png"
               className="absolute animate-bubble-translate "
             />
-            <div className=" pt-12 sm:mt-8 sm:flex sm:justify-center lg:justify-end w-full lg:max-w-[550px] ">
+            <div className=" pt-12 pb-24 sm:mt-8 sm:flex sm:justify-center lg:justify-end w-full lg:max-w-[550px] ">
               {btnText && (
                 <Link href={href}>
                   <a className="w-64 md:w-72 flex items-center justify-center  border border-transparent text-base font-bold rounded-md text-textBtn hover:text-white  bg-[url('/file/webDesign/mainBtn.png')] bg-contain bg-no-repeat hover:bg-[url('/file/webDesign/secondaryBtn.png')] py-3 md:py-4 md:text-xl md:px-10">
