@@ -47,16 +47,35 @@ const Aboutus = () => {
           )`,
           }}
         ></div>
-        <div className="p-4">
-          {/* <p className="mt-2 text-xl leading-8 font-extrabold tracking-tight text-white sm:text-2xl text-center">
-            We are specialized in the recruitment of tech talents, all over
-            Europe.
-          </p> */}
-          {/* <p className="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto text-center">
-            We have 7+ years of experience in account & team management,
-            proposing added-value IT recruitment services.
-          </p> */}
-          <Stats />
+        <div className="p-4 pb-12">
+          <div className="grid grid-cols-4 justify-items-center gap-4">
+            <div className="bg-[url('/file/webDesign/helpBadge1.png')] bg-contain bg-no-repeat py-4 text-center w-60 grid grid-cols-1">
+              <span>Find & Select</span>
+              <span>
+                <b>hidden talents</b>
+              </span>
+            </div>
+            <div className="bg-[url('/file/webDesign/helpBadge2.png')] bg-contain bg-no-repeat py-4 text-center w-full grid grid-cols-1">
+              <span>Access candidates & partners</span>
+              <span>
+                <b>along the selection process</b>
+              </span>
+            </div>
+            <div className="bg-[url('/file/webDesign/helpBadge3.png')] bg-contain bg-no-repeat py-4 text-center w-full grid grid-cols-1">
+              <span>Evaluate several candidates</span>
+              <span>
+                <b>for the same vacancy</b>
+              </span>
+            </div>
+            <div className="bg-[url('/file/webDesign/helpBadge4.png')] bg-contain bg-no-repeat py-4 text-center w-72 grid grid-cols-1">
+              <span>Give access to</span>
+              <span>
+                <b>top-notch IT communities</b>
+              </span>
+            </div>
+          </div>
+
+          {/* <Stats /> */}
         </div>
       </div>
     </>
