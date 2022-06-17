@@ -77,7 +77,7 @@ export default function Hero(props: HeroProps) {
           maxWidth: 'none',
         }}
       />
-      {/* aspect-home/hero */}
+
       <div className=" relative z-10 bg-[url('/file/webDesign/heroBg.png')] bg-cover -mt-8">
         <main className="mt-10 mx-auto mx-8 md:mx-32 xl:mx-32 max-w-7xl   sm:mt-12  md:mt-16 lg:mt-20   xl:mt-28">
           <div className="sm:text-center lg:text-left">

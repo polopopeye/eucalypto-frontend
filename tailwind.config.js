@@ -21,6 +21,8 @@ module.exports = {
         'gradient-1': 'var(--color-gradient-1)',
         'gradient-2': 'var(--color-gradient-2)',
         rose: colors.rose,
+        'color-text-1': 'var(--color-text-1)',
+        'color-text-2': 'var(--color-text-2)',
       },
       fontFamily: {
         sans: ['Poppins'],

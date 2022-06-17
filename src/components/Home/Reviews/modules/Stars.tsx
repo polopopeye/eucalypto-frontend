@@ -14,12 +14,12 @@ const Stars = (props: StarsProps) => {
     <div className="flex">
       {[...Array(stars)].map((e, i) => (
         <div key={i}>
-          <StarIconFill className={className} />
+          <img src="/file/webDesign/starFull.png"></img>
         </div>
       ))}
       {[...Array(5 - stars)].map((e, i) => (
         <div key={i}>
-          <StarIcon className={className} />
+          <img src="/file/webDesign/starEmpty.png"></img>
         </div>
       ))}
     </div>
