@@ -1,6 +1,4 @@
-import { CheckCircleIcon } from '@heroicons/react/outline';
 import React from 'react';
-import Stats from './modules/Stats';
 
 const Aboutus = () => {
   return (
