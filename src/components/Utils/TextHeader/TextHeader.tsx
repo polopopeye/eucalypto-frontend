@@ -13,7 +13,7 @@ const TextHeader = (props: TextHeaderProps) => {
   return (
     <div className={'m-4 lg:text-center p-4' + className}>
       <div className="grid justify-items-center">
-        <h2 className="text-base w-32 py-4 my-4 text-center text-secondary font-bold tracking-wide uppercase bg-[url('/file/webDesign/badgeTittle.png')] bg-contain bg-no-repeat">
+        <h2 className="text-base w-auto px-8 mx-2 py-4 my-4 text-center text-secondary font-bold tracking-wide uppercase bg-[url('/file/webDesign/badgeTittle.png')] bg-contain rounded-br-3xl bg-center  bg-no-repeat">
           {category}
         </h2>
       </div>

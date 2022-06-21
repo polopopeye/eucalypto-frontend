@@ -18,7 +18,13 @@ const Aboutus = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
-          ></div>
+          >
+            <img
+              src="/file/webDesign/aboutUsBg.png"
+              className="relative h-full w-full"
+            />
+          </div>
+
           <div>
             <div className="p-4 m-2 pt-2 w-full grid grid-cols-1">
               <h2 className="text-base text-primary py-3 w-32 text-center font-bold tracking-wide uppercase bg-[url('/file/webDesign/badge1.png')] bg-contain bg-no-repeat">
@@ -74,8 +80,6 @@ const Aboutus = () => {
               </span>
             </div>
           </div>
-
-          {/* <Stats /> */}
         </div>
       </div>
     </>
