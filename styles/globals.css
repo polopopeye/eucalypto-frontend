@@ -91,9 +91,15 @@ body * {
   transition: all 0.3s ease;
   font-family: Poppins;
 }
+body {
+  overflow-x: hidden;
+}
 
 a {
   cursor: pointer;
+}
+a:hover {
+  color: var(--color-secondary);
 }
 
 /* HIDE TYNYMCE ALERT API ERRORS AND WARNINGS  */

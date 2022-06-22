@@ -55,27 +55,19 @@ const Aboutus = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center gap-4">
             <div className="bg-[url('/file/webDesign/helpBadge1.png')] bg-cover rounded-br-3xl bg-no-repeat py-4 text-center w-full grid grid-cols-1">
               <span>Find & Select</span>
-              <span>
-                <b>hidden talents</b>
-              </span>
+              <span className="font-bold">hidden talents</span>
             </div>
             <div className="bg-[url('/file/webDesign/helpBadge2.png')] bg-cover rounded-br-3xl bg-no-repeat py-4 text-center w-full grid grid-cols-1">
-              <span>Access candidates & partners</span>
-              <span>
-                <b>along the selection process</b>
-              </span>
+              <span className="font-bold">Asses candidates & partners</span>
+              <span>along the selection process</span>
             </div>
             <div className="bg-[url('/file/webDesign/helpBadge3.png')] bg-cover rounded-br-3xl bg-no-repeat py-4 text-center w-full grid grid-cols-1">
-              <span>Evaluate several candidates</span>
-              <span>
-                <b>for the same vacancy</b>
-              </span>
+              <span className="font-bold">Evaluate several candidates</span>
+              <span>for the same vacancy</span>
             </div>
             <div className="bg-[url('/file/webDesign/helpBadge4.png')] bg-cover rounded-br-3xl  bg-no-repeat py-4 text-center w-full grid grid-cols-1">
               <span>Give access to</span>
-              <span>
-                <b>top-notch IT communities</b>
-              </span>
+              <span>top-notch IT communities</span>
             </div>
           </div>
         </div>
