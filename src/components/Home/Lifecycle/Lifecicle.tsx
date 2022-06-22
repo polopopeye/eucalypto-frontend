@@ -4,6 +4,15 @@ import React from 'react';
 import PostIt from './PostIt';
 
 const Lifecicle = () => {
+  const css = {
+    dinamic_my: ' my-8 xl:my-12 2xl:my-16 ',
+    dinamic_my2: ' my-4 xl:my-6 2xl:my-10 ',
+    dinamic_mt: ' mt-8 xl:mt-12 2xl:mt-16 ',
+    dinamic_mt2: ' mt-4 xl:mt-6 2xl:mt-10 ',
+    dinamic_text_size: ' text-lg lg:text-lg 2xl:text-3xl ',
+    dinamic_text_size2: ' text-base lg:text-base 2xl:text-lg ',
+  };
+
   return (
     <>
       <div className="bg-[url(/file/webDesign/blackboard.png)]">
@@ -27,12 +36,20 @@ const Lifecicle = () => {
                   className="float-right mr-16 mt-16 "
                   src="/file/webDesign/star.png"
                 />
-                <ul className=" text-2xl font-bold px-16 pt-4 ml-8 ">
-                  <li className="my-16"> Match with your dream projects</li>
-                  <li className="my-16">
+                <ul
+                  className={
+                    ' font-bold px-16 pt-4 ml-8 ' + css.dinamic_text_size
+                  }
+                >
+                  <li className={css.dinamic_my}>
+                    Match with your dream projects
+                  </li>
+                  <li className={css.dinamic_my}>
                     Upfront Salary, Company, Location, Tech
                   </li>
-                  <li className="my-16">Follow up the process in our app</li>
+                  <li className={css.dinamic_my}>
+                    Follow up the process in our app
+                  </li>
                 </ul>
               </div>
             </div>
@@ -54,17 +71,31 @@ const Lifecicle = () => {
                   src="/file/webDesign/arrow.png"
                 />
                 <ul className="   px-16 pt-4 ml-8 ">
-                  <li className=" text-2xl my-16 font-bold"> Just one click</li>
-                  <li className=" text-2xl mt-16 font-bold">
+                  <li
+                    className={
+                      ' font-bold' + css.dinamic_my + css.dinamic_text_size
+                    }
+                  >
+                    Just one click
+                  </li>
+                  <li
+                    className={
+                      '  font-bold' + css.dinamic_mt + css.dinamic_text_size
+                    }
+                  >
                     No chunks of info
                   </li>
-                  <li className=" text-lg text-gray-600 m-0">
+                  <li className={' text-gray-600 m-0' + css.dinamic_text_size2}>
                     No personal information, only wishes.
                   </li>
-                  <li className=" text-2xl mt-16 font-bold">
+                  <li
+                    className={
+                      ' font-bold' + css.dinamic_mt + css.dinamic_text_size
+                    }
+                  >
                     Benefits from our tools
                   </li>
-                  <li className=" text-lg text-gray-600 m-0">
+                  <li className={' text-gray-600 m-0' + css.dinamic_text_size2}>
                     Tech articles, events, meet-ups and much more.
                   </li>
                 </ul>
@@ -84,21 +115,35 @@ const Lifecicle = () => {
 
               <div className="bg-[url(/file/webDesign/note.png)] bg-cover   bg-no-repeat aspect-square square">
                 <ul className="   px-16 pt-4 ml-8 ">
-                  <li className=" text-2xl mt-8 font-bold">
+                  <li
+                    className={
+                      'font-bold ' + css.dinamic_text_size + css.dinamic_mt2
+                    }
+                  >
                     You are one of us
                   </li>
-                  <li className=" text-lg text-gray-600 m-0">
+                  <li className={' text-gray-600 ' + css.dinamic_text_size2}>
                     Either you get the opportunity or not, you will be always
                     part of Eucalypto.
                   </li>
-                  <li className=" text-2xl mt-8 font-bold">Stay updated</li>
-                  <li className=" text-lg text-gray-600 m-0">
+                  <li className={' mt-8 font-bold ' + css.dinamic_text_size}>
+                    Stay updated
+                  </li>
+                  <li className={' text-gray-600 ' + css.dinamic_text_size2}>
                     Check our news, trends, feed...
                   </li>
-                  <li className=" text-2xl my-8 font-bold">
+                  <li
+                    className={
+                      ' font-bold' + css.dinamic_text_size + css.dinamic_my2
+                    }
+                  >
                     Check again our job openings
                   </li>
-                  <li className=" text-2xl mt-8 font-bold">
+                  <li
+                    className={
+                      'font-bold ' + css.dinamic_text_size + css.dinamic_mt2
+                    }
+                  >
                     Let’s celebrate with a beer,coffee or lunch
                   </li>
                 </ul>
@@ -121,25 +166,41 @@ const Lifecicle = () => {
               </h1>
 
               <div className="bg-[url(/file/webDesign/note.png)] bg-cover   bg-no-repeat aspect-square square">
-                <ul className="   pl-16 pr-10 pt-4 ml-8 ">
-                  <li className=" text-2xl mt-8 font-bold">
+                <ul className="   pl-12 pr-2 pt-1 ml-2 ">
+                  <li
+                    className={
+                      ' font-bold' + css.dinamic_text_size + css.dinamic_mt2
+                    }
+                  >
                     Not just keywords
                   </li>
-                  <li className=" text-lg text-gray-600 m-0">
+                  <li className={' text-gray-600' + css.dinamic_text_size2}>
                     We have more than 7 years’ experience in the field, real
                     knowledge.
                   </li>
-                  <li className=" text-2xl mt-8 font-bold">
+                  <li
+                    className={
+                      ' font-bold' + css.dinamic_text_size + css.dinamic_mt2
+                    }
+                  >
                     We are supporting you
                   </li>
-                  <li className=" text-lg text-gray-600 m-0">
+                  <li className={' text-gray-600' + css.dinamic_text_size2}>
                     There is a specialized team supporting you in every step of
                     the selection process.
                   </li>
-                  <li className=" text-2xl mt-8 font-bold">
+                  <li
+                    className={
+                      ' font-bold' + css.dinamic_text_size + css.dinamic_mt2
+                    }
+                  >
                     You struggle with something? We will coach you!
                   </li>
-                  <li className=" text-2xl my-8 font-bold">
+                  <li
+                    className={
+                      ' font-bold' + css.dinamic_text_size + css.dinamic_my2
+                    }
+                  >
                     We counsel, you decide
                   </li>
                 </ul>
