@@ -20,7 +20,7 @@ const Stats = () => {
         <div>
           <img
             src="/file/webDesign/statsImg.png"
-            className="text-center p-2 sm:p-8 md:p-16 w-full"
+            className="text-center p-2 sm:p-8 md:p-16 w-full drag-none select-none"
           />
         </div>
       </div>

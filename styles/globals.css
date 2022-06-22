@@ -95,6 +95,10 @@ body {
   overflow-x: hidden;
 }
 
+.drag-none {
+  -webkit-user-drag: none;
+}
+
 a {
   cursor: pointer;
 }

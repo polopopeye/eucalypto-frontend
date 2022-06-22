@@ -19,7 +19,7 @@ const Aboutus = () => {
           >
             <img
               src="/file/webDesign/aboutUsBg.png"
-              className="relative h-full w-full"
+              className="relative h-full w-full select-none"
             />
           </div>
 
@@ -28,7 +28,10 @@ const Aboutus = () => {
               <h2 className="text-base text-primary py-3 w-32 text-center font-bold tracking-wide uppercase bg-[url('/file/webDesign/badge1.png')] bg-contain bg-no-repeat">
                 About us
               </h2>
-              <img src="/file/webDesign/whoweare.png" className="my-8" />
+              <img
+                src="/file/webDesign/whoweare.png"
+                className="my-8  select-none drag-none"
+              />
 
               <p className=" max-w-2xl text-xl text-gray-300 my-8">
                 <b>Eucalypto</b> is a web platform that connects top talents to
