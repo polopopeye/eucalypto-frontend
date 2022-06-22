@@ -18,7 +18,7 @@ const Lifecicle = () => {
       <div className="bg-[url(/file/webDesign/blackboard.png)]">
         <hr className="my-2"></hr>
 
-        <img src="/file/webDesign/howwework.png" className="w-auto p-8" />
+        <img src="/file/webDesign/howwework.png" className="w-auto p-8 pt-16" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
           {/* PASO 2 */}

@@ -5,14 +5,14 @@ const Stats = () => {
     <>
       <div className="py-32 grid grid-cols-1  md:grid-cols-2 gap-2">
         <div className="ml-4 md:ml-16">
-          <h4 className="text-4xl">
+          <h4 className="text-4xl 2xl:text-5xl">
             We are specialized in the{' '}
-            <b className="font-bold text-[40px]">
+            <b className="font-bold text-[40px] 2xl:text-5xl">
               recruitment of tech talents,
             </b>{' '}
             all over Europe.
           </h4>
-          <p className="py-16">
+          <p className="py-16 text-lg 2xl:text-2xl">
             We have 7+ years of experience in account & team management,
             proposing added-value IT recruitment services.
           </p>
