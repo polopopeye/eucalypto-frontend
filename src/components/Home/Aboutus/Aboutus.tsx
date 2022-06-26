@@ -61,7 +61,7 @@ const Aboutus = () => {
               <span className="font-bold">hidden talents</span>
             </div>
             <div className="bg-[url('/file/webDesign/helpBadge2.png')] bg-cover rounded-br-3xl bg-no-repeat py-4 text-center w-full grid grid-cols-1">
-              <span className="font-bold">Asses candidates & partners</span>
+              <span className="font-bold">Assess candidates & partners</span>
               <span>along the selection process</span>
             </div>
             <div className="bg-[url('/file/webDesign/helpBadge3.png')] bg-cover rounded-br-3xl bg-no-repeat py-4 text-center w-full grid grid-cols-1">
