@@ -10,6 +10,7 @@ import logOut from 'src/app/firebase/auth/logOut';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
 import { store } from 'src/app/store';
 import { UserInterface } from 'src/commons/userInterface';
+import SignInLoginLink from '../Layout/SignInLoginLink';
 import { classNames } from '../Utils/classnames';
 import LoadingComponent from '../Utils/LoadingComponent';
 
@@ -36,7 +37,7 @@ const Navbar = () => {
     >
       {({ open }) => (
         <>
-          <div className="  mx-auto px-4 md:px-16">
+          <div className="mx-auto px-4 md:px-16">
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
@@ -53,33 +54,35 @@ const Navbar = () => {
                   <NavButton href="/search" text="Search for a project" />
                   {/* TODO: FINISH COMUNITY PART */}
                   {/* <NavButton href="/community" text="Community" /> */}
-                  {!checkUserInfo.isLogedIn && (
-                    <NavButton href="/signin" text="Sign In" />
-                  )}
+
                   <NavButton href="/contact" text="Let's talk" />
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
-                  <div>
-                    <Menu.Button className="bg-white rounded-full flex text-sm outline-none ring-1 ring-offset-1 hover:ring-offset-2 ring-primary">
-                      <span className="sr-only">Open user menu</span>
-                      {checkUserInfo.isLogedIn ? (
-                        <img
-                          style={{ minHeight: '42px' }}
-                          className="h-auto w-12 rounded-full"
-                          src={user.coverImg}
-                          alt=""
-                        />
-                      ) : (
-                        <UserIcon className="h-8 w-8 rounded-full text-gray-100 md:text-gray-900" />
-                      )}
-                    </Menu.Button>
-                  </div>
+                  {checkUserInfo.isLogedIn ? (
+                    <div>
+                      <Menu.Button className="bg-white rounded-full flex text-sm outline-none ring-1 ring-offset-1 hover:ring-offset-2 ring-primary">
+                        <span className="sr-only">Open user menu</span>
+                        {checkUserInfo.isLogedIn && (
+                          <img
+                            style={{ minHeight: '42px' }}
+                            className="h-auto w-12 rounded-full"
+                            src={user.coverImg}
+                            alt=""
+                          />
+                        )}
+                      </Menu.Button>
+                    </div>
+                  ) : (
+                    <>
+                      <SignInLoginLink showLogin={false} />
+                    </>
+                  )}
 
                   <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-20 focus:outline-none">
-                    {checkUserInfo.isLogedIn ? (
+                    {checkUserInfo.isLogedIn && (
                       <>
                         <Menu.Item>
                           {({ active }) => (
@@ -128,21 +131,6 @@ const Navbar = () => {
                           )}
                         </Menu.Item>
                       </>
-                    ) : (
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link href={'/signin'}>
-                            <a
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
-                              )}
-                            >
-                              SignIn / Login
-                            </a>
-                          </Link>
-                        )}
-                      </Menu.Item>
                     )}
                   </Menu.Items>
                 </Menu>
