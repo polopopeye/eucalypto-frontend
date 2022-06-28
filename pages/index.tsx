@@ -11,7 +11,11 @@ const Home = () => {
       <Reviews />
       <Aboutus />
       <Stats />
-      <Lifecicle />
+
+      {/* <Lifecicle /> */}
+      <div>
+        <img src="/file/webDesign/stepsnotes.png" className="w-auto" />
+      </div>
     </>
   );
 };
