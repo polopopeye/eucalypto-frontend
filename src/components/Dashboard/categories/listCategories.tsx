@@ -31,14 +31,24 @@ const ListCategories = () => {
       </div>
       {isAdmin && (
         <>
-          <div className="m-auto w-full text-right">
+          <div className="grid grid-cols-2 w-full text-right">
+            <Link href="/dashboard/categories/createParent">
+              <a
+                type="button"
+                className="relative float-right -mt-24 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+              >
+                <PlusCircleIcon className="w-5 h-5 mr-2" />
+                Create new Parent Category
+              </a>
+            </Link>
+
             <Link href="/dashboard/categories/create">
               <a
                 type="button"
                 className="relative float-right -mt-24 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
               >
                 <PlusCircleIcon className="w-5 h-5 mr-2" />
-                Create new Category
+                Create new Child Category
               </a>
             </Link>
           </div>

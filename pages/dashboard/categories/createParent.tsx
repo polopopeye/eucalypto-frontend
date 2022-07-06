@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React from 'react';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
-import { store } from 'src/app/store';
-import CreateNewCompany from 'src/components/Dashboard/companies/createNewCompany';
+import CreateNewParentCategory from 'src/components/Dashboard/categories/createNewParentCategory';
 import LoadingComponent from 'src/components/Utils/LoadingComponent';
 
-const CreateNewCompanyPage = () => {
+const CreateNewParentCategoryPage = () => {
   const router = useRouter();
   const checkUserInfo = useCheckUserInfo();
   if (checkUserInfo.loading) return <LoadingComponent />;
@@ -13,9 +12,9 @@ const CreateNewCompanyPage = () => {
 
   return (
     <div className="p-32">
-      <CreateNewCompany />
+      <CreateNewParentCategory />
     </div>
   );
 };
 
-export default CreateNewCompanyPage;
+export default CreateNewParentCategoryPage;

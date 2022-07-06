@@ -21,7 +21,7 @@ const ModifyCompanyPage = () => {
   if (!checkUserInfo.isLogedIn) router.push('/signin');
 
   return (
-    <div className="pt-32">
+    <div className="p-32">
       {category && <ModifyCategory category={category} />}
     </div>
   );

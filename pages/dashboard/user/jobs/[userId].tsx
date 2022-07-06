@@ -68,7 +68,7 @@ const ViewJobsListPage = () => {
   //   if (!user) return <LoadingComponent />;
 
   return (
-    <div className="pt-32">
+    <div className="p-32">
       <Link href="/dashboard/user">
         <button
           type="button"

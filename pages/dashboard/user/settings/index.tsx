@@ -20,7 +20,7 @@ const Settings = () => {
   });
 
   return (
-    <div className="pt-32">
+    <div className="p-32">
       <UserSettings user={store.getState().user} />
     </div>
   );

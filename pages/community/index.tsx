@@ -3,7 +3,7 @@ import CommunityFeed from '../../src/components/Community/CommunityFeed';
 
 const index = () => {
   return (
-    <div className="pt-32">
+    <div className="p-32">
       <div>
         <CommunityFeed />
       </div>

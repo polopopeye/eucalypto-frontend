@@ -142,7 +142,7 @@ const JobView = () => {
           </main>
         </div>
       ) : (
-        <div className="pt-32">NO JOB OFFER FOUND</div>
+        <div className="p-32">NO JOB OFFER FOUND</div>
       )}
     </div>
   );
