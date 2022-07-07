@@ -6,6 +6,7 @@ import qs from 'qs';
 
 import { CategoryInterface } from '../../../commons/categoryInterface';
 import retrieveCategories from './retrieveCategories';
+import retrieveParentCategories from './retrieveParentCategories';
 
 const modifyCategory = (categoryData: CategoryInterface, next?: Function) => {
   axios
@@ -13,14 +14,18 @@ const modifyCategory = (categoryData: CategoryInterface, next?: Function) => {
     .then((response) => {
       toast.success('Category Updated Successfully');
 
-      retrieveCategories(
-        {
-          propToFind: 'type',
-          value: 'tech',
-          saveIn: 'tech',
-        },
-        next
-      );
+      retrieveParentCategories((allParentCats: any) => {
+        allParentCats.forEach((parentCat: any) => {
+          retrieveCategories(
+            {
+              propToFind: 'type',
+              value: parentCat.name,
+              saveIn: parentCat.name,
+            },
+            next
+          );
+        });
+      });
     })
     .catch((err) => {
       toast.error(err.message);

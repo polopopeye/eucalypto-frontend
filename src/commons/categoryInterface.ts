@@ -7,14 +7,3 @@ export interface CategoryInterface {
   createdAt?: Date;
   updatedAt?: Date;
 }
-
-export interface ReduxCategoriesInterface {
-  tech?:
-    | []
-    | [
-        {
-          id?: string;
-          name?: string;
-        }
-      ];
-}

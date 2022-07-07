@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { toast } from 'react-toastify';
@@ -10,11 +10,22 @@ import { useRouter } from 'next/router';
 
 import { CategoryInterface } from 'src/commons/categoryInterface';
 import registerCategory from 'src/app/backend/category/registerCategory';
+import retrieveParentCategories from 'src/app/backend/category/retrieveParentCategories';
+import { ParentCategoryInterface } from 'src/commons/parentCategoryInterface';
 
 const CreateNewCategory = () => {
   const router = useRouter();
 
   const [category, setCategory] = useState({} as CategoryInterface);
+  const [parentCategory, setParentCategory] = useState(
+    [] as Array<ParentCategoryInterface>
+  );
+
+  useEffect(() => {
+    retrieveParentCategories((parentCat: Array<ParentCategoryInterface>) => {
+      setParentCategory(parentCat);
+    });
+  }, []);
 
   return (
     <div>
@@ -71,8 +82,16 @@ const CreateNewCategory = () => {
                       category.type = e.target.value;
                     }}
                   >
-                    <option value=""></option>
-                    <option value="tech">Tech</option>
+                    <option value="" selected hidden></option>
+                    {parentCategory.map(
+                      (parentCat: ParentCategoryInterface) => (
+                        <>
+                          <option key={parentCat.id} value={parentCat.name}>
+                            {parentCat.name}
+                          </option>
+                        </>
+                      )
+                    )}
                   </select>
                 </div>
               </div>

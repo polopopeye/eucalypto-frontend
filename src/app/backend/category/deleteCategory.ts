@@ -4,6 +4,7 @@ import { CategoryInterface } from 'src/commons/categoryInterface';
 import { api } from '../apiEndPoints';
 
 import retrieveCategories from './retrieveCategories';
+import retrieveParentCategories from './retrieveParentCategories';
 
 const deleteCategory = (categoryData: CategoryInterface, next?: Function) => {
   axios
@@ -11,14 +12,18 @@ const deleteCategory = (categoryData: CategoryInterface, next?: Function) => {
     .then((response) => {
       toast.success('Category Deleted Successfully');
 
-      retrieveCategories(
-        {
-          propToFind: 'type',
-          value: 'tech',
-          saveIn: 'tech',
-        },
-        next
-      );
+      retrieveParentCategories((allParentCats: any) => {
+        allParentCats.forEach((parentCat: any) => {
+          retrieveCategories(
+            {
+              propToFind: 'type',
+              value: parentCat.name,
+              saveIn: parentCat.name,
+            },
+            next
+          );
+        });
+      });
     })
     .catch((err) => {
       toast.error(err.message);

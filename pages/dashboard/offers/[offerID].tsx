@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import retrieveParentCategories from 'src/app/backend/category/retrieveParentCategories';
 import retrieveCompanyByOwner from 'src/app/backend/company/retrieveCompaniesByOwner';
 import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
@@ -20,10 +21,14 @@ const ModifyJobOfferPage = () => {
     value: offerID as string,
     reduxSpace: 'currentJobOffer',
   });
-  retrieveCategories({
-    propToFind: 'type',
-    value: 'tech',
-    saveIn: 'tech',
+  retrieveParentCategories((allParentCats: any) => {
+    allParentCats.forEach((parentCat: any) => {
+      retrieveCategories({
+        propToFind: 'type',
+        value: parentCat.name,
+        saveIn: parentCat.name,
+      });
+    });
   });
   // TODO: This is not necesary to filter for an admin
   retrieveCompanyByOwner(store.getState().user.id as string);

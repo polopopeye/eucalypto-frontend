@@ -22,15 +22,17 @@ const retrieveCategories = (props: retrieveCategories, next?: Function) => {
 
       let newCategoryToAppendToRedux = [] as any;
 
-      allCategoriesFound.forEach((category: any) => {
-        if (
-          !newCategoryToAppendToRedux.some(
-            (element: any) => element.id === category.id
-          )
-        ) {
-          newCategoryToAppendToRedux.push(category);
-        }
-      });
+      if (allCategoriesFound) {
+        allCategoriesFound.forEach((category: any) => {
+          if (
+            !newCategoryToAppendToRedux.some(
+              (element: any) => element.id === category.id
+            )
+          ) {
+            newCategoryToAppendToRedux.push(category);
+          }
+        });
+      }
 
       const storeCat = store.getState().category;
 
@@ -47,7 +49,7 @@ const retrieveCategories = (props: retrieveCategories, next?: Function) => {
     })
     .catch((error) => {
       console.log(error);
-      toast.error('Error retrieving user info');
+      toast.error('Error retrieving Child category info');
     });
 };
 

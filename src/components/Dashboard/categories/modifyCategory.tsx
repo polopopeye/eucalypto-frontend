@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { toast } from 'react-toastify';
@@ -10,13 +10,36 @@ import { useRouter } from 'next/router';
 import { CategoryInterface } from 'src/commons/categoryInterface';
 import modifyCategory from 'src/app/backend/category/modifyCategory';
 import deleteCategory from 'src/app/backend/category/deleteCategory';
+import { ParentCategoryInterface } from 'src/commons/parentCategoryInterface';
+import retrieveParentCategories from 'src/app/backend/category/retrieveParentCategories';
 
 const ModifyCategory = (props: any) => {
   const router = useRouter();
 
+  // const [category, setCategory] = useState({} as CategoryInterface);
+
   const [category, setCategory] = useState({
     ...props.category,
   } as CategoryInterface);
+  console.log(
+    '🚀 ~ file: modifyCategory.tsx ~ line 23 ~ ModifyCategory ~ props',
+    props
+  );
+
+  console.log(
+    '🚀 ~ file: modifyCategory.tsx ~ line 22 ~ ModifyCategory ~ category',
+    category
+  );
+
+  const [parentCategory, setParentCategory] = useState(
+    [] as Array<ParentCategoryInterface>
+  );
+
+  useEffect(() => {
+    retrieveParentCategories((parentCat: Array<ParentCategoryInterface>) => {
+      setParentCategory(parentCat);
+    });
+  }, []);
 
   return (
     <div>
@@ -69,13 +92,29 @@ const ModifyCategory = (props: any) => {
                     name="type"
                     autoComplete="type-name"
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                    defaultValue={category.type}
+                    defaultValue="tech"
                     onChange={(e) => {
                       category.type = e.target.value;
                     }}
                   >
                     <option value=""></option>
-                    <option value="tech">Tech</option>
+                    {parentCategory.map(
+                      (parentCat: ParentCategoryInterface) => {
+                        const selected = category.type === parentCat.name;
+
+                        return (
+                          <>
+                            <option
+                              key={parentCat.id}
+                              selected={selected}
+                              value={parentCat.name}
+                            >
+                              {parentCat.name}
+                            </option>
+                          </>
+                        );
+                      }
+                    )}
                   </select>
                 </div>
               </div>

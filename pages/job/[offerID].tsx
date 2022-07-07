@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import retrieveParentCategories from 'src/app/backend/category/retrieveParentCategories';
 import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
 import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import useCheckUserInfo from 'src/app/firebase/auth/useCheckUserInfo';
@@ -15,10 +16,14 @@ const Job = () => {
   if (checkUserInfo.loading) return <LoadingComponent />;
 
   retrieveAllCompanies();
-  retrieveCategories({
-    propToFind: 'type',
-    value: 'tech',
-    saveIn: 'tech',
+  retrieveParentCategories((allParentCats: any) => {
+    allParentCats.forEach((parentCat: any) => {
+      retrieveCategories({
+        propToFind: 'type',
+        value: parentCat.name,
+        saveIn: parentCat.name,
+      });
+    });
   });
   if (offerID) {
     retrieveJobOffers({

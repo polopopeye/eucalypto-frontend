@@ -1,5 +1,6 @@
 import React from 'react';
 import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import retrieveParentCategories from 'src/app/backend/category/retrieveParentCategories';
 import retrieveAllCompanies from 'src/app/backend/company/retrieveCompanies';
 import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import SearcherPositions from 'src/components/SearcherPositions/SearcherPositions';
@@ -15,10 +16,14 @@ const index = () => {
     value: true,
     reduxSpace: 'filteredJobOffers',
   });
-  retrieveCategories({
-    propToFind: 'type',
-    value: 'tech',
-    saveIn: 'tech',
+  retrieveParentCategories((allParentCats: any) => {
+    allParentCats.forEach((parentCat: any) => {
+      retrieveCategories({
+        propToFind: 'type',
+        value: parentCat.name,
+        saveIn: parentCat.name,
+      });
+    });
   });
   retrieveAllCompanies();
 

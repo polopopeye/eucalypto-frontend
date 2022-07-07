@@ -1,21 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
-// THIS PAGE ONLY SHOW THE TECH CATEGORY
 
 import { PlusCircleIcon } from '@heroicons/react/outline';
+import { PlusCircleIcon as PlusCricleIconSolid } from '@heroicons/react/solid';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import React, { useState } from 'react';
 import { store } from 'src/app/store';
+import { ParentCategoryInterface } from 'src/commons/parentCategoryInterface';
 
 const ListCategories = () => {
-  const [categories, setCategories] = useState([
-    ...(store.getState().category.tech as any),
-  ]);
+  const [categories, setCategories] = useState(
+    store.getState().category as any
+  );
+
+  const [parentCats, setParentCats] = useState([] as ParentCategoryInterface);
+
   const [isAdmin, setIsAdmin] = useState(
     store.getState().user.role === 'admin'
   );
   store.subscribe(() => {
-    setCategories([...(store.getState().category.tech as any)]);
+    setCategories(store.getState().category as any);
     setIsAdmin(store.getState().user.role === 'admin');
   });
 
@@ -31,24 +34,24 @@ const ListCategories = () => {
       </div>
       {isAdmin && (
         <>
-          <div className="grid grid-cols-2 w-full text-right">
+          <div className="flex justify-end text-right -mt-8">
             <Link href="/dashboard/categories/createParent">
               <a
                 type="button"
-                className="relative float-right -mt-24 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+                className="relative float-right flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
               >
-                <PlusCircleIcon className="w-5 h-5 mr-2" />
-                Create new Parent Category
+                <PlusCricleIconSolid className="w-5 h-5 mr-2" />
+                <b>Create new Parent </b>
               </a>
             </Link>
 
             <Link href="/dashboard/categories/create">
               <a
                 type="button"
-                className="relative float-right -mt-24 flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
+                className="relative float-right flex w-64 bg-primary text-white items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium  hover:bg-secondary  "
               >
                 <PlusCircleIcon className="w-5 h-5 mr-2" />
-                Create new Child Category
+                <b>Create new Child </b>
               </a>
             </Link>
           </div>
@@ -60,17 +63,42 @@ const ListCategories = () => {
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
               <table className="min-w-full divide-y divide-gray-300">
-                <thead className="bg-gray-50">
+                <thead className="bg-primary text-white">
                   <tr>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
+                    >
+                      Parent Categories
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody className="divide-y divide-gray-200 bg-white">
+                  {categories &&
+                    Object.keys(categories).map((ParentCategory: any) => (
+                      <tr key={ParentCategory + 'parentCat'}>
+                        <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
+                          <h1>{ParentCategory}</h1>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              <hr className="my-16"></hr>
+
+              <table className="min-w-full divide-y divide-gray-300">
+                <thead className=" bg-primary text-white">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
                     >
                       Category Type
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
                     >
                       Category Name
                     </th>
@@ -85,28 +113,32 @@ const ListCategories = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {categories &&
-                    categories
-                      .sort((a: any, b: any) => {
-                        return b.createdAt._seconds - a.createdAt._seconds;
-                      })
-                      .map((category: any) => (
-                        <tr key={category.id}>
-                          <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
-                            <h1>{category.type}</h1>
-                          </td>
-                          <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
-                            <h1>{category.name}</h1>
-                          </td>
+                    Object.keys(categories).map((ParentCategory: any) => (
+                      <>
+                        {categories[ParentCategory].map((category: any) => {
+                          return (
+                            <tr key={category.id}>
+                              <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
+                                <h1>{category.type}</h1>
+                              </td>
+                              <td className="whitespace-nowrap px-3 py-4 text-base font-bold">
+                                <h1>{category.name}</h1>
+                              </td>
 
-                          <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <Link href={'/dashboard/categories/' + category.id}>
-                              <a className="text-indigo-600 hover:text-indigo-900 p-1">
-                                Edit Category
-                              </a>
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
+                              <td className=" relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                <Link
+                                  href={'/dashboard/categories/' + category.id}
+                                >
+                                  <a className="text-indigo-600 hover:text-indigo-900 p-1">
+                                    Edit Category
+                                  </a>
+                                </Link>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </>
+                    ))}
                 </tbody>
               </table>
             </div>

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import retrieveCategories from 'src/app/backend/category/retrieveCategories';
+import retrieveParentCategories from 'src/app/backend/category/retrieveParentCategories';
 import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import retrieveAllUsersInfo from 'src/app/backend/users/retrieveAllUsersInfo';
 import retrieveUserInfo from 'src/app/backend/users/retrieveUserInfo';
@@ -36,12 +37,15 @@ const UserInfoPage = () => {
 
   if (!checkUserInfo.isLogedIn) router.push('/signin');
 
-  retrieveCategories({
-    propToFind: 'type',
-    value: 'tech',
-    saveIn: 'tech',
+  retrieveParentCategories((allParentCats: any) => {
+    allParentCats.forEach((parentCat: any) => {
+      retrieveCategories({
+        propToFind: 'type',
+        value: parentCat.name,
+        saveIn: parentCat.name,
+      });
+    });
   });
-
   return <div className="pt-32">{user && <UserInfo user={user} />}</div>;
 };
 
