@@ -27,18 +27,18 @@ const UserSettings = (props: { user: UserInterface }) => {
 
   // this filter the user categories to only the ones that are not selected
 
-  if (user.categories) {
-  }
+  const arrayAllTechs = [] as Array<CategoryInterface>;
+  Object.keys(store.getState().category).forEach((parent: string) => {
+    arrayAllTechs.push(...store.getState().category[parent]);
+  });
 
-  const defaultCategoryList = store.getState().category.tech?.filter((tech) => {
+  const defaultCategoryList = arrayAllTechs.filter((tech) => {
     if (user.categories)
       return user.categories?.every((catId) => catId != tech.id);
     return tech;
   });
 
-  const [category, setCategory] = useState(
-    defaultCategoryList as CategoryInterface[]
-  );
+  const [category, setCategory] = useState(defaultCategoryList);
 
   const [techsSelected, setTechsSelected] = useState(
     user.categories as Array<string>
@@ -59,13 +59,16 @@ const UserSettings = (props: { user: UserInterface }) => {
   const [newCurriculumUpload, setNewCurriculumUpload] = useState(false);
 
   store.subscribe(() => {
-    const defaultCategoryList = store
-      .getState()
-      .category.tech?.filter((tech) => {
-        if (user.categories)
-          return user.categories?.every((catId) => catId != tech.id);
-        return tech;
-      });
+    const arrayAllTechs = [] as Array<CategoryInterface>;
+    Object.keys(store.getState().category).forEach((parent: string) => {
+      arrayAllTechs.push(...store.getState().category[parent]);
+    });
+
+    const defaultCategoryList = arrayAllTechs.filter((tech) => {
+      if (user.categories)
+        return user.categories?.every((catId) => catId != tech.id);
+      return tech;
+    });
     setCategory(defaultCategoryList as CategoryInterface[]);
   });
 
@@ -246,7 +249,7 @@ const UserSettings = (props: { user: UserInterface }) => {
 
                   <div className="grid items-center">
                     {techsSelected?.map((techId, index) => {
-                      const techs = store.getState().category.tech;
+                      const techs = arrayAllTechs;
                       const techData = techs?.find(
                         (tech) => tech.id === techId
                       );

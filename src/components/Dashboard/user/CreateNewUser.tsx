@@ -30,9 +30,13 @@ const CreateNewUser = () => {
 
   const [avatar, setAvatar] = useState('/file/img/Icono_Negativo.png');
 
-  const [category, setCategory] = useState(
-    store.getState().category.tech as CategoryInterface[]
-  );
+  const arrayAllTechs = [] as Array<CategoryInterface>;
+  Object.keys(store.getState().category).forEach((parent: string) => {
+    arrayAllTechs.push(...store.getState().category[parent]);
+  });
+
+  const [category, setCategory] = useState(arrayAllTechs);
+
   const [techsSelected, setTechsSelected] = useState([] as Array<string>);
 
   // this filter the english default selected lang
@@ -50,7 +54,12 @@ const CreateNewUser = () => {
   const [isWelcomeMessage, setIsWelcomeMessage] = useState(false);
 
   store.subscribe(() => {
-    setCategory(store.getState().category.tech as CategoryInterface[]);
+    const arrayAllTechs = [] as Array<CategoryInterface>;
+    Object.keys(store.getState().category).forEach((parent: string) => {
+      arrayAllTechs.push(...store.getState().category[parent]);
+    });
+
+    setCategory(arrayAllTechs);
   });
 
   return (
