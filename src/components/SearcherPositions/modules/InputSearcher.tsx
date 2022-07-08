@@ -14,7 +14,7 @@ import retrieveJobOffers from 'src/app/backend/jobOffer/retrievesJobOffer';
 import { store } from 'src/app/store';
 import { JobOfferInterface } from 'src/commons/jobOfferInterface';
 import filteredJobOffersSlice from 'src/app/slices/jobs/filterJobOffersSlice';
-import { filterJobOffers, resetFilterJobOffers } from './filterJobOffers';
+// import { filterJobOffers, resetFilterJobOffers } from './filterJobOffers';
 import { classNames } from 'src/components/Utils/classnames';
 
 const InputSearcher = (props: any) => {
@@ -37,9 +37,10 @@ const InputSearcher = (props: any) => {
           placeholder="Search..."
           onChange={(event) => {
             if (event.target.value.length > 1) {
-              filterJobOffers(event.target.value);
+              // TODO: filter job offers
+              // filterJobOffers(event.target.value);
             } else {
-              resetFilterJobOffers();
+              // resetFilterJobOffers();
             }
 
             setQuery(event.target.value);
@@ -48,7 +49,7 @@ const InputSearcher = (props: any) => {
         <div
           className="relative flex border border-gray-300 "
           onClick={() => {
-            resetFilterJobOffers();
+            // resetFilterJobOffers();
             setQuery('');
           }}
         >

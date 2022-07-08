@@ -239,7 +239,7 @@ const CreateNewUser = () => {
 
                   <div className="grid items-center">
                     {techsSelected.map((techId, index) => {
-                      const techs = store.getState().category.tech;
+                      const techs = arrayAllTechs;
                       const techData = techs?.find(
                         (tech) => tech.id === techId
                       );

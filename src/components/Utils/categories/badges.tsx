@@ -9,10 +9,20 @@ const Badges = (props: { categoriesId?: Array<string> }) => {
 
   const [badgesCategories] = useState([] as Array<CategoryInterface>);
 
-  const [categories, setCategories] = useState(store.getState().category.tech);
+  const arrayAllTechs = [] as Array<CategoryInterface>;
+  Object.keys(store.getState().category).forEach((parent: string) => {
+    arrayAllTechs.push(...store.getState().category[parent]);
+  });
+
+  const [categories, setCategories] = useState(arrayAllTechs);
 
   store.subscribe(() => {
-    setCategories(store.getState().category.tech);
+    const arrayAllTechs = [] as Array<CategoryInterface>;
+    Object.keys(store.getState().category).forEach((parent: string) => {
+      arrayAllTechs.push(...store.getState().category[parent]);
+    });
+
+    setCategories(arrayAllTechs);
   });
 
   if (!categories) return <LoadingComponent />;
