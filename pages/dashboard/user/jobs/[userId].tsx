@@ -55,18 +55,6 @@ const ViewJobsListPage = () => {
   if (!checkUserInfo.isLogedIn) router.push('/signin');
   if (!user) return <LoadingComponent />;
 
-  //   retrieveUserInfo(
-  //     {
-  //       prop: 'id',
-  //       value: userId as string,
-  //       reduxSpace: 'none',
-  //     },
-  //     (userData: UserInterface) => {
-  //       setUser(userData);
-  //     }
-  //   );
-  //   if (!user) return <LoadingComponent />;
-
   return (
     <div className="p-32">
       <Link href="/dashboard/user">

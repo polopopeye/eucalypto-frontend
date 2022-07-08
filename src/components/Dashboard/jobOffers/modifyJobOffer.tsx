@@ -14,6 +14,7 @@ import deleteJobOffer from 'src/app/backend/jobOffer/deleteJobOffer';
 import modifyJobOffer from 'src/app/backend/jobOffer/modifyJobOffer';
 import { Editor } from '@tinymce/tinymce-react';
 import { TrashIcon } from '@heroicons/react/outline';
+import { CategoryInterface } from 'src/commons/categoryInterface';
 
 function ModalCreateTechnology(props: {
   setOpen: any;
@@ -25,10 +26,20 @@ function ModalCreateTechnology(props: {
   const techRef = useRef() as RefObject<HTMLSelectElement>;
   const valueRef = useRef() as RefObject<HTMLInputElement>;
 
-  const [techs, setTechs] = useState(store.getState().category?.tech);
+  const arrayAllTechs = [] as Array<CategoryInterface>;
+  Object.keys(store.getState().category).forEach((parent: string) => {
+    arrayAllTechs.push(...store.getState().category[parent]);
+  });
+
+  const [techs, setTechs] = useState(arrayAllTechs); //this is now category
 
   store.subscribe(() => {
-    setTechs(store.getState().category?.tech);
+    const arrayAllTechs = [] as Array<CategoryInterface>;
+    Object.keys(store.getState().category).forEach((parent: string) => {
+      arrayAllTechs.push(...store.getState().category[parent]);
+    });
+
+    setTechs(arrayAllTechs);
   });
 
   return (

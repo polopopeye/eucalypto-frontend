@@ -14,6 +14,7 @@ import { classNames } from 'src/components/Utils/classnames';
 import registerJobOffer from 'src/app/backend/jobOffer/registerJobOffer';
 import { Editor } from '@tinymce/tinymce-react';
 import { TrashIcon } from '@heroicons/react/outline';
+import { CategoryInterface } from 'src/commons/categoryInterface';
 
 function ModalCreateTechnology(props: {
   setOpen: any;
@@ -25,10 +26,20 @@ function ModalCreateTechnology(props: {
   const techRef = useRef() as RefObject<HTMLSelectElement>;
   const valueRef = useRef() as RefObject<HTMLInputElement>;
 
-  const [techs, setTechs] = useState(store.getState().category?.tech);
+  const arrayAllTechs = [] as Array<CategoryInterface>;
+  Object.keys(store.getState().category).forEach((parent: string) => {
+    arrayAllTechs.push(...store.getState().category[parent]);
+  });
+
+  const [techs, setTechs] = useState(arrayAllTechs); //this is now category
 
   store.subscribe(() => {
-    setTechs(store.getState().category?.tech);
+    const arrayAllTechs = [] as Array<CategoryInterface>;
+    Object.keys(store.getState().category).forEach((parent: string) => {
+      arrayAllTechs.push(...store.getState().category[parent]);
+    });
+
+    setTechs(arrayAllTechs);
   });
 
   return (
@@ -57,7 +68,7 @@ function ModalCreateTechnology(props: {
               htmlFor="tech"
               className="block text-sm font-medium text-gray-700"
             >
-              Tech:
+              Category:
             </label>
             <div className="mt-1">
               <select
@@ -68,6 +79,7 @@ function ModalCreateTechnology(props: {
                 className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               >
                 <option value=""></option>
+                {/* This is category */}
                 {techs?.map((tech, index) => {
                   return (
                     <option key={tech.id} value={index}>
