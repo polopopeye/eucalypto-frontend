@@ -14,7 +14,8 @@ const SignInLoginLink = (props: { showLogin: boolean }) => {
             <b className="text-white">Sign</b> in
             {props.showLogin && (
               <>
-                or <b className="text-white">log</b> in
+                <span className="text-white">&nbsp; or &nbsp;</span>
+                <b className="text-white">log</b> in
               </>
             )}
           </a>
